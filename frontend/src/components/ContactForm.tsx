@@ -1,38 +1,202 @@
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { Mail, User, MessageSquare, Phone } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import sendContactForm from '@/services/contactApi';
+import { showToastSuccess, showToastError } from "@/utils/toastUtils";
 
-export const ContactForm = () => {
+// Définir le schéma de validation du formulaire avec Zod
+const formSchema = z.object({
+  firstName: z.string().min(2, {
+    message: "Le prénom doit comporter au moins 2 caractères.",
+  }),
+  lastName: z.string().min(2, {
+    message: "Le nom doit comporter au moins 2 caractères.",
+  }),
+  email: z.string().email({
+    message: "Veuillez entrer une adresse email valide.",
+  }),
+  phone: z.string().min(10, {
+    message: "Le numéro de téléphone doit comporter au moins 10 caractères.",
+  }),
+  subject: z.string().min(2, {
+    message: "Le sujet doit comporter au moins 2 caractères.",
+  }),
+  message: z.string().min(10, {
+    message: "Le message doit comporter au moins 10 caractères.",
+  }),
+  consent: z.boolean().refine((value) => value === true, {
+    message: "Vous devez accepter de soumettre vos informations personnelles.",
+  }),
+});
+
+export function ContactForm() {
+
+  // Créer le formulaire avec React Hook Form et Zod
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+      consent: false,
+    },
+  });
+
+  // Définir le gestionnaire de soumission du formulaire
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      const result = await sendContactForm(values);
+      console.log("SUCCESS!", result);
+      form.reset();
+      showToastSuccess();
+    } catch (err) {
+      console.log("FAILED...", err);
+      showToastError(); 
+    }
+  };
+
   return (
-    <div className="space-y-8">
-      <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
-        Contactez-nous
-      </h2>
-
-      <div className="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-8">
-       
-
-        <div className="w-full md:w-1/2">
-          <h3 className="text-2xl font-semibold mb-4">Contactez-nous</h3>
-          <form className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Nom</label>
-              <Input id="name" name="name" type="text" required className="mt-1" />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
-              <Input id="email" name="email" type="email" required className="mt-1" />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
-              <Textarea id="message" name="message" rows={4} required className="mt-1" />
-            </div>
-            <Button type="submit" className="w-full md:w-auto">
-              Envoyer
-            </Button>
-          </form>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <FormField
+            control={form.control}
+            name="firstName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Prénom</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                    <Input placeholder="Votre prénom" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="lastName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nom</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                    <Input placeholder="Votre nom" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                    <Input placeholder="Votre adresse email" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Téléphone</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                    <Input placeholder="Votre numéro de téléphone" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
-      </div>
-    </div>
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Sujet</FormLabel>
+              <FormControl>
+                <div className="relative">
+                  <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                  <Input placeholder="Le sujet de votre demande" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                </div>
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <div className="relative">
+                  <Textarea placeholder="Votre message" {...field} className="w-full border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                </div>
+              </FormControl>
+              <FormDescription>
+                Veuillez entrer les détails de votre demande.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="consent"
+          render={({ field }) => (
+            <FormItem className="flex items-center space-x-3">
+              <FormControl>
+                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+              </FormControl>
+              <FormLabel>
+                J'accepte de soumettre mes informations personnelles via ce formulaire
+              </FormLabel>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="text-center">
+          <Button type="submit" className="text-white px-6 text-sm font-semibold tracking-tighter transition-all ease-out hover:ring-2 hover:ring-neutral-800 hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50">
+            Envoyer
+          </Button>
+        </div>
+      </form>
+    </Form>
   );
-};
+}
