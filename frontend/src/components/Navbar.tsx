@@ -15,6 +15,7 @@ import {
 
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
+import { ModeToggle } from "./mode-toggle";
 
 
 interface RouteProps {
@@ -55,7 +56,7 @@ export const Navbar = () => {
   }, [location]);
 
   return (
-    <header className="sticky border-b-[2px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background py-[10px]">
+    <header className="sticky border-b-[2px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background py-[8px]">
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
           <NavigationMenuItem className="font-bold flex">
@@ -65,7 +66,7 @@ export const Navbar = () => {
               className="ml-2 font-bold text-xl flex"
             >
               
-            David Pro Web
+            David Web Projects
             </Link>
           </NavigationMenuItem>
 
@@ -82,7 +83,7 @@ export const Navbar = () => {
 
               <SheetContent side={"left"}>
                 <SheetHeader>
-                  <SheetTitle className="font-bold text-xl">David Pro Web</SheetTitle>
+                  <SheetTitle className="font-bold text-xl">David Web Projects</SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
                   {routeList.map(({ to, label }: RouteProps) => (
@@ -101,7 +102,7 @@ export const Navbar = () => {
                     to="/login"
                     className={`w-[110px] border ${buttonVariants({ variant: "outline", className: "border-2 border-primary text-primary hover:bg-primary hover:text-white" })}`}
                   >
-                    Login
+                    Se connecter
                   </Link>
                   
                 </nav>
@@ -129,9 +130,9 @@ export const Navbar = () => {
               to="/login"
               className={`border ${buttonVariants({ variant: "outline", className: "border-2 border-primary bg-primary text-white" })}`}
             >
-              Login
+              Se connecter
             </Link>
-
+            <ModeToggle/>
             
           </div>
         </NavigationMenuList>
