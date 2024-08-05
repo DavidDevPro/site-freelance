@@ -40,6 +40,10 @@ const routeList: RouteProps[] = [
     to: "/#faq",
     label: "FAQ",
   },
+  {
+    to: "/contact",
+    label: "Contact",
+  },
 ];
 
 export const Navbar = () => {
