@@ -56,7 +56,7 @@ export function Footer() {
     }, 2000);
   };
   return (
-    <footer className="px-7 md:px-10">
+    <footer className="px-7  max-w-[1400px] mx-auto">
       <div className="flex flex-col py-10 md:flex-row md:items-center md:justify-between">
         <div className="flex flex-col items-start justify-start gap-y-5">
           <a href="#" className="flex items-center gap-x-2.5">
@@ -66,7 +66,7 @@ export function Footer() {
               alt=""
             />
             <h1 className="text-xl font-bold text-neutral-900 dark:text-white">
-              Magic UI
+              David Web Projects
             </h1>
           </a>
           <p className="tracking-tight text-neutral-900 dark:text-white">
@@ -99,7 +99,7 @@ export function Footer() {
           
         <div className="mt-2.5 flex items-center justify-between">
           <div className="flex flex-col gap-y-1">
-            <p className="text-lg font-bold">Contact us</p>
+            <p className="text-lg font-bold">Newsletter</p>
             <p className="font-normal text-neutral-500 dark:font-medium">
               We have a great support team to help you
             </p>
@@ -113,7 +113,7 @@ export function Footer() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Email Address"
+                  placeholder="Votre Email"
                   required
                 />
                 <button

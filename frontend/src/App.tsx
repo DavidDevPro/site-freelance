@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import "./App.css"
 import Contact from './pages/Contact';
 import { Toaster } from './components/ui/sonner';
+import Login from './pages/Login';
 
 
 
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login/>} />
         
       </Routes>
       <Toaster />

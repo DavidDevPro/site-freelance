@@ -27,15 +27,15 @@ const ContactPage = () => {
             
             <div className="flex items-center">
               <Mail className="w-8 h-8 text-primary mr-4" />
-              <span className="text-lg text-muted-foreground">contact@fabwebprojects.fr</span>
+              <span className="text-lg text-muted-foreground">contact@davidwebprojects.fr</span>
             </div>
             <div className="flex items-center">
               <Phone className="w-8 h-8 text-primary mr-4" />
-              <span className="text-lg text-muted-foreground">+33 68 64 12 43</span>
+              <span className="text-lg text-muted-foreground">+33 59 95 68 94</span>
             </div>
             <div className="flex items-center">
               <MapPin className="w-8 h-8 text-primary mr-4" />
-              <span className="text-lg text-muted-foreground">31570 Bourg-Saint-Bernard, FRANCE</span>
+              <span className="text-lg text-muted-foreground">26760 Beaumont lès Valence, FRANCE</span>
             </div>
             <div>
               <h3 className="text-lg font-semibold">Retrouvez-moi sur les réseaux sociaux</h3>
