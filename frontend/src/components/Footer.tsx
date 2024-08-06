@@ -1,8 +1,25 @@
-
-
+import {
+  InstagramLogoIcon,
+  LinkedInLogoIcon,
+  TwitterLogoIcon,
+  ChevronRightIcon,
+} from "@radix-ui/react-icons";
 import { useState } from "react";
 
-const footerLinks: { id: number; title: string; url: string }[][] = [
+interface Icon {
+  icon: JSX.Element;
+  url: string;
+}
+
+const icons: Icon[] = [
+  { icon: <InstagramLogoIcon />, url: "https://www.instagram.com" },
+  { icon: <LinkedInLogoIcon />, url: "https://www.linkedin.com" },
+  { icon: <TwitterLogoIcon />, url: "https://www.twitter.com" },
+];
+
+type FooterLink = { id: number; title: string; url: string };
+
+const footerLinks: FooterLink[][] = [
   [
     { id: 1, title: "About", url: "#" },
     { id: 2, title: "Contact", url: "#" },
@@ -15,7 +32,14 @@ const footerLinks: { id: number; title: string; url: string }[][] = [
     { id: 7, title: "Press", url: "#" },
     { id: 8, title: "More", url: "#" },
   ],
+  [
+    { id: 9, title: "Press", url: "#" },
+    { id: 10, title: "Careers", url: "#" },
+    { id: 11, title: "Newsletters", url: "#" },
+    { id: 12, title: "More", url: "#" },
+  ],
 ];
+
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -31,41 +55,48 @@ export function Footer() {
       setIsSubscribed(false);
     }, 2000);
   };
-
   return (
-    <footer className="px-7 py-10 md:px-10">
-      <div className=" mx-auto flex max-w-6xl flex-col gap-x-5 gap-y-10 md:items-start md:justify-between lg:flex-row lg:px-10 xl:px-0">
-        <div className="flex w-full flex-col items-start justify-start gap-y-5 md:w-1/2 lg:w-1/3">
-          <a href="/" className="flex items-center gap-x-2">
+    <footer className="px-7 md:px-10">
+      <div className="flex flex-col py-10 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col items-start justify-start gap-y-5">
+          <a href="#" className="flex items-center gap-x-2.5">
             <img
               className="h-8 w-8 rounded-md"
               src="https://magicui.design/icon.png"
               alt=""
             />
-            <h2 className="font-bold text-neutral-900 dark:text-white">
+            <h1 className="text-xl font-bold text-neutral-900 dark:text-white">
               Magic UI
-            </h2>
+            </h1>
           </a>
           <p className="tracking-tight text-neutral-900 dark:text-white">
             UI library for Design Engineers
           </p>
+          <p className="text-sm tracking-tight text-neutral-500 dark:text-neutral-400 sm:text-center">
+            All rights reserved.
+          </p>
         </div>
-
-        <div className="mt-2.5 flex items-center justify-start gap-x-10">
-          {footerLinks.map((column, columnIndex) => (
-            <ul key={columnIndex} className="flex flex-col gap-y-2">
-              {column.map((link) => (
-                <li
-                  key={link.id}
-                  className="text-[15px]/normal font-medium text-neutral-400 transition-all duration-100 ease-linear hover:text-neutral-900 hover:underline hover:underline-offset-4 dark:font-medium dark:text-neutral-400 hover:dark:text-neutral-100"
-                >
-                  <a href={link.url}>{link.title}</a>
-                </li>
-              ))}
-            </ul>
-          ))}
+        <div className="pt-5 md:w-1/2">
+          <div className="flex items-center justify-between gap-x-3 lg:pl-10">
+            {footerLinks.map((column, columnIndex) => (
+              <ul key={columnIndex} className="flex flex-col gap-y-2">
+                {column.map((link) => (
+                  <li
+                    key={link.id}
+                    className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug font-medium text-neutral-400 duration-200 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+                  >
+                    <a href={link.url}>{link.title}</a>
+                    <ChevronRightIcon className="h-4 w-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100" />
+                  </li>
+                ))}
+              </ul>
+            ))}
+          </div>
         </div>
-
+      </div>
+      <div className="flex flex-col justify-between gap-y-10 border-t border-dashed py-10 md:flex-row md:items-center">
+        <div className="flex items-center gap-x-2">
+          
         <div className="mt-2.5 flex items-center justify-between">
           <div className="flex flex-col gap-y-1">
             <p className="text-lg font-bold">Contact us</p>
@@ -94,6 +125,20 @@ export function Footer() {
               </form>
             </div>
           </div>
+        </div>
+
+        </div>
+
+        <div className="flex items-center gap-x-4">
+          {icons.map((icon, index) => (
+            <a
+              key={index}
+              href={icon.url}
+              className="text-xl text-neutral-500 hover:text-neutral-900 hover:dark:text-white"
+            >
+              {icon.icon}
+            </a>
+          ))}
         </div>
       </div>
     </footer>

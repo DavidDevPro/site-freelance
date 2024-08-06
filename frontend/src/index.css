@@ -63,3 +63,23 @@ html {
     }
   }
 }
+
+/* styles.css ou un fichier CSS équivalent */
+.header-bg {
+  padding: 150px 0 150px 0;
+  position: relative;
+  z-index: 0; /* Assurez-vous que le contenu du header soit au-dessus de l'image */
+}
+.header-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./assets/background-hero.jpg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.65; /* Opacité de l'image */
+  z-index: -1; /* Place le pseudo-élément derrière le contenu */
+}
