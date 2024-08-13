@@ -13,22 +13,23 @@ import Skills from "@/components/Skills";
 
 // import { Sponsors } from "@/components/Sponsors";
 import { Team } from "@/components/Team";
-import { Testimonials } from "@/components/Testimonials";
+
+import { UserFeedback } from "@/components/UserFeedback";
 
 function Home() {
   return (
     <>
       <Hero />
       {/* <Sponsors /> */}
+      <Features />
+      <Pricing />
       <Skills />
-      <Testimonials />
+      <UserFeedback />
+      <Cta />
       <About />
       <HowItWorks />
-      <Features />
       <Services />
-      <Cta />
       <Team />
-      <Pricing />
       <Newsletter />
       <FAQ />
       <Footer />

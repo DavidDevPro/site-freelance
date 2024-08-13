@@ -1,24 +1,32 @@
 import { cn } from "@/lib/utils";
 import { Star, StarHalf, Star as StarFull } from "lucide-react";
 
-export interface TestimonialCardProps {
+import { pictureUrl } from "@/pictureConfig";
+
+interface TestimonialCardProps {
+  id: number;
+  image_url: string | null;
   name: string;
   role: string;
-  img?: string;
   rating: number;
-  description: React.ReactNode;
+  created_at: string;
+  source?: string; // Ajout de la propriété source
+  description: string;
   className?: string;
   [key: string]: any;
 }
-
+const imageBasePath = `${pictureUrl}storage/testimonial_images/`;
+const DEFAULT_AVATAR_URL = `${pictureUrl}storage/profile_images/defaut.jpg`;
 export const TestimonialCard: React.FC<TestimonialCardProps> = ({
-  img,
+  image_url,
   name,
   role,
   description,
   rating,
+  created_at,
+  source,
   className,
-  ...props
+  // ...props
 }) => {
   const renderStars = () => {
     const stars = [];
@@ -47,17 +55,24 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
     }
     return stars;
   };
+  const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
   return (
     <div
       className={cn(
-        "mb-4 flex w-full cursor-pointer break-inside-avoid flex-col items-center justify-between gap-6 rounded-xl p-4",
+        "max-w-sm md:break-inside-avoid overflow-hidden flex flex-col justify-between p-3",
         // light styles
         " border border-neutral-200 bg-white",
         // dark styles
         "dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
         className
       )}
-      {...props} // Spread the rest of the props here
     >
       <div className="select-none text-sm font-normal text-neutral-700 dark:text-neutral-400">
         {description}
@@ -66,13 +81,17 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
       <div className="flex w-full select-none items-center justify-start gap-5">
         <img
-          src={img}
+          src={image_url ? `${imageBasePath}${image_url}` : DEFAULT_AVATAR_URL}
           className="h-10 w-10 rounded-full  ring-1 ring-border ring-offset-4"
         />
 
         <div>
           <p className="font-medium text-neutral-500">{name}</p>
           <p className="text-xs font-normal text-neutral-400">{role}</p>
+          <p className="text-sm text-gray-500">
+            Créé le {formatDate(created_at)}
+            {source && ` Recommandation via ${source}`}
+          </p>
         </div>
       </div>
     </div>
