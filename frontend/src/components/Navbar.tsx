@@ -17,7 +17,6 @@ import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
 
-
 interface RouteProps {
   to: string;
   label: string;
@@ -25,7 +24,7 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    to: "/#services",
+    to: "/#features",
     label: "Services",
   },
   {
@@ -69,25 +68,27 @@ export const Navbar = () => {
               to="/"
               className="ml-2 font-bold text-xl flex"
             >
-              
-            David Web Projects
+              David Web Projects
             </Link>
           </NavigationMenuItem>
 
           {/* mobile */}
           <span className="flex md:hidden">
-            
-
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2">
-                <Menu className="flex md:hidden h-5 w-5" onClick={() => setIsOpen(true)}>
+                <Menu
+                  className="flex md:hidden h-5 w-5"
+                  onClick={() => setIsOpen(true)}
+                >
                   <span className="sr-only">Menu Icon</span>
                 </Menu>
               </SheetTrigger>
 
               <SheetContent side={"left"}>
                 <SheetHeader>
-                  <SheetTitle className="font-bold text-xl">David Web Projects</SheetTitle>
+                  <SheetTitle className="font-bold text-xl">
+                    David Web Projects
+                  </SheetTitle>
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
                   {routeList.map(({ to, label }: RouteProps) => (
@@ -104,11 +105,14 @@ export const Navbar = () => {
                   <Link
                     rel="noreferrer noopener"
                     to="/login"
-                    className={`w-[110px] border ${buttonVariants({ variant: "outline", className: "border-2 border-primary text-primary hover:bg-primary hover:text-white" })}`}
+                    className={`w-[110px] border ${buttonVariants({
+                      variant: "outline",
+                      className:
+                        "border-2 border-primary text-primary hover:bg-primary hover:text-white",
+                    })}`}
                   >
                     Se connecter
                   </Link>
-                  
                 </nav>
               </SheetContent>
             </Sheet>
@@ -121,7 +125,10 @@ export const Navbar = () => {
                 rel="noreferrer noopener"
                 to={route.to}
                 key={i}
-                className={`text-[17px] ${buttonVariants({ variant: "ghost", className: "text-primary hover:bg-primary hover:text-white" })}`}
+                className={`text-[17px] ${buttonVariants({
+                  variant: "ghost",
+                  className: "text-primary hover:bg-primary hover:text-white",
+                })}`}
               >
                 {route.label}
               </Link>
@@ -132,12 +139,14 @@ export const Navbar = () => {
             <Link
               rel="noreferrer noopener"
               to="/login"
-              className={`border ${buttonVariants({ variant: "outline", className: "border-2 border-primary bg-primary text-white" })}`}
+              className={`border ${buttonVariants({
+                variant: "outline",
+                className: "border-2 border-primary bg-primary text-white",
+              })}`}
             >
               Se connecter
             </Link>
-            <ModeToggle/>
-            
+            <ModeToggle />
           </div>
         </NavigationMenuList>
       </NavigationMenu>

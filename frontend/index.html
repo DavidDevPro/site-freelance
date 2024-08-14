@@ -7,8 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
-    <title>David Web Projects</title>
-    <meta name="robots" content="index, follow" />
+    <title>David Web Projects | Créateur de sites Web, SEO, hébergements</title>
+    <meta
+      name="robots"
+      content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"
+    />
     <meta name="author" content="David CHANGEA" />
     <meta name="copyright" content="Copyright © David CHANGEA" />
     <meta
@@ -17,7 +20,11 @@
     />
     <meta
       name="description"
-      content="David Changea, développeur web freelance, propose des services sur mesure avec David Web Projects : création et refonte de sites, optimisation SEO, solutions d'hébergement, et amélioration des performances. Méthode agile pour des résultats efficaces et personnalisés."
+      content="David Changea | David Web Projects développeur web freelance : création et refonte de sites, optimisation SEO, solutions d'hébergement, amélioration des performances et méthode agile."
+    />
+    <meta
+      name="keywords"
+      content="Développeur web, création de sites, refonte de sites, SEO, hébergement, méthode agile, David Changea, David Web Projects, performance web"
     />
 
     <!-- Open Graph / Facebook -->
@@ -36,6 +43,10 @@
       property="og:image"
       content="https://davidwebprojects.fr/assets/background-hero-6GW7JLmf.jpg"
     />
+    <meta
+      property="og:image:alt"
+      content="Image de présentation du site de David Web Projects"
+    />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -52,6 +63,10 @@
     <meta
       name="twitter:image"
       content="https://davidwebprojects.fr/assets/background-hero-6GW7JLmf.jpg"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Image de présentation du site de David Web Projects"
     />
 
     <!-- schema.org - résultats enrichis-->
@@ -83,14 +98,16 @@
           {
             "@type": "OpeningHoursSpecification",
             "dayOfWeek": "Wednesday",
-            "opens": "9:00",
+            "opens": "09:00",
             "closes": "14:00"
           }
         ],
         "sameAs": [
           "https://www.linkedin.com/in/david-changea",
           "https://github.com/david-backup",
-          "https://www.facebook.com/david.723751/"
+          "https://www.facebook.com/DavidWebProjects/",
+          "https://portfolio.davidwebprojects.fr/",
+          "https://x.com/DavidWebProject"
         ],
         "areaServed": {
           "@type": "Place",
@@ -112,37 +129,66 @@
         },
         "foundingDate": "2024",
         "currenciesAccepted": "EUR",
-        "services": [
+        "makesOffer": [
           {
-            "@type": "Service",
-            "name": "Création de sites web sur mesure",
-            "description": "Développement de sites web personnalisés adaptés aux besoins spécifiques de chaque client, en utilisant les dernières technologies comme React."
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Création de sites web sur mesure",
+              "description": "Développement de sites web personnalisés adaptés aux besoins spécifiques de chaque client, en utilisant les dernières technologies comme React."
+            }
           },
           {
-            "@type": "Service",
-            "name": "Refonte de sites web",
-            "description": "Modernisation et amélioration de sites existants pour une meilleure performance, esthétique et compatibilité avec les dernières normes web."
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Refonte de sites web",
+              "description": "Modernisation et amélioration de sites existants pour une meilleure performance, esthétique et compatibilité avec les dernières normes web."
+            }
           },
           {
-            "@type": "Service",
-            "name": "SEO",
-            "description": "Optimisation des sites web pour les moteurs de recherche afin d'améliorer leur visibilité et leur classement."
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SEO",
+              "description": "Optimisation des sites web pour les moteurs de recherche afin d'améliorer leur visibilité et leur classement."
+            }
           },
           {
-            "@type": "Service",
-            "name": "Solutions d'hébergement",
-            "description": "Proposition de solutions d'hébergement adaptées aux besoins des clients pour assurer une disponibilité maximale et des performances optimales."
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Solutions d'hébergement",
+              "description": "Proposition de solutions d'hébergement adaptées aux besoins des clients pour assurer une disponibilité maximale et des performances optimales."
+            }
           },
           {
-            "@type": "Service",
-            "name": "Optimisation de la performance des sites",
-            "description": "Amélioration de la vitesse et de l'efficacité des sites web pour offrir une meilleure expérience utilisateur."
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Optimisation de la performance des sites",
+              "description": "Amélioration de la vitesse et de l'efficacité des sites web pour offrir une meilleure expérience utilisateur."
+            }
           }
         ]
       }
     </script>
   </head>
   <body>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-56LHPMXG8V"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-56LHPMXG8V");
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

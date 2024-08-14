@@ -1,2 +1,35 @@
+# Bloc par défaut pour tous les moteurs de recherche
 User-agent: *
-Disallow:
+Allow: /
+
+# Empêche l'exploration de répertoires non pertinents ou sensibles
+Disallow: /wp-admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+Disallow: /config/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /user/
+Disallow: /cart/
+Disallow: /test/
+Disallow: /dev/
+
+# Bloquer les pages d'archives ou de duplication de contenu
+Disallow: /archives/
+Disallow: /*?*sessionid
+Disallow: /*?*token
+Disallow: /*?*ref=
+
+# Empêcher les robots d'explorer des fichiers spécifiques inutiles pour le SEO
+Disallow: /internal/
+Disallow: /backup/
+
+# Autorise l'accès complet aux ressources CSS et JS pour éviter les problèmes de rendu
+Allow: /*.css$
+Allow: /*.js$
+
+# Empêcher l'exploration des URLs d'administration ou privées générées par les paramètres de requêtes
+Disallow: /*?action=edit
+Disallow: /*?preview=true
+
