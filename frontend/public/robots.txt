@@ -2,6 +2,9 @@
 User-agent: *
 Allow: /
 
+# Indiquer l'emplacement du sitemap
+Sitemap: https://www.davidwebprojects.fr/sitemap.xml
+
 # Empêche l'exploration de répertoires non pertinents ou sensibles
 Disallow: /wp-admin/
 Disallow: /cgi-bin/
@@ -32,4 +35,5 @@ Allow: /*.js$
 # Empêcher l'exploration des URLs d'administration ou privées générées par les paramètres de requêtes
 Disallow: /*?action=edit
 Disallow: /*?preview=true
+
 
