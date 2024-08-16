@@ -96,12 +96,15 @@ const ContactPage = () => {
               </div>
             </div>
             <div>
-              <h3 className="text-lg font-semibold">Prenez rendez-vous</h3>
+              <h3 className="text-lg font-semibold mb-2">
+                Prenez rendez-vous :{" "}
+              </h3>
 
               <GoogleCalendarButton
                 url="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0yEWctaNOFUzuGNlw32_l1AWaEsu8_PosNlN5mb-gwCJ0c5h8aUgmPy2nNdZ6u89wS55ilCBgj?gv=true"
-                color="#039BE5"
+                color="#448FA3"
                 label="Réserver un rendez-vous"
+                border-radius="15px"
               />
             </div>
           </div>
