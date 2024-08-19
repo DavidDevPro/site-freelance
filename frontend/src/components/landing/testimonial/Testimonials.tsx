@@ -1,8 +1,9 @@
 import Marquee from "@/components/magicui/marquee";
-import { TestimonialCard } from "./TestimonialCard";
-import AddTestimonialDialog from "./AddTestimonialDialog";
+
 import { Testimonial } from "@/services/testimonialsApi"; // Assurez-vous que ce chemin est correct
 import { Avatar } from "./Avatar";
+import { TestimonialCard } from "./TestimonialCard";
+import AddTestimonialDialog from "./AddTestimonialDialog";
 
 interface TestimonialsProps {
   testimonials: Testimonial[];
@@ -43,7 +44,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
         <div className="pointer-events-none absolute inset-y-0 right-0 w-1/5 bg-gradient-to-l from-white dark:from-background"></div>
         <div className="flex justify-center pt-8 relative z-10 space-x-4">
           <AddTestimonialDialog onTestimonialAdded={onTestimonialAdded} />
-          <Avatar />
+          <Avatar testimonials={testimonials} />
         </div>
       </div>
     </section>

@@ -1,5 +1,4 @@
-import { Button } from "./ui/button";
-import { buttonVariants } from "./ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 export const Hero = () => {
   return (

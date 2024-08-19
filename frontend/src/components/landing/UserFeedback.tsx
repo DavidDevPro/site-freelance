@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { fetchTestimonials, Testimonial } from "@/services/testimonialsApi";
-import { Testimonials } from "@/components/Testimonials";
+import { Testimonials } from "./testimonial/Testimonials";
 
 export const UserFeedback: React.FC = () => {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);

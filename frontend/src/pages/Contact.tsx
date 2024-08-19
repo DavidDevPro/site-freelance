@@ -1,4 +1,4 @@
-import { ContactForm } from "@/components/ContactForm";
+import { ContactForm } from "@/components/contact/ContactForm";
 
 import { Mail, Phone, MapPin } from "lucide-react";
 import {
@@ -103,8 +103,7 @@ const ContactPage = () => {
               <GoogleCalendarButton
                 url="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0yEWctaNOFUzuGNlw32_l1AWaEsu8_PosNlN5mb-gwCJ0c5h8aUgmPy2nNdZ6u89wS55ilCBgj?gv=true"
                 color="#448FA3"
-                label="Réserver un rendez-vous"
-                border-radius="15px"
+                label="Google Calendar"
               />
             </div>
           </div>
