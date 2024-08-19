@@ -9,7 +9,7 @@ import {
   LuInstagram,
 } from "react-icons/lu";
 
-import GoogleCalendarButton from "@/components/GoogleCalendarButton";
+import GoogleCalendarButton from "@/components/googleCalendar/GoogleCalendarButton";
 
 const ContactPage = () => {
   return (
