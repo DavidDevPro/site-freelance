@@ -47,9 +47,9 @@ export const Step1Formule: React.FC<Step1FormuleProps> = ({
                 <SelectValue placeholder="Choisissez une formule" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Starter">Starter</SelectItem>
-                <SelectItem value="Standard">Standard</SelectItem>
-                <SelectItem value="Premium">Premium</SelectItem>
+                <SelectItem value="Starter">Essentiel</SelectItem>
+                <SelectItem value="Standard">Premium</SelectItem>
+                <SelectItem value="Premium">Expert</SelectItem>
                 <SelectItem value="RendezVous">
                   Prendre un rendez-vous
                 </SelectItem>

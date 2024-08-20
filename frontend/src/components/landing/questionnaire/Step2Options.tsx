@@ -1,6 +1,11 @@
 "use client";
 import { useFormContext } from "react-hook-form";
-import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CheckedState } from "@radix-ui/react-checkbox";
@@ -22,7 +27,7 @@ export const Step2Options: React.FC<{
       <FormField
         control={control}
         name="addPages"
-        render={({ field }) => (
+        render={({}) => (
           <FormItem className="flex items-center space-x-2">
             <FormControl>
               <Checkbox
@@ -30,7 +35,9 @@ export const Step2Options: React.FC<{
                 onCheckedChange={handleCheckboxChange}
               />
             </FormControl>
-            <FormLabel className="leading-none">Ajout de pages supplémentaires</FormLabel>
+            <FormLabel className="leading-none">
+              Ajout de pages supplémentaires
+            </FormLabel>
           </FormItem>
         )}
       />
@@ -39,7 +46,7 @@ export const Step2Options: React.FC<{
         <FormField
           control={control}
           name="pageCount"
-          render={({ field }) => (
+          render={({}) => (
             <FormItem className="mt-4">
               <FormLabel>Nombre de pages supplémentaires</FormLabel>
               <FormControl>
@@ -57,12 +64,14 @@ export const Step2Options: React.FC<{
       <FormField
         control={control}
         name="specificFeatures"
-        render={({ field }) => (
+        render={({}) => (
           <FormItem className="flex items-center space-x-2 mt-4">
             <FormControl>
               <Checkbox />
             </FormControl>
-            <FormLabel className="leading-none">Fonctionnalités spécifiques</FormLabel>
+            <FormLabel className="leading-none">
+              Fonctionnalités spécifiques
+            </FormLabel>
           </FormItem>
         )}
       />
@@ -70,12 +79,14 @@ export const Step2Options: React.FC<{
       <FormField
         control={control}
         name="basicAPIIntegration"
-        render={({ field }) => (
+        render={({}) => (
           <FormItem className="flex items-center space-x-2 mt-4">
             <FormControl>
               <Checkbox />
             </FormControl>
-            <FormLabel className="leading-none">Intégration API basique</FormLabel>
+            <FormLabel className="leading-none">
+              Intégration API basique
+            </FormLabel>
           </FormItem>
         )}
       />
