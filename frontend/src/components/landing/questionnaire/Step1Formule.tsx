@@ -3,6 +3,7 @@ import {
   FormItem,
   FormLabel,
   FormControl,
+  FormMessage,
 } from "@/components/ui/form";
 import {
   Select,
@@ -12,27 +13,23 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useFormContext } from "react-hook-form";
+import { useState } from "react";
 
 interface Step1FormuleProps {
-  setCurrentStep: (step: number) => void;
   dataFormulas: Array<{ name: string }>;
-  onSelectFormula: (formula: string) => void; // Ajout de la prop pour sélectionner la formule
+  onSelectFormula: (formula: string) => void;
 }
 
 export const Step1Formule: React.FC<Step1FormuleProps> = ({
-  setCurrentStep,
   dataFormulas,
   onSelectFormula,
 }) => {
   const { control } = useFormContext(); // Obtenir le contrôle du formulaire
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // État pour gérer l'affichage des erreurs
 
   const handleChange = (value: string) => {
+    setErrorMessage(null); // Réinitialiser le message d'erreur une fois une sélection effectuée
     onSelectFormula(value); // Appeler la fonction pour stocker la formule sélectionnée
-    if (value === "Prendre un rendez-vous") {
-      setCurrentStep(4); // Passer directement à l'étape du calendrier
-    } else {
-      setCurrentStep(1); // Passer à l'étape suivante
-    }
   };
 
   return (
@@ -48,7 +45,7 @@ export const Step1Formule: React.FC<Step1FormuleProps> = ({
                 field.onChange(value);
                 handleChange(value);
               }}
-              value={field.value}
+              value={field.value || ""}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Choisissez une formule" />
@@ -62,6 +59,9 @@ export const Step1Formule: React.FC<Step1FormuleProps> = ({
               </SelectContent>
             </Select>
           </FormControl>
+          {errorMessage && (
+            <FormMessage className="text-red-500">{errorMessage}</FormMessage>
+          )}
         </FormItem>
       )}
     />

@@ -12,7 +12,7 @@ export const Hero = () => {
               </span>
             </h1>{" "}
             <h2 className="inline text-4xl">
-              <span className="inline text-[#247ba0]">
+              <span className="inline text-primary">
                 Création, Refonte & SEO
               </span>{" "}
             </h2>

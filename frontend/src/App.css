@@ -15,7 +15,7 @@
     --popover-foreground: 222.2 84% 4.9%;
 
     --primary: 194 44% 56%; /* bleu de l'armée de l'air */
-    --primary-foreground: 195 63% 7%; /* noir riche */
+    --primary-foreground: 0 0% 100%; /* blanc */
 
     --secondary: 64 24% 91%; /* vanille */
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -29,9 +29,9 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 194 44% 56%; /* (outline) bleu de l'armée de l'air */
 
     --radius: 0.5rem;
   }

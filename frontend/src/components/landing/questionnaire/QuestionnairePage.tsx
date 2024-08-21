@@ -7,6 +7,7 @@ import { Step2Options } from "./Step2Options";
 import { Step3SupplementalInfo } from "./Step3SupplementalInfo";
 import { Step4PersonalInfo } from "./Step4PersonalInfo";
 import { CalendarIframe } from "../../googleCalendar/CalendarIframe";
+import { Step5Recap } from "./Step5Recap";
 
 interface QuestionnairePageProps {
   dataFormulas: Array<{ name: string; options: string[] }>;
@@ -16,67 +17,104 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   dataFormulas,
 }) => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [selectedFormula, setSelectedFormula] = useState<string | null>(null); // État pour stocker la formule sélectionnée
+  const [selectedFormula, setSelectedFormula] = useState<string | null>(null);
   const [addPages, setAddPages] = useState(false);
   const [pageCount, setPageCount] = useState(0);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null); // État pour gérer les messages d'erreur
 
   const methods = useForm(); // Initialiser useForm
 
-  const nextStep = () =>
-    setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
-  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0));
+  const nextStep = async () => {
+    if (currentStep === 0 && !selectedFormula) {
+      setErrorMessage("Veuillez choisir une formule !");
+      return;
+    }
+
+    const isValid = await methods.trigger(); // Valider les champs
+    if (isValid) {
+      setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep === 5) {
+      setCurrentStep(0); // Revenir directement à l'étape 0 si on est sur l'étape 5
+    } else {
+      setCurrentStep((prev) => Math.max(prev - 1, 0));
+    }
+  };
 
   const handleSelectFormula = (formula: string) => {
     setSelectedFormula(formula);
-    nextStep(); // Passer à l'étape suivante
+    setErrorMessage(null);
+
+    if (formula === "Prendre un rendez-vous") {
+      setCurrentStep(5);
+    }
   };
 
   const steps = [
     {
       title: "Étape 1 : Choisissez votre formule",
+      subtitle: "",
       content: (
         <Step1Formule
-          setCurrentStep={setCurrentStep}
           dataFormulas={dataFormulas}
-          onSelectFormula={handleSelectFormula} // Passer le gestionnaire de sélection
+          onSelectFormula={handleSelectFormula}
         />
       ),
     },
     {
       title: "Étape 2 : Sélectionnez les options",
+      subtitle: "(facultatif)",
       content: (
         <Step2Options
           addPages={addPages}
           setAddPages={setAddPages}
           pageCount={pageCount}
           setPageCount={setPageCount}
-          selectedFormula={selectedFormula} // Passer la formule sélectionnée
+          selectedFormula={selectedFormula}
           dataFormulas={dataFormulas}
         />
       ),
     },
     {
       title: "Étape 3 : Informations supplémentaires",
+      subtitle: "(facultatif)",
       content: <Step3SupplementalInfo />,
     },
     {
       title: "Étape 4 : Informations personnelles",
+      subtitle: "",
       content: <Step4PersonalInfo />,
     },
     {
+      title: "Étape 5 : Récapitulatif de votre demande",
+      subtitle: "",
+      content: (
+        <Step5Recap
+          selectedFormula={selectedFormula}
+          dataFormulas={dataFormulas}
+        />
+      ),
+    },
+    {
       title: "Prendre un rendez-vous",
+      subtitle: "",
       content: <CalendarIframe />,
     },
   ];
 
   return (
     <FormProvider {...methods}>
-      <div className="max-w-3xl mx-auto py-12 px-4">
-        <div className="flex justify-center items-end max-w-screen-lg mx-auto mb-8">
+      <div className="max-w-full mx-auto pt-12 pb-6 px-4">
+        <div className="flex justify-center items-end max-w-full mx-auto mb-12">
           {steps.map((step, index) => (
             <div
               key={index}
-              className={`w-full ${index < steps.length - 1 ? "mr-8" : ""}`}
+              className={`w-full flex flex-col items-center ${
+                index < steps.length - 1 ? "mr-8" : ""
+              }`}
             >
               <h6
                 className={`text-base font-bold mb-2 text-center ${
@@ -89,7 +127,7 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
               </h6>
               <div className="flex items-center w-full">
                 <div
-                  className={`w-8 h-8 shrink-0 mx-[-1px] ${
+                  className={`w-8 h-8 shrink-0 ${
                     currentStep >= index ? "bg-primary" : "bg-muted"
                   } p-1.5 flex items-center justify-center rounded-full`}
                 >
@@ -105,9 +143,10 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
                     <span className="w-3 h-3 bg-background rounded-full"></span>
                   )}
                 </div>
-                {index < steps.length - 1 && (
+                {/* Barre en dessous de chaque étape */}
+                {index < steps.length && (
                   <div
-                    className={`w-full h-1 ${
+                    className={`flex-grow h-1 ${
                       currentStep >= index ? "bg-primary" : "bg-muted"
                     }`}
                   ></div>
@@ -116,31 +155,50 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
             </div>
           ))}
         </div>
-
-        <div className="border-b pb-3 mb-4">
-          <h2 className="text-xl font-semibold">{steps[currentStep].title}</h2>
-        </div>
-        <div className="mb-6">{steps[currentStep].content}</div>
-        <div className="flex justify-between">
-          <Button
-            variant="secondary"
-            onClick={prevStep}
-            disabled={currentStep === 0}
-          >
-            Précédent
-          </Button>
-          {currentStep < steps.length - 1 ? (
-            <StyledButton variant="primary" onClick={nextStep}>
-              Suivant
-            </StyledButton>
-          ) : (
-            <StyledButton
-              variant="primary"
-              onClick={() => alert("Formulaire soumis !")}
-            >
-              Soumettre
-            </StyledButton>
-          )}
+        <div className="max-w-3xl w-full mx-auto mt-8">
+          <div className="border-b pb-3 mb-4">
+            <h2 className="tracking-tight text-lg md:text-xl font-semibold">
+              {steps[currentStep].title}{" "}
+              <span className="font-normal">{steps[currentStep].subtitle}</span>
+            </h2>
+          </div>
+          <div className="mb-6 max-w-3xl w-full mx-auto">
+            {steps[currentStep].content}
+          </div>
+          <div className="flex flex-col justify-between">
+            <div className="flex justify-between">
+              <Button
+                variant="secondary"
+                onClick={prevStep}
+                disabled={currentStep === 0}
+              >
+                Précédent
+              </Button>
+              {currentStep < steps.length - 2 ? (
+                <StyledButton variant="primary" onClick={nextStep}>
+                  Suivant
+                </StyledButton>
+              ) : currentStep === steps.length - 2 ? ( // Vérifie si on est à l'étape 5
+                <StyledButton
+                  variant="primary"
+                  onClick={() => alert("Formulaire soumis !")}
+                >
+                  Soumettre
+                </StyledButton>
+              ) : (
+                <StyledButton variant="primary" onClick={nextStep}>
+                  Suivant
+                </StyledButton>
+              )}
+            </div>
+            <div className="flex justify-center mt-4">
+              {errorMessage && (
+                <p className="text-red-500 font-semibold text-lg">
+                  {errorMessage}
+                </p>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </FormProvider>

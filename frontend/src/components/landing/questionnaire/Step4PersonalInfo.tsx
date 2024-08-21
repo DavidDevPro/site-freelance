@@ -1,85 +1,252 @@
-"use client";
+import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import {
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-  } from "@/components/ui/form";
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export const Step4PersonalInfo = () => {
-  const { control } = useFormContext(); // Obtenez le contrôle du formulaire
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext(); // Obtenez le contrôle du formulaire et les erreurs
+  const [customerType, setCustomerType] = useState("particulier");
 
   return (
     <>
-      <FormField
-        control={control}
-        name="firstName"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Prénom</FormLabel>
-            <FormControl>
-              <Input placeholder="Votre prénom" {...field} />
-            </FormControl>
+      {/* Ligne 1: Particulier / Entreprise */}
+      <div className="flex justify-center mb-2">
+        <RadioGroup
+          value={customerType}
+          onValueChange={(value) => setCustomerType(value)}
+          className="flex space-x-4"
+        >
+          <FormItem className="space-y-0 flex items-center">
+            <RadioGroupItem value="particulier" id="particulier" />
+            <FormLabel htmlFor="particulier" className="ml-2 text-lg">
+              Particulier
+            </FormLabel>
           </FormItem>
-        )}
-      />
+          <FormItem className="space-y-0 flex items-center">
+            <RadioGroupItem value="entreprise" id="entreprise" />
+            <FormLabel htmlFor="entreprise" className="ml-2 text-lg">
+              Entreprise
+            </FormLabel>
+          </FormItem>
+        </RadioGroup>
+      </div>
 
-      <FormField
-        control={control}
-        name="lastName"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Nom</FormLabel>
-            <FormControl>
-              <Input placeholder="Votre nom" {...field} />
-            </FormControl>
-          </FormItem>
-        )}
-      />
+      {/* Ligne 2: Raison Sociale (si nécessaire) */}
+      {customerType === "entreprise" && (
+        <div className="flex flex-col">
+          <FormField
+            control={control}
+            name="company"
+            rules={{ required: "Raison Sociale est requise" }}
+            render={({ field }) => (
+              <FormItem className="w-full">
+                <FormLabel>
+                  Raison Sociale <span className="text-red-500">*</span>
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="Votre Raison Sociale" {...field} />
+                </FormControl>
+                {errors.company && (
+                  <FormMessage className="text-red-500">
+                    {errors.company.message?.toString()}
+                  </FormMessage>
+                )}
+              </FormItem>
+            )}
+          />
+        </div>
+      )}
 
-      <FormField
-        control={control}
-        name="company"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Entreprise</FormLabel>
-            <FormControl>
-              <Input placeholder="Votre entreprise" {...field} />
-            </FormControl>
-          </FormItem>
-        )}
-      />
+      {/* Ligne 3: Civilité, Prénom, Nom */}
+      <div className="flex flex-col md:flex-row md:space-x-4">
+        <FormField
+          control={control}
+          name="civility"
+          rules={{ required: "Civilité est requise" }}
+          render={({ field }) => (
+            <FormItem className="w-full md:w-1/4">
+              <FormLabel>
+                Civilité <span className="text-red-500">*</span>
+              </FormLabel>
+              <FormControl>
+                <Input placeholder="M., Mme, ..." {...field} />
+              </FormControl>
+              {errors.civility && (
+                <FormMessage className="text-red-500">
+                  {errors.civility.message?.toString()}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="firstName"
+          rules={{ required: "Prénom est requis" }}
+          render={({ field }) => (
+            <FormItem className="w-full md:w-1/4">
+              <FormLabel>
+                Prénom <span className="text-red-500">*</span>
+              </FormLabel>
+              <FormControl>
+                <Input placeholder="Votre prénom" {...field} />
+              </FormControl>
+              {errors.firstName && (
+                <FormMessage className="text-red-500">
+                  {errors.firstName.message?.toString()}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="lastName"
+          rules={{ required: "Nom est requis" }}
+          render={({ field }) => (
+            <FormItem className="w-full md:w-1/2">
+              <FormLabel>
+                Nom <span className="text-red-500">*</span>
+              </FormLabel>
+              <FormControl>
+                <Input placeholder="Votre nom" {...field} />
+              </FormControl>
+              {errors.lastName && (
+                <FormMessage className="text-red-500">
+                  {errors.lastName.message?.toString()}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
+      </div>
 
-      <FormField
-        control={control}
-        name="phone"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Téléphone</FormLabel>
-            <FormControl>
-              <Input placeholder="Votre téléphone" {...field} />
-            </FormControl>
-          </FormItem>
-        )}
-      />
+      {/* Ligne 4: Adresse */}
+      <div className="flex flex-col">
+        <FormField
+          control={control}
+          name="address"
+          rules={{ required: "Adresse est requise" }}
+          render={({ field }) => (
+            <FormItem className="w-full">
+              <FormLabel>
+                Adresse <span className="text-red-500">*</span>
+              </FormLabel>
+              <FormControl>
+                <Input placeholder="Votre adresse" {...field} />
+              </FormControl>
+              {errors.address && (
+                <FormMessage className="text-red-500">
+                  {errors.address.message?.toString()}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
+      </div>
 
-      <FormField
-        control={control}
-        name="email"
-        render={({ field }) => (
-          <FormItem>
-            <FormLabel>Email</FormLabel>
-            <FormControl>
-              <Input placeholder="Votre email" {...field} />
-            </FormControl>
-          </FormItem>
-        )}
-      />
+      {/* Ligne 5: Code Postal, Ville */}
+      <div className="flex flex-col md:flex-row md:space-x-4">
+        <FormField
+          control={control}
+          name="postalCode"
+          rules={{ required: "Code Postal est requis" }}
+          render={({ field }) => (
+            <FormItem className="w-full md:w-1/4">
+              <FormLabel>
+                Code Postal <span className="text-red-500">*</span>
+              </FormLabel>
+              <FormControl>
+                <Input placeholder="Votre code postal" {...field} />
+              </FormControl>
+              {errors.postalCode && (
+                <FormMessage className="text-red-500">
+                  {errors.postalCode.message?.toString()}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="city"
+          rules={{ required: "Ville est requise" }}
+          render={({ field }) => (
+            <FormItem className="w-full md:w-3/4">
+              <FormLabel>
+                Ville <span className="text-red-500">*</span>
+              </FormLabel>
+              <FormControl>
+                <Input placeholder="Votre ville" {...field} />
+              </FormControl>
+              {errors.city && (
+                <FormMessage className="text-red-500">
+                  {errors.city.message?.toString()}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
+      </div>
+
+      {/* Ligne 6: Téléphone, Email */}
+      <div className="flex flex-col md:flex-row md:space-x-4">
+        <FormField
+          control={control}
+          name="phone"
+          rules={{ required: "Téléphone est requis" }}
+          render={({ field }) => (
+            <FormItem className="w-full md:w-1/2">
+              <FormLabel>
+                Téléphone <span className="text-red-500">*</span>
+              </FormLabel>
+              <FormControl>
+                <Input placeholder="Votre téléphone" {...field} />
+              </FormControl>
+              {errors.phone && (
+                <FormMessage className="text-red-500">
+                  {errors.phone.message?.toString()}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={control}
+          name="email"
+          rules={{ required: "Email est requis" }}
+          render={({ field }) => (
+            <FormItem className="w-full md:w-1/2">
+              <FormLabel>
+                Email <span className="text-red-500">*</span>
+              </FormLabel>
+              <FormControl>
+                <Input placeholder="Votre email" {...field} />
+              </FormControl>
+              {errors.email && (
+                <FormMessage className="text-red-500">
+                  {errors.email.message?.toString()}
+                </FormMessage>
+              )}
+            </FormItem>
+          )}
+        />
+      </div>
 
       <p className="mt-4 text-xs text-muted-foreground">
-        Vos données personnelles sont protégées et ne seront jamais vendues à des tiers. Elles seront utilisées uniquement dans le cadre de votre demande de devis conformément à la réglementation en vigueur (RGPD).
+        Vos données personnelles sont protégées et ne seront jamais vendues à
+        des tiers. Elles seront utilisées uniquement dans le cadre de votre
+        demande de devis conformément à la réglementation en vigueur (RGPD).
       </p>
     </>
   );

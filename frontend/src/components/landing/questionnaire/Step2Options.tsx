@@ -29,7 +29,7 @@ export const Step2Options: React.FC<{
   selectedFormula,
   dataFormulas,
 }) => {
-  const { control } = useFormContext();
+  const { control, setValue } = useFormContext();
 
   // Trouver les options de la formule sélectionnée
   const formula = dataFormulas.find((f) => f.name === selectedFormula);
@@ -42,6 +42,7 @@ export const Step2Options: React.FC<{
     if (option === "Ajout de pages supplémentaires") {
       setAddPages(checked === true);
     }
+    setValue(option, checked === true); // Mettre à jour la valeur du champ dans react-hook-form
   };
 
   return (
@@ -51,18 +52,15 @@ export const Step2Options: React.FC<{
           <FormField
             control={control}
             name={option} // Utiliser le nom de l'option comme clé
-            render={() => (
-              <FormItem className="flex items-center space-x-2 mt-4">
+            render={({ field }) => (
+              <FormItem className="flex items-center space-y-0 space-x-2 mt-4">
                 <FormControl>
                   <Checkbox
-                    checked={
-                      option === "Ajout de pages supplémentaires"
-                        ? addPages
-                        : undefined
-                    }
-                    onCheckedChange={(checked) =>
-                      handleCheckboxChange(option, checked)
-                    }
+                    checked={field.value || false} // Récupérer la valeur depuis react-hook-form
+                    onCheckedChange={(checked) => {
+                      field.onChange(checked); // Mettre à jour le champ dans react-hook-form
+                      handleCheckboxChange(option, checked);
+                    }}
                   />
                 </FormControl>
                 <FormLabel className="leading-none">{option}</FormLabel>
@@ -73,14 +71,18 @@ export const Step2Options: React.FC<{
             <FormField
               control={control}
               name="pageCount"
-              render={() => (
+              render={({ field }) => (
                 <FormItem className="mt-4">
                   <FormLabel>Nombre de pages supplémentaires</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
-                      value={pageCount}
-                      onChange={(e) => setPageCount(parseInt(e.target.value))}
+                      value={field.value || pageCount} // Récupérer la valeur depuis react-hook-form
+                      onChange={(e) => {
+                        const value = parseInt(e.target.value, 10);
+                        field.onChange(value);
+                        setPageCount(value);
+                      }}
                     />
                   </FormControl>
                 </FormItem>

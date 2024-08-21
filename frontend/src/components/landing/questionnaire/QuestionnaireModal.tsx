@@ -1,5 +1,3 @@
-// components/QuestionnaireModal.tsx
-"use client";
 import React, { useState } from "react";
 import {
   Dialog,
@@ -11,7 +9,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import { StyledButton } from "@/components/StyledButton";
-import QuestionnairePage from "./QuestionnairePage"; // Assurez-vous que le chemin est correct
+import QuestionnairePage from "@/components/landing/questionnaire/QuestionnairePage";
 
 export const QuestionnaireModal: React.FC<{ dataFormulas: any[] }> = ({
   dataFormulas,
@@ -28,21 +26,25 @@ export const QuestionnaireModal: React.FC<{ dataFormulas: any[] }> = ({
           Demander un devis personnalisé
         </StyledButton>
       </DialogTrigger>
-      <DialogContent className="max-w-3xl mx-auto p-6 bg-white rounded-md shadow-md">
+      <DialogContent className="max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-5xl xl:max-w-7xl mx-auto p-6 bg-white rounded-md shadow-md w-full">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-center">
+          <DialogTitle className="text-lg md:text-xl font-bold text-center">
             Demande de devis personnalisé
           </DialogTitle>
-          <DialogDescription className="text-center">
+          <DialogDescription className="text-sm md:text-base text-center">
             Veuillez suivre les étapes ci-dessous pour nous fournir les
             informations nécessaires.
           </DialogDescription>
         </DialogHeader>
-        <QuestionnairePage dataFormulas={dataFormulas} />
+        <div className="overflow-y-auto max-h-[80vh]">
+          {" "}
+          {/* Gérer le défilement sur les petits écrans */}
+          <QuestionnairePage dataFormulas={dataFormulas} />
+        </div>
         <DialogClose asChild>
           <StyledButton
             variant="secondary"
-            className="mt-4"
+            className="mt-4 w-full md:w-auto mx-auto"
             onClick={handleClose}
           >
             Fermer
