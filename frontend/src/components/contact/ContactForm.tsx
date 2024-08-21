@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Mail, User, MessageSquare, Phone } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -18,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import sendContactForm from "@/services/contactApi";
 import { showMessageSuccess, showMessageError } from "@/utils/toastUtils";
+import { StyledButton } from "../StyledButton";
 
 // Définir le schéma de validation du formulaire avec Zod
 const formSchema = z.object({
@@ -84,7 +84,7 @@ export function ContactForm() {
                 <FormLabel>Prénom</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
                     <Input
                       placeholder="Votre prénom"
                       {...field}
@@ -104,7 +104,7 @@ export function ContactForm() {
                 <FormLabel>Nom</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
                     <Input
                       placeholder="Votre nom"
                       {...field}
@@ -124,7 +124,7 @@ export function ContactForm() {
                 <FormLabel>Email</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
                     <Input
                       placeholder="Votre adresse email"
                       {...field}
@@ -144,7 +144,7 @@ export function ContactForm() {
                 <FormLabel>Téléphone</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
                     <Input
                       placeholder="Votre numéro de téléphone"
                       {...field}
@@ -165,7 +165,7 @@ export function ContactForm() {
               <FormLabel>Sujet</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
+                  <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
                   <Input
                     placeholder="Le sujet de votre demande"
                     {...field}
@@ -219,12 +219,12 @@ export function ContactForm() {
           )}
         />
         <div className="text-center">
-          <Button
+          <StyledButton
             type="submit"
-            className="text-white px-6 text-sm font-semibold tracking-tighter transition-all ease-out hover:ring-2 hover:ring-neutral-800 hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50"
+            className="font-semibold transition-all ease"
           >
             Envoyer
-          </Button>
+          </StyledButton>
         </div>
       </form>
     </Form>

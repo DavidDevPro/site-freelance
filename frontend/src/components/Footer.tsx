@@ -40,7 +40,6 @@ const footerLinks: FooterLink[][] = [
   ],
 ];
 
-
 export function Footer() {
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -96,37 +95,35 @@ export function Footer() {
       </div>
       <div className="flex flex-col justify-between gap-y-10 border-t border-dashed py-10 md:flex-row md:items-center">
         <div className="flex items-center gap-x-2">
-          
-        <div className="mt-2.5 flex items-center justify-between">
-          <div className="flex flex-col gap-y-1">
-            <p className="text-lg font-bold">Newsletter</p>
-            <p className="font-normal text-neutral-500 dark:font-medium">
-              We have a great support team to help you
-            </p>
-            <div className="flex items-center gap-x-2 pt-2">
-              <form
-                onSubmit={handleSubmit}
-                className="flex items-center gap-x-2"
-              >
-                <input
-                  className="w-full rounded-lg border bg-neutral-50 p-2 placeholder:text-sm placeholder:text-neutral-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300 focus-visible:ring-offset-0 dark:bg-neutral-900 dark:placeholder:text-neutral-600 dark:focus-visible:ring-neutral-700"
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Votre Email"
-                  required
-                />
-                <button
-                  type="submit"
-                  className="font-base w-48 rounded-lg bg-neutral-900 px-5 py-2 text-white transition-all ease-out hover:ring-1 hover:ring-neutral-800 hover:ring-offset-2  hover:ring-offset-current active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:ring-neutral-50 "
+          <div className="mt-2.5 flex items-center justify-between">
+            <div className="flex flex-col gap-y-1">
+              <p className="text-lg font-bold">Newsletter</p>
+              <p className="font-normal text-neutral-500 dark:font-medium">
+                We have a great support team to help you
+              </p>
+              <div className="flex items-center gap-x-2 pt-2">
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex items-center gap-x-2"
                 >
-                  {isSubscribed ? "Subscribed" : "Subscribe"}
-                </button>
-              </form>
+                  <input
+                    className="w-full rounded-lg border bg-neutral-50 p-2 placeholder:text-sm placeholder:text-neutral-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-300 focus-visible:ring-offset-0 dark:bg-neutral-900 dark:placeholder:text-neutral-600 dark:focus-visible:ring-neutral-700"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Votre Email"
+                    required
+                  />
+                  <button
+                    type="submit"
+                    className="font-base w-48 rounded-lg bg-neutral-900 px-5 py-2 text-white transition-all ease-out hover:ring-1 hover:ring-neutral-800 hover:ring-offset-2  hover:ring-offset-current active:scale-95 dark:bg-white dark:text-neutral-900 dark:hover:ring-neutral-50 "
+                  >
+                    {isSubscribed ? "Subscribed" : "Subscribe"}
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-
         </div>
 
         <div className="flex items-center gap-x-4">

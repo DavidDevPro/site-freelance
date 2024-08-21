@@ -16,6 +16,7 @@ import {
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
+import { StyledButton } from "./StyledButton";
 
 interface RouteProps {
   to: string;
@@ -136,16 +137,12 @@ export const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex gap-2">
-            <Link
-              rel="noreferrer noopener"
-              to="/login"
-              className={`border ${buttonVariants({
-                variant: "outline",
-                className: "border-2 border-primary bg-primary text-white",
-              })}`}
-            >
-              Se connecter
-            </Link>
+            <StyledButton>
+              <Link rel="noreferrer noopener" to="/login">
+                Se connecter
+              </Link>
+            </StyledButton>
+
             <ModeToggle />
           </div>
         </NavigationMenuList>

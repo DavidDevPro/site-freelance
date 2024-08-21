@@ -1,5 +1,4 @@
 import { ContactForm } from "@/components/contact/ContactForm";
-
 import { Mail, Phone, MapPin } from "lucide-react";
 import {
   LuLinkedin,
@@ -10,12 +9,13 @@ import {
 } from "react-icons/lu";
 
 import GoogleCalendarButton from "@/components/googleCalendar/GoogleCalendarButton";
+import { Footer } from "@/components/Footer";
 
 const ContactPage = () => {
   return (
-    <div className="bg-background py-4 min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <h1 className="text-4xl font-bold mb-4 text-center text-foreground">
+    <div className="bg-background py-4 min-h-screen flex flex-col">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-grow">
+        <h1 className="text-4xl font-bold mt-8 mb-2 text-center text-foreground">
           Contactez-nous
         </h1>
         <p className="text-center text-muted-foreground mb-4">
@@ -112,6 +112,11 @@ const ContactPage = () => {
             <ContactForm />
           </div>
         </div>
+      </div>
+
+      {/* Footer en bas de la page avec flexbox */}
+      <div className="bg-white w-full">
+        <Footer />
       </div>
     </div>
   );

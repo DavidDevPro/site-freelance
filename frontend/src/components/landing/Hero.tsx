@@ -1,4 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button";
+import { StyledButton } from "../StyledButton";
 
 export const Hero = () => {
   return (
@@ -24,18 +24,18 @@ export const Hero = () => {
           </p>
 
           <div className="space-y-4 md:space-y-0 md:space-x-4">
-            <Button className="w-full md:w-1/3">Nous Contacter</Button>
-
-            <a
-              rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-              target="_blank"
-              className={`w-full md:w-1/3 ${buttonVariants({
-                variant: "outline",
-              })}`}
-            >
-              Nos Tarifs
-            </a>
+            <StyledButton className="w-full md:w-1/3">
+              Nous Contacter
+            </StyledButton>
+            <StyledButton>
+              <a
+                rel="noreferrer noopener"
+                href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+                target="_blank"
+              >
+                Nos Tarifs
+              </a>
+            </StyledButton>
           </div>
         </div>
 
