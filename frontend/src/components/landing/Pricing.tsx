@@ -11,6 +11,7 @@ type Interval = "essentiel" | "premium" | "expert";
 export function Pricing() {
   const [selectedPackage, setSelectedPackage] = useState<Interval>("essentiel");
   const [packages, setPackages] = useState<Formula[]>([]);
+  const [dataFormulas, setDataFormulas] = useState<Formula[]>([]); // Pour conserver toutes les formules non filtrées
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   console.log(selectedPackage);
@@ -18,8 +19,16 @@ export function Pricing() {
   useEffect(() => {
     const loadFormulas = async () => {
       try {
-        const data = await fetchFormulas();
-        setPackages(data);
+        const dataFormulas = await fetchFormulas();
+        // Mettre à jour dataFormulas avec toutes les formules
+        setDataFormulas(dataFormulas);
+
+        // Filtrer les formules pour exclure celle nommée "Prendre un rendez-vous"
+        const filteredData = dataFormulas.filter(
+          (pkg) => pkg.name !== "Prendre un rendez-vous"
+        );
+
+        setPackages(filteredData);
         setLoading(false);
       } catch (err) {
         setError("Failed to load packages");
@@ -140,7 +149,7 @@ export function Pricing() {
           </p>
           <div className="flex justify-center">
             {/* Centrage du bouton */}
-            <QuestionnaireModal />
+            <QuestionnaireModal dataFormulas={dataFormulas} />
           </div>
         </div>
       </div>

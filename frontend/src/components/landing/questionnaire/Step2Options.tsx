@@ -1,4 +1,3 @@
-"use client";
 import { useFormContext } from "react-hook-form";
 import {
   FormField,
@@ -10,86 +9,86 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CheckedState } from "@radix-ui/react-checkbox";
 
+interface Step2OptionsProps {
+  selectedFormula: string | null;
+  dataFormulas: Array<{ name: string; options: string[] }>;
+}
+
 export const Step2Options: React.FC<{
   addPages: boolean;
   setAddPages: React.Dispatch<React.SetStateAction<boolean>>;
   pageCount: number;
   setPageCount: React.Dispatch<React.SetStateAction<number>>;
-}> = ({ addPages, setAddPages, pageCount, setPageCount }) => {
-  const { control } = useFormContext(); // Obtenez le contrôle du formulaire
+  selectedFormula: string | null;
+  dataFormulas: Step2OptionsProps["dataFormulas"];
+}> = ({
+  addPages,
+  setAddPages,
+  pageCount,
+  setPageCount,
+  selectedFormula,
+  dataFormulas,
+}) => {
+  const { control } = useFormContext();
 
-  const handleCheckboxChange = (checked: CheckedState) => {
-    setAddPages(checked === true);
+  // Trouver les options de la formule sélectionnée
+  const formula = dataFormulas.find((f) => f.name === selectedFormula);
+
+  if (!formula) {
+    return <div>Aucune formule sélectionnée.</div>;
+  }
+
+  const handleCheckboxChange = (option: string, checked: CheckedState) => {
+    if (option === "Ajout de pages supplémentaires") {
+      setAddPages(checked === true);
+    }
   };
 
   return (
     <>
-      <FormField
-        control={control}
-        name="addPages"
-        render={({}) => (
-          <FormItem className="flex items-center space-x-2">
-            <FormControl>
-              <Checkbox
-                checked={addPages}
-                onCheckedChange={handleCheckboxChange}
-              />
-            </FormControl>
-            <FormLabel className="leading-none">
-              Ajout de pages supplémentaires
-            </FormLabel>
-          </FormItem>
-        )}
-      />
-
-      {addPages && (
-        <FormField
-          control={control}
-          name="pageCount"
-          render={({}) => (
-            <FormItem className="mt-4">
-              <FormLabel>Nombre de pages supplémentaires</FormLabel>
-              <FormControl>
-                <Input
-                  type="number"
-                  value={pageCount}
-                  onChange={(e) => setPageCount(parseInt(e.target.value))}
-                />
-              </FormControl>
-            </FormItem>
+      {formula.options.map((option, index) => (
+        <div key={index}>
+          <FormField
+            control={control}
+            name={option} // Utiliser le nom de l'option comme clé
+            render={() => (
+              <FormItem className="flex items-center space-x-2 mt-4">
+                <FormControl>
+                  <Checkbox
+                    checked={
+                      option === "Ajout de pages supplémentaires"
+                        ? addPages
+                        : undefined
+                    }
+                    onCheckedChange={(checked) =>
+                      handleCheckboxChange(option, checked)
+                    }
+                  />
+                </FormControl>
+                <FormLabel className="leading-none">{option}</FormLabel>
+              </FormItem>
+            )}
+          />
+          {option === "Ajout de pages supplémentaires" && addPages && (
+            <FormField
+              control={control}
+              name="pageCount"
+              render={() => (
+                <FormItem className="mt-4">
+                  <FormLabel>Nombre de pages supplémentaires</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      value={pageCount}
+                      onChange={(e) => setPageCount(parseInt(e.target.value))}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
           )}
-        />
-      )}
-
-      <FormField
-        control={control}
-        name="specificFeatures"
-        render={({}) => (
-          <FormItem className="flex items-center space-x-2 mt-4">
-            <FormControl>
-              <Checkbox />
-            </FormControl>
-            <FormLabel className="leading-none">
-              Fonctionnalités spécifiques
-            </FormLabel>
-          </FormItem>
-        )}
-      />
-
-      <FormField
-        control={control}
-        name="basicAPIIntegration"
-        render={({}) => (
-          <FormItem className="flex items-center space-x-2 mt-4">
-            <FormControl>
-              <Checkbox />
-            </FormControl>
-            <FormLabel className="leading-none">
-              Intégration API basique
-            </FormLabel>
-          </FormItem>
-        )}
-      />
+        </div>
+      ))}
     </>
   );
 };

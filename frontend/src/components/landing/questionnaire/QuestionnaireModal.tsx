@@ -1,6 +1,6 @@
 // components/QuestionnaireModal.tsx
 "use client";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -10,10 +10,12 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { StyledButton } from '@/components/StyledButton';
-import QuestionnairePage from './QuestionnairePage'; // Assurez-vous que le chemin est correct
+import { StyledButton } from "@/components/StyledButton";
+import QuestionnairePage from "./QuestionnairePage"; // Assurez-vous que le chemin est correct
 
-export const QuestionnaireModal: React.FC = () => {
+export const QuestionnaireModal: React.FC<{ dataFormulas: any[] }> = ({
+  dataFormulas,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(true);
@@ -28,14 +30,21 @@ export const QuestionnaireModal: React.FC = () => {
       </DialogTrigger>
       <DialogContent className="max-w-3xl mx-auto p-6 bg-white rounded-md shadow-md">
         <DialogHeader>
-          <DialogTitle className="text-xl font-bold text-center">Demande de devis personnalisé</DialogTitle>
+          <DialogTitle className="text-xl font-bold text-center">
+            Demande de devis personnalisé
+          </DialogTitle>
           <DialogDescription className="text-center">
-            Veuillez suivre les étapes ci-dessous pour nous fournir les informations nécessaires.
+            Veuillez suivre les étapes ci-dessous pour nous fournir les
+            informations nécessaires.
           </DialogDescription>
         </DialogHeader>
-        <QuestionnairePage />
+        <QuestionnairePage dataFormulas={dataFormulas} />
         <DialogClose asChild>
-          <StyledButton variant="secondary" className="mt-4" onClick={handleClose}>
+          <StyledButton
+            variant="secondary"
+            className="mt-4"
+            onClick={handleClose}
+          >
             Fermer
           </StyledButton>
         </DialogClose>

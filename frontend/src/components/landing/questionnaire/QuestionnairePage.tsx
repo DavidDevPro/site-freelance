@@ -1,24 +1,46 @@
 import { useState } from "react";
-import { useForm, FormProvider } from "react-hook-form"; // Importer useForm et FormProvider
+import { useForm, FormProvider } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { StyledButton } from "@/components/StyledButton";
 import { Step1Formule } from "./Step1Formule";
 import { Step2Options } from "./Step2Options";
 import { Step3SupplementalInfo } from "./Step3SupplementalInfo";
 import { Step4PersonalInfo } from "./Step4PersonalInfo";
-import { CalendarIframe } from "../../googleCalendar/CalendarIframe"; // Importer le composant pour le calendrier
+import { CalendarIframe } from "../../googleCalendar/CalendarIframe";
 
-const QuestionnairePage = () => {
+interface QuestionnairePageProps {
+  dataFormulas: Array<{ name: string; options: string[] }>;
+}
+
+const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
+  dataFormulas,
+}) => {
   const [currentStep, setCurrentStep] = useState(0);
+  const [selectedFormula, setSelectedFormula] = useState<string | null>(null); // État pour stocker la formule sélectionnée
   const [addPages, setAddPages] = useState(false);
   const [pageCount, setPageCount] = useState(0);
 
   const methods = useForm(); // Initialiser useForm
 
+  const nextStep = () =>
+    setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
+  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0));
+
+  const handleSelectFormula = (formula: string) => {
+    setSelectedFormula(formula);
+    nextStep(); // Passer à l'étape suivante
+  };
+
   const steps = [
     {
       title: "Étape 1 : Choisissez votre formule",
-      content: <Step1Formule setCurrentStep={setCurrentStep} />, // Passer setCurrentStep pour gérer la navigation
+      content: (
+        <Step1Formule
+          setCurrentStep={setCurrentStep}
+          dataFormulas={dataFormulas}
+          onSelectFormula={handleSelectFormula} // Passer le gestionnaire de sélection
+        />
+      ),
     },
     {
       title: "Étape 2 : Sélectionnez les options",
@@ -28,6 +50,8 @@ const QuestionnairePage = () => {
           setAddPages={setAddPages}
           pageCount={pageCount}
           setPageCount={setPageCount}
+          selectedFormula={selectedFormula} // Passer la formule sélectionnée
+          dataFormulas={dataFormulas}
         />
       ),
     },
@@ -41,18 +65,12 @@ const QuestionnairePage = () => {
     },
     {
       title: "Prendre un rendez-vous",
-      content: <CalendarIframe />, // Nouvelle étape pour le calendrier
+      content: <CalendarIframe />,
     },
   ];
 
-  const nextStep = () =>
-    setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
-  const prevStep = () => setCurrentStep((prev) => Math.max(prev - 1, 0));
-
   return (
     <FormProvider {...methods}>
-      {" "}
-      {/* Envelopper avec FormProvider */}
       <div className="max-w-3xl mx-auto py-12 px-4">
         <div className="flex justify-center items-end max-w-screen-lg mx-auto mb-8">
           {steps.map((step, index) => (

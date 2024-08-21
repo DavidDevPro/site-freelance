@@ -15,16 +15,23 @@ import { useFormContext } from "react-hook-form";
 
 interface Step1FormuleProps {
   setCurrentStep: (step: number) => void;
+  dataFormulas: Array<{ name: string }>;
+  onSelectFormula: (formula: string) => void; // Ajout de la prop pour sélectionner la formule
 }
 
 export const Step1Formule: React.FC<Step1FormuleProps> = ({
   setCurrentStep,
+  dataFormulas,
+  onSelectFormula,
 }) => {
   const { control } = useFormContext(); // Obtenir le contrôle du formulaire
 
   const handleChange = (value: string) => {
-    if (value === "RendezVous") {
+    onSelectFormula(value); // Appeler la fonction pour stocker la formule sélectionnée
+    if (value === "Prendre un rendez-vous") {
       setCurrentStep(4); // Passer directement à l'étape du calendrier
+    } else {
+      setCurrentStep(1); // Passer à l'étape suivante
     }
   };
 
@@ -47,12 +54,11 @@ export const Step1Formule: React.FC<Step1FormuleProps> = ({
                 <SelectValue placeholder="Choisissez une formule" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Starter">Essentiel</SelectItem>
-                <SelectItem value="Standard">Premium</SelectItem>
-                <SelectItem value="Premium">Expert</SelectItem>
-                <SelectItem value="RendezVous">
-                  Prendre un rendez-vous
-                </SelectItem>
+                {dataFormulas.map((pkg, index) => (
+                  <SelectItem key={index} value={pkg.name}>
+                    {pkg.name}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </FormControl>
