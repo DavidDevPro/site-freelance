@@ -5,14 +5,14 @@
 /* *=========== Default theme =========== */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 98%;
+    --foreground: 202 87% 12%; /* noir riche */
 
-    --card: 0 0% 100%;
+    --card: 0 0% 100%; /* blanc */
     --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 202 87% 12%; /* noir riche */
 
     --primary: 194 44% 56%; /* bleu de l'armée de l'air */
     --primary-foreground: 0 0% 100%; /* blanc */
