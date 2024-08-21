@@ -10,8 +10,11 @@ import {
 } from "@/components/ui/dialog";
 import { StyledButton } from "@/components/StyledButton";
 import QuestionnairePage from "@/components/landing/questionnaire/QuestionnairePage";
-
-export const QuestionnaireModal: React.FC<{ dataFormulas: any[] }> = ({
+interface Formula {
+  name: string;
+  options: string[];
+}
+export const QuestionnaireModal: React.FC<{ dataFormulas: Formula[] }> = ({
   dataFormulas,
 }) => {
   const [isOpen, setIsOpen] = useState(false);

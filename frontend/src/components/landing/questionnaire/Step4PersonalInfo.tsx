@@ -14,6 +14,8 @@ export const Step4PersonalInfo = () => {
   const {
     control,
     formState: { errors },
+    setValue,
+    clearErrors,
   } = useFormContext(); // Obtenez le contrôle du formulaire et les erreurs
   const [customerType, setCustomerType] = useState("particulier");
 
@@ -23,7 +25,11 @@ export const Step4PersonalInfo = () => {
       <div className="flex justify-center mb-2">
         <RadioGroup
           value={customerType}
-          onValueChange={(value) => setCustomerType(value)}
+          onValueChange={(value) => {
+            setCustomerType(value);
+            setValue("customerType", value); // Mettez à jour le champ customerType dans react-hook-form
+            clearErrors("customerType"); // Supprimer les erreurs pour ce champ
+          }}
           className="flex space-x-4"
         >
           <FormItem className="space-y-0 flex items-center">
@@ -54,7 +60,15 @@ export const Step4PersonalInfo = () => {
                   Raison Sociale <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
-                  <Input placeholder="Votre Raison Sociale" {...field} />
+                  <Input
+                    placeholder="Votre Raison Sociale"
+                    {...field}
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("company"); // Supprimer les erreurs pour ce champ
+                    }}
+                  />
                 </FormControl>
                 {errors.company && (
                   <FormMessage className="text-red-500">
@@ -79,7 +93,15 @@ export const Step4PersonalInfo = () => {
                 Civilité <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input placeholder="M., Mme, ..." {...field} />
+                <Input
+                  placeholder="M., Mme, ..."
+                  {...field}
+                  value={field.value || ""}
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                    clearErrors("civility"); // Supprimer les erreurs pour ce champ
+                  }}
+                />
               </FormControl>
               {errors.civility && (
                 <FormMessage className="text-red-500">
@@ -99,7 +121,15 @@ export const Step4PersonalInfo = () => {
                 Prénom <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input placeholder="Votre prénom" {...field} />
+                <Input
+                  placeholder="Votre prénom"
+                  {...field}
+                  value={field.value || ""}
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                    clearErrors("firstName"); // Supprimer les erreurs pour ce champ
+                  }}
+                />
               </FormControl>
               {errors.firstName && (
                 <FormMessage className="text-red-500">
@@ -119,7 +149,15 @@ export const Step4PersonalInfo = () => {
                 Nom <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input placeholder="Votre nom" {...field} />
+                <Input
+                  placeholder="Votre nom"
+                  {...field}
+                  value={field.value || ""}
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                    clearErrors("lastName"); // Supprimer les erreurs pour ce champ
+                  }}
+                />
               </FormControl>
               {errors.lastName && (
                 <FormMessage className="text-red-500">
@@ -143,7 +181,15 @@ export const Step4PersonalInfo = () => {
                 Adresse <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input placeholder="Votre adresse" {...field} />
+                <Input
+                  placeholder="Votre adresse"
+                  {...field}
+                  value={field.value || ""}
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                    clearErrors("address"); // Supprimer les erreurs pour ce champ
+                  }}
+                />
               </FormControl>
               {errors.address && (
                 <FormMessage className="text-red-500">
@@ -167,7 +213,15 @@ export const Step4PersonalInfo = () => {
                 Code Postal <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input placeholder="Votre code postal" {...field} />
+                <Input
+                  placeholder="Votre code postal"
+                  {...field}
+                  value={field.value || ""}
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                    clearErrors("postalCode"); // Supprimer les erreurs pour ce champ
+                  }}
+                />
               </FormControl>
               {errors.postalCode && (
                 <FormMessage className="text-red-500">
@@ -187,7 +241,15 @@ export const Step4PersonalInfo = () => {
                 Ville <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input placeholder="Votre ville" {...field} />
+                <Input
+                  placeholder="Votre ville"
+                  {...field}
+                  value={field.value || ""}
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                    clearErrors("city"); // Supprimer les erreurs pour ce champ
+                  }}
+                />
               </FormControl>
               {errors.city && (
                 <FormMessage className="text-red-500">
@@ -211,7 +273,15 @@ export const Step4PersonalInfo = () => {
                 Téléphone <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input placeholder="Votre téléphone" {...field} />
+                <Input
+                  placeholder="Votre téléphone"
+                  {...field}
+                  value={field.value || ""}
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                    clearErrors("phone"); // Supprimer les erreurs pour ce champ
+                  }}
+                />
               </FormControl>
               {errors.phone && (
                 <FormMessage className="text-red-500">
@@ -231,7 +301,15 @@ export const Step4PersonalInfo = () => {
                 Email <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input placeholder="Votre email" {...field} />
+                <Input
+                  placeholder="Votre email"
+                  {...field}
+                  value={field.value || ""}
+                  onChange={(e) => {
+                    field.onChange(e.target.value);
+                    clearErrors("email"); // Supprimer les erreurs pour ce champ
+                  }}
+                />
               </FormControl>
               {errors.email && (
                 <FormMessage className="text-red-500">
