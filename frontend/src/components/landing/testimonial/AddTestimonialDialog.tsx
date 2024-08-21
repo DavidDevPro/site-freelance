@@ -34,7 +34,7 @@ const AddTestimonialDialog: React.FC<AddTestimonialDialogProps> = ({
               size: "lg",
               variant: "default",
             }),
-            "text-white px-6 text-sm font-semibold tracking-tighter transition-all ease-out hover:ring-2 hover:ring-neutral-800 hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50"
+            "text-white px-6 text-sm font-semibold tracking-tighter transition-all ease-out hover:ring-2 hover:ring-neutral-800 hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50 "
           )}
           onClick={handleOpen}
         >

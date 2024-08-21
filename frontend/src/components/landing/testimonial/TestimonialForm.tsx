@@ -1,19 +1,19 @@
-import { buttonVariants } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
+
 import { useDropzone } from "react-dropzone";
-import { cn } from "@/lib/utils";
+
 import {
   showTestimonialSuccess,
   showTestimonialError,
 } from "@/utils/toastUtils";
 import { createTestimonial } from "@/services/testimonialsApi";
 import { MdClose } from "react-icons/md";
+import { StyledButton } from "@/components/StyledButton";
 
 const MAX_CHAR_COUNT = 300;
 const MIN_CHAR_COUNT = 50;
@@ -207,19 +207,9 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
         )}
       </div>
       <div className="text-center">
-        <Button
-          type="submit"
-          className={cn(
-            buttonVariants({
-              size: "lg",
-              variant: "default",
-            }),
-            "text-white px-6 text-sm font-semibold tracking-tighter transition-all ease-out hover:ring-2 hover:ring-neutral-800 hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50"
-          )}
-          disabled={loading}
-        >
+        <StyledButton type="submit" disabled={loading}>
           {loading ? "Envoi..." : "Envoyer"}
-        </Button>
+        </StyledButton>
       </div>
     </form>
   );

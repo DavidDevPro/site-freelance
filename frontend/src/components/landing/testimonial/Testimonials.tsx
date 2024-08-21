@@ -18,7 +18,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
   //   return <p>No testimonials available.</p>;
   // }
   return (
-    <section id="testimonials" className="relative container py-24 sm:py-32">
+    <section id="testimonials" className="relative container py-24 sm:py-32 ">
       <h2 className="text-3xl md:text-4xl font-bold text-center">
         Recommandations
         <span className="bg-gradient-primary"> Professionnelles </span>& Avis
@@ -29,7 +29,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
         Découvrez les recommandations de professionnels avec qui nous avons
         travaillés et les avis de nos clients.
       </p>
-      <div className="relative">
+      <div className="relative  py-8">
         <Marquee pauseOnHover className="[--duration:20s]">
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.id} {...testimonial} />

@@ -8,8 +8,8 @@ export const Newsletter = () => {
   };
 
   return (
-    <section id="newsletter">
-      <hr className="w-11/12 mx-auto" />
+    <section id="newsletter" className="bg-card ">
+      <hr className=" w-full mx-auto" />
 
       <div className="container py-24 sm:py-32">
         <h3 className="text-center text-4xl md:text-5xl font-bold">
@@ -35,7 +35,7 @@ export const Newsletter = () => {
         </form>
       </div>
 
-      <hr className="w-11/12 mx-auto" />
+      <hr className="w-full mx-auto" />
     </section>
   );
 };

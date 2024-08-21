@@ -61,7 +61,7 @@ export const Features = () => {
       <div className="flex flex-wrap md:justify-center gap-4">
         {featureList.map((feature: string) => (
           <div key={feature}>
-            <Badge variant="secondary" className="text-sm">
+            <Badge variant="secondary" className=" text-sm">
               {feature}
             </Badge>
           </div>

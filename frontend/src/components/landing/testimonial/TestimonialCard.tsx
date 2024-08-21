@@ -66,7 +66,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   return (
     <div
       className={cn(
-        "max-w-sm md:break-inside-avoid overflow-hidden flex flex-col justify-between p-3",
+        "max-w-sm md:break-inside-avoid overflow-hidden flex flex-col justify-between p-3 rounded-lg shadow-lg",
         // light styles
         " border border-neutral-200 bg-white",
         // dark styles
