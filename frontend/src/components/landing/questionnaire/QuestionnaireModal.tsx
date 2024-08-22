@@ -6,30 +6,37 @@ import {
   DialogTitle,
   DialogDescription,
   DialogTrigger,
-  DialogClose,
 } from "@/components/ui/dialog";
+import QuestionnairePage from "./QuestionnairePage";
 import { StyledButton } from "@/components/StyledButton";
-import QuestionnairePage from "@/components/landing/questionnaire/QuestionnairePage";
+
 interface Formula {
   name: string;
   options: string[];
 }
-export const QuestionnaireModal: React.FC<{ dataFormulas: Formula[] }> = ({
+
+interface QuestionnaireModalProps {
+  dataFormulas: Formula[];
+}
+
+export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
   dataFormulas,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <StyledButton variant="primary" onClick={handleOpen}>
+        <StyledButton onClick={handleOpen}>
           Demander un devis personnalisé
         </StyledButton>
       </DialogTrigger>
-      <DialogContent className="max-w-full sm:max-w-lg md:max-w-2xl lg:max-w-5xl xl:max-w-7xl mx-auto p-6 bg-white rounded-md shadow-md w-full">
+      <DialogContent
+        className="max-w-full mx-auto p-6 bg-white rounded-md shadow-md w-full
+        xl:max-w-5xl 2xl:max-w-6xl xl:max-h-[80vh] 2xl:max-h-[90vh] flex flex-col"
+      >
         <DialogHeader>
           <DialogTitle className="text-lg md:text-xl font-bold text-center">
             Demande de devis personnalisé
@@ -39,20 +46,11 @@ export const QuestionnaireModal: React.FC<{ dataFormulas: Formula[] }> = ({
             informations nécessaires.
           </DialogDescription>
         </DialogHeader>
-        <div className="overflow-y-auto max-h-[80vh]">
-          {" "}
-          {/* Gérer le défilement sur les petits écrans */}
+
+        {/* Le contenu du modal */}
+        <div className="flex-grow overflow-y-auto">
           <QuestionnairePage dataFormulas={dataFormulas} />
         </div>
-        <DialogClose asChild>
-          <StyledButton
-            variant="secondary"
-            className="mt-4 w-full md:w-auto mx-auto"
-            onClick={handleClose}
-          >
-            Fermer
-          </StyledButton>
-        </DialogClose>
       </DialogContent>
     </Dialog>
   );

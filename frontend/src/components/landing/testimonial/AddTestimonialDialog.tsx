@@ -8,10 +8,10 @@ import {
   DialogTrigger,
   DialogClose,
 } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+
 import TestimonialForm from "./TestimonialForm";
-import { buttonVariants } from "@/components/ui/button";
+
+import { StyledButton } from "@/components/StyledButton";
 
 interface AddTestimonialDialogProps {
   onTestimonialAdded: () => void;
@@ -28,18 +28,7 @@ const AddTestimonialDialog: React.FC<AddTestimonialDialogProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button
-          className={cn(
-            buttonVariants({
-              size: "lg",
-              variant: "default",
-            }),
-            "text-white px-6 text-sm font-semibold tracking-tighter transition-all ease-out hover:ring-2 hover:ring-neutral-800 hover:ring-offset-2 hover:ring-offset-current dark:hover:ring-neutral-50 "
-          )}
-          onClick={handleOpen}
-        >
-          Ajouter un témoignage
-        </Button>
+        <StyledButton onClick={handleOpen}>Ajouter un témoignage</StyledButton>
       </DialogTrigger>
       <DialogContent className="max-w-lg mx-auto p-6 bg-white rounded-md shadow-md">
         <DialogHeader>

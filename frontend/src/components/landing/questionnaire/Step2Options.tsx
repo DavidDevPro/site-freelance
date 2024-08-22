@@ -1,9 +1,14 @@
-import { useFormContext } from "react-hook-form";
+import {
+  useFormContext,
+  FieldValues,
+  ControllerRenderProps,
+} from "react-hook-form";
 import {
   FormField,
   FormItem,
   FormLabel,
   FormControl,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -29,7 +34,13 @@ export const Step2Options: React.FC<{
   selectedFormula,
   dataFormulas,
 }) => {
-  const { control, setValue } = useFormContext();
+  const {
+    control,
+    setValue,
+    formState: { errors },
+    clearErrors,
+    setError,
+  } = useFormContext();
 
   // Trouver les options de la formule sélectionnée
   const formula = dataFormulas.find((f) => f.name === selectedFormula);
@@ -43,6 +54,23 @@ export const Step2Options: React.FC<{
       setAddPages(checked === true);
     }
     setValue(option, checked === true); // Mettre à jour la valeur du champ dans react-hook-form
+  };
+
+  const handlePageCountChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: ControllerRenderProps<FieldValues, string>
+  ) => {
+    const value = parseInt(e.target.value, 10);
+    if (value > 5) {
+      setError("pageCount", {
+        type: "manual",
+        message: "La valeur ne peut pas dépasser 5",
+      });
+    } else {
+      clearErrors("pageCount");
+    }
+    field.onChange(value);
+    setPageCount(value);
   };
 
   return (
@@ -73,17 +101,23 @@ export const Step2Options: React.FC<{
               name="pageCount"
               render={({ field }) => (
                 <FormItem className="mt-4">
-                  <FormLabel>Nombre de pages supplémentaires</FormLabel>
+                  <FormLabel>Nombre de pages (max 5)</FormLabel>
                   <FormControl>
-                    <Input
-                      type="number"
-                      value={field.value || pageCount} // Récupérer la valeur depuis react-hook-form
-                      onChange={(e) => {
-                        const value = parseInt(e.target.value, 10);
-                        field.onChange(value);
-                        setPageCount(value);
-                      }}
-                    />
+                    {/* Le composant FormControl ne doit avoir qu'un seul enfant */}
+                    <div className="flex items-center">
+                      <Input
+                        type="number"
+                        value={field.value || pageCount} // Récupérer la valeur depuis react-hook-form
+                        onChange={(e) => handlePageCountChange(e, field)}
+                        className="w-32"
+                        max={5}
+                      />
+                      {errors.pageCount && (
+                        <FormMessage className="ml-4 text-red-500">
+                          {errors.pageCount.message?.toString()}
+                        </FormMessage>
+                      )}
+                    </div>
                   </FormControl>
                 </FormItem>
               )}

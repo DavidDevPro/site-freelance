@@ -29,7 +29,7 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
         Découvrez les recommandations de professionnels avec qui nous avons
         travaillés et les avis de nos clients.
       </p>
-      <div className="relative  py-8">
+      <div className="relative  py-10">
         <Marquee pauseOnHover className="[--duration:20s]">
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.id} {...testimonial} />

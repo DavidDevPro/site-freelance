@@ -1,13 +1,12 @@
-import { useState } from "react";
-import { useForm, FormProvider } from "react-hook-form";
-import { Button } from "@/components/ui/button";
+import React, { useState, useEffect } from "react";
+import { useForm, FormProvider, useWatch } from "react-hook-form";
 import { StyledButton } from "@/components/StyledButton";
 import { Step1Formule } from "./Step1Formule";
 import { Step2Options } from "./Step2Options";
 import { Step3SupplementalInfo } from "./Step3SupplementalInfo";
 import { Step4PersonalInfo } from "./Step4PersonalInfo";
-import { CalendarIframe } from "../../googleCalendar/CalendarIframe";
 import { Step5Recap } from "./Step5Recap";
+import { CalendarIframe } from "@/components/googleCalendar/CalendarIframe"; // Importer le composant pour le calendrier
 
 interface QuestionnairePageProps {
   dataFormulas: Array<{ name: string; options: string[] }>;
@@ -23,22 +22,44 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null); // État pour gérer les messages d'erreur
 
   const methods = useForm(); // Initialiser useForm
+  const watchedPageCount = useWatch({
+    control: methods.control,
+    name: "pageCount", // Surveiller la valeur de pageCount
+  });
 
+  useEffect(() => {
+    if (watchedPageCount <= 5 && errorMessage) {
+      setErrorMessage(null); // Effacer l'erreur lorsque la valeur de pageCount est modifiée et devient valide
+    }
+  }, [watchedPageCount, errorMessage]);
   const nextStep = async () => {
     if (currentStep === 0 && !selectedFormula) {
       setErrorMessage("Veuillez choisir une formule !");
       return;
     }
-
+    // Vérifier si on est à l'étape 2 et si la valeur de pageCount est supérieure à 5
+    if (currentStep === 1 && methods.getValues("pageCount") > 5) {
+      setErrorMessage(
+        "Le nombre de pages supplémentaires ne peut pas être supérieur à 5."
+      );
+      return;
+    }
     const isValid = await methods.trigger(); // Valider les champs
     if (isValid) {
-      setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
+      if (selectedFormula === "Prendre un rendez-vous" && currentStep === 0) {
+        setCurrentStep(steps.length - 1); // Aller directement à l'étape "Prendre un rendez-vous"
+      } else {
+        setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
+      }
     }
   };
 
   const prevStep = () => {
-    if (currentStep === 5) {
-      setCurrentStep(0); // Revenir directement à l'étape 0 si on est sur l'étape 5
+    if (
+      currentStep === steps.length - 1 &&
+      selectedFormula === "Prendre un rendez-vous"
+    ) {
+      setCurrentStep(0); // Revenir à l'étape 0 depuis "Prendre un rendez-vous"
     } else {
       setCurrentStep((prev) => Math.max(prev - 1, 0));
     }
@@ -155,39 +176,40 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
             </div>
           ))}
         </div>
-        <div className="max-w-3xl w-full mx-auto mt-8">
+        <div
+          className={`w-full mx-auto mt-8 ${
+            currentStep === 5 ? "max-w-5xl" : "max-w-3xl"
+          }`}
+        >
           <div className="border-b pb-3 mb-4">
             <h2 className="tracking-tight text-lg md:text-xl font-semibold">
               {steps[currentStep].title}{" "}
               <span className="font-normal">{steps[currentStep].subtitle}</span>
             </h2>
           </div>
-          <div className="mb-6 max-w-3xl w-full mx-auto">
+          <div className="mb-6 w-full mx-auto">
             {steps[currentStep].content}
           </div>
           <div className="flex flex-col justify-between">
             <div className="flex justify-between">
-              <Button
+              <StyledButton
                 variant="secondary"
                 onClick={prevStep}
                 disabled={currentStep === 0}
               >
                 Précédent
-              </Button>
-              {currentStep < steps.length - 2 ? (
+              </StyledButton>
+              {currentStep < steps.length - 2 && (
                 <StyledButton variant="primary" onClick={nextStep}>
                   Suivant
                 </StyledButton>
-              ) : currentStep === steps.length - 2 ? ( // Vérifie si on est à l'étape 5
+              )}
+              {currentStep === steps.length - 2 && ( // Vérifie si on est à l'étape 5
                 <StyledButton
                   variant="primary"
                   onClick={() => alert("Formulaire soumis !")}
                 >
                   Soumettre
-                </StyledButton>
-              ) : (
-                <StyledButton variant="primary" onClick={nextStep}>
-                  Suivant
                 </StyledButton>
               )}
             </div>

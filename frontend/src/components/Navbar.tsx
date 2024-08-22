@@ -103,17 +103,11 @@ export const Navbar = () => {
                       {label}
                     </Link>
                   ))}
-                  <Link
-                    rel="noreferrer noopener"
-                    to="/login"
-                    className={`w-[110px] border ${buttonVariants({
-                      variant: "outline",
-                      className:
-                        "border-2 border-primary text-primary hover:bg-primary hover:text-white",
-                    })}`}
-                  >
-                    Se connecter
-                  </Link>
+                  <StyledButton>
+                    <Link rel="noreferrer noopener" to="/login">
+                      Se connecter
+                    </Link>
+                  </StyledButton>
                 </nav>
               </SheetContent>
             </Sheet>

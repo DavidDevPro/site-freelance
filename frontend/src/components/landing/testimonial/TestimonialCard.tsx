@@ -68,13 +68,13 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
       className={cn(
         "max-w-sm md:break-inside-avoid overflow-hidden flex flex-col justify-between p-3 rounded-lg shadow-lg",
         // light styles
-        " border border-neutral-200 bg-white",
+        " border border-background bg-white",
         // dark styles
         "dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
         className
       )}
     >
-      <div className="select-none text-sm font-normal text-neutral-700 dark:text-neutral-400">
+      <div className="select-none text-sm font-normal text-secondary dark:text-neutral-400">
         {description}
         <div className="flex flex-row py-1">{renderStars()}</div>
       </div>
@@ -86,9 +86,9 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
         />
 
         <div>
-          <p className="font-medium text-neutral-500">{name}</p>
-          <p className="text-xs font-normal text-neutral-400">{role}</p>
-          <p className="text-sm text-gray-500">
+          <p className="font-medium text-primary">{name}</p>
+          <p className="text-xs font-normal text-secondary">{role}</p>
+          <p className="text-sm text-secondary">
             Créé le {formatDate(created_at)}
             {source && ` Recommandation via ${source}`}
           </p>
