@@ -1,13 +1,15 @@
 import axios, { AxiosResponse } from 'axios';
 import { apiUrl } from '@/apiConfig';
 
-// Définir l'interface pour les données d'une formule
 export interface Formula {
   id: string;
   name: string;
   description: string;
   features: string[];
-  options: string[];
+  options: Array<{
+    name: string;
+    description: string;
+  }>;
   isMostPopular: boolean;
 }
 

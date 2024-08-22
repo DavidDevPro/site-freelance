@@ -8,11 +8,17 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import QuestionnairePage from "./QuestionnairePage";
+
 import { StyledButton } from "@/components/StyledButton";
+
+interface Option {
+  name: string;
+  description?: string; // Description peut être undefined
+}
 
 interface Formula {
   name: string;
-  options: string[];
+  options: Option[];
 }
 
 interface QuestionnaireModalProps {

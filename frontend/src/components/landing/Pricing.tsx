@@ -117,7 +117,8 @@ export function Pricing() {
                         key={idx}
                         className="text-xs font-medium text-black/70 dark:text-white"
                       >
-                        - {option}
+                        - {option.name}
+                        {option.description ? ` : ${option.description}` : ""}
                       </li>
                     ))}
                   </ul>

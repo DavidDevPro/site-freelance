@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
+import { fetchCivilities, Civility } from "@/services/civilityApi";
 import {
   FormControl,
   FormField,
@@ -8,6 +9,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export const Step4PersonalInfo = () => {
@@ -16,19 +23,32 @@ export const Step4PersonalInfo = () => {
     formState: { errors },
     setValue,
     clearErrors,
-  } = useFormContext(); // Obtenez le contrôle du formulaire et les erreurs
+  } = useFormContext();
   const [customerType, setCustomerType] = useState("particulier");
+  const [civilities, setCivilities] = useState<Civility[]>([]);
+
+  useEffect(() => {
+    const loadCivilities = async () => {
+      try {
+        const fetchedCivilities = await fetchCivilities();
+        setCivilities(fetchedCivilities);
+      } catch (error) {
+        console.error("Failed to fetch civilities", error);
+      }
+    };
+
+    loadCivilities();
+  }, []);
 
   return (
     <>
-      {/* Ligne 1: Particulier / Entreprise */}
       <div className="flex justify-center mb-2">
         <RadioGroup
           value={customerType}
           onValueChange={(value) => {
             setCustomerType(value);
-            setValue("customerType", value); // Mettez à jour le champ customerType dans react-hook-form
-            clearErrors("customerType"); // Supprimer les erreurs pour ce champ
+            setValue("customerType", value);
+            clearErrors("customerType");
           }}
           className="flex space-x-4"
         >
@@ -47,7 +67,6 @@ export const Step4PersonalInfo = () => {
         </RadioGroup>
       </div>
 
-      {/* Ligne 2: Raison Sociale (si nécessaire) */}
       {customerType === "entreprise" && (
         <div className="flex flex-col">
           <FormField
@@ -66,7 +85,7 @@ export const Step4PersonalInfo = () => {
                     value={field.value || ""}
                     onChange={(e) => {
                       field.onChange(e.target.value);
-                      clearErrors("company"); // Supprimer les erreurs pour ce champ
+                      clearErrors("company");
                     }}
                   />
                 </FormControl>
@@ -81,7 +100,6 @@ export const Step4PersonalInfo = () => {
         </div>
       )}
 
-      {/* Ligne 3: Civilité, Prénom, Nom */}
       <div className="flex flex-col md:flex-row md:space-x-4">
         <FormField
           control={control}
@@ -93,15 +111,32 @@ export const Step4PersonalInfo = () => {
                 Civilité <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="M., Mme, ..."
-                  {...field}
+                <Select
                   value={field.value || ""}
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                    clearErrors("civility"); // Supprimer les erreurs pour ce champ
+                  onValueChange={(value) => {
+                    const selectedCivility = civilities.find(
+                      (civility) => civility.shortLabel === value
+                    );
+                    if (selectedCivility) {
+                      field.onChange(selectedCivility.longLabel); // Stocker la `longLabel` dans le formulaire
+                      clearErrors("civility");
+                    }
                   }}
-                />
+                >
+                  <SelectTrigger>
+                    {field.value || "Sélectionnez une civilité"}
+                  </SelectTrigger>
+                  <SelectContent>
+                    {civilities.map((civility) => (
+                      <SelectItem
+                        key={civility.idCivility}
+                        value={civility.shortLabel}
+                      >
+                        {civility.longLabel}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </FormControl>
               {errors.civility && (
                 <FormMessage className="text-red-500">
@@ -127,7 +162,7 @@ export const Step4PersonalInfo = () => {
                   value={field.value || ""}
                   onChange={(e) => {
                     field.onChange(e.target.value);
-                    clearErrors("firstName"); // Supprimer les erreurs pour ce champ
+                    clearErrors("firstName");
                   }}
                 />
               </FormControl>
@@ -155,7 +190,7 @@ export const Step4PersonalInfo = () => {
                   value={field.value || ""}
                   onChange={(e) => {
                     field.onChange(e.target.value);
-                    clearErrors("lastName"); // Supprimer les erreurs pour ce champ
+                    clearErrors("lastName");
                   }}
                 />
               </FormControl>
@@ -169,7 +204,6 @@ export const Step4PersonalInfo = () => {
         />
       </div>
 
-      {/* Ligne 4: Adresse */}
       <div className="flex flex-col">
         <FormField
           control={control}
@@ -187,7 +221,7 @@ export const Step4PersonalInfo = () => {
                   value={field.value || ""}
                   onChange={(e) => {
                     field.onChange(e.target.value);
-                    clearErrors("address"); // Supprimer les erreurs pour ce champ
+                    clearErrors("address");
                   }}
                 />
               </FormControl>
@@ -201,7 +235,6 @@ export const Step4PersonalInfo = () => {
         />
       </div>
 
-      {/* Ligne 5: Code Postal, Ville */}
       <div className="flex flex-col md:flex-row md:space-x-4">
         <FormField
           control={control}
@@ -219,7 +252,7 @@ export const Step4PersonalInfo = () => {
                   value={field.value || ""}
                   onChange={(e) => {
                     field.onChange(e.target.value);
-                    clearErrors("postalCode"); // Supprimer les erreurs pour ce champ
+                    clearErrors("postalCode");
                   }}
                 />
               </FormControl>
@@ -247,7 +280,7 @@ export const Step4PersonalInfo = () => {
                   value={field.value || ""}
                   onChange={(e) => {
                     field.onChange(e.target.value);
-                    clearErrors("city"); // Supprimer les erreurs pour ce champ
+                    clearErrors("city");
                   }}
                 />
               </FormControl>
@@ -261,7 +294,6 @@ export const Step4PersonalInfo = () => {
         />
       </div>
 
-      {/* Ligne 6: Téléphone, Email */}
       <div className="flex flex-col md:flex-row md:space-x-4">
         <FormField
           control={control}
@@ -279,7 +311,7 @@ export const Step4PersonalInfo = () => {
                   value={field.value || ""}
                   onChange={(e) => {
                     field.onChange(e.target.value);
-                    clearErrors("phone"); // Supprimer les erreurs pour ce champ
+                    clearErrors("phone");
                   }}
                 />
               </FormControl>
@@ -307,7 +339,7 @@ export const Step4PersonalInfo = () => {
                   value={field.value || ""}
                   onChange={(e) => {
                     field.onChange(e.target.value);
-                    clearErrors("email"); // Supprimer les erreurs pour ce champ
+                    clearErrors("email");
                   }}
                 />
               </FormControl>

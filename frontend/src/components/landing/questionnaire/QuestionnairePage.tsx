@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useForm, FormProvider, useWatch } from "react-hook-form";
+import { useForm, FormProvider, useWatch } from "react-hook-form"; // Importer useForm et FormProvider
 import { StyledButton } from "@/components/StyledButton";
 import { Step1Formule } from "./Step1Formule";
 import { Step2Options } from "./Step2Options";
@@ -9,7 +9,10 @@ import { Step5Recap } from "./Step5Recap";
 import { CalendarIframe } from "@/components/googleCalendar/CalendarIframe"; // Importer le composant pour le calendrier
 
 interface QuestionnairePageProps {
-  dataFormulas: Array<{ name: string; options: string[] }>;
+  dataFormulas: Array<{
+    name: string;
+    options: Array<{ name: string; description?: string }>; // Le ? rend la description optionnelle
+  }>;
 }
 
 const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
@@ -22,6 +25,7 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   const [errorMessage, setErrorMessage] = useState<string | null>(null); // État pour gérer les messages d'erreur
 
   const methods = useForm(); // Initialiser useForm
+
   const watchedPageCount = useWatch({
     control: methods.control,
     name: "pageCount", // Surveiller la valeur de pageCount
@@ -32,11 +36,13 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
       setErrorMessage(null); // Effacer l'erreur lorsque la valeur de pageCount est modifiée et devient valide
     }
   }, [watchedPageCount, errorMessage]);
+
   const nextStep = async () => {
     if (currentStep === 0 && !selectedFormula) {
       setErrorMessage("Veuillez choisir une formule !");
       return;
     }
+
     // Vérifier si on est à l'étape 2 et si la valeur de pageCount est supérieure à 5
     if (currentStep === 1 && methods.getValues("pageCount") > 5) {
       setErrorMessage(
@@ -44,6 +50,7 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
       );
       return;
     }
+
     const isValid = await methods.trigger(); // Valider les champs
     if (isValid) {
       if (selectedFormula === "Prendre un rendez-vous" && currentStep === 0) {

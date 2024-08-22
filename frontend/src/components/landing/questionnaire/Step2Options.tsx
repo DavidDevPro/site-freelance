@@ -14,9 +14,14 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CheckedState } from "@radix-ui/react-checkbox";
 
+interface Option {
+  name: string;
+  description?: string;
+}
+
 interface Step2OptionsProps {
   selectedFormula: string | null;
-  dataFormulas: Array<{ name: string; options: string[] }>;
+  dataFormulas: Array<{ name: string; options: Option[] }>;
 }
 
 export const Step2Options: React.FC<{
@@ -49,11 +54,11 @@ export const Step2Options: React.FC<{
     return <div>Aucune formule sélectionnée.</div>;
   }
 
-  const handleCheckboxChange = (option: string, checked: CheckedState) => {
-    if (option === "Ajout de pages supplémentaires") {
+  const handleCheckboxChange = (optionName: string, checked: CheckedState) => {
+    if (optionName === "Ajout de pages supplémentaires") {
       setAddPages(checked === true);
     }
-    setValue(option, checked === true); // Mettre à jour la valeur du champ dans react-hook-form
+    setValue(optionName, checked === true); // Mettre à jour la valeur du champ dans react-hook-form
   };
 
   const handlePageCountChange = (
@@ -79,7 +84,7 @@ export const Step2Options: React.FC<{
         <div key={index}>
           <FormField
             control={control}
-            name={option} // Utiliser le nom de l'option comme clé
+            name={option.name} // Utiliser le nom de l'option comme clé
             render={({ field }) => (
               <FormItem className="flex items-center space-y-0 space-x-2 mt-4">
                 <FormControl>
@@ -87,15 +92,18 @@ export const Step2Options: React.FC<{
                     checked={field.value || false} // Récupérer la valeur depuis react-hook-form
                     onCheckedChange={(checked) => {
                       field.onChange(checked); // Mettre à jour le champ dans react-hook-form
-                      handleCheckboxChange(option, checked);
+                      handleCheckboxChange(option.name, checked);
                     }}
                   />
                 </FormControl>
-                <FormLabel className="leading-none">{option}</FormLabel>
+                <FormLabel className="leading-none">
+                  {option.name}{" "}
+                  {option.description ? `: ${option.description}` : ""}
+                </FormLabel>
               </FormItem>
             )}
           />
-          {option === "Ajout de pages supplémentaires" && addPages && (
+          {option.name === "Ajout de pages supplémentaires" && addPages && (
             <FormField
               control={control}
               name="pageCount"
