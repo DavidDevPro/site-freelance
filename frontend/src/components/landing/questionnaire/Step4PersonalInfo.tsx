@@ -22,12 +22,19 @@ export const Step4PersonalInfo = () => {
     control,
     formState: { errors },
     setValue,
+    getValues,
     clearErrors,
   } = useFormContext();
-  const [customerType, setCustomerType] = useState("particulier");
   const [civilities, setCivilities] = useState<Civility[]>([]);
 
+  // Watch customerType to ensure it's always available in form values
+  const customerType = getValues("customerType");
+
   useEffect(() => {
+    if (!customerType) {
+      setValue("customerType", "particulier");
+    }
+
     const loadCivilities = async () => {
       try {
         const fetchedCivilities = await fetchCivilities();
@@ -38,17 +45,17 @@ export const Step4PersonalInfo = () => {
     };
 
     loadCivilities();
-  }, []);
+  }, [customerType, setValue]);
 
   return (
     <>
       <div className="flex justify-center mb-2">
         <RadioGroup
-          value={customerType}
+          value={customerType || "particulier"} // Default to "particulier" if undefined
           onValueChange={(value) => {
-            setCustomerType(value);
             setValue("customerType", value);
             clearErrors("customerType");
+            console.log("customerType set to:", value); // Debugging output
           }}
           className="flex space-x-4"
         >
@@ -118,7 +125,7 @@ export const Step4PersonalInfo = () => {
                       (civility) => civility.shortLabel === value
                     );
                     if (selectedCivility) {
-                      field.onChange(selectedCivility.longLabel); // Stocker la `longLabel` dans le formulaire
+                      field.onChange(selectedCivility.longLabel); // Store the `longLabel` in form values
                       clearErrors("civility");
                     }
                   }}
