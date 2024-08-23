@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useForm, FormProvider, useWatch } from "react-hook-form"; // Importer useForm et FormProvider
+
 import { StyledButton } from "@/components/StyledButton";
 import { Step1Formule } from "./Step1Formule";
 import { Step2Options } from "./Step2Options";
@@ -21,7 +22,7 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedFormula, setSelectedFormula] = useState<string | null>(null);
   const [addPages, setAddPages] = useState(false);
-  const [pageCount, setPageCount] = useState(0);
+  const [pageCount, setPageCount] = useState(1);
   const [errorMessage, setErrorMessage] = useState<string | null>(null); // État pour gérer les messages d'erreur
 
   const methods = useForm(); // Initialiser useForm
@@ -32,8 +33,9 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   });
 
   useEffect(() => {
-    if (watchedPageCount <= 5 && errorMessage) {
-      setErrorMessage(null); // Effacer l'erreur lorsque la valeur de pageCount est modifiée et devient valide
+    if (watchedPageCount >= 1 && watchedPageCount <= 5) {
+      setErrorMessage(null);
+      return;
     }
   }, [watchedPageCount, errorMessage]);
 
@@ -44,11 +46,16 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
     }
 
     // Vérifier si on est à l'étape 2 et si la valeur de pageCount est supérieure à 5
-    if (currentStep === 1 && methods.getValues("pageCount") > 5) {
-      setErrorMessage(
-        "Le nombre de pages supplémentaires ne peut pas être supérieur à 5."
-      );
-      return;
+    if (currentStep === 1) {
+      if (methods.getValues("pageCount") === 0) {
+        setErrorMessage("Le nombre de pages supplémentaires est égale à 0.");
+        return;
+      } else if (methods.getValues("pageCount") > 5) {
+        setErrorMessage(
+          "Le nombre de pages supplémentaires ne peut pas être supérieur à 5."
+        );
+        return;
+      }
     }
 
     const isValid = await methods.trigger(); // Valider les champs

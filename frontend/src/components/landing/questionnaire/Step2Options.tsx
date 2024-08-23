@@ -66,7 +66,12 @@ export const Step2Options: React.FC<{
     field: ControllerRenderProps<FieldValues, string>
   ) => {
     const value = parseInt(e.target.value, 10);
-    if (value > 5) {
+    if (value === 0) {
+      setError("pageCount", {
+        type: "manual",
+        message: "La valeur ne peut pas être égale à 0",
+      });
+    } else if (value > 5) {
       setError("pageCount", {
         type: "manual",
         message: "La valeur ne peut pas dépasser 5",
@@ -118,6 +123,7 @@ export const Step2Options: React.FC<{
                         value={field.value || pageCount} // Récupérer la valeur depuis react-hook-form
                         onChange={(e) => handlePageCountChange(e, field)}
                         className="w-32"
+                        min={1}
                         max={5}
                       />
                       {errors.pageCount && (
