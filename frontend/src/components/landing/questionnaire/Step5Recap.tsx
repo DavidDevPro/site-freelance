@@ -1,12 +1,12 @@
 import { useFormContext } from "react-hook-form";
 import {
-  FaFileAlt,
-  FaUser,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaEnvelope,
-  FaClipboardList,
-} from "react-icons/fa";
+  ClipboardList,
+  FileText,
+  Mail,
+  MapPin,
+  Phone,
+  User,
+} from "lucide-react";
 
 interface Step5RecapProps {
   selectedFormula: string | null;
@@ -54,13 +54,24 @@ export const Step5Recap: React.FC<Step5RecapProps> = ({
         : option.name;
     });
 
+  const formatPhoneNumber = (phone: string | undefined): string => {
+    if (!phone) return "N/A";
+
+    // Supprime tous les caractères non numériques
+    const cleaned = phone.replace(/\D/g, "");
+
+    // Formate le numéro de téléphone en ajoutant un espace ou un caractère spécifique après chaque 2 chiffres
+    const formattedPhone = cleaned.replace(/(\d{2})(?=\d)/g, "$1 ");
+
+    return formattedPhone;
+  };
+
   return (
     <div className="space-y-6">
       {/* Section 1: Formule et Options */}
       <div className="p-4 border rounded-lg shadow-md bg-white">
         <h2 className="text-xl font-semibold flex items-center mb-4">
-          <FaClipboardList className="mr-2 text-primary" /> Détails de la
-          Formule
+          <ClipboardList className="mr-2 text-primary" /> Détails de la Formule
         </h2>
         <div className="mb-2">
           <strong>Formule :</strong> {formValues.formule || "N/A"}
@@ -77,18 +88,21 @@ export const Step5Recap: React.FC<Step5RecapProps> = ({
             )}
           </ul>
         </div>
-        <div className="whitespace-pre-wrap">
-          <p className="mb-2">
-            <strong>Détails supplémentaires :</strong>
-          </p>
-          <p>{formValues.supplementalInfo || "N/A"}</p>
-        </div>
+        {formValues.supplementalInfo &&
+          formValues.supplementalInfo !== "N/A" && (
+            <div className="whitespace-pre-wrap">
+              <p className="mb-2">
+                <strong>Détails supplémentaires :</strong>
+              </p>
+              <p>{formValues.supplementalInfo}</p>
+            </div>
+          )}
       </div>
 
       {/* Section 2: Fichiers Uploadés */}
       <div className="p-4 border rounded-lg shadow-md bg-white">
         <h2 className="text-xl font-semibold flex items-center mb-4">
-          <FaFileAlt className="mr-2 text-primary" /> Fichier(s) Téléchargé(s)
+          <FileText className="mr-2 text-primary" /> Fichier(s) Téléchargé(s)
         </h2>
         <ul className="list-disc list-inside ml-4">
           {uploadedFiles.length > 0 ? (
@@ -108,58 +122,42 @@ export const Step5Recap: React.FC<Step5RecapProps> = ({
       {/* Section 3: Informations Client */}
       <div className="p-4 border rounded-lg shadow-md bg-white">
         <h2 className="text-xl font-semibold flex items-center mb-4">
-          <FaUser className="mr-2 text-primary" /> Informations Client
+          <User className="mr-2 text-primary" /> Coordonnées Client
         </h2>
         <div className="mb-2 flex items-center">
           <strong className="w-32">Type de client :</strong>
-          <span>
+          <span className="mr-4">
             {formValues.customerType === "particulier"
               ? "Particulier"
               : "Entreprise"}
           </span>
-        </div>
-        {formValues.customerType === "entreprise" && (
-          <div className="mb-2 flex items-center">
-            <strong className="w-32">Raison Sociale :</strong>
-            <span>{formValues.company || "N/A"}</span>
-          </div>
-        )}
-        <div className="mb-2 flex items-center">
-          <strong className="w-32">Civilité :</strong>
-          <span>{formValues.civility || "N/A"}</span>
+          {formValues.customerType === "entreprise" && (
+            <>
+              <strong className="w-32">Raison Sociale :</strong>
+              <span>{formValues.company || "N/A"}</span>
+            </>
+          )}
         </div>
         <div className="mb-2 flex items-center">
-          <strong className="w-32">Prénom :</strong>
-          <span>{formValues.firstName || "N/A"}</span>
+          <User className="mr-2 text-primary" />
+          <span>
+            {`${formValues.civility || ""} ${formValues.firstName || ""} ${
+              formValues.lastName || ""
+            }`.trim() || "N/A"}
+          </span>
         </div>
         <div className="mb-2 flex items-center">
-          <strong className="w-32">Nom :</strong>
-          <span>{formValues.lastName || "N/A"}</span>
+          <MapPin className="mr-2 text-primary" />
+          <span>
+            {formValues.address || "N/A"} {formValues.postalCode || "N/A"}{" "}
+            {formValues.city || "N/A"}
+          </span>
         </div>
+        {/* Phone and Email on the same line */}
         <div className="mb-2 flex items-center">
-          <FaMapMarkerAlt className="mr-2 text-primary" />
-          <span>{formValues.address || "N/A"}</span>
-        </div>
-        <div className="flex space-x-4 items-center mb-2">
-          <div className="flex items-center">
-            <FaMapMarkerAlt className="mr-2 text-primary" />
-            <span>
-              <strong>Code Postal :</strong> {formValues.postalCode || "N/A"}
-            </span>
-          </div>
-          <div className="flex items-center">
-            <FaMapMarkerAlt className="mr-2 text-primary" />
-            <span>
-              <strong>Ville :</strong> {formValues.city || "N/A"}
-            </span>
-          </div>
-        </div>
-        <div className="mb-2 flex items-center">
-          <FaPhone className="mr-2 text-primary" />
-          <span>{formValues.phone || "N/A"}</span>
-        </div>
-        <div className="flex items-center">
-          <FaEnvelope className="mr-2 text-primary" />
+          <Phone className="mr-2 text-primary" />
+          <span className="mr-6">{formatPhoneNumber(formValues.phone)}</span>
+          <Mail className="mr-2 text-primary" />
           <span>{formValues.email || "N/A"}</span>
         </div>
       </div>

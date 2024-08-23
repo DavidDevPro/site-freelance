@@ -16,6 +16,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Hotel, Mail, MapPin, Phone, User } from "lucide-react";
 
 export const Step4PersonalInfo = () => {
   const {
@@ -86,15 +87,19 @@ export const Step4PersonalInfo = () => {
                   Raison Sociale <span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
-                  <Input
-                    placeholder="Votre Raison Sociale"
-                    {...field}
-                    value={field.value || ""}
-                    onChange={(e) => {
-                      field.onChange(e.target.value);
-                      clearErrors("company");
-                    }}
-                  />
+                  <div className="relative">
+                    <Hotel className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                    <Input
+                      placeholder="Votre Raison Sociale"
+                      {...field}
+                      className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                      value={field.value || ""}
+                      onChange={(e) => {
+                        field.onChange(e.target.value);
+                        clearErrors("company");
+                      }}
+                    />
+                  </div>
                 </FormControl>
                 {errors.company && (
                   <FormMessage className="text-red-500">
@@ -163,15 +168,19 @@ export const Step4PersonalInfo = () => {
                 Prénom <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Votre prénom"
-                  {...field}
-                  value={field.value || ""}
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                    clearErrors("firstName");
-                  }}
-                />
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <Input
+                    placeholder="Votre prénom"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("firstName");
+                    }}
+                  />
+                </div>
               </FormControl>
               {errors.firstName && (
                 <FormMessage className="text-red-500">
@@ -191,15 +200,19 @@ export const Step4PersonalInfo = () => {
                 Nom <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Votre nom"
-                  {...field}
-                  value={field.value || ""}
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                    clearErrors("lastName");
-                  }}
-                />
+                <div className="relative">
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <Input
+                    placeholder="Votre nom"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("lastName");
+                    }}
+                  />
+                </div>
               </FormControl>
               {errors.lastName && (
                 <FormMessage className="text-red-500">
@@ -222,15 +235,19 @@ export const Step4PersonalInfo = () => {
                 Adresse <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Votre adresse"
-                  {...field}
-                  value={field.value || ""}
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                    clearErrors("address");
-                  }}
-                />
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <Input
+                    placeholder="Votre adresse"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("address");
+                    }}
+                  />
+                </div>
               </FormControl>
               {errors.address && (
                 <FormMessage className="text-red-500">
@@ -253,15 +270,19 @@ export const Step4PersonalInfo = () => {
                 Code Postal <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Votre code postal"
-                  {...field}
-                  value={field.value || ""}
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                    clearErrors("postalCode");
-                  }}
-                />
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <Input
+                    placeholder="Votre code postal"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("postalCode");
+                    }}
+                  />
+                </div>
               </FormControl>
               {errors.postalCode && (
                 <FormMessage className="text-red-500">
@@ -281,15 +302,19 @@ export const Step4PersonalInfo = () => {
                 Ville <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Votre ville"
-                  {...field}
-                  value={field.value || ""}
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                    clearErrors("city");
-                  }}
-                />
+                <div className="relative">
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <Input
+                    placeholder="Votre ville"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("city");
+                    }}
+                  />
+                </div>
               </FormControl>
               {errors.city && (
                 <FormMessage className="text-red-500">
@@ -305,22 +330,32 @@ export const Step4PersonalInfo = () => {
         <FormField
           control={control}
           name="phone"
-          rules={{ required: "Téléphone est requis" }}
+          rules={{
+            required: "Téléphone est requis",
+            pattern: {
+              value: /^[0-9]{10}$/,
+              message: "Le numéro de téléphone doit comporter 10 chiffres",
+            },
+          }}
           render={({ field }) => (
             <FormItem className="w-full md:w-1/2">
               <FormLabel>
                 Téléphone <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Votre téléphone"
-                  {...field}
-                  value={field.value || ""}
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                    clearErrors("phone");
-                  }}
-                />
+                <div className="relative">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <Input
+                    placeholder="Votre téléphone"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("phone");
+                    }}
+                  />
+                </div>
               </FormControl>
               {errors.phone && (
                 <FormMessage className="text-red-500">
@@ -333,22 +368,32 @@ export const Step4PersonalInfo = () => {
         <FormField
           control={control}
           name="email"
-          rules={{ required: "Email est requis" }}
+          rules={{
+            required: "Email est requis",
+            pattern: {
+              value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              message: "Adresse email invalide",
+            },
+          }}
           render={({ field }) => (
             <FormItem className="w-full md:w-1/2">
               <FormLabel>
                 Email <span className="text-red-500">*</span>
               </FormLabel>
               <FormControl>
-                <Input
-                  placeholder="Votre email"
-                  {...field}
-                  value={field.value || ""}
-                  onChange={(e) => {
-                    field.onChange(e.target.value);
-                    clearErrors("email");
-                  }}
-                />
+                <div className="relative">
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <Input
+                    placeholder="Votre email"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("email");
+                    }}
+                  />
+                </div>
               </FormControl>
               {errors.email && (
                 <FormMessage className="text-red-500">

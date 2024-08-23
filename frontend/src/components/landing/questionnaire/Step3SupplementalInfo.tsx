@@ -138,6 +138,13 @@ export const Step3SupplementalInfo = () => {
       {/* Séparation entre la saisie du texte et les documents */}
       <div className="mt-6">
         <FormLabel>Ajouter des documents (maximum 3)</FormLabel>
+        <p className="font-medium text-sm">
+          formats acceptés : .jpg | .jpeg | .png | .pdf | .doc | .docx | .xls |
+          .xlsx
+        </p>
+        <p className="text-xs text-primary">
+          Par exemple : Cahier des charges, Charte Graphique, Logo, etc.
+        </p>
 
         {[0, 1, 2].map(
           (index) =>
