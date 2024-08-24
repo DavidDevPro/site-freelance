@@ -27,10 +27,9 @@ export function Pricing() {
         const filteredData = dataFormulas.filter(
           (pkg) => pkg.name !== "Prendre un rendez-vous"
         );
-
         setPackages(filteredData);
         setLoading(false);
-      } catch (err) {
+      } catch {
         setError("Failed to load packages");
         setLoading(false);
       }
@@ -72,7 +71,7 @@ export function Pricing() {
             <div
               key={pkg.id}
               className={cn(
-                "relative flex flex-col w-full max-w-[400px] overflow-hidden rounded-2xl border p-4 bg-card text-black dark:text-white min-h-[500px] border-primary", // Ajout de min-h pour définir une hauteur minimale
+                "relative flex flex-col w-full max-w-[400px] overflow-hidden rounded-2xl border border-primary p-4 text-black dark:text-white min-h-[500px]", // Ajout de min-h pour définir une hauteur minimale
                 {
                   "border-2 border-neutral-700 shadow-lg shadow-neutral-500 dark:border-neutral-400 dark:shadow-neutral-600":
                     pkg.isMostPopular,

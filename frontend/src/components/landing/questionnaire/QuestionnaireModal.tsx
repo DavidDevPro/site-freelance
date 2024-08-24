@@ -8,7 +8,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import QuestionnairePage from "./QuestionnairePage";
-
 import { StyledButton } from "@/components/StyledButton";
 
 interface Option {

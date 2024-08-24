@@ -1,15 +1,5 @@
-import {
-  useFormContext,
-  FieldValues,
-  ControllerRenderProps,
-} from "react-hook-form";
-import {
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-} from "@/components/ui/form";
+import { useFormContext, FieldValues, ControllerRenderProps } from "react-hook-form";
+import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { CheckedState } from "@radix-ui/react-checkbox";
@@ -21,7 +11,7 @@ interface Option {
 
 interface Step2OptionsProps {
   selectedFormula: string | null;
-  dataFormulas: Array<{ name: string; options: Option[] }>;
+  dataFormulas: Array<{ name: string, options: Option[] }>;
 }
 
 export const Step2Options: React.FC<{
@@ -30,25 +20,12 @@ export const Step2Options: React.FC<{
   pageCount: number;
   setPageCount: React.Dispatch<React.SetStateAction<number>>;
   selectedFormula: string | null;
-  dataFormulas: Step2OptionsProps["dataFormulas"];
-}> = ({
-  addPages,
-  setAddPages,
-  pageCount,
-  setPageCount,
-  selectedFormula,
-  dataFormulas,
-}) => {
-  const {
-    control,
-    setValue,
-    formState: { errors },
-    clearErrors,
-    setError,
-  } = useFormContext();
+  dataFormulas: Step2OptionsProps['dataFormulas'];
+}> = ({ addPages, setAddPages, pageCount, setPageCount, selectedFormula, dataFormulas }) => {
+  const { control, setValue, formState: { errors }, clearErrors, setError } = useFormContext();
 
   // Trouver les options de la formule sélectionnée
-  const formula = dataFormulas.find((f) => f.name === selectedFormula);
+  const formula = dataFormulas.find(f => f.name === selectedFormula);
 
   if (!formula) {
     return <div>Aucune formule sélectionnée.</div>;
@@ -66,16 +43,11 @@ export const Step2Options: React.FC<{
     field: ControllerRenderProps<FieldValues, string>
   ) => {
     const value = parseInt(e.target.value, 10);
-    if (value === 0) {
-      setError("pageCount", {
-        type: "manual",
-        message: "La valeur ne peut pas être égale à 0",
-      });
-    } else if (value > 5) {
-      setError("pageCount", {
-        type: "manual",
-        message: "La valeur ne peut pas dépasser 5",
-      });
+    if (value === 0 ) {
+      setError("pageCount", { type: "manual", message: "La valeur ne peut pas être égale à 0" });
+    }
+    else if (value > 5) {
+      setError("pageCount", { type: "manual", message: "La valeur ne peut pas dépasser 5" });
     } else {
       clearErrors("pageCount");
     }
@@ -102,8 +74,7 @@ export const Step2Options: React.FC<{
                   />
                 </FormControl>
                 <FormLabel className="leading-none">
-                  {option.name}{" "}
-                  {option.description ? `: ${option.description}` : ""}
+                  {option.name} {option.description ? `: ${option.description}` : ""}
                 </FormLabel>
               </FormItem>
             )}
@@ -123,8 +94,7 @@ export const Step2Options: React.FC<{
                         value={field.value || pageCount} // Récupérer la valeur depuis react-hook-form
                         onChange={(e) => handlePageCountChange(e, field)}
                         className="w-32"
-                        min={1}
-                        max={5}
+                        min={1} max={5}
                       />
                       {errors.pageCount && (
                         <FormMessage className="ml-4 text-red-500">

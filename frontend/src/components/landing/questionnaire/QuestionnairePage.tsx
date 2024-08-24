@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useForm, FormProvider, useWatch } from "react-hook-form"; // Importer useForm et FormProvider
-
 import { StyledButton } from "@/components/StyledButton";
 import { Step1Formule } from "./Step1Formule";
 import { Step2Options } from "./Step2Options";
@@ -8,6 +7,7 @@ import { Step3SupplementalInfo } from "./Step3SupplementalInfo";
 import { Step4PersonalInfo } from "./Step4PersonalInfo";
 import { Step5Recap } from "./Step5Recap";
 import { CalendarIframe } from "@/components/googleCalendar/CalendarIframe"; // Importer le composant pour le calendrier
+import { validateFileName } from "@/utils/utils";
 
 interface QuestionnairePageProps {
   dataFormulas: Array<{
@@ -23,9 +23,9 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   const [selectedFormula, setSelectedFormula] = useState<string | null>(null);
   const [addPages, setAddPages] = useState(false);
   const [pageCount, setPageCount] = useState(1);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null); // État pour gérer les messages d'erreur
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const methods = useForm(); // Initialiser useForm
+  const methods = useForm();
 
   const watchedPageCount = useWatch({
     control: methods.control,
@@ -35,9 +35,20 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   useEffect(() => {
     if (watchedPageCount >= 1 && watchedPageCount <= 5) {
       setErrorMessage(null);
-      return;
     }
-  }, [watchedPageCount, errorMessage]);
+  }, [watchedPageCount]);
+
+  useEffect(() => {
+    const handleFileCommentValid = () => {
+      setErrorMessage(null);
+    };
+
+    window.addEventListener("fileCommentValid", handleFileCommentValid);
+
+    return () => {
+      window.removeEventListener("fileCommentValid", handleFileCommentValid);
+    };
+  }, []);
 
   const nextStep = async () => {
     if (currentStep === 0 && !selectedFormula) {
@@ -45,10 +56,9 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
       return;
     }
 
-    // Vérifier si on est à l'étape 2 et si la valeur de pageCount est supérieure à 5
     if (currentStep === 1) {
       if (methods.getValues("pageCount") === 0) {
-        setErrorMessage("Le nombre de pages supplémentaires est égale à 0.");
+        setErrorMessage("Le nombre de pages supplémentaires est égal à 0.");
         return;
       } else if (methods.getValues("pageCount") > 5) {
         setErrorMessage(
@@ -58,10 +68,42 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
       }
     }
 
-    const isValid = await methods.trigger(); // Valider les champs
+    if (currentStep === 2) {
+      // Validation pour l'étape 3
+      const fileInputs = methods.getValues([
+        "fileInput0",
+        "fileInput1",
+        "fileInput2",
+      ]);
+      const fileComments = methods.getValues([
+        "fileComment0",
+        "fileComment1",
+        "fileComment2",
+      ]);
+
+      for (let i = 0; i < fileInputs.length; i++) {
+        if (fileInputs[i]) {
+          // Vérifier si le fichier est sélectionné
+          if (!fileComments[i] || fileComments[i].trim() === "") {
+            setErrorMessage(
+              `Vous devez définir un nom pour le fichier ${i + 1}.`
+            );
+            return;
+          }
+
+          const validation = validateFileName(fileComments[i]);
+          if (validation !== true) {
+            setErrorMessage(`Erreur pour le fichier ${i + 1}: ${validation}`);
+            return;
+          }
+        }
+      }
+    }
+
+    const isValid = await methods.trigger();
     if (isValid) {
       if (selectedFormula === "Prendre un rendez-vous" && currentStep === 0) {
-        setCurrentStep(steps.length - 1); // Aller directement à l'étape "Prendre un rendez-vous"
+        setCurrentStep(steps.length - 1);
       } else {
         setCurrentStep((prev) => Math.min(prev + 1, steps.length - 1));
       }
@@ -73,7 +115,7 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
       currentStep === steps.length - 1 &&
       selectedFormula === "Prendre un rendez-vous"
     ) {
-      setCurrentStep(0); // Revenir à l'étape 0 depuis "Prendre un rendez-vous"
+      setCurrentStep(0);
     } else {
       setCurrentStep((prev) => Math.max(prev - 1, 0));
     }
@@ -142,17 +184,17 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
 
   return (
     <FormProvider {...methods}>
-      <div className="max-w-full mx-auto pt-12 pb-6 px-4">
-        <div className="flex justify-center items-end max-w-full mx-auto mb-12">
+      <div className="max-w-full mx-auto pt-4 pb-4 px-3 sm:pt-6 sm:pb-6 sm:px-4 md:pt-12 md:pb-6 md:px-4">
+        <div className="flex flex-col sm:flex-row justify-center items-end max-w-full mx-auto mb-4 sm:mb-8">
           {steps.map((step, index) => (
             <div
               key={index}
               className={`w-full flex flex-col items-center ${
-                index < steps.length - 1 ? "mr-8" : ""
+                index < steps.length - 1 ? "mb-2 sm:mr-4 sm:mb-0" : ""
               }`}
             >
               <h6
-                className={`text-base font-bold mb-2 text-center ${
+                className={`text-[10px] sm:text-[12px] md:text-sm lg:text-base xl:text-lg font-bold mb-1 sm:mb-2 text-center ${
                   currentStep >= index
                     ? "text-primary"
                     : "text-muted-foreground"
@@ -162,9 +204,9 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
               </h6>
               <div className="flex items-center w-full">
                 <div
-                  className={`w-8 h-8 shrink-0 ${
+                  className={`w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 shrink-0 ${
                     currentStep >= index ? "bg-primary" : "bg-muted"
-                  } p-1.5 flex items-center justify-center rounded-full`}
+                  } p-1 flex items-center justify-center rounded-full`}
                 >
                   {currentStep >= index ? (
                     <svg
@@ -175,13 +217,12 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
                       <path d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z" />
                     </svg>
                   ) : (
-                    <span className="w-3 h-3 bg-background rounded-full"></span>
+                    <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 md:w-3 md:h-3 bg-background rounded-full"></span>
                   )}
                 </div>
-                {/* Barre en dessous de chaque étape */}
                 {index < steps.length && (
                   <div
-                    className={`flex-grow h-1 ${
+                    className={`flex-grow h-0.5 sm:h-1 md:h-1.5 ${
                       currentStep >= index ? "bg-primary" : "bg-muted"
                     }`}
                   ></div>
@@ -191,50 +232,49 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
           ))}
         </div>
         <div
-          className={`w-full mx-auto mt-8 ${
-            currentStep === 5 ? "max-w-5xl" : "max-w-3xl"
+          className={`w-full mx-auto mt-4 sm:mt-6 ${
+            currentStep === 5
+              ? "max-w-full sm:max-w-5xl"
+              : "max-w-full sm:max-w-3xl"
           }`}
         >
-          <div className="border-b pb-3 mb-4">
-            <h2 className="tracking-tight text-lg md:text-xl font-semibold">
+          <div className="border-b pb-2 sm:pb-3 mb-4">
+            <h2 className="tracking-tight text-sm sm:text-base md:text-lg font-semibold">
               {steps[currentStep].title}{" "}
               <span className="font-normal">{steps[currentStep].subtitle}</span>
             </h2>
           </div>
-          <div className="mb-6 w-full mx-auto">
+          <div className="mb-4 sm:mb-6 w-full mx-auto">
             {steps[currentStep].content}
           </div>
-          <div className="flex flex-col justify-between">
-            <div className="flex justify-between">
-              <StyledButton
-                variant="secondary"
-                onClick={prevStep}
-                disabled={currentStep === 0}
-              >
-                Précédent
+          <div className="flex flex-col sm:flex-row justify-between">
+            <StyledButton
+              variant="secondary"
+              onClick={prevStep}
+              disabled={currentStep === 0}
+              className="mb-4 sm:mb-0"
+            >
+              Précédent
+            </StyledButton>
+            {currentStep < steps.length - 2 && (
+              <StyledButton variant="primary" onClick={nextStep}>
+                Suivant
               </StyledButton>
-              {currentStep < steps.length - 2 && (
-                <StyledButton variant="primary" onClick={nextStep}>
-                  Suivant
-                </StyledButton>
-              )}
-              {currentStep === steps.length - 2 && ( // Vérifie si on est à l'étape 5
-                <StyledButton
-                  variant="primary"
-                  onClick={() => alert("Formulaire soumis !")}
-                >
-                  Soumettre
-                </StyledButton>
-              )}
-            </div>
-            <div className="flex justify-center mt-4">
-              {errorMessage && (
-                <p className="text-red-500 font-semibold text-lg">
-                  {errorMessage}
-                </p>
-              )}
-            </div>
+            )}
+            {currentStep === steps.length - 2 && (
+              <StyledButton
+                variant="primary"
+                onClick={() => alert("Formulaire soumis !")}
+              >
+                Soumettre
+              </StyledButton>
+            )}
           </div>
+          {errorMessage && (
+            <p className="text-center text-red-500 font-semibold text-xs sm:text-sm md:text-base mt-4">
+              {errorMessage}
+            </p>
+          )}
         </div>
       </div>
     </FormProvider>
