@@ -6,34 +6,28 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import image from "@/assets/growth.png";
-import image3 from "@/assets/reflecting.png";
-import image4 from "@/assets/looking-ahead.png";
+import { StyledButton } from "../StyledButton";
 
 interface FeatureProps {
   title: string;
   description: string;
-  image: string;
 }
 
 const features: FeatureProps[] = [
   {
     title: "Sites web sur mesure",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image4,
+      "Nous créons des sites web uniques, conçus spécifiquement pour répondre aux besoins de votre entreprise. Chaque projet est réalisé avec un souci du détail, garantissant une interface utilisateur intuitive et un design qui reflète parfaitement votre identité de marque.",
   },
   {
     title: "Hébergement et SEO",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image3,
+      "Nos solutions d'hébergement sécurisées et performantes s'associent à des stratégies SEO avancées pour garantir que votre site est non seulement en ligne, mais aussi facilement trouvé par vos clients. Maximisez votre visibilité en ligne avec nos services d'optimisation pour les moteurs de recherche.",
   },
   {
     title: "Performance et optimisation",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    image: image,
+      "Nous optimisons la vitesse et les performances de votre site pour offrir une expérience utilisateur fluide et rapide. Avec des temps de chargement réduits et une architecture technique de qualité, votre site sera prêt à exceller dans un environnement numérique concurrentiel.",
   },
 ];
 
@@ -50,39 +44,52 @@ const featureList: string[] = [
 
 export const Features = () => {
   return (
-    <section id="features" className="container py-24 sm:py-32 space-y-8">
-      <h2 className="text-3xl lg:text-4xl font-bold md:text-center">
+    <section id="features" className="container py-24 sm:py-32 space-y-16">
+      <h2 className="text-3xl lg:text-4xl font-bold text-center">
         Nos{" "}
         <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
           Services
         </span>
       </h2>
 
-      <div className="flex flex-wrap md:justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-4">
         {featureList.map((feature: string) => (
           <div key={feature}>
-            <Badge variant="secondary" className=" text-sm">
+            <Badge
+              variant="secondary"
+              className="text-sm px-4 py-2 bg-primary text-white rounded-lg shadow-md"
+            >
               {feature}
             </Badge>
           </div>
         ))}
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {features.map(({ title, description, image }: FeatureProps) => (
-          <Card key={title}>
-            <CardHeader>
-              <CardTitle>{title}</CardTitle>
-            </CardHeader>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
+        {features.map(({ title, description }: FeatureProps) => (
+          <Card
+            key={title}
+            className="shadow-xl rounded-lg border border-gray-300 dark:border-slate-700 p-8 flex flex-col justify-between h-full"
+          >
+            <div className="flex-grow">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl font-semibold text-primary mb-4">
+                  {title}
+                </CardTitle>
+              </CardHeader>
 
-            <CardContent>{description}</CardContent>
-
-            <CardFooter>
-              <img
-                src={image}
-                alt="About feature"
-                className="w-[200px] lg:w-[300px] mx-auto"
-              />
+              <CardContent>
+                <p className="text-lg text-gray-700 dark:text-gray-300 text-center leading-relaxed">
+                  {description}
+                </p>
+              </CardContent>
+            </div>
+            <CardFooter className="pt-6 flex justify-center">
+              <StyledButton>
+                <a href="/contact" className="text-white">
+                  En savoir plus
+                </a>
+              </StyledButton>
             </CardFooter>
           </Card>
         ))}

@@ -12,7 +12,7 @@ import { Services } from "@/components/landing/Services";
 import Skills from "@/components/landing/Skills";
 
 // import { Sponsors } from "@/components/Sponsors";
-import { Team } from "@/components/landing/Team";
+// import { Team } from "@/components/landing/Team";
 
 import { UserFeedback } from "@/components/landing/UserFeedback";
 
@@ -22,14 +22,14 @@ function Home() {
       <Hero />
       {/* <Sponsors /> */}
       <Features />
+      <About />
       <Pricing />
       <Skills />
       <UserFeedback />
       <Cta />
-      <About />
       <HowItWorks />
       <Services />
-      <Team />
+      {/* <Team /> */}
       <Newsletter />
       <FAQ />
       <Footer />

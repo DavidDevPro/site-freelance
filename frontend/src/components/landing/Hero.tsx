@@ -1,55 +1,56 @@
 import { Link } from "react-router-dom";
 import { StyledButton } from "../StyledButton";
+import heroImage from "@/assets/background-hero3.jpg";
 
 export const Hero = () => {
   return (
-    <div className="header-bg">
-      <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
-        <div className="text-center lg:text-start space-y-6">
-          <main className="text-5xl md:text-5xl font-bold">
-            <h1 className="inline">
-              <span className="font-bold inline bg-gradient-to-r from-card  to-background text-transparent bg-clip-text">
-                Développeur Web Créatif
-              </span>
-            </h1>{" "}
-            <h2 className="inline font-semibold text-4xl">
-              <span className="inline text-primary">
-                Création, Refonte & SEO
-              </span>{" "}
-            </h2>
-          </main>
+    <div
+      className="relative w-full h-[calc(80vh-80px)] bg-cover bg-center"
+      style={{ backgroundImage: `url(${heroImage})` }}
+    >
+      <section className="container grid place-items-center h-full py-20 md:py-32 gap-10 relative z-10">
+        <div className="text-center lg:text-center space-y-8 ">
+          <h1 className="text-card text-5xl md:text-6xl font-extrabold leading-tight">
+            Développeur Web Créatif
+            <span className="md:text-5xl font-bold block text-primary mt-2">
+              Création, Refonte & SEO
+            </span>
+          </h1>
+          <div className="text-center lg:text-center space-y-8 max-w-[650px] mx-auto">
+            <p className="text-lg md:text-xl font-medium text-card w-full mx-auto lg:mx-0 leading-relaxed">
+              Boostez votre visibilité avec un site web performant et optimisé.
+              Nous vous proposons des solutions sur-mesure alliant design et
+              SEO.
+            </p>
 
-          <p className="text-xl font-semibold text-background md:w-10/12 mx-auto lg:mx-0">
-            Boostez votre visibilité avec un site web performant et optimisé.
-            Nous vous proposons des solutions sur-mesure alliant design et SEO.
-          </p>
-
-          <div className="flex flex-col items-center justify-start sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <Link to="/contact">
-              <StyledButton
-                variant="primary"
-                className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12"
-              >
-                Nous Contacter
-              </StyledButton>
-            </Link>
-            <Link to="/#pricing">
-              <StyledButton
-                variant="secondary"
-                className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12"
-              >
-                Nos Tarifs
-              </StyledButton>
-            </Link>
+            <div className="flex flex-col items-center sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-center">
+              <Link to="/contact">
+                <StyledButton className="text-lg md:text-xl py-4 px-8">
+                  Nous Contacter
+                </StyledButton>
+              </Link>
+              <Link to="/#pricing">
+                <StyledButton
+                  variant="secondary"
+                  className="text-lg md:text-xl py-4 px-8"
+                >
+                  Nos Tarifs
+                </StyledButton>
+              </Link>
+            </div>
           </div>
         </div>
 
-        {/* Hero cards sections */}
-        <div className="z-10"></div>
-
-        {/* Shadow effect */}
-        {/* <div className="shadow"></div> */}
+        {/* Image description for accessibility */}
+        <img
+          src={heroImage}
+          alt="Hero background with modern web design"
+          className="hidden"
+        />
       </section>
+
+      {/* Overlay for a better text contrast */}
+      <div className="absolute inset-0 bg-black/55 z-0"></div>
     </div>
   );
 };

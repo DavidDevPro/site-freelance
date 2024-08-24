@@ -5,6 +5,7 @@ import {
   ChevronRightIcon,
 } from "@radix-ui/react-icons";
 import { useState } from "react";
+import Logo from "@/assets/icon.webp";
 
 interface Icon {
   icon: JSX.Element;
@@ -61,16 +62,16 @@ export function Footer() {
           <div className="flex flex-col items-start justify-start gap-y-5">
             <a href="#" className="flex items-center gap-x-2.5">
               <img
-                className="h-8 w-8 rounded-md"
-                src="https://magicui.design/icon.png"
-                alt=""
+                className="h-8 w-8 "
+                src={Logo}
+                alt="logo david web projects"
               />
-              <h1 className="text-xl font-bold text-neutral-900 dark:text-white">
+              <h1 className="text-xl font-bold text-primary dark:text-white">
                 David Web Projects
               </h1>
             </a>
             <p className="tracking-tight text-neutral-900 dark:text-white">
-              UI library for Design Engineers
+              Création, Refonte & SEO
             </p>
             <p className="text-sm tracking-tight text-neutral-500 dark:text-neutral-400 sm:text-center">
               All rights reserved.
@@ -83,7 +84,7 @@ export function Footer() {
                   {column.map((link) => (
                     <li
                       key={link.id}
-                      className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug font-medium text-neutral-400 duration-200 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
+                      className="group inline-flex cursor-pointer items-center justify-start gap-1 text-[15px]/snug font-medium text-primary duration-200 hover:text-neutral-700 dark:text-neutral-400 dark:hover:text-neutral-200"
                     >
                       <a href={link.url}>{link.title}</a>
                       <ChevronRightIcon className="h-4 w-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100" />

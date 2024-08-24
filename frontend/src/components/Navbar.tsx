@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Logo from "@/assets/icon.webp";
 import { Link, useLocation } from "react-router-dom";
 import {
   NavigationMenu,
@@ -12,7 +13,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "./mode-toggle";
@@ -60,16 +60,24 @@ export const Navbar = () => {
   }, [location]);
 
   return (
-    <header className=" sticky border-b-[2px] top-0 z-40 /* */w-full bg-white dark:border-b-slate-700 dark:bg-background py-[8px]">
+    <header className="sticky border-b-[2px] top-0 z-40 w-full bg-card dark:border-b-slate-700 dark:bg-background py-[8px]">
       <NavigationMenu className="mx-auto">
-        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
-          <NavigationMenuItem className="font-bold flex">
+        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between">
+          <NavigationMenuItem className="flex items-center gap-1">
+            {/* Le logo et le texte sont dans le même lien */}
             <Link
               rel="noreferrer noopener"
               to="/"
-              className="ml-2 font-bold text-xl flex"
+              className="flex items-center"
             >
-              David Web Projects
+              <img
+                className="h-10 w-10"
+                src={Logo}
+                alt="Logo david web projects"
+              />
+              <span className="ml-2 font-bold text-xl text-primary">
+                David Web Projects
+              </span>
             </Link>
           </NavigationMenuItem>
 
@@ -87,7 +95,7 @@ export const Navbar = () => {
 
               <SheetContent side={"left"}>
                 <SheetHeader>
-                  <SheetTitle className="font-bold text-xl">
+                  <SheetTitle className="font-bold text-xl text-primary">
                     David Web Projects
                   </SheetTitle>
                 </SheetHeader>
