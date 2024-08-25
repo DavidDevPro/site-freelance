@@ -24,26 +24,11 @@ interface RouteProps {
 }
 
 const routeList: RouteProps[] = [
-  {
-    to: "/#features",
-    label: "Services",
-  },
-  {
-    to: "/#testimonials",
-    label: "Témoignages",
-  },
-  {
-    to: "/#pricing",
-    label: "Tarif",
-  },
-  {
-    to: "/#faq",
-    label: "FAQ",
-  },
-  {
-    to: "/contact",
-    label: "Contact",
-  },
+  { to: "/#features", label: "Services" },
+  { to: "/#testimonials", label: "Témoignages" },
+  { to: "/#pricing", label: "Tarif" },
+  { to: "/#faq", label: "FAQ" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export const Navbar = () => {
@@ -59,21 +44,27 @@ export const Navbar = () => {
     }
   }, [location]);
 
+  // Fonction pour fermer le menu après un clic sur un lien
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
   return (
     <header className="sticky border-b-[2px] top-0 z-40 w-full bg-card dark:border-b-slate-700 dark:bg-background py-[8px]">
       <NavigationMenu className="mx-auto">
         <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between">
           <NavigationMenuItem className="flex items-center gap-1">
-            {/* Le logo et le texte sont dans le même lien */}
             <Link
               rel="noreferrer noopener"
               to="/"
               className="flex items-center"
+              aria-label="Page d'accueil David Web Projects"
             >
               <img
                 className="h-10 w-10"
                 src={Logo}
-                alt="Logo david web projects"
+                alt="Logo de David Web Projects"
+                loading="lazy"
               />
               <span className="ml-2 font-bold text-xl text-primary">
                 David Web Projects
@@ -84,35 +75,37 @@ export const Navbar = () => {
           {/* mobile */}
           <span className="flex md:hidden">
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger className="px-2">
-                <Menu
-                  className="flex md:hidden h-5 w-5"
-                  onClick={() => setIsOpen(true)}
-                >
-                  <span className="sr-only">Menu Icon</span>
-                </Menu>
+              <SheetTrigger className="px-2" aria-label="Ouvrir le menu">
+                <Menu className="flex md:hidden h-5 w-5" />
               </SheetTrigger>
 
-              <SheetContent side={"left"}>
+              <SheetContent side="left">
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl text-primary">
                     David Web Projects
                   </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col justify-center items-center gap-2 mt-4">
+                <nav
+                  className="flex flex-col justify-center items-center gap-2 mt-4"
+                  aria-label="Menu de navigation mobile"
+                >
                   {routeList.map(({ to, label }: RouteProps) => (
                     <Link
                       rel="noreferrer noopener"
                       key={label}
                       to={to}
-                      onClick={() => setIsOpen(false)}
+                      onClick={handleLinkClick} // Ferme le menu lors du clic
                       className={buttonVariants({ variant: "ghost" })}
                     >
                       {label}
                     </Link>
                   ))}
                   <StyledButton>
-                    <Link rel="noreferrer noopener" to="/login">
+                    <Link
+                      rel="noreferrer noopener"
+                      to="/login"
+                      onClick={handleLinkClick} // Ferme également le menu ici
+                    >
                       Se connecter
                     </Link>
                   </StyledButton>
@@ -122,16 +115,19 @@ export const Navbar = () => {
           </span>
 
           {/* desktop */}
-          <nav className="hidden md:flex gap-2 ">
+          <nav
+            className="hidden md:flex gap-2"
+            aria-label="Menu de navigation principal"
+          >
             {routeList.map((route: RouteProps, i) => (
               <Link
                 rel="noreferrer noopener"
                 to={route.to}
                 key={i}
-                className={`text-[17px] ${buttonVariants({
+                className={buttonVariants({
                   variant: "ghost",
                   className: "text-primary hover:bg-primary hover:text-white",
-                })}`}
+                })}
               >
                 {route.label}
               </Link>
