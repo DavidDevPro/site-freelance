@@ -16,10 +16,10 @@ export const Hero = () => {
           {/* Format WebP pour les navigateurs modernes */}
           <source
             srcSet="
-              ./src/assets/hero-small.webp 768w,
-              ./src/assets/hero-medium.webp 1280w,
-              ./src/assets/hero-large.webp 1920w,
-              ./src/assets/hero-2x.webp 3840w"
+              ./src/assets/images/hero-small.webp 768w,
+              ./src/assets/images/hero-medium.webp 1280w,
+              ./src/assets/images/hero-large.webp 1920w,
+              ./src/assets/images/hero-2x.webp 3840w"
             sizes="(max-width: 768px) 768px,
                    (max-width: 1280px) 1280px,
                    (max-width: 1920px) 1920px,
@@ -29,10 +29,10 @@ export const Hero = () => {
           {/* Fallback JPEG pour les anciens navigateurs */}
           <source
             srcSet="
-              ./src/assets/hero-small.jpg 768w,
-              ./src/assets/hero-medium.jpg 1280w,
-              ./src/assets/hero-large.jpg 1920w,
-              ./src/assets/hero-2x.jpg 3840w"
+              ./src/assets/images/hero-small.jpg 768w,
+              ./src/assets/images/hero-medium.jpg 1280w,
+              ./src/assets/images/hero-large.jpg 1920w,
+              ./src/assets/images/hero-2x.jpg 3840w"
             sizes="(max-width: 768px) 768px,
                    (max-width: 1280px) 1280px,
                    (max-width: 1920px) 1920px,
@@ -41,7 +41,7 @@ export const Hero = () => {
           />
           {/* Image de fallback ultime */}
           <img
-            src="./src/assets/hero-large.jpg"
+            src="./src/assets/images/hero-large.jpg"
             alt="image de bannière de david web projects"
             className="w-full h-full object-cover grayscale"
           />

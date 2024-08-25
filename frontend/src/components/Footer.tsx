@@ -5,7 +5,7 @@ import {
   ChevronRightIcon,
 } from "@radix-ui/react-icons";
 import { useState } from "react";
-import Logo from "@/assets/icon.webp";
+import Logo from "@/assets/images/icon.webp";
 
 interface Icon {
   icon: JSX.Element;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Logo from "@/assets/icon.webp";
+import Logo from "@/assets/images/icon.webp";
 import { Link, useLocation } from "react-router-dom";
 import {
   NavigationMenu,
