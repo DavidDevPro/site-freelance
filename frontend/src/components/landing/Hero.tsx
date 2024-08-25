@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { StyledButton } from "../StyledButton";
-import heroImage from "@/assets/background-hero.jpg";
 
 export const Hero = () => {
   return (
@@ -8,15 +7,46 @@ export const Hero = () => {
       className="relative w-full h-[750px]"
       role="banner" // Indique que cette section est une bannière principale pour le site.
     >
-      {/* Image de fond en noir et blanc */}
+      {/* Image de fond en noir et blanc avec gestion des résolutions */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          filter: "grayscale(100%)",
-        }}
         aria-hidden="true"
-      ></div>
+      >
+        <picture>
+          {/* Format WebP pour les navigateurs modernes */}
+          <source
+            srcSet="
+              ./src/assets/hero-small.webp 768w,
+              ./src/assets/hero-medium.webp 1280w,
+              ./src/assets/hero-large.webp 1920w,
+              ./src/assets/hero-2x.webp 3840w"
+            sizes="(max-width: 768px) 768px,
+                   (max-width: 1280px) 1280px,
+                   (max-width: 1920px) 1920px,
+                   3840px"
+            type="image/webp"
+          />
+          {/* Fallback JPEG pour les anciens navigateurs */}
+          <source
+            srcSet="
+              ./src/assets/hero-small.jpg 768w,
+              ./src/assets/hero-medium.jpg 1280w,
+              ./src/assets/hero-large.jpg 1920w,
+              ./src/assets/hero-2x.jpg 3840w"
+            sizes="(max-width: 768px) 768px,
+                   (max-width: 1280px) 1280px,
+                   (max-width: 1920px) 1920px,
+                   3840px"
+            type="image/jpg"
+          />
+          {/* Image de fallback ultime */}
+          <img
+            src="./src/assets/hero-large.jpg"
+            alt="image de bannière de david web projects"
+            className="w-full h-full object-cover grayscale"
+          />
+        </picture>
+      </div>
 
       <div className="container grid place-items-center h-full py-16 md:py-28 gap-8 lg:gap-10 relative z-10">
         <div className="text-center space-y-6 md:space-y-8">
@@ -50,13 +80,6 @@ export const Hero = () => {
             </div>
           </div>
         </div>
-
-        {/* Image description for accessibility */}
-        <img
-          src={heroImage}
-          alt="Arrière-plan représentant un design web moderne"
-          className="hidden"
-        />
       </div>
 
       {/* Overlay pour améliorer le contraste du texte */}

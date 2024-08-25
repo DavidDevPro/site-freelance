@@ -2,8 +2,6 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src/assets/icon.webp" />
-    <!-- href="/vite.svg" -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary Meta Tags -->
@@ -13,7 +11,7 @@
       content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1, noarchive"
     />
 
-    <meta name="author" content="David CHANGEA" />
+    <meta name="author" content="David CHANGEA | DavidWebProjects" />
     <meta name="copyright" content="Copyright © David CHANGEA" />
     <meta
       name="title"
@@ -42,16 +40,17 @@
     />
     <meta
       property="og:image"
-      content="https://davidwebprojects.fr/assets/background-hero-6GW7JLmf.jpg"
+      content="https://davidwebprojects.fr/assets/og-image.jpg"
     />
     <meta
       property="og:image:alt"
       content="Image de présentation du site de David Web Projects"
     />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-
     <meta name="twitter:url" content="https://davidwebprojects.fr/" />
     <meta
       name="twitter:title"
@@ -63,7 +62,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://davidwebprojects.fr/assets/background-hero-6GW7JLmf.jpg"
+      content="https://davidwebprojects.fr/assets/twitter-image.jpg"
     />
     <meta
       name="twitter:image:alt"
@@ -76,7 +75,7 @@
         "@context": "http://schema.org",
         "@type": "LocalBusiness",
         "name": "David Web Projects",
-        "image": "https://davidwebprojects.fr/assets/background-hero3-B1kB738c.jpg",
+        "image": "https://davidwebprojects.fr/assets/schema-image.jpg",
         "description": "David Changea, créateur - fondateur de David Web Projects, développeur web freelance spécialisé dans la création de sites sur mesure, refonte de sites, SEO, solutions d'hébergement, et optimisation de la performance des sites avec une approche agile.",
         "url": "https://davidwebprojects.fr/",
         "priceRange": "Tarifs variables",
@@ -149,35 +148,36 @@
             }
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "SEO",
-              "description": "Optimisation des sites web pour les moteurs de recherche afin d'améliorer leur visibilité et leur classement."
-            }
+            "@type": "Service",
+            "name": "SEO",
+            "description": "Optimisation des sites web pour les moteurs de recherche afin d'améliorer leur visibilité et leur classement."
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Solutions d'hébergement",
-              "description": "Proposition de solutions d'hébergement adaptées aux besoins des clients pour assurer une disponibilité maximale et des performances optimales."
-            }
+            "@type": "Service",
+            "name": "Solutions d'hébergement",
+            "description": "Proposition de solutions d'hébergement adaptées aux besoins des clients pour assurer une disponibilité maximale et des performances optimales."
           },
           {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Optimisation de la performance des sites",
-              "description": "Amélioration de la vitesse et de l'efficacité des sites web pour offrir une meilleure expérience utilisateur."
-            }
+            "@type": "Service",
+            "name": "Optimisation de la performance des sites",
+            "description": "Amélioration de la vitesse et de l'efficacité des sites web pour offrir une meilleure expérience utilisateur."
           }
         ]
       }
     </script>
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="./src/assets/icon.png"
+      sizes="32x32"
+    />
+    <!-- Preload key resources -->
+    <link rel="preload" href="/src/main.tsx" as="script" />
   </head>
   <body>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google Tag Manager (avec consentement RGPD en amont) -->
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-56LHPMXG8V"
@@ -188,10 +188,16 @@
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
-      gtag("config", "G-56LHPMXG8V");
+      gtag("config", "G-56LHPMXG8V", {
+        anonymize_ip: true,
+        cookie_flags: "SameSite=None;Secure",
+      });
     </script>
+
+    <!-- Contenu principal -->
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Script principal -->
+    <script type="module" src="/src/main.tsx" defer></script>
   </body>
 </html>
