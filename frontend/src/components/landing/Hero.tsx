@@ -1,47 +1,41 @@
 import { Link } from "react-router-dom";
 import { StyledButton } from "../StyledButton";
 
+import heroSmallWebp from "@/assets/images/hero-small.webp";
+import heroMediumWebp from "@/assets/images/hero-medium.webp";
+import heroLargeWebp from "@/assets/images/hero-large.webp";
+import hero2xWebp from "@/assets/images/hero-2x.webp";
+import heroSmallJpg from "@/assets/images/hero-small.jpg";
+import heroMediumJpg from "@/assets/images/hero-medium.jpg";
+import heroLargeJpg from "@/assets/images/hero-large.jpg";
+import hero2xJpg from "@/assets/images/hero-2x.jpg";
+
 export const Hero = () => {
   return (
-    <section
-      className="relative w-full h-[750px]"
-      role="banner" // Indique que cette section est une bannière principale pour le site.
-    >
-      {/* Image de fond en noir et blanc avec gestion des résolutions */}
+    <section className="relative w-full h-[750px]" role="banner">
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center"
         aria-hidden="true"
       >
         <picture>
-          {/* Format WebP pour les navigateurs modernes */}
           <source
-            srcSet="
-              ./src/assets/images/hero-small.webp 768w,
-              ./src/assets/images/hero-medium.webp 1280w,
-              ./src/assets/images/hero-large.webp 1920w,
-              ./src/assets/images/hero-2x.webp 3840w"
+            srcSet={`${heroSmallWebp} 768w, ${heroMediumWebp} 1280w, ${heroLargeWebp} 1920w, ${hero2xWebp} 3840w`}
             sizes="(max-width: 768px) 768px,
                    (max-width: 1280px) 1280px,
                    (max-width: 1920px) 1920px,
                    3840px"
             type="image/webp"
           />
-          {/* Fallback JPEG pour les anciens navigateurs */}
           <source
-            srcSet="
-              ./src/assets/images/hero-small.jpg 768w,
-              ./src/assets/images/hero-medium.jpg 1280w,
-              ./src/assets/images/hero-large.jpg 1920w,
-              ./src/assets/images/hero-2x.jpg 3840w"
+            srcSet={`${heroSmallJpg} 768w, ${heroMediumJpg} 1280w, ${heroLargeJpg} 1920w, ${hero2xJpg} 3840w`}
             sizes="(max-width: 768px) 768px,
                    (max-width: 1280px) 1280px,
                    (max-width: 1920px) 1920px,
                    3840px"
             type="image/jpg"
           />
-          {/* Image de fallback ultime */}
           <img
-            src="./src/assets/images/hero-large.jpg"
+            src={heroLargeJpg}
             alt="image de bannière de david web projects"
             className="w-full h-full object-cover grayscale"
           />
@@ -82,7 +76,6 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Overlay pour améliorer le contraste du texte */}
       <div className="absolute inset-0 bg-black/40 z-0"></div>
     </section>
   );
