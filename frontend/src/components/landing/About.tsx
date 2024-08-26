@@ -8,8 +8,9 @@ export const About = () => {
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center">
           <img
             src={pilot}
-            alt="David Changea - Fondateur"
+            alt="Portrait de David Changea, fondateur de David Web Projects"
             className="w-[275px] h-[275px] object-cover rounded-full shadow-md"
+            loading="lazy" // Améliore le temps de chargement de la page
           />
           <div className="flex flex-col justify-between md:w-2/3">
             <div className="pb-6">

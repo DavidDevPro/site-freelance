@@ -17,20 +17,20 @@ const serviceList: ServiceProps[] = [
   {
     title: "Code Collaboration",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    icon: <ChartIcon />,
+      "Collaboration en temps réel sur le code, facilitant le travail d'équipe et la révision du code.",
+    icon: <ChartIcon aria-label="Code Collaboration Icon" />,
   },
   {
     title: "Project Management",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    icon: <WalletIcon />,
+      "Gestion de projet efficace avec des outils de suivi des tâches et des jalons.",
+    icon: <WalletIcon aria-label="Project Management Icon" />,
   },
   {
     title: "Task Automation",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi nesciunt est nostrum omnis ab sapiente.",
-    icon: <MagnifierIcon />,
+      "Automatisation des tâches répétitives pour améliorer l'efficacité et la productivité.",
+    icon: <MagnifierIcon aria-label="Task Automation Icon" />,
   },
 ];
 
@@ -47,19 +47,24 @@ export const Services = () => {
           </h2>
 
           <p className="text-muted-foreground text-xl mt-4 mb-8 ">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis
-            dolor.
+            Découvrez nos services centrés sur le client pour répondre à vos
+            besoins spécifiques avec une expertise inégalée.
           </p>
 
           <div className="flex flex-col gap-8">
             {serviceList.map(({ icon, title, description }: ServiceProps) => (
-              <Card key={title}>
+              <Card key={title} className="transition-shadow hover:shadow-lg">
                 <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
-                  <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
+                  <div
+                    className="mt-1 bg-primary/20 p-2 rounded-2xl"
+                    aria-hidden="true"
+                  >
                     {icon}
                   </div>
                   <div>
-                    <CardTitle>{title}</CardTitle>
+                    <CardTitle className="text-lg font-semibold">
+                      {title}
+                    </CardTitle>
                     <CardDescription className="text-md mt-2">
                       {description}
                     </CardDescription>
@@ -73,7 +78,8 @@ export const Services = () => {
         <img
           src={cubeLeg}
           className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
-          alt="About services"
+          alt="Illustration of services offered"
+          loading="lazy"
         />
       </div>
     </section>
