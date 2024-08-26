@@ -1,8 +1,6 @@
 import Marquee from "@/components/magicui/marquee";
-
-import { Testimonial } from "@/services/testimonialsApi"; // Assurez-vous que ce chemin est correct
+import { Testimonial } from "@/services/testimonialsApi";
 import { Avatar } from "./Avatar";
-
 import AddTestimonialDialog from "./AddTestimonialDialog";
 import { TestimonialCard } from "./TestimonialCard";
 
@@ -15,22 +13,28 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
   testimonials,
   onTestimonialAdded,
 }) => {
-  // if (testimonials.length === 0) {
-  //   return <p>No testimonials available.</p>;
-  // }
   return (
-    <section id="testimonials" className="relative container py-24 sm:py-32 ">
-      <h2 className="text-3xl md:text-4xl font-bold text-center">
-        Recommandations
-        <span className="bg-gradient-primary"> Professionnelles </span>& Avis
-        <span className="bg-gradient-primary"> Clients </span>
-      </h2>
+    <section id="testimonials" className="container py-14 sm:py-24">
+      <div className="text-center">
+        <h2 className="text-3xl md:text-4xl font-bold">
+          Recommandations
+          <span className="bg-gradient-primary text-primary bg-clip-text">
+            {" "}
+            Professionnelles{" "}
+          </span>
+          & Avis
+          <span className="bg-gradient-primary text-transparent bg-clip-text">
+            {" "}
+            Clients
+          </span>
+        </h2>
+        <p className="text-lg md:text-xl text-black/70 dark:text-white py-6">
+          Découvrez les recommandations de professionnels avec qui nous avons
+          travaillés et les avis de nos clients.
+        </p>
+      </div>
 
-      <p className="text-xl text-muted-foreground pt-4 pb-8 text-center">
-        Découvrez les recommandations de professionnels avec qui nous avons
-        travaillés et les avis de nos clients.
-      </p>
-      <div className="relative  py-10">
+      <div className="relative py-12">
         <Marquee pauseOnHover className="[--duration:20s]">
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.id} {...testimonial} />
@@ -41,9 +45,11 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
             <TestimonialCard key={testimonial.id} {...testimonial} />
           ))}
         </Marquee>
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/5 bg-gradient-to-r from-white dark:from-background"></div>
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/5 bg-gradient-to-l from-white dark:from-background"></div>
-        <div className="flex justify-center pt-8 relative z-10 space-x-4">
+
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-1/5 bg-gradient-to-r from-white dark:from-neutral-900"></div>
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-1/5 bg-gradient-to-l from-white dark:from-neutral-900"></div>
+
+        <div className="flex justify-center pt-8 relative z-10 gap-4">
           <AddTestimonialDialog onTestimonialAdded={onTestimonialAdded} />
           <Avatar testimonials={testimonials} />
         </div>

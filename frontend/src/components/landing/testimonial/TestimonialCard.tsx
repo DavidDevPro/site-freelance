@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import { Star, StarHalf, Star as StarFull } from "lucide-react";
-
 import { pictureUrl } from "@/pictureConfig";
 
 interface TestimonialCardProps {
@@ -10,13 +9,14 @@ interface TestimonialCardProps {
   role: string;
   rating: number;
   created_at: string;
-  source?: string; // Ajout de la propriété source
+  source?: string;
   comment: string;
   className?: string;
-  [key: string]: any;
 }
+
 const imageBasePath = `${pictureUrl}storage/testimonial_images/`;
 const DEFAULT_AVATAR_URL = `${pictureUrl}storage/profile_images/defaut.jpg`;
+
 export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   image_url,
   name,
@@ -26,23 +26,19 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   created_at,
   source,
   className,
-  // ...props
 }) => {
   const renderStars = () => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
       if (i <= Math.floor(rating)) {
-        // Étoile pleine
         stars.push(
           <StarFull key={i} className="text-yellow-500" fill="currentColor" />
         );
       } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
-        // Demi-étoile
         stars.push(
           <StarHalf key={i} className="text-yellow-500" fill="currentColor" />
         );
       } else {
-        // Étoile vide
         stars.push(
           <Star
             key={i}
@@ -55,6 +51,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
     }
     return stars;
   };
+
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
@@ -63,34 +60,40 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
     };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
+
   return (
     <div
       className={cn(
-        "max-w-sm md:break-inside-avoid overflow-hidden flex flex-col justify-between p-3 rounded-lg shadow-lg",
+        "max-w-sm md:break-inside-avoid overflow-hidden flex flex-col justify-between p-6 rounded-2xl shadow-lg",
         // light styles
-        " border border-background bg-white",
+        "border border-gray-200 bg-white",
         // dark styles
-        "dark:bg-black dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+        "dark:bg-neutral-900 dark:border-neutral-800 dark:shadow-neutral-800",
         className
       )}
     >
-      <div className="select-none text-sm font-normal text-secondary dark:text-neutral-400">
+      <div className="text-sm font-normal text-gray-700 dark:text-neutral-300 mb-4">
         {comment}
-        <div className="flex flex-row py-1">{renderStars()}</div>
+        <div className="flex flex-row py-2">{renderStars()}</div>
       </div>
 
-      <div className="flex w-full select-none items-center justify-start gap-5">
+      <div className="flex items-center gap-4">
         <img
           src={image_url ? `${imageBasePath}${image_url}` : DEFAULT_AVATAR_URL}
-          className="h-10 w-10 rounded-full  ring-1 ring-border ring-offset-4"
+          className="h-12 w-12 rounded-full ring-2 ring-gray-200 dark:ring-neutral-700"
+          alt={`Avatar de ${name}`}
         />
 
         <div>
-          <p className="font-medium text-primary">{name}</p>
-          <p className="text-xs font-normal text-secondary">{role}</p>
-          <p className="text-sm text-secondary">
+          <p className="text-lg font-semibold text-primary dark:text-primary-light">
+            {name}
+          </p>
+          <p className="text-xs font-medium text-gray-500 dark:text-neutral-400">
+            {role}
+          </p>
+          <p className="text-xs text-gray-500 dark:text-neutral-500">
             Créé le {formatDate(created_at)}
-            {source && ` Recommandation via ${source}`}
+            {source && ` • Recommandation via ${source}`}
           </p>
         </div>
       </div>

@@ -44,15 +44,50 @@ const featureList: string[] = [
 
 export const Features = () => {
   return (
-    <section id="features" className="container py-24 sm:py-32 space-y-16">
-      <h2 className="text-3xl lg:text-4xl font-bold text-center">
+    <section id="features" className="container py-14 space-y-16">
+      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
         Nos{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+        <span className="bg-gradient-primary text-primary bg-clip-text">
           Services
         </span>
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-4">
+      <p className="text-xl leading-8 text-black/80 dark:text-white text-center mx-auto max-w-4xl">
+        Découvrez nos services conçus pour répondre aux besoins spécifiques de
+        votre entreprise. Chaque service est conçu avec une attention
+        particulière aux détails et à l'efficacité.
+      </p>
+
+      <div className="mx-auto grid w-full justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {features.map(({ title, description }: FeatureProps) => (
+          <Card
+            key={title}
+            className="relative flex flex-col w-full max-w-[400px] overflow-hidden rounded-2xl border border-primary p-6 text-black dark:text-white min-h-[400px] shadow-lg"
+          >
+            <div className="flex-grow">
+              <CardHeader className="text-center">
+                <CardTitle className="text-2xl font-semibold mb-4">
+                  {title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-base text-center leading-relaxed text-black/70 dark:text-white">
+                  {description}
+                </p>
+              </CardContent>
+            </div>
+            <CardFooter className="flex justify-center mt-6">
+              <StyledButton variant="primary">
+                <a href="/contact" className="text-white">
+                  En savoir plus
+                </a>
+              </StyledButton>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-4 mt-8">
         {featureList.map((feature: string) => (
           <div key={feature}>
             <Badge
@@ -62,36 +97,6 @@ export const Features = () => {
               {feature}
             </Badge>
           </div>
-        ))}
-      </div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
-        {features.map(({ title, description }: FeatureProps) => (
-          <Card
-            key={title}
-            className="shadow-xl rounded-lg border border-gray-300 dark:border-slate-700 p-8 flex flex-col justify-between h-full"
-          >
-            <div className="flex-grow">
-              <CardHeader className="text-center">
-                <CardTitle className="text-2xl font-semibold text-primary mb-4">
-                  {title}
-                </CardTitle>
-              </CardHeader>
-
-              <CardContent>
-                <p className="text-lg text-gray-700 dark:text-gray-300 text-center leading-relaxed">
-                  {description}
-                </p>
-              </CardContent>
-            </div>
-            <CardFooter className="pt-6 flex justify-center">
-              <StyledButton>
-                <a href="/contact" className="text-white">
-                  En savoir plus
-                </a>
-              </StyledButton>
-            </CardFooter>
-          </Card>
         ))}
       </div>
     </section>
