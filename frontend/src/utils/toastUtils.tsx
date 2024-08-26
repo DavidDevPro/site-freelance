@@ -26,6 +26,32 @@ export const showMessageError = () => {
   });
 };
 
+// Toast pour le succès de l'envoi du message
+export const showProposalSuccess = () => {
+  toast("", {
+    description: (
+      <div className="flex items-center">
+        <MdCheckCircle className="mr-2 text-green-500" />
+        <span>Votre demande de devis a été soumise avec succès !</span>
+      </div>
+    ),
+  });
+};
+
+// Toast pour l'erreur de l'envoi du message
+export const showProposalError = () => {
+  toast("", {
+    description: (
+      <div className="flex items-center">
+        <MdError className="mr-2 text-red-500" />
+        <span>
+          Une erreur s'est produite lors de la soumission de votre demande.
+        </span>
+      </div>
+    ),
+  });
+};
+
 // Toast pour le succès de la création d'un témoignage
 export const showTestimonialSuccess = () => {
   toast("", {

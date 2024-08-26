@@ -3,7 +3,7 @@ import { apiUrl } from '@/apiConfig';
 
 // Définir l'interface pour les données de civilité
 export interface Civility {
-  idCivility: number;
+  id: number;
   shortLabel: string;
   longLabel: string;
 }

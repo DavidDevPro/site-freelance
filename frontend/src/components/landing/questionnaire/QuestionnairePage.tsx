@@ -1,23 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { useForm, FormProvider, useWatch } from "react-hook-form"; // Importer useForm et FormProvider
+import { FormProvider, useWatch, UseFormReturn } from "react-hook-form";
 import { StyledButton } from "@/components/StyledButton";
 import { Step1Formule } from "./Step1Formule";
 import { Step2Options } from "./Step2Options";
 import { Step3SupplementalInfo } from "./Step3SupplementalInfo";
 import { Step4PersonalInfo } from "./Step4PersonalInfo";
 import { Step5Recap } from "./Step5Recap";
-import { CalendarIframe } from "@/components/googleCalendar/CalendarIframe"; // Importer le composant pour le calendrier
+import { CalendarIframe } from "@/components/googleCalendar/CalendarIframe";
 import { validateFileName } from "@/utils/utils";
+import { showProposalSuccess, showProposalError } from "@/utils/toastUtils";
+import { createProposalRequest } from "@/services/proposalRequestApi"; // Import API functions
 
 interface QuestionnairePageProps {
   dataFormulas: Array<{
     name: string;
-    options: Array<{ name: string; description?: string }>; // Le ? rend la description optionnelle
+    options: Array<{ name: string; description?: string }>;
   }>;
+
+  closeModal: () => void; // Recevoir closeModal en tant que prop
+  methods: UseFormReturn; // Typage correct pour les methods
 }
 
 const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   dataFormulas,
+  closeModal,
+  methods,
 }) => {
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedFormula, setSelectedFormula] = useState<string | null>(null);
@@ -25,11 +32,9 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   const [pageCount, setPageCount] = useState(1);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  const methods = useForm();
-
   const watchedPageCount = useWatch({
     control: methods.control,
-    name: "pageCount", // Surveiller la valeur de pageCount
+    name: "pageCount",
   });
 
   useEffect(() => {
@@ -69,7 +74,6 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
     }
 
     if (currentStep === 2) {
-      // Validation pour l'étape 3
       const fileInputs = methods.getValues([
         "fileInput0",
         "fileInput1",
@@ -83,7 +87,6 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
 
       for (let i = 0; i < fileInputs.length; i++) {
         if (fileInputs[i]) {
-          // Vérifier si le fichier est sélectionné
           if (!fileComments[i] || fileComments[i].trim() === "") {
             setErrorMessage(
               `Vous devez définir un nom pour le fichier ${i + 1}.`
@@ -127,6 +130,37 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
 
     if (formula === "Prendre un rendez-vous") {
       setCurrentStep(5);
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      const values = methods.getValues();
+
+      const formData = new FormData();
+
+      Object.entries(values).forEach(([key, value]) => {
+        if (value instanceof FileList) {
+          Array.from(value).forEach((file) => {
+            formData.append(key, file);
+          });
+        } else if (value !== undefined && value !== null) {
+          if (key.startsWith("option_")) {
+            const optionName = key.replace("option_", "");
+            formData.append(`options[${optionName}]`, value as string);
+          } else {
+            formData.append(key, value as string);
+          }
+        }
+      });
+
+      await createProposalRequest(formData);
+      showProposalSuccess();
+      // Réinitialiser le formulaire après soumission réussie
+      methods.reset();
+      closeModal();
+    } catch {
+      showProposalError();
     }
   };
 
@@ -262,10 +296,7 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
               </StyledButton>
             )}
             {currentStep === steps.length - 2 && (
-              <StyledButton
-                variant="primary"
-                onClick={() => alert("Formulaire soumis !")}
-              >
+              <StyledButton variant="primary" onClick={handleSubmit}>
                 Soumettre
               </StyledButton>
             )}

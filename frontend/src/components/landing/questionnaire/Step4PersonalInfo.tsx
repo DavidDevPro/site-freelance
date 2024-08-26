@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { fetchCivilities, Civility } from '@/services/civilityApi';
+import { fetchCivilities, Civility } from "@/services/civilityApi";
 import {
   FormControl,
   FormField,
@@ -9,15 +9,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Select, SelectTrigger, SelectContent, SelectItem } from "@/components/ui/select";
+import {
+  Select,
+  SelectTrigger,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Hotel, Mail, MapPin, Phone, User } from "lucide-react";
 
 export const Step4PersonalInfo = () => {
-  const { control, formState: { errors }, setValue, getValues, clearErrors } = useFormContext(); 
+  const {
+    control,
+    formState: { errors },
+    setValue,
+    getValues,
+    clearErrors,
+  } = useFormContext();
   const [civilities, setCivilities] = useState<Civility[]>([]);
 
-  // Watch customerType to ensure it's always available in form values
   const customerType = getValues("customerType");
 
   useEffect(() => {
@@ -41,11 +51,11 @@ export const Step4PersonalInfo = () => {
     <>
       <div className="flex justify-center mb-2">
         <RadioGroup
-          value={customerType || "particulier"} // Default to "particulier" if undefined
+          value={customerType || "particulier"}
           onValueChange={(value) => {
             setValue("customerType", value);
             clearErrors("customerType");
-            console.log("customerType set to:", value); // Debugging output
+            console.log("customerType set to:", value);
           }}
           className="flex space-x-4"
         >
@@ -78,17 +88,23 @@ export const Step4PersonalInfo = () => {
                 <FormControl>
                   <div className="relative">
                     <Hotel className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                    <Input placeholder="Votre Raison Sociale" {...field} 
-                          className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
-                          value={field.value || ""}
-                          onChange={(e) => {
-                          field.onChange(e.target.value);
-                          clearErrors("company");
-                          }}
-                      />
+                    <Input
+                      placeholder="Votre Raison Sociale"
+                      {...field}
+                      className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                      value={field.value || ""}
+                      onChange={(e) => {
+                        field.onChange(e.target.value);
+                        clearErrors("company");
+                      }}
+                    />
                   </div>
                 </FormControl>
-                {errors.company && <FormMessage className="text-red-500">{errors.company.message?.toString()}</FormMessage>}
+                {errors.company && (
+                  <FormMessage className="text-red-500">
+                    {errors.company.message?.toString()}
+                  </FormMessage>
+                )}
               </FormItem>
             )}
           />
@@ -107,11 +123,13 @@ export const Step4PersonalInfo = () => {
               </FormLabel>
               <FormControl>
                 <Select
-                  value={field.value || ''}
+                  value={field.value || ""}
                   onValueChange={(value) => {
-                    const selectedCivility = civilities.find(civility => civility.shortLabel === value);
+                    const selectedCivility = civilities.find(
+                      (civility) => civility.shortLabel === value
+                    );
                     if (selectedCivility) {
-                      field.onChange(selectedCivility.longLabel); // Store the `longLabel` in form values
+                      field.onChange(selectedCivility.longLabel);
                       clearErrors("civility");
                     }
                   }}
@@ -120,15 +138,19 @@ export const Step4PersonalInfo = () => {
                     {field.value || "Sélectionnez une civilité"}
                   </SelectTrigger>
                   <SelectContent>
-                    {civilities.map(civility => (
-                      <SelectItem key={civility.idCivility} value={civility.shortLabel}>
+                    {civilities.map((civility) => (
+                      <SelectItem key={civility.id} value={civility.shortLabel}>
                         {civility.longLabel}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </FormControl>
-              {errors.civility && <FormMessage className="text-red-500">{errors.civility.message?.toString()}</FormMessage>}
+              {errors.civility && (
+                <FormMessage className="text-red-500">
+                  {errors.civility.message?.toString()}
+                </FormMessage>
+              )}
             </FormItem>
           )}
         />
@@ -144,17 +166,23 @@ export const Step4PersonalInfo = () => {
               <FormControl>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                  <Input placeholder="Votre prénom" {...field} 
-                        className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
-                        value={field.value || ""}
-                        onChange={(e) => {
-                        field.onChange(e.target.value);
-                        clearErrors("firstName");
-                        }}
-                    />
+                  <Input
+                    placeholder="Votre prénom"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("firstName");
+                    }}
+                  />
                 </div>
               </FormControl>
-              {errors.firstName && <FormMessage className="text-red-500">{errors.firstName.message?.toString()}</FormMessage>}
+              {errors.firstName && (
+                <FormMessage className="text-red-500">
+                  {errors.firstName.message?.toString()}
+                </FormMessage>
+              )}
             </FormItem>
           )}
         />
@@ -170,17 +198,23 @@ export const Step4PersonalInfo = () => {
               <FormControl>
                 <div className="relative">
                   <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                  <Input placeholder="Votre nom" {...field} 
-                        className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
-                        value={field.value || ""}
-                        onChange={(e) => {
-                        field.onChange(e.target.value);
-                        clearErrors("lastName");
-                        }}
-                    />
+                  <Input
+                    placeholder="Votre nom"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("lastName");
+                    }}
+                  />
                 </div>
               </FormControl>
-              {errors.lastName && <FormMessage className="text-red-500">{errors.lastName.message?.toString()}</FormMessage>}
+              {errors.lastName && (
+                <FormMessage className="text-red-500">
+                  {errors.lastName.message?.toString()}
+                </FormMessage>
+              )}
             </FormItem>
           )}
         />
@@ -199,17 +233,23 @@ export const Step4PersonalInfo = () => {
               <FormControl>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                  <Input placeholder="Votre adresse" {...field} 
-                        className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
-                        value={field.value || ""}
-                        onChange={(e) => {
-                        field.onChange(e.target.value);
-                        clearErrors("address");
-                        }}
-                    />
+                  <Input
+                    placeholder="Votre adresse"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("address");
+                    }}
+                  />
                 </div>
               </FormControl>
-              {errors.address && <FormMessage className="text-red-500">{errors.address.message?.toString()}</FormMessage>}
+              {errors.address && (
+                <FormMessage className="text-red-500">
+                  {errors.address.message?.toString()}
+                </FormMessage>
+              )}
             </FormItem>
           )}
         />
@@ -228,17 +268,23 @@ export const Step4PersonalInfo = () => {
               <FormControl>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                  <Input placeholder="Votre code postal" {...field} 
-                        className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
-                        value={field.value || ""}
-                        onChange={(e) => {
-                        field.onChange(e.target.value);
-                        clearErrors("postalCode");
-                        }}
-                    />
+                  <Input
+                    placeholder="Votre code postal"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("postalCode");
+                    }}
+                  />
                 </div>
               </FormControl>
-              {errors.postalCode && <FormMessage className="text-red-500">{errors.postalCode.message?.toString()}</FormMessage>}
+              {errors.postalCode && (
+                <FormMessage className="text-red-500">
+                  {errors.postalCode.message?.toString()}
+                </FormMessage>
+              )}
             </FormItem>
           )}
         />
@@ -254,17 +300,23 @@ export const Step4PersonalInfo = () => {
               <FormControl>
                 <div className="relative">
                   <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                  <Input placeholder="Votre ville" {...field} 
-                        className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
-                        value={field.value || ""}
-                        onChange={(e) => {
-                        field.onChange(e.target.value);
-                        clearErrors("city");
-                        }}
-                    />
+                  <Input
+                    placeholder="Votre ville"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("city");
+                    }}
+                  />
                 </div>
               </FormControl>
-              {errors.city && <FormMessage className="text-red-500">{errors.city.message?.toString()}</FormMessage>}
+              {errors.city && (
+                <FormMessage className="text-red-500">
+                  {errors.city.message?.toString()}
+                </FormMessage>
+              )}
             </FormItem>
           )}
         />
@@ -274,8 +326,12 @@ export const Step4PersonalInfo = () => {
         <FormField
           control={control}
           name="phone"
-          rules={{ required: "Téléphone est requis",
-            pattern: { value: /^[0-9]{10}$/, message: "Le numéro de téléphone doit comporter 10 chiffres" }
+          rules={{
+            required: "Téléphone est requis",
+            pattern: {
+              value: /^[0-9]{10}$/,
+              message: "Le numéro de téléphone doit comporter 10 chiffres",
+            },
           }}
           render={({ field }) => (
             <FormItem className="space-y-2 mt-1 w-full md:w-1/2">
@@ -285,26 +341,36 @@ export const Step4PersonalInfo = () => {
               <FormControl>
                 <div className="relative">
                   <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                  <Input placeholder="Votre téléphone" {...field} 
-                        className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
-                        value={field.value || ""}
-                        onChange={(e) => {
-                        field.onChange(e.target.value);
-                        clearErrors("phone");
-                        }}
-                    />
+                  <Input
+                    placeholder="Votre téléphone"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("phone");
+                    }}
+                  />
                 </div>
               </FormControl>
-              {errors.phone && <FormMessage className="text-red-500">{errors.phone.message?.toString()}</FormMessage>}
+              {errors.phone && (
+                <FormMessage className="text-red-500">
+                  {errors.phone.message?.toString()}
+                </FormMessage>
+              )}
             </FormItem>
           )}
         />
         <FormField
           control={control}
           name="email"
-          rules={{ required: "Email est requis",
-            pattern: { value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, message: "Adresse email invalide" }
-           }}
+          rules={{
+            required: "Email est requis",
+            pattern: {
+              value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+              message: "Adresse email invalide",
+            },
+          }}
           render={({ field }) => (
             <FormItem className="space-y-2 mt-1 w-full md:w-1/2">
               <FormLabel>
@@ -313,24 +379,32 @@ export const Step4PersonalInfo = () => {
               <FormControl>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                  <Input placeholder="Votre email" {...field} 
-                        className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
-                        value={field.value || ""}
-                        onChange={(e) => {
-                        field.onChange(e.target.value);
-                        clearErrors("email");
-                        }}
-                    />
+                  <Input
+                    placeholder="Votre email"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    value={field.value || ""}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      clearErrors("email");
+                    }}
+                  />
                 </div>
               </FormControl>
-              {errors.email && <FormMessage className="text-red-500">{errors.email.message?.toString()}</FormMessage>}
+              {errors.email && (
+                <FormMessage className="text-red-500">
+                  {errors.email.message?.toString()}
+                </FormMessage>
+              )}
             </FormItem>
           )}
         />
       </div>
 
       <p className="mt-4 text-xs text-muted-foreground">
-        Vos données personnelles sont protégées et ne seront jamais vendues à des tiers. Elles seront utilisées uniquement dans le cadre de votre demande de devis conformément à la réglementation en vigueur (RGPD).
+        Vos données personnelles sont protégées et ne seront jamais vendues à
+        des tiers. Elles seront utilisées uniquement dans le cadre de votre
+        demande de devis conformément à la réglementation en vigueur (RGPD).
       </p>
     </>
   );

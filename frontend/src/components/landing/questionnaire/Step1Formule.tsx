@@ -1,4 +1,10 @@
-import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
 import {
   Select,
   SelectContent,
@@ -14,7 +20,10 @@ interface Step1FormuleProps {
   onSelectFormula: (formula: string) => void;
 }
 
-export const Step1Formule: React.FC<Step1FormuleProps> = ({ dataFormulas, onSelectFormula }) => {
+export const Step1Formule: React.FC<Step1FormuleProps> = ({
+  dataFormulas,
+  onSelectFormula,
+}) => {
   const { control } = useFormContext(); // Obtenir le contrôle du formulaire
   const [errorMessage, setErrorMessage] = useState<string | null>(null); // État pour gérer l'affichage des erreurs
 
@@ -50,7 +59,9 @@ export const Step1Formule: React.FC<Step1FormuleProps> = ({ dataFormulas, onSele
               </SelectContent>
             </Select>
           </FormControl>
-          {errorMessage && <FormMessage className="text-red-500">{errorMessage}</FormMessage>}
+          {errorMessage && (
+            <FormMessage className="text-red-500">{errorMessage}</FormMessage>
+          )}
         </FormItem>
       )}
     />
