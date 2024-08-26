@@ -11,7 +11,7 @@ interface TestimonialCardProps {
   rating: number;
   created_at: string;
   source?: string; // Ajout de la propriété source
-  description: string;
+  comment: string;
   className?: string;
   [key: string]: any;
 }
@@ -21,7 +21,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   image_url,
   name,
   role,
-  description,
+  comment,
   rating,
   created_at,
   source,
@@ -75,7 +75,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
       )}
     >
       <div className="select-none text-sm font-normal text-secondary dark:text-neutral-400">
-        {description}
+        {comment}
         <div className="flex flex-row py-1">{renderStars()}</div>
       </div>
 

@@ -26,7 +26,7 @@ const formSchema = z.object({
   userName: z.string().min(2, {
     message: "Le rôle doit contenir au moins 2 caractères.",
   }),
-  description: z
+  comment: z
     .string()
     .min(MIN_CHAR_COUNT, {
       message: `Le témoignage doit contenir au moins ${MIN_CHAR_COUNT} caractères.`,
@@ -39,17 +39,17 @@ const formSchema = z.object({
 interface TestimonialFormInputs {
   name: string;
   userName: string;
-  description: string;
+  comment: string;
 }
 
 interface TestimonialFormProps {
   onSubmit: () => void;
-  onClose: () => void;
+  closeModal: () => void;
 }
 
 const TestimonialForm: React.FC<TestimonialFormProps> = ({
   onSubmit,
-  onClose,
+  closeModal,
 }) => {
   const {
     register,
@@ -61,7 +61,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
     defaultValues: {
       name: "",
       userName: "",
-      description: "",
+      comment: "",
     },
   });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -102,7 +102,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
       const formData = new FormData();
       formData.append("name", data.name);
       formData.append("role", data.userName);
-      formData.append("description", data.description);
+      formData.append("comment", data.comment);
 
       if (selectedFile) {
         formData.append("avatar", selectedFile);
@@ -115,7 +115,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
       setSelectedFile(null);
       showTestimonialSuccess();
       onSubmit();
-      onClose(); // Fermer le formulaire après une soumission réussie
+      closeModal();
     } catch (err) {
       setLoading(false);
       showTestimonialError();
@@ -194,7 +194,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
           * Témoignage
         </label>
         <Textarea
-          {...register("description")}
+          {...register("comment")}
           onChange={handleCommentChange}
           className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
           placeholder="Dites-nous pourquoi vous nous recommanderiez"
@@ -202,8 +202,8 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
         <div className="text-right text-sm text-gray-500">
           {charCount}/{MAX_CHAR_COUNT} caractères
         </div>
-        {errors.description && (
-          <p className="text-red-500">{errors.description.message}</p>
+        {errors.comment && (
+          <p className="text-red-500">{errors.comment.message}</p>
         )}
       </div>
       <div className="text-center">

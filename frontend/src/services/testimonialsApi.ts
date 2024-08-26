@@ -5,7 +5,7 @@ import { apiUrl } from '@/apiConfig';
 export interface TestimonialData {
   name: string;
   role: string;
-  description: string;
+  comment: string;
   avatar?: File | null;
   avatarUrl?: string;  // Ajouter ce champ pour gérer les URL d'avatar par défaut
   rating?: number;
@@ -22,7 +22,7 @@ export interface Testimonial {
   id: number;
   name: string;
   role: string;
-  description: string;
+  comment: string;
   image_url: string | null;
   rating: number;
   created_at: string;

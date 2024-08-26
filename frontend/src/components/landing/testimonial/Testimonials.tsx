@@ -2,8 +2,9 @@ import Marquee from "@/components/magicui/marquee";
 
 import { Testimonial } from "@/services/testimonialsApi"; // Assurez-vous que ce chemin est correct
 import { Avatar } from "./Avatar";
-import { TestimonialCard } from "./TestimonialCard";
+
 import AddTestimonialDialog from "./AddTestimonialDialog";
+import { TestimonialCard } from "./TestimonialCard";
 
 interface TestimonialsProps {
   testimonials: Testimonial[];

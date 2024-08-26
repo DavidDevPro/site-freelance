@@ -6,7 +6,6 @@ import {
   DialogTitle,
   DialogDescription,
   DialogTrigger,
-  DialogClose,
 } from "@/components/ui/dialog";
 
 import TestimonialForm from "./TestimonialForm";
@@ -23,7 +22,6 @@ const AddTestimonialDialog: React.FC<AddTestimonialDialogProps> = ({
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -40,8 +38,10 @@ const AddTestimonialDialog: React.FC<AddTestimonialDialogProps> = ({
             notre travail.
           </DialogDescription>
         </DialogHeader>
-        <TestimonialForm onSubmit={onTestimonialAdded} onClose={handleClose} />
-        <DialogClose onClick={handleClose} />
+        <TestimonialForm
+          onSubmit={onTestimonialAdded}
+          closeModal={() => setIsOpen(false)}
+        />
       </DialogContent>
     </Dialog>
   );
