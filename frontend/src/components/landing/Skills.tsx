@@ -91,7 +91,7 @@ const Skills: React.FC = () => {
           return (
             <Card
               key={title}
-              className="bg-background border border-muted-foreground shadow-sm transition-shadow hover:shadow-md focus-within:ring focus-within:ring-primary/50"
+              className="bg-background border border-primary shadow-sm transition-shadow hover:shadow-md focus-within:ring focus-within:ring-primary/50"
             >
               <CardHeader className="flex flex-col items-center text-center">
                 <div className="bg-primary/20 p-4 rounded-full ring-8 ring-primary/10 mb-4">

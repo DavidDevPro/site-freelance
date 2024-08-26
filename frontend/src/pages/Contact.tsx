@@ -61,21 +61,21 @@ const ContactPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LuLinkedin className="w-6 h-6 text-primary" />
+                  <LuLinkedin className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
                 </a>
                 <a
                   href="https://github.com/david-backup"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LuGithub className="w-6 h-6 text-primary" />
+                  <LuGithub className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
                 </a>
                 <a
                   href="https://www.facebook.com/DavidWebProjects/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LuFacebook className="w-6 h-6 text-primary" />
+                  <LuFacebook className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
                 </a>
 
                 <a
@@ -83,7 +83,7 @@ const ContactPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LuTwitter className="w-6 h-6 text-primary" />
+                  <LuTwitter className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
                 </a>
 
                 <a
@@ -91,7 +91,7 @@ const ContactPage = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LuInstagram className="w-6 h-6 text-primary" />
+                  <LuInstagram className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
                 </a>
               </div>
             </div>

@@ -1,4 +1,11 @@
-import { Instagram, Linkedin, Twitter, ChevronRight } from "lucide-react";
+import {
+  LuLinkedin,
+  LuFacebook,
+  LuGithub,
+  LuTwitter,
+  LuInstagram,
+  LuChevronRight,
+} from "react-icons/lu";
 import { useState } from "react";
 import Logo from "@/assets/images/icon.webp";
 import { StyledButton } from "./StyledButton";
@@ -9,9 +16,26 @@ interface Icon {
 }
 
 const icons: Icon[] = [
-  { icon: <Instagram className="w-6 h-6" />, url: "https://www.instagram.com" },
-  { icon: <Linkedin className="w-6 h-6" />, url: "https://www.linkedin.com" },
-  { icon: <Twitter className="w-6 h-6" />, url: "https://www.twitter.com" },
+  {
+    icon: <LuInstagram className="w-6 h-6" />,
+    url: "https://www.instagram.com/davidwebprojects/",
+  },
+  {
+    icon: <LuLinkedin className="w-6 h-6" />,
+    url: "https://www.linkedin.com/in/david-changea",
+  },
+  {
+    icon: <LuTwitter className="w-6 h-6" />,
+    url: "https://x.com/DavidWebProject",
+  },
+  {
+    icon: <LuFacebook className="w-6 h-6" />,
+    url: "https://www.facebook.com/DavidWebProjects/",
+  },
+  {
+    icon: <LuGithub className="w-6 h-6" />,
+    url: "https://www.facebook.com/DavidWebProjects/",
+  },
 ];
 
 type FooterLink = { id: number; title: string; url: string };
@@ -83,7 +107,7 @@ export function Footer() {
                       className="group inline-flex cursor-pointer items-center justify-start gap-1 text-base font-medium text-gray-600 transition duration-200 hover:text-primary dark:text-neutral-400 dark:hover:text-neutral-200"
                     >
                       <a href={link.url}>{link.title}</a>
-                      <ChevronRight className="h-4 w-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100" />
+                      <LuChevronRight className="h-4 w-4 translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100" />
                     </li>
                   ))}
                 </ul>
@@ -126,7 +150,7 @@ export function Footer() {
               <a
                 key={index}
                 href={icon.url}
-                className="text-primary transition-colors duration-200 hover:text-secondary dark:hover:text-secondary"
+                className="text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary"
               >
                 {icon.icon}
               </a>

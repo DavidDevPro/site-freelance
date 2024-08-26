@@ -66,7 +66,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
       className={cn(
         "max-w-sm md:break-inside-avoid overflow-hidden flex flex-col justify-between p-6 rounded-2xl shadow-lg",
         // light styles
-        "border border-gray-200 bg-white",
+        "border border-primary bg-card",
         // dark styles
         "dark:bg-neutral-900 dark:border-neutral-800 dark:shadow-neutral-800",
         className

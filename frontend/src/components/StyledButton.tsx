@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const primaryButtonClasses = cn(
   "group relative w-auto flex items-center justify-center gap-2 overflow-hidden text-sm font-semibold tracking-tighter",
-  "transform-gpu ring-offset-current transition-all duration-300 ease-out text-white",
+  "transform-gpu ring-offset-current transition-all duration-300 ease-out text-card",
   "bg-primary hover:ring-2 hover:ring-primary hover:ring-offset-2",
   "px-8 py-5"
 );

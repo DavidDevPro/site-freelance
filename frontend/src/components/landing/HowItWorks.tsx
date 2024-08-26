@@ -53,7 +53,7 @@ export const HowItWorks = () => {
         {features.map(({ icon, title, description }: FeatureProps) => (
           <Card
             key={title}
-            className="bg-card transition-shadow hover:shadow-lg focus-within:ring focus-within:ring-primary/50"
+            className="bg-card border-primary transition-shadow hover:shadow-lg focus-within:ring focus-within:ring-primary/50"
           >
             <CardHeader className="grid gap-4 place-items-center">
               <div className="p-4 bg-primary/10 rounded-full">{icon}</div>
