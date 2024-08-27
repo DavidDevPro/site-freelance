@@ -6,19 +6,9 @@
     "email": "contact@davidwebprojects.fr",
     "url": "https://davidwebprojects.fr"
   },
-  "license": "MIT",
-  "keywords": [
-    "react",
-    "typescript",
-    "shadcn",
-    "shadcn/ui",
-    "tailwind",
-    "landing-page",
-    "template",
-    "responsive-design"
-  ],
   "private": true,
   "version": "0.1.1",
+  "releaseDate": "27/08/2024",
   "type": "module",
   "scripts": {
     "dev": "vite",

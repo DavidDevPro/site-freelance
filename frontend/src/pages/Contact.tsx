@@ -7,8 +7,9 @@ import {
   LuTwitter,
   LuInstagram,
 } from "react-icons/lu";
+import { GoogleCalendarModal } from "@/components/googleCalendar/GoogleCalendarModal";
+import { socialLinks } from "@/utils/socialLinks";
 
-import GoogleCalendarButton from "@/components/googleCalendar/GoogleCalendarButton";
 import { Footer } from "@/components/Footer";
 
 const ContactPage = () => {
@@ -24,7 +25,7 @@ const ContactPage = () => {
           délais.
         </p>
 
-        <div className="bg-card p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-start space-y-8 md:space-y-0 md:space-x-16">
+        <div className="bg-card p-8 rounded-lg shadow-lg flex flex-col mb-10 md:flex-row items-start space-y-8 md:space-y-0 md:space-x-16">
           <div className="w-full md:w-1/2 space-y-4">
             <h2 className="text-2xl font-bold">Discutons ! ! !</h2>
             <p className="text-muted-foreground">
@@ -57,54 +58,55 @@ const ContactPage = () => {
               </h3>
               <div className="flex space-x-4 mt-2">
                 <a
-                  href="https://www.linkedin.com/in/david-changea"
+                  href={socialLinks.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Linkedin icon"
+                  title="Linkedin"
                 >
-                  <LuLinkedin className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
+                  <LuLinkedin className="w-6 h-6 text-primary hover:text-gray-600" />
                 </a>
                 <a
-                  href="https://github.com/david-backup"
+                  href={socialLinks.github}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Github icon"
+                  title="Github"
                 >
-                  <LuGithub className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
+                  <LuGithub className="w-6 h-6 text-primary hover:text-gray-600" />
                 </a>
                 <a
-                  href="https://www.facebook.com/DavidWebProjects/"
+                  href={socialLinks.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Facebook icon"
+                  title="Facebook"
                 >
-                  <LuFacebook className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
+                  <LuFacebook className="w-6 h-6 text-primary hover:text-gray-600" />
                 </a>
-
                 <a
-                  href="https://x.com/DavidWebProject"
+                  href={socialLinks.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Twitter icon"
+                  title="Twitter"
                 >
-                  <LuTwitter className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
+                  <LuTwitter className="w-6 h-6 text-primary hover:text-gray-600" />
                 </a>
-
                 <a
-                  href="https://www.instagram.com/davidwebprojects/"
+                  href={socialLinks.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Instagram icon"
+                  title="Instagram"
                 >
-                  <LuInstagram className="w-6 h-6 text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary" />
+                  <LuInstagram className="w-6 h-6 text-primary hover:text-gray-600" />
                 </a>
               </div>
             </div>
             <div>
-              <h3 className="text-lg font-semibold mb-2">
-                Prenez rendez-vous :{" "}
-              </h3>
-
-              <GoogleCalendarButton
-                url="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ0yEWctaNOFUzuGNlw32_l1AWaEsu8_PosNlN5mb-gwCJ0c5h8aUgmPy2nNdZ6u89wS55ilCBgj?gv=true"
-                color="#448FA3"
-                label="Google Calendar"
-              />
+              <h3 className="text-lg font-semibold mb-4">{`Besoin d'un échange téléphonique ?`}</h3>
+              <GoogleCalendarModal />
             </div>
           </div>
 

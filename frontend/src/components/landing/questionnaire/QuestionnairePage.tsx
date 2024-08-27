@@ -219,7 +219,7 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   return (
     <FormProvider {...methods}>
       <div className="max-w-full mx-auto pt-4 pb-4 px-3 sm:pt-6 sm:pb-6 sm:px-4 md:pt-12 md:pb-6 md:px-4">
-        <div className="flex flex-col sm:flex-row justify-center items-end max-w-full mx-auto mb-4 sm:mb-8">
+        <div className="flex flex-col lg:flex-row justify-center items-end max-w-full mx-auto mb-4 sm:mb-8">
           {steps.map((step, index) => (
             <div
               key={index}

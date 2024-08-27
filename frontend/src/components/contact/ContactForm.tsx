@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import sendContactForm from '@/services/contactApi';
+import sendContactForm from "@/services/contactApi";
 import { showMessageSuccess, showMessageError } from "@/utils/toastUtils";
 import { StyledButton } from "@/components/StyledButton";
 
@@ -44,7 +44,6 @@ const formSchema = z.object({
 });
 
 export function ContactForm() {
-
   // Créer le formulaire avec React Hook Form et Zod
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -61,14 +60,20 @@ export function ContactForm() {
 
   // Définir le gestionnaire de soumission du formulaire
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    // Ajouter la valeur "freelance" à l'objet de données
+    const formDataWithSite = {
+      ...values,
+      site: "freelance", // Ajout de la valeur "freelance" au champ "site"
+    };
+
     try {
-      const result = await sendContactForm(values);
+      const result = await sendContactForm(formDataWithSite);
       console.log("SUCCESS!", result);
       form.reset();
       showMessageSuccess();
     } catch (err) {
       console.log("FAILED...", err);
-      showMessageError(); 
+      showMessageError();
     }
   };
 
@@ -85,7 +90,11 @@ export function ContactForm() {
                 <FormControl>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                    <Input placeholder="Votre prénom" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                    <Input
+                      placeholder="Votre prénom"
+                      {...field}
+                      className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -101,7 +110,11 @@ export function ContactForm() {
                 <FormControl>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                    <Input placeholder="Votre nom" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                    <Input
+                      placeholder="Votre nom"
+                      {...field}
+                      className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -117,7 +130,11 @@ export function ContactForm() {
                 <FormControl>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                    <Input placeholder="Votre adresse email" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                    <Input
+                      placeholder="Votre adresse email"
+                      {...field}
+                      className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -133,7 +150,11 @@ export function ContactForm() {
                 <FormControl>
                   <div className="relative">
                     <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                    <Input placeholder="Votre numéro de téléphone" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                    <Input
+                      placeholder="Votre numéro de téléphone"
+                      {...field}
+                      className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />
@@ -150,7 +171,11 @@ export function ContactForm() {
               <FormControl>
                 <div className="relative">
                   <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
-                  <Input placeholder="Le sujet de votre demande" {...field} className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                  <Input
+                    placeholder="Le sujet de votre demande"
+                    {...field}
+                    className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                  />
                 </div>
               </FormControl>
               <FormMessage />
@@ -165,7 +190,11 @@ export function ContactForm() {
               <FormLabel>Message</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Textarea placeholder="Votre message" {...field} className="w-full border-input rounded-md shadow-sm focus:ring-primary focus:border-primary" />
+                  <Textarea
+                    placeholder="Votre message"
+                    {...field}
+                    className="w-full border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                  />
                 </div>
               </FormControl>
               <FormDescription>
@@ -181,17 +210,23 @@ export function ContactForm() {
           render={({ field }) => (
             <FormItem className="flex items-center space-y-0 space-x-2 mt-4">
               <FormControl>
-                <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
               </FormControl>
               <FormLabel>
-                J'accepte de soumettre mes informations personnelles via ce formulaire
+                J'accepte de soumettre mes informations personnelles via ce
+                formulaire
               </FormLabel>
               <FormMessage />
             </FormItem>
           )}
         />
         <div className="flex justify-center mb-4">
-          <StyledButton type="submit" variant="primary">Envoyer</StyledButton>
+          <StyledButton type="submit" variant="primary">
+            Envoyer
+          </StyledButton>
         </div>
       </form>
     </Form>

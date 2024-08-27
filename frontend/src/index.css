@@ -63,17 +63,3 @@ html {
     }
   }
 }
-
-/* styles.css ou un fichier CSS équivalent */
-
-.qxCTlb {
-  border: 2px solid #000000 !important;
-  background-color: #448fa3 !important;
-  border-radius: 5px !important;
-  transition: color 400ms ease, background-color 400ms ease, border 400ms ease !important;
-}
-.qxCTlb:hover {
-  background-color: transparent !important;
-  color: #448fa3 !important;
-  border: 2px solid #448fa3 !important;
-}

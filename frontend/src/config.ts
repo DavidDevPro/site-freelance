@@ -18,11 +18,13 @@ import packageJson from '../package.json';
 // Définition du type pour `Config`
 interface ConfigType {
   version: string;
+  releaseDate: string;
   showMaintenance: boolean;
 }
 
 // Exportation de la configuration avec la version et toute autre configuration nécessaire
 export const Config: ConfigType = {
   version: packageJson.version,
+  releaseDate: packageJson.releaseDate,
   showMaintenance: import.meta.env.VITE_SHOW_MAINTENANCE === 'false',
 };

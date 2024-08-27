@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
-import { Star, StarHalf, Star as StarFull } from "lucide-react";
 import { pictureUrl } from "@/pictureConfig";
+import { formatDate } from "@/utils/utils";
+import StarRating from "@/components/StarRating";
 
 interface TestimonialCardProps {
   id: number;
@@ -27,40 +28,6 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   source,
   className,
 }) => {
-  const renderStars = () => {
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      if (i <= Math.floor(rating)) {
-        stars.push(
-          <StarFull key={i} className="text-yellow-500" fill="currentColor" />
-        );
-      } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
-        stars.push(
-          <StarHalf key={i} className="text-yellow-500" fill="currentColor" />
-        );
-      } else {
-        stars.push(
-          <Star
-            key={i}
-            className="text-gray-300"
-            fill="none"
-            stroke="currentColor"
-          />
-        );
-      }
-    }
-    return stars;
-  };
-
-  const formatDate = (dateString: string) => {
-    const options: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    return new Date(dateString).toLocaleDateString(undefined, options);
-  };
-
   return (
     <div
       className={cn(
@@ -74,7 +41,11 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
     >
       <div className="text-sm font-normal text-gray-700 dark:text-neutral-300 mb-4">
         {comment}
-        <div className="flex flex-row py-2">{renderStars()}</div>
+        {!source && (
+          <div className="flex ml-auto">
+            <StarRating rating={rating} />
+          </div>
+        )}
       </div>
 
       <div className="flex items-center gap-4">

@@ -15,3 +15,13 @@ export const validateFileName = (fileName: string | undefined): string | true =>
 
     return true;
 };
+
+// Fonction pour formater la date
+export const formatDate = (dateString: string) => {
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };

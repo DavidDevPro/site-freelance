@@ -9,6 +9,9 @@ import {
 import { useState } from "react";
 import Logo from "@/assets/images/icon.webp";
 import { StyledButton } from "./StyledButton";
+import { socialLinks } from "@/utils/socialLinks";
+import { GoogleCalendarModal } from "./googleCalendar/GoogleCalendarModal";
+import { APP_NAME, Config } from "@/config";
 
 interface Icon {
   icon: JSX.Element;
@@ -17,24 +20,24 @@ interface Icon {
 
 const icons: Icon[] = [
   {
-    icon: <LuInstagram className="w-6 h-6" />,
-    url: "https://www.instagram.com/davidwebprojects/",
-  },
-  {
     icon: <LuLinkedin className="w-6 h-6" />,
-    url: "https://www.linkedin.com/in/david-changea",
-  },
-  {
-    icon: <LuTwitter className="w-6 h-6" />,
-    url: "https://x.com/DavidWebProject",
-  },
-  {
-    icon: <LuFacebook className="w-6 h-6" />,
-    url: "https://www.facebook.com/DavidWebProjects/",
+    url: socialLinks.linkedin,
   },
   {
     icon: <LuGithub className="w-6 h-6" />,
-    url: "https://www.facebook.com/DavidWebProjects/",
+    url: socialLinks.github,
+  },
+  {
+    icon: <LuFacebook className="w-6 h-6" />,
+    url: socialLinks.facebook,
+  },
+  {
+    icon: <LuTwitter className="w-6 h-6" />,
+    url: socialLinks.twitter,
+  },
+  {
+    icon: <LuInstagram className="w-6 h-6" />,
+    url: socialLinks.instagram,
   },
 ];
 
@@ -62,6 +65,8 @@ const footerLinks: FooterLink[][] = [
 ];
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+  const yearText = currentYear === 2024 ? "2024" : `2024 - ${currentYear}`;
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
 
@@ -93,9 +98,9 @@ export function Footer() {
             <p className="tracking-tight text-neutral-700 dark:text-neutral-400">
               Création, Refonte & SEO
             </p>
-            <p className="text-sm tracking-tight text-neutral-500 dark:text-neutral-500">
-              Tous droits réservés.
-            </p>
+            <div className="flex justify-center md:justify-start">
+              <GoogleCalendarModal />
+            </div>
           </div>
           <div className="pt-8 md:w-1/2">
             <div className="flex items-start justify-between gap-x-6 lg:pl-10">
@@ -145,16 +150,26 @@ export function Footer() {
               </form>
             </div>
           </div>
-          <div className="flex items-center gap-x-6">
-            {icons.map((icon, index) => (
-              <a
-                key={index}
-                href={icon.url}
-                className="text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary"
-              >
-                {icon.icon}
-              </a>
-            ))}
+          <div className="flex flex-col items-center gap-y-8 w-full md:w-auto">
+            {/* Icônes sociales en colonne */}
+            <div className="flex items-center gap-x-4">
+              {icons.map((icon, index) => (
+                <a
+                  key={index}
+                  href={icon.url}
+                  className="text-primary transition-colors duration-200 hover:text-gray-600 dark:hover:text-secondary"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  {icon.icon}
+                </a>
+              ))}
+            </div>
+            {/* Copyright */}
+            <p className="text-sm tracking-tight text-primary dark:text-neutral-500 text-center md:text-right">
+              Copyright &copy; {yearText} {APP_NAME} - Tous Droits Réservés -
+              Version {Config.version} du {Config.releaseDate}
+            </p>
           </div>
         </div>
       </footer>
