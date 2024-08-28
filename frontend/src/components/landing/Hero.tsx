@@ -38,6 +38,7 @@ export const Hero = () => {
             src={heroLargeJpg}
             alt="image de bannière de david web projects"
             className="w-full h-full object-cover grayscale"
+            loading="lazy" // Améliore le temps de chargement de la page
           />
         </picture>
       </div>

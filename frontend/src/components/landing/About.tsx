@@ -1,4 +1,4 @@
-import pilot from "@/assets/images/gerant.jpg";
+import pilot from "@/assets/images/gerant.png";
 import { StyledButton } from "../StyledButton";
 
 export const About = () => {

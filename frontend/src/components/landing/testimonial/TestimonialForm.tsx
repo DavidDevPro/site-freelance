@@ -4,9 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
 import { useDropzone } from "react-dropzone";
-
 import {
   showTestimonialSuccess,
   showTestimonialError,
@@ -20,8 +18,14 @@ const MIN_CHAR_COUNT = 50;
 
 // Définir le schéma de validation du formulaire avec Zod
 const formSchema = z.object({
-  name: z.string().min(2, {
+  firstName: z.string().min(2, {
+    message: "Le prénom doit contenir au moins 2 caractères.",
+  }),
+  lastName: z.string().min(2, {
     message: "Le nom doit contenir au moins 2 caractères.",
+  }),
+  email: z.string().email({
+    message: "Veuillez entrer une adresse email valide.",
   }),
   userName: z.string().min(2, {
     message: "Le rôle doit contenir au moins 2 caractères.",
@@ -37,7 +41,9 @@ const formSchema = z.object({
 });
 
 interface TestimonialFormInputs {
-  name: string;
+  firstName: string;
+  lastName: string;
+  email: string;
   userName: string;
   comment: string;
 }
@@ -59,11 +65,14 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
   } = useForm<TestimonialFormInputs>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
+      firstName: "",
+      lastName: "",
+      email: "",
       userName: "",
       comment: "",
     },
   });
+
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -100,7 +109,9 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
     setLoading(true);
     try {
       const formData = new FormData();
-      formData.append("name", data.name);
+      formData.append("firstName", data.firstName);
+      formData.append("lastName", data.lastName);
+      formData.append("email", data.email);
       formData.append("role", data.userName);
       formData.append("comment", data.comment);
 
@@ -116,7 +127,7 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
       showTestimonialSuccess();
       onSubmit();
       closeModal();
-    } catch (err) {
+    } catch {
       setLoading(false);
       showTestimonialError();
     }
@@ -128,17 +139,47 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
+      <div className="flex space-x-4">
+        <div className="flex-1">
+          <label className="block text-sm font-medium text-gray-700">
+            * Prénom
+          </label>
+          <Input
+            type="text"
+            {...register("firstName")}
+            placeholder="John"
+            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+          />
+          {errors.firstName && (
+            <p className="text-red-500">{errors.firstName.message}</p>
+          )}
+        </div>
+        <div className="flex-1">
+          <label className="block text-sm font-medium text-gray-700">
+            * Nom
+          </label>
+          <Input
+            type="text"
+            {...register("lastName")}
+            placeholder="Doe"
+            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+          />
+          {errors.lastName && (
+            <p className="text-red-500">{errors.lastName.message}</p>
+          )}
+        </div>
+      </div>
       <div>
         <label className="block text-sm font-medium text-gray-700">
-          * Nom / Prénom
+          * Email
         </label>
         <Input
-          type="text"
-          {...register("name")}
-          placeholder="John Doe"
+          type="email"
+          {...register("email")}
+          placeholder="john.doe@example.com"
           className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
         />
-        {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
       </div>
       <div>
         <label className="block text-sm font-medium text-gray-700">
@@ -206,8 +247,8 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
           <p className="text-red-500">{errors.comment.message}</p>
         )}
       </div>
-      <div className="text-center">
-        <StyledButton type="submit" disabled={loading}>
+      <div className="flex justify-center mb-4">
+        <StyledButton type="submit" variant="primary" isLoading={loading}>
           {loading ? "Envoi..." : "Envoyer"}
         </StyledButton>
       </div>

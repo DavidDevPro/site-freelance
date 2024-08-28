@@ -17,6 +17,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import sendContactForm from "@/services/contactApi";
 import { showMessageSuccess, showMessageError } from "@/utils/toastUtils";
 import { StyledButton } from "@/components/StyledButton";
+import { useState } from "react";
 
 // Définir le schéma de validation du formulaire avec Zod
 const formSchema = z.object({
@@ -35,15 +36,22 @@ const formSchema = z.object({
   subject: z.string().min(2, {
     message: "Le sujet doit comporter au moins 2 caractères.",
   }),
-  message: z.string().min(10, {
-    message: "Le message doit comporter au moins 10 caractères.",
-  }),
+  message: z
+    .string()
+    .min(10, {
+      message: "Le message doit comporter au moins 10 caractères.",
+    })
+    .max(500, {
+      message: "Le message ne doit pas dépasser 500 caractères.",
+    }),
   consent: z.boolean().refine((value) => value === true, {
     message: "Vous devez accepter de soumettre vos informations personnelles.",
   }),
 });
 
 export function ContactForm() {
+  const [messageLength, setMessageLength] = useState(0); // State pour suivre la longueur du message
+
   // Créer le formulaire avec React Hook Form et Zod
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -63,13 +71,14 @@ export function ContactForm() {
     // Ajouter la valeur "freelance" à l'objet de données
     const formDataWithSite = {
       ...values,
-      site: "freelance", // Ajout de la valeur "freelance" au champ "site"
+      namewebsite: "https://davidwebprojects.fr",
     };
 
     try {
       const result = await sendContactForm(formDataWithSite);
       console.log("SUCCESS!", result);
       form.reset();
+      setMessageLength(0); // Réinitialiser le compteur de caractères
       showMessageSuccess();
     } catch (err) {
       console.log("FAILED...", err);
@@ -81,6 +90,7 @@ export function ContactForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Prénom */}
           <FormField
             control={form.control}
             name="firstName"
@@ -97,10 +107,11 @@ export function ContactForm() {
                     />
                   </div>
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="mt-2 text-red-600" />
               </FormItem>
             )}
           />
+          {/* Nom */}
           <FormField
             control={form.control}
             name="lastName"
@@ -117,10 +128,11 @@ export function ContactForm() {
                     />
                   </div>
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="mt-2 text-red-600" />
               </FormItem>
             )}
           />
+          {/* Email */}
           <FormField
             control={form.control}
             name="email"
@@ -137,10 +149,11 @@ export function ContactForm() {
                     />
                   </div>
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="mt-2 text-red-600" />
               </FormItem>
             )}
           />
+          {/* Téléphone */}
           <FormField
             control={form.control}
             name="phone"
@@ -157,11 +170,12 @@ export function ContactForm() {
                     />
                   </div>
                 </FormControl>
-                <FormMessage />
+                <FormMessage className="mt-2 text-red-600" />
               </FormItem>
             )}
           />
         </div>
+        {/* Sujet */}
         <FormField
           control={form.control}
           name="subject"
@@ -178,14 +192,15 @@ export function ContactForm() {
                   />
                 </div>
               </FormControl>
-              <FormMessage />
+              <FormMessage className="mt-2 text-red-600" />
             </FormItem>
           )}
         />
+        {/* Message avec limitation de caractères */}
         <FormField
           control={form.control}
           name="message"
-          render={({ field }) => (
+          render={({ field, fieldState }) => (
             <FormItem>
               <FormLabel>Message</FormLabel>
               <FormControl>
@@ -194,35 +209,47 @@ export function ContactForm() {
                     placeholder="Votre message"
                     {...field}
                     className="w-full border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    maxLength={500}
+                    onChange={(e) => {
+                      setMessageLength(e.target.value.length);
+                      field.onChange(e);
+                    }}
                   />
                 </div>
               </FormControl>
-              <FormDescription>
-                Veuillez entrer les détails de votre demande.
-              </FormDescription>
-              <FormMessage />
+              {fieldState.invalid ? (
+                <FormMessage className="mt-2 text-red-600" />
+              ) : (
+                <FormDescription className="mt-2 text-gray-600">
+                  {`${messageLength}/500 caractères`}
+                </FormDescription>
+              )}
             </FormItem>
           )}
         />
+        {/* Consentement */}
         <FormField
           control={form.control}
           name="consent"
           render={({ field }) => (
-            <FormItem className="flex items-center space-y-0 space-x-2 mt-4">
-              <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-              <FormLabel>
-                J'accepte de soumettre mes informations personnelles via ce
-                formulaire
-              </FormLabel>
-              <FormMessage />
+            <FormItem>
+              <div className="flex items-center space-x-2">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <FormLabel className="text-sm">
+                  {`J'accepte de soumettre mes informations personnelles via ce formulaire`}
+                </FormLabel>
+              </div>
+              <FormMessage className="text-red-600 mt-2" />{" "}
+              {/* Afficher le message d'erreur en dessous */}
             </FormItem>
           )}
         />
+        {/* Bouton Envoyer */}
         <div className="flex justify-center mb-4">
           <StyledButton type="submit" variant="primary">
             Envoyer
