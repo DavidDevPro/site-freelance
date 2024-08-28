@@ -4,6 +4,12 @@ import { StyledButton } from "../StyledButton";
 export const About = () => {
   return (
     <section id="about" className="container py-14 sm:py-24">
+      <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-4">
+        Qui sommes-nous
+      </h2>
+      <p className="text-xl leading-8 text-black/80 dark:text-white text-center mb-8 mx-auto max-w-4xl">
+        Présentation du gérant.
+      </p>
       <div className="bg-white dark:bg-neutral-900 border border-primary rounded-2xl shadow-lg p-8">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center">
           <img
@@ -14,10 +20,7 @@ export const About = () => {
           />
           <div className="flex flex-col justify-between md:w-2/3">
             <div className="pb-6">
-              <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-                <span className="bg-gradient-primary text-transparent bg-clip-text">
-                  À propos de{" "}
-                </span>
+              <h2 className="text-center text-3xl text-primary md:text-3xl font-bold leading-tight md:text-left">
                 David Web Projects
               </h2>
               <p className="text-lg md:text-xl text-black/70 dark:text-white mt-6 leading-relaxed">
@@ -28,7 +31,7 @@ export const About = () => {
                 une approche agile et centrée sur le client.
               </p>
             </div>
-            <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8">
+            <div className="flex flex-col md:flex-row  items-center justify-center md:items-center md:justify-start gap-3 md:gap-8">
               <p className="text-lg font-medium text-black dark:text-white">
                 En savoir plus :
               </p>

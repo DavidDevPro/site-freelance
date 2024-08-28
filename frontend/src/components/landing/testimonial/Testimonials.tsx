@@ -16,17 +16,8 @@ export const Testimonials: React.FC<TestimonialsProps> = ({
   return (
     <section id="testimonials" className="container py-14 sm:py-24">
       <div className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold">
-          Recommandations
-          <span className="bg-gradient-primary text-primary bg-clip-text">
-            {" "}
-            Professionnelles{" "}
-          </span>
-          & Avis
-          <span className="bg-gradient-primary text-transparent bg-clip-text">
-            {" "}
-            Clients
-          </span>
+        <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-4">
+          Recommandations & Avis Clients
         </h2>
         <p className="text-lg md:text-xl text-black/70 dark:text-white py-6">
           Découvrez les recommandations de professionnels avec qui nous avons

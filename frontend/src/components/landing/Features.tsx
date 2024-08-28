@@ -44,15 +44,12 @@ const featureList: string[] = [
 
 export const Features = () => {
   return (
-    <section id="features" className="container py-14 space-y-16">
-      <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-        Nos{" "}
-        <span className="bg-gradient-primary text-primary bg-clip-text">
-          Services
-        </span>
+    <section id="features" className="container py-14">
+      <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  font-bold text-center mb-4">
+        Nos services
       </h2>
 
-      <p className="text-xl leading-8 text-black/80 dark:text-white text-center mx-auto max-w-4xl">
+      <p className="text-xl leading-8 text-black/80 dark:text-white text-center mb-8 mx-auto max-w-4xl">
         Découvrez nos services conçus pour répondre aux besoins spécifiques de
         votre entreprise. Chaque service est conçu avec une attention
         particulière aux détails et à l'efficacité.
@@ -62,7 +59,7 @@ export const Features = () => {
         {features.map(({ title, description }: FeatureProps) => (
           <Card
             key={title}
-            className="relative flex flex-col w-full max-w-[400px] overflow-hidden rounded-2xl border border-primary p-6 text-black dark:text-white min-h-[400px] shadow-lg"
+            className="relative flex flex-col w-full max-w-[400px] overflow-hidden rounded-2xl border border-primary p-6 text-primary dark:text-white min-h-[400px] shadow-lg"
           >
             <div className="flex-grow">
               <CardHeader className="text-center">
@@ -87,7 +84,7 @@ export const Features = () => {
         ))}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-4 mt-8">
+      <div className="flex flex-wrap justify-center gap-4 mt-12">
         {featureList.map((feature: string) => (
           <div key={feature}>
             <Badge

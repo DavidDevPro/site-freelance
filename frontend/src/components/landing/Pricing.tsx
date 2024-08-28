@@ -54,9 +54,8 @@ export function Pricing() {
     <section id="pricing">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-14 md:px-8">
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-            Choisissez{" "}
-            <span className="bg-gradient-primary">votre formule</span> idéale.
+          <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-4">
+            Choisissez votre formule
           </h2>
 
           <p className="mt-6 text-xl leading-8 text-black/80 dark:text-white">
@@ -71,7 +70,7 @@ export function Pricing() {
             <div
               key={pkg.id}
               className={cn(
-                "relative flex flex-col w-full max-w-[400px] overflow-hidden rounded-2xl border border-primary p-4 bg-card text-black dark:text-white min-h-[500px]", // Ajout de min-h pour définir une hauteur minimale
+                "relative flex flex-col w-full max-w-[400px] overflow-hidden rounded-2xl border border-primary p-4 bg-card text-black dark:text-white min-h-[600px]", // Ajout de min-h pour définir une hauteur minimale
                 {
                   "border-2 border-neutral-700 shadow-lg shadow-neutral-500 dark:border-neutral-400 dark:shadow-neutral-600":
                     pkg.isMostPopular,
@@ -84,22 +83,22 @@ export function Pricing() {
                   {/* Div de croissance pour assurer l'alignement */}
                   <div className="flex items-center">
                     <div className="ml-4">
-                      <h2 className="text-base font-semibold leading-7">
+                      <h2 className="text-3xl text-center mb-2 text-primary font-bold ">
                         {pkg.name}
                       </h2>
-                      <p className="h-16 text-sm leading-5 text-black/70 dark:text-white">
+                      <p className="h-16 text-center border-primary border-b-2 mb-8 text-sm leading-5 text-black/70 dark:text-white">
                         {pkg.description}
                       </p>
                     </div>
                   </div>
 
-                  <ul className="flex flex-col gap-2 font-normal">
+                  <ul className="flex flex-col  mb-4 gap-2 font-normal">
                     {pkg.features.map((feature, idx) => (
                       <li
                         key={idx}
-                        className="flex items-center gap-3 text-xs font-medium text-black dark:text-white"
+                        className="flex items-center gap-3 text-sm font-medium text-black dark:text-white"
                       >
-                        <CheckIcon className="h-5 w-5 shrink-0 rounded-full bg-primary p-[2px] text-white dark:text-white" />
+                        <CheckIcon className="h-6 w-6 shrink-0 rounded-full bg-primary p-[2px] text-white dark:text-white" />
                         <span className="flex">{feature}</span>
                       </li>
                     ))}
@@ -107,7 +106,7 @@ export function Pricing() {
                 </div>
 
                 <div className="mt-4">
-                  <h3 className="text-sm font-semibold">
+                  <h3 className="text-xl text-primary mb-2 font-bold">
                     Options disponibles :
                   </h3>
                   <ul className="flex flex-col gap-2 font-normal">

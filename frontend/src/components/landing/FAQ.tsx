@@ -48,11 +48,8 @@ const FAQList: FAQProps[] = [
 export const FAQ = () => {
   return (
     <section id="faq" className="container py-24 sm:py-32">
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">
-        Questions{" "}
-        <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-          Fréquentes
-        </span>
+      <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-4">
+        Questions Fréquentes
       </h2>
 
       <Accordion type="single" collapsible className="w-full">
