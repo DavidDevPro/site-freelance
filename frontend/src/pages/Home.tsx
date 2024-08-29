@@ -22,10 +22,10 @@ function Home() {
       <Hero />
       {/* <Sponsors /> */}
       <Features />
-      <About />
       <Pricing />
       {/* <Skills /> */}
       <UserFeedback />
+      <About />
       <Cta />
       {/* <HowItWorks /> */}
       {/* <Services /> */}

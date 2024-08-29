@@ -1,34 +1,56 @@
 import { StyledButton } from "../StyledButton";
 
 export const Cta = () => {
-  return (
-    <section id="cta" className="bg-card py-16 my-24 sm:my-32">
-      <div className="container lg:grid lg:grid-cols-2 place-items-center">
-        <div className="lg:col-start-1">
-          <h2 className="text-3xl md:text-4xl font-bold leading-tight">
-            All Your
-            <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-              {" "}
-              Ideas & Concepts{" "}
-            </span>
-            In One Interface
-          </h2>
-          <p className="text-muted-foreground text-xl mt-4 mb-8 lg:mb-0">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque,
-            beatae. Ipsa tempore ipsum iste quibusdam illum ducimus eos. Quasi,
-            sed!
-          </p>
-        </div>
+  const handleContactClick = () => {
+    window.location.href = "/contact"; // Redirection native
+  };
 
-        <div className="flex flex-col lg:flex-row items-center lg:col-start-2 gap-4">
-          <StyledButton className="w-full md:w-auto">
-            Request a Demo
-          </StyledButton>
-          <StyledButton variant="secondary" className="w-full md:w-auto">
-            View all features
-          </StyledButton>
-        </div>
+  return (
+    <>
+      {/* Texte en dehors de la section */}
+      <div className=" text-center mt-12">
+        <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-2">
+          Besoin d'accompagnement sur votre projet ?
+        </h2>
+        <p className="text-lg md:text-xl text-black/70 dark:text-white py-6 mb-2">
+          Nous sommes là pour vous aider à concrétiser vos idées en solutions
+          performantes et adaptées à vos besoins.
+        </p>
       </div>
-    </section>
+
+      {/* Section CTA */}
+      <section id="cta" className="bg-card py-16  " aria-labelledby="cta-title">
+        <div className="container text-center lg:text-left lg:grid lg:grid-cols-2 place-items-center">
+          <div className="lg:col-start-1">
+            <h2 className="text-3xl text-primary font-bold leading-tight">
+              Transformez vos idées et projets en réalité numérique.
+            </h2>
+            <p className="text-muted-foreground text-xl mt-4 mb-8 lg:mb-0">
+              Vous avez des questions ou des demandes spécifiques concernant
+              votre projet ? Notre équipe est à votre disposition pour répondre
+              à vos besoins et vous accompagner vers le succès de vos
+              initiatives.
+            </p>
+          </div>
+
+          <div className="flex flex-col lg:flex-row items-center lg:col-start-2 gap-4">
+            <StyledButton
+              className="w-full md:w-auto"
+              onClick={handleContactClick}
+              aria-label="Contactez-nous"
+            >
+              Contactez-nous
+            </StyledButton>
+            <StyledButton
+              variant="secondary"
+              className="w-full md:w-auto"
+              aria-label="Prendre un rendez-vous"
+            >
+              Prendre un rendez-vous
+            </StyledButton>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
