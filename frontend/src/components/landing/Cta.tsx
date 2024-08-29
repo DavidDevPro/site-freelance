@@ -1,3 +1,4 @@
+import { GoogleCalendarModal } from "../googleCalendar/GoogleCalendarModal";
 import { StyledButton } from "../StyledButton";
 
 export const Cta = () => {
@@ -8,8 +9,8 @@ export const Cta = () => {
   return (
     <>
       {/* Texte en dehors de la section */}
-      <div className=" text-center mt-12">
-        <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-2">
+      <div className="text-center mt-12">
+        <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text font-bold p-2">
           Besoin d'accompagnement sur votre projet ?
         </h2>
         <p className="text-lg md:text-xl text-black/70 dark:text-white py-6 mb-2">
@@ -18,8 +19,12 @@ export const Cta = () => {
         </p>
       </div>
 
-      {/* Section CTA */}
-      <section id="cta" className="bg-card py-16  " aria-labelledby="cta-title">
+      {/* Section CTA avec bordures et ombre */}
+      <section
+        id="cta"
+        className="bg-card py-16 border-t border-b border-gray-200 dark:border-neutral-700 shadow-md"
+        aria-labelledby="cta-title"
+      >
         <div className="container text-center lg:text-left lg:grid lg:grid-cols-2 place-items-center">
           <div className="lg:col-start-1">
             <h2 className="text-3xl text-primary font-bold leading-tight">
@@ -41,13 +46,7 @@ export const Cta = () => {
             >
               Contactez-nous
             </StyledButton>
-            <StyledButton
-              variant="secondary"
-              className="w-full md:w-auto"
-              aria-label="Prendre un rendez-vous"
-            >
-              Prendre un rendez-vous
-            </StyledButton>
+            <GoogleCalendarModal />
           </div>
         </div>
       </section>
