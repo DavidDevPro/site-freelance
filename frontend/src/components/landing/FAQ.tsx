@@ -71,7 +71,7 @@ export const FAQ = () => {
           </AccordionItem>
         ))}
       </Accordion>
-      <div className="flex items-center justify-center space-x-2 mt-8">
+      <div className="flex items-center justify-center space-x-6 mt-10">
         <p className="font-medium">Vous avez encore des questions ?</p>
         <StyledButton>
           <a rel="noreferrer noopener" href="#" className="">

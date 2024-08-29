@@ -10,9 +10,9 @@ const footerNavs = [
   {
     label: "Produits",
     items: [
-      { href: "/#services", name: "Services" },
+      { href: "/#features", name: "Services" },
       { href: "/#pricing", name: "Tarifs" },
-      { href: "/#testimonials", name: "Témoignages" },
+      { href: "/#testimonials", name: "Avis" },
     ],
   },
   {
@@ -45,7 +45,10 @@ const footerNavs = [
     label: "Legal",
     items: [
       { href: "/mentions-legales", name: "Mentions Légales" },
-      { href: "#", name: "Terms of Service" },
+      {
+        href: "/politique-de-confidentialite",
+        name: "Politique de confidentialité",
+      },
     ],
   },
 ];
@@ -58,7 +61,7 @@ export function Footer() {
     <div className="bg-card border-t border-gray-200 dark:border-neutral-700">
       <footer className="px-7  max-w-[1400px] mx-auto">
         <div className="flex flex-col py-12 md:flex-row md:items-center md:justify-between">
-          <div className="flex flex-col items-start justify-start gap-y-5">
+          <div className="flex flex-col items-start  justify-start gap-y-5">
             <a href="#" className="flex items-center gap-x-2.5">
               <img
                 className="h-10 w-10"
@@ -66,7 +69,7 @@ export function Footer() {
                 alt="logo david web projects"
               />
               <h1 className="text-xl font-bold text-primary dark:text-white">
-                David Web Projects
+                {APP_NAME}
               </h1>
             </a>
             <p className="tracking-tight text-neutral-700 dark:text-neutral-400">
@@ -115,7 +118,7 @@ export function Footer() {
                   rel="noreferrer noopener"
                   title={social.title}
                 >
-                  <IconComponent className="size-6" />
+                  <IconComponent className="size-5" />
                   <span className="sr-only">{social.title}</span>
                 </a>
               );

@@ -1,5 +1,6 @@
 // Définition de la variable `APP_NAME` pour le nom de l'application (à afficher dans l'onglet du navigateur)
 export const APP_NAME: string = "DavidWebProjects";
+export const APP_NAME2: string = "David Web Projects";
 
 // Définition de la variable `APP_DEV` pour le nom du développeur pour le copyright
 export const APP_DEV: string = "David CHANGEA"; 

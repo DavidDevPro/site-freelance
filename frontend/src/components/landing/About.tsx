@@ -1,5 +1,6 @@
 import pilot from "@/assets/images/gerant.png";
 import { StyledButton } from "../StyledButton";
+import { APP_NAME } from "@/config";
 
 export const About = () => {
   return (
@@ -14,14 +15,14 @@ export const About = () => {
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center">
           <img
             src={pilot}
-            alt="Portrait de David Changea, fondateur de David Web Projects"
+            alt="Portrait de David Changea, fondateur de {APP_NAME}"
             className="w-[275px] h-[275px] object-cover rounded-full shadow-md"
             loading="lazy" // Améliore le temps de chargement de la page
           />
           <div className="flex flex-col justify-between md:w-2/3">
             <div className="pb-6">
               <h2 className="text-center text-3xl text-primary md:text-3xl font-bold leading-tight md:text-left">
-                David Web Projects
+                {APP_NAME}
               </h2>
               <p className="text-lg md:text-xl text-black/70 dark:text-white mt-6 leading-relaxed">
                 Je suis David Changea, créateur et fondateur de David Web

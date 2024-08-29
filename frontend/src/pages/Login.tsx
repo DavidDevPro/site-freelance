@@ -14,6 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Footer } from "@/components/Footer";
 import { StyledButton } from "@/components/StyledButton";
+import { APP_NAME2 } from "@/config";
 
 // Schéma de validation pour le formulaire de connexion
 const loginSchema = z.object({
@@ -128,7 +129,7 @@ const Login = () => {
         </div>
 
         <p>
-          Nouveau sur David Web Projects ?
+          Nouveau sur {APP_NAME2} ?
           <a href="#!" className="text-primary font-bold">
             {" "}
             S’inscrire
