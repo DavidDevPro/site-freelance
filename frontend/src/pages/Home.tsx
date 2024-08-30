@@ -1,24 +1,29 @@
-import { About } from "@/components/landing/About";
-import { Cta } from "@/components/landing/Cta";
-import { FAQ } from "@/components/landing/FAQ";
-import { Features } from "@/components/landing/Features";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/landing/Hero";
+import {
+  About,
+  Cta,
+  FAQ,
+  Features,
+  Hero,
+  Pricing,
+  UserFeedback,
+} from "@/components/landing/";
+
 // import { HowItWorks } from "@/components/landing/HowItWorks";
 // import { Newsletter } from "@/components/landing/Newsletter";
-import { Pricing } from "@/components/landing/Pricing";
-import { ScrollToTop } from "@/components/ScrollToTop";
+
 // import { Services } from "@/components/landing/Services";
 // import Skills from "@/components/landing/Skills";
 
 // import { Sponsors } from "@/components/Sponsors";
 // import { Team } from "@/components/landing/Team";
 
-import { UserFeedback } from "@/components/landing/UserFeedback";
+import { SiteFooter, SiteHeader } from "@/components/layout";
+import { ScrollToTop } from "@/components/shared";
 
-function Home() {
+const HomePage = () => {
   return (
     <>
+      <SiteHeader />
       <Hero />
       {/* <Sponsors /> */}
       <Features />
@@ -32,10 +37,10 @@ function Home() {
       {/* <Team /> */}
       {/* <Newsletter /> */}
       <FAQ />
-      <Footer />
+      <SiteFooter />
       <ScrollToTop />
     </>
   );
-}
+};
 
-export default Home;
+export default HomePage;

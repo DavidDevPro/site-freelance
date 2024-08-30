@@ -1,9 +1,15 @@
-// Définition de la variable `APP_NAME` pour le nom de l'application (à afficher dans l'onglet du navigateur)
-export const APP_NAME: string = "DavidWebProjects";
-export const APP_NAME2: string = "David Web Projects";
-
-// Définition de la variable `APP_DEV` pour le nom du développeur pour le copyright
-export const APP_DEV: string = "David CHANGEA"; 
+export const APP_NAME = import.meta.env.VITE_APP_NAME;
+export const APP_NAME2 = import.meta.env.VITE_APP_NAME2;
+export const APP_DEV = import.meta.env.VITE_APP_DEV;
+export const APP_MAIL = import.meta.env.VITE_APP_MAIL;
+export const APP_ADRESS = import.meta.env.VITE_APP_ADRESS;
+export const APP_ADRESS2 = import.meta.env.VITE_APP_ADRESS2;
+export const APP_TEL = import.meta.env.VITE_APP_TEL;
+export const APP_SIRET = import.meta.env.VITE_APP_SIRET;
+export const APP_AXEPTIO_CLIENT_ID = import.meta.env.VITE_APP_AXEPTIO_CLIENT_ID;
+export const APP_GOOGLE_ANALYTICS_ID = import.meta.env.VITE_APP_GOOGLE_ANALYTICS_ID;
+export const APP_GOOGLE_TAG_MANAGER_ID = import.meta.env.VITE_APP_GOOGLE_TAG_MANAGER_ID;
+export const APP_TMAXEPTIO_CLIENT_ID = import.meta.env.VITE_APP_TMAXEPTIO_CLIENT_ID;
 
 // Définition de la variable `basename` en fonction du mode de l'environnement
 // `name_files` correspond au nom du dossier où se trouvera le site en production (hors racine domaine)

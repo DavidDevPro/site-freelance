@@ -1,5 +1,5 @@
 import pilot from "@/assets/images/gerant.png";
-import { StyledButton } from "../StyledButton";
+import { StyledButton } from "../shared/StyledButton";
 import { APP_NAME } from "@/config";
 
 export const About = () => {

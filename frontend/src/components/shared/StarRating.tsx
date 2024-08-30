@@ -5,7 +5,7 @@ interface StarRatingProps {
   rating: number;
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
+export const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
   const renderStars = () => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -36,5 +36,3 @@ const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
 
   return <div className="flex">{renderStars()}</div>;
 };
-
-export default StarRating;

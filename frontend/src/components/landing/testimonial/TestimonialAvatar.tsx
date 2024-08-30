@@ -3,11 +3,13 @@ import AvatarCircles from "@/components/magicui/avatar-circles";
 import { Testimonial } from "@/services/testimonialsApi";
 import { pictureUrl } from "@/pictureConfig";
 
-interface AvatarProps {
+interface TestimonialAvatarProps {
   testimonials: Testimonial[];
 }
 
-export const Avatar: React.FC<AvatarProps> = ({ testimonials }) => {
+export const TestimonialAvatar: React.FC<TestimonialAvatarProps> = ({
+  testimonials,
+}) => {
   const [avatarUrls, setAvatarUrls] = useState<string[]>([]);
   const [numPeople, setNumPeople] = useState(0);
 

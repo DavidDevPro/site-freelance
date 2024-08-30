@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FormProvider, useWatch, UseFormReturn } from "react-hook-form";
-import { StyledButton } from "@/components/StyledButton";
-import { Step1Formule } from "./Step1Formule";
-import { Step2Options } from "./Step2Options";
-import { Step3SupplementalInfo } from "./Step3SupplementalInfo";
-import { Step4PersonalInfo } from "./Step4PersonalInfo";
-import { Step5Recap } from "./Step5Recap";
-import { CalendarIframe } from "@/components/googleCalendar/CalendarIframe";
-import { validateFileName } from "@/utils/utils";
-import { showProposalSuccess, showProposalError } from "@/utils/toastUtils";
+import { StyledButton, CalendarIframe } from "@/components/shared";
+import {
+  Step1Formule,
+  Step2Options,
+  Step3SupplementalInfo,
+  Step4PersonalInfo,
+  Step5Recap,
+} from "@/components/landing/questionnaire";
+import { validateFileName } from "@/lib/utils";
+import { showProposalSuccess, showProposalError } from "@/lib/utils/toastUtils";
 import { createProposalRequest } from "@/services/proposalRequestApi"; // Import API functions
 
 interface QuestionnairePageProps {
@@ -21,7 +22,7 @@ interface QuestionnairePageProps {
   methods: UseFormReturn; // Typage correct pour les methods
 }
 
-const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
+export const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
   dataFormulas,
   closeModal,
   methods,
@@ -311,5 +312,3 @@ const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
     </FormProvider>
   );
 };
-
-export default QuestionnairePage;

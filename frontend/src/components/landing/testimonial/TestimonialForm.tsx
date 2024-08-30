@@ -8,10 +8,10 @@ import { useDropzone } from "react-dropzone";
 import {
   showTestimonialSuccess,
   showTestimonialError,
-} from "@/utils/toastUtils";
+} from "@/lib/utils/toastUtils";
 import { createTestimonial } from "@/services/testimonialsApi";
 import { MdClose } from "react-icons/md";
-import { StyledButton } from "@/components/StyledButton";
+import { StyledButton } from "@/components/shared/StyledButton";
 
 const MAX_CHAR_COUNT = 300;
 const MIN_CHAR_COUNT = 50;
@@ -53,7 +53,7 @@ interface TestimonialFormProps {
   closeModal: () => void;
 }
 
-const TestimonialForm: React.FC<TestimonialFormProps> = ({
+export const TestimonialForm: React.FC<TestimonialFormProps> = ({
   onSubmit,
   closeModal,
 }) => {
@@ -255,5 +255,3 @@ const TestimonialForm: React.FC<TestimonialFormProps> = ({
     </form>
   );
 };
-
-export default TestimonialForm;

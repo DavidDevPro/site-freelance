@@ -177,9 +177,13 @@
     <!-- Preload key resources -->
     <link rel="preload" href="/src/main.tsx" as="script" />
 
-    <script>
+    <!-- Import du fichier de configuration et configuration Axeptio -->
+    <script type="module">
+      import { APP_AXEPTIO_CLIENT_ID } from "@/config";
+
+      // Configuration Axeptio
       window.axeptioSettings = {
-        clientId: "66d08a73c0b2c657df23f74b",
+        clientId: APP_AXEPTIO_CLIENT_ID,
         cookiesVersion: "davidwebprojects-fr-EU",
         googleConsentMode: {
           default: {
@@ -199,8 +203,11 @@
         t.parentNode.insertBefore(e, t);
       })(document, "script");
     </script>
+
     <!-- Google Tag Manager -->
-    <script>
+    <script type="module">
+      import { APP_GOOGLE_TAG_MANAGER_ID } from "@/config";
+
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -210,36 +217,50 @@
         j.async = true;
         j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
         f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", "GTM-P6PBFX3T");
+      })(
+        window,
+        document,
+        "script",
+        "dataLayer",
+        "${APP_GOOGLE_TAG_MANAGER_ID}"
+      );
     </script>
     <!-- End Google Tag Manager -->
-  </head>
-  <body>
-    <!-- Google Tag Manager (avec consentement RGPD en amont) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-56LHPMXG8V"
-    ></script>
-    <script>
+
+    <!-- Google Analytics -->
+    <script type="module">
+      import {
+        APP_GOOGLE_ANALYTICS_ID,
+        APP_TMAXEPTIO_CLIENT_ID,
+      } from "@/config";
+
+      const gaScript = document.createElement("script");
+      gaScript.src =
+        "https://www.googletagmanager.com/gtag/js?id=${APP_GOOGLE_ANALYTICS_ID}";
+      gaScript.async = true;
+      document.head.appendChild(gaScript);
+
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "G-56LHPMXG8V", {
+      gtag("config", "${APP_GOOGLE_ANALYTICS_ID}", {
         anonymize_ip: true,
         cookie_flags: "SameSite=None;Secure",
       });
     </script>
+  </head>
+  <body>
     <!-- Google Tag Manager (noscript) axeptio -->
-    <noscript
-      ><iframe
-        src="https://www.googletagmanager.com/ns.html?id=GTM-P6PBFX3T"
+    <noscript>
+      <iframe
+        src="https://www.googletagmanager.com/ns.html?id=${APP_TMAXEPTIO_CLIENT_ID}"
         height="0"
         width="0"
         style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
+      ></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <!-- Contenu principal -->

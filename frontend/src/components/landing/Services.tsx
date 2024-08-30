@@ -4,7 +4,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { MagnifierIcon, WalletIcon, ChartIcon } from "@/components/Icons";
+import {
+  MagnifierIcon,
+  WalletIcon,
+  ChartIcon,
+} from "@/components/shared/Icons";
 import cubeLeg from "@/assets/images/cube-leg.png";
 
 interface ServiceProps {

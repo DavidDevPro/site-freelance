@@ -12,9 +12,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Footer } from "@/components/Footer";
-import { StyledButton } from "@/components/StyledButton";
+
+import { StyledButton } from "@/components/shared/StyledButton";
 import { APP_NAME2 } from "@/config";
+import { SiteFooter, SiteHeader } from "@/components/layout";
 
 // Schéma de validation pour le formulaire de connexion
 const loginSchema = z.object({
@@ -26,7 +27,7 @@ const loginSchema = z.object({
   }),
 });
 
-const Login = () => {
+const LoginPage = () => {
   // Créer le formulaire avec React Hook Form et Zod
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -48,6 +49,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col ">
+      <SiteHeader />
       {/* Contenu principal */}
       <div className="flex-grow flex flex-col justify-center items-center space-y-10">
         <div className="flex w-96 justify-center">
@@ -111,7 +113,7 @@ const Login = () => {
               <div className="flex justify-center">
                 <StyledButton className="w-full">
                   <a
-                    href="#!"
+                    href="/forgot-password"
                     className=" font-semibold transition duration-300 ease  "
                   >
                     Mot de passe oublié ?
@@ -130,7 +132,7 @@ const Login = () => {
 
         <p>
           Nouveau sur {APP_NAME2} ?
-          <a href="#!" className="text-primary font-bold">
+          <a href="/new-account" className="text-primary font-bold">
             {" "}
             S’inscrire
           </a>
@@ -139,12 +141,11 @@ const Login = () => {
 
       {/* Footer avec une largeur de 1400px et un fond blanc */}
       <div className="bg-white w-full flex justify-center">
-        <div className="w-[1400px]">
-          <Footer />
-        </div>
+        <div className="w-[1400px]"></div>
       </div>
+      <SiteFooter />
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;

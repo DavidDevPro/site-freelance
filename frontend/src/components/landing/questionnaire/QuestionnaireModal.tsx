@@ -7,10 +7,10 @@ import {
   DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import QuestionnairePage from "./QuestionnairePage";
+import { QuestionnairePage } from "./QuestionnairePage";
 
 import { useForm } from "react-hook-form";
-import { StyledButton } from "@/components/StyledButton";
+import { StyledButton } from "@/components/shared/StyledButton";
 
 interface Option {
   name: string;

@@ -8,7 +8,7 @@ import { IoMdAnalytics } from "react-icons/io";
 import { AiFillSecurityScan } from "react-icons/ai";
 import { APP_NAME } from "@/config";
 
-export const termsSections = [
+export const PrivacySections = [
   {
     title: "Introduction",
     content: (

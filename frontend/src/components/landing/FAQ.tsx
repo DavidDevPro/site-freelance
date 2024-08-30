@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { StyledButton } from "../StyledButton";
+import { StyledButton } from "../shared/StyledButton";
 
 interface FAQProps {
   question: string;

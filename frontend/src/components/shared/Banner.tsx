@@ -6,7 +6,7 @@ interface BannerProps {
   description: string;
 }
 
-const Banner: React.FC<BannerProps> = ({ title, description }) => {
+export const Banner: React.FC<BannerProps> = ({ title, description }) => {
   return (
     <div className="mt-8 p-6 bg-primary text-white rounded-lg shadow-lg flex items-center">
       <div className="mr-4 flex-shrink-0">
@@ -23,5 +23,3 @@ const Banner: React.FC<BannerProps> = ({ title, description }) => {
     </div>
   );
 };
-
-export default Banner;

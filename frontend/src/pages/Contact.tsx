@@ -1,13 +1,13 @@
-import { Footer } from "@/components/Footer";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { SocialIcons, GoogleCalendarModal } from "@/components/shared";
 
-import { GoogleCalendarModal } from "@/components/googleCalendar/GoogleCalendarModal";
-import { socialIcons } from "@/utils/socialLinks";
-import { contactDetails } from "@/utils/contactData";
+import { contactDetails } from "@/lib/utils/contactData";
+import { SiteFooter, SiteHeader } from "@/components/layout";
 
 const ContactPage = () => {
   return (
     <div className="bg-background flex flex-col min-h-screen">
+      <SiteHeader />
       <div className="flex-grow flex items-center justify-center p-6">
         <div className="max-w-7xl mx-auto w-full">
           <h1 className="text-4xl font-bold mb-4 text-center text-primary">
@@ -43,23 +43,12 @@ const ContactPage = () => {
                 <h3 className="text-lg font-semibold">
                   Retrouvez-moi sur les réseaux sociaux
                 </h3>
-                <div className="flex space-x-4 mt-2">
-                  {socialIcons.map((social, index) => {
-                    const IconComponent = social.icon;
-                    return (
-                      <a
-                        key={index}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label={social.label}
-                        title={social.title}
-                      >
-                        <IconComponent className="w-6 h-6 text-primary hover:text-gray-600" />
-                      </a>
-                    );
-                  })}
-                </div>
+                <SocialIcons
+                  iconSize="w-6 h-6"
+                  spaceBetween="space-x-4"
+                  containerClassName="mt-2"
+                  align="left" // Alignement à gauche
+                />
               </div>
               <div>
                 <h3 className="text-lg font-semibold mb-4">{`Besoin d'un échange téléphonique ?`}</h3>
@@ -73,7 +62,7 @@ const ContactPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      <SiteFooter />
     </div>
   );
 };

@@ -11,7 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { MdClose } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
-import { validateFileName } from "@/utils/utils";
+import { validateFileName } from "@/lib/utils";
 
 const MAX_CHAR_COUNT = 2000;
 const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3 MB

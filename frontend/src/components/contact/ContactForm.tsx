@@ -15,8 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import sendContactForm from "@/services/contactApi";
-import { showMessageSuccess, showMessageError } from "@/utils/toastUtils";
-import { StyledButton } from "@/components/StyledButton";
+import { showMessageSuccess, showMessageError } from "@/lib/utils/toastUtils";
+import { StyledButton } from "@/components/shared/StyledButton";
 import { useState } from "react";
 
 // Définir le schéma de validation du formulaire avec Zod

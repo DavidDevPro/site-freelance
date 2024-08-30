@@ -6,7 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { StyledButton } from "../StyledButton";
+import { StyledButton } from "../shared/StyledButton";
 
 interface FeatureProps {
   title: string;

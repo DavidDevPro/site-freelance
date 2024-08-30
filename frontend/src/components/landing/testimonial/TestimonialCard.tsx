@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { pictureUrl } from "@/pictureConfig";
-import { formatDate } from "@/utils/utils";
-import StarRating from "@/components/StarRating";
+import { formatDate } from "@/lib/utils";
+import { StarRating } from "@/components/shared";
 
 interface TestimonialCardProps {
   id: number;
@@ -31,7 +31,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
   return (
     <div
       className={cn(
-        "max-w-sm md:break-inside-avoid overflow-hidden flex flex-col justify-between p-6 rounded-2xl shadow-lg",
+        "max-w-sm md:break-inside-avoid overflow-hidden flex flex-col justify-between p-6 rounded-xl shadow-lg",
         // light styles
         "border border-primary bg-card",
         // dark styles

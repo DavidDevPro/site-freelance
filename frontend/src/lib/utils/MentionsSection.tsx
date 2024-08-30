@@ -12,7 +12,7 @@ import { TbDeviceAnalytics } from "react-icons/tb";
 import { BsImages } from "react-icons/bs";
 import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
 import { MdContactMail } from "react-icons/md";
-import { legalDetails } from "@/utils/contactData";
+import { legalDetails } from "@/lib/utils/contactData";
 import { APP_NAME } from "@/config";
 
 export const MentionsSections = [

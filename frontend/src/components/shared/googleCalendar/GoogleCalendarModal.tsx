@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
-import { CalendarIframe } from "@/components/googleCalendar/CalendarIframe"; // Importation de votre composant
-import { StyledButton } from "../StyledButton";
+import { CalendarIframe, StyledButton } from "@/components/shared"; // Importation de votre composant
 
 export const GoogleCalendarModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +28,12 @@ export const GoogleCalendarModal: React.FC = () => {
         sm:max-h-[70vh] md:max-h-[80vh] lg:max-h-[85vh] xl:max-h-[80vh] 2xl:max-h-[90vh]
         flex flex-col"
       >
+        <DialogHeader>
+          <DialogTitle className="text-base sm:text-lg md:text-xl font-bold text-center text-primary">
+            Prendre un rendez-vous
+          </DialogTitle>
+        </DialogHeader>
+        <DialogDescription></DialogDescription>
         {/* Utilisation de votre composant CalendarIframe */}
         <div className="flex-grow overflow-y-auto">
           <CalendarIframe />

@@ -8,15 +8,15 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import TestimonialForm from "./TestimonialForm";
+import { TestimonialForm } from "./TestimonialForm";
 
-import { StyledButton } from "@/components/StyledButton";
+import { StyledButton } from "@/components/shared/StyledButton";
 
-interface AddTestimonialDialogProps {
+interface TestimonialAddModalProps {
   onTestimonialAdded: () => void;
 }
 
-const AddTestimonialDialog: React.FC<AddTestimonialDialogProps> = ({
+export const TestimonialAddModal: React.FC<TestimonialAddModalProps> = ({
   onTestimonialAdded,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,5 +46,3 @@ const AddTestimonialDialog: React.FC<AddTestimonialDialogProps> = ({
     </Dialog>
   );
 };
-
-export default AddTestimonialDialog;

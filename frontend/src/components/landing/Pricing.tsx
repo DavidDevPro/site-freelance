@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { CheckIcon } from "@radix-ui/react-icons";
-import { StyledButton } from "@/components/StyledButton";
-import Banner from "@/components/Banner";
+import { StyledButton, Banner } from "@/components/shared";
 import { QuestionnaireModal } from "@/components/landing/questionnaire/QuestionnaireModal";
 import { fetchFormulas, Formula } from "@/services/formulaApi";
 
