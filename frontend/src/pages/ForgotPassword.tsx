@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { StyledButton } from "@/components/shared/StyledButton";
+import { PrimaryButton } from "@/components/shared/PrimaryButton";
 import { SiteFooter, SiteHeader } from "@/components/layout";
 
 // Schéma de validation pour le formulaire de réinitialisation de mot de passe
@@ -87,9 +87,9 @@ const ForgotPasswordPage = () => {
               />
 
               <div className="text-center">
-                <StyledButton type="submit" className="w-full">
+                <PrimaryButton type="submit" className="w-full">
                   Envoyer
-                </StyledButton>
+                </PrimaryButton>
               </div>
             </form>
           </Form>

@@ -1,0 +1,22 @@
+{
+  "hourlyRates": [
+    {
+      "title": "Refonte de Site",
+      "description": "Analyse, conception graphique, développement, test et mise en ligne",
+      "price": "50€/heure",
+      "icon": "FaWrench"
+    },
+    {
+      "title": "Amélioration des Performances",
+      "description": "Audit, optimisation, mise en cache, suivi des améliorations",
+      "price": "40€/heure",
+      "icon": "FaChartLine"
+    },
+    {
+      "title": "SEO (Search Engine Optimization)",
+      "description": "Audit SEO, intégration des mots-clés, optimisation des contenus, stratégie de backlinks",
+      "price": "45€/heure",
+      "icon": "FaSearchDollar"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 export { Banner } from './Banner';
-export { StyledButton } from './StyledButton';
+export { PrimaryButton } from './PrimaryButton';
 export { ScrollToTop } from './ScrollToTop';
 export { CalendarIframe } from './googleCalendar/CalendarIframe';
 export { GoogleCalendarModal } from './googleCalendar/GoogleCalendarModal';

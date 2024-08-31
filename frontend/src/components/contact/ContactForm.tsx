@@ -16,7 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import sendContactForm from "@/services/contactApi";
 import { showMessageSuccess, showMessageError } from "@/lib/utils/toastUtils";
-import { StyledButton } from "@/components/shared/StyledButton";
+import { PrimaryButton } from "@/components/shared/PrimaryButton";
 import { useState } from "react";
 
 // Définir le schéma de validation du formulaire avec Zod
@@ -251,9 +251,9 @@ export function ContactForm() {
         />
         {/* Bouton Envoyer */}
         <div className="flex justify-center mb-4">
-          <StyledButton type="submit" variant="primary">
+          <PrimaryButton type="submit" variant="primary">
             Envoyer
-          </StyledButton>
+          </PrimaryButton>
         </div>
       </form>
     </Form>

@@ -7,10 +7,10 @@ import {
   DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { QuestionnairePage } from "./QuestionnairePage";
+import { QuoteRequestForm } from "@/components/landing/quoteRequest";
 
 import { useForm } from "react-hook-form";
-import { StyledButton } from "@/components/shared/StyledButton";
+import { PrimaryButton } from "@/components/shared/PrimaryButton";
 
 interface Option {
   name: string;
@@ -22,11 +22,11 @@ interface Formula {
   options: Option[];
 }
 
-interface QuestionnaireModalProps {
+interface QuoteRequestModalProps {
   dataFormulas: Formula[];
 }
 
-export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
+export const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({
   dataFormulas,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,16 +44,16 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <StyledButton onClick={handleOpen}>
+        <PrimaryButton onClick={handleOpen}>
           Demander un devis personnalisé
-        </StyledButton>
+        </PrimaryButton>
       </DialogTrigger>
       <DialogContent
         className="max-w-full mx-auto p-4 md:p-6 bg-white rounded-md shadow-md w-full sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl 2xl:max-w-6xl 
       sm:max-h-[70vh] md:max-h-[80vh] lg:max-h-[85vh] xl:max-h-[80vh] 2xl:max-h-[90vh] flex flex-col"
       >
         <DialogHeader>
-          <DialogTitle className="text-lg md:text-xl font-bold text-center">
+          <DialogTitle className="text-lg md:text-xl font-bold text-center text-primary">
             Demande de devis personnalisé
           </DialogTitle>
           <DialogDescription className="text-sm md:text-base text-center">
@@ -64,7 +64,7 @@ export const QuestionnaireModal: React.FC<QuestionnaireModalProps> = ({
 
         {/* Le contenu du modal */}
         <div className="flex-grow overflow-y-auto">
-          <QuestionnairePage
+          <QuoteRequestForm
             dataFormulas={dataFormulas}
             closeModal={() => setIsOpen(false)}
             methods={methods}

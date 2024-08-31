@@ -4,7 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { StyledButton } from "../shared/StyledButton";
+import { PrimaryButton } from "../shared/PrimaryButton";
 
 interface FAQProps {
   question: string;
@@ -73,11 +73,11 @@ export const FAQ = () => {
       </Accordion>
       <div className="flex items-center justify-center space-x-6 mt-10">
         <p className="font-medium">Vous avez encore des questions ?</p>
-        <StyledButton>
+        <PrimaryButton>
           <a rel="noreferrer noopener" href="#" className="">
             Contactez-moi
           </a>
-        </StyledButton>
+        </PrimaryButton>
       </div>
     </section>
   );

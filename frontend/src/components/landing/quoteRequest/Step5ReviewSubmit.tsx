@@ -8,7 +8,7 @@ import {
   User,
 } from "lucide-react";
 
-interface Step5RecapProps {
+interface Step5ReviewSubmitProps {
   selectedFormula: string | null;
   dataFormulas: Array<{
     name: string;
@@ -16,7 +16,7 @@ interface Step5RecapProps {
   }>;
 }
 
-export const Step5Recap: React.FC<Step5RecapProps> = ({
+export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
   selectedFormula,
   dataFormulas,
 }) => {

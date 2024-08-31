@@ -12,7 +12,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { routeList } from "@/components/data/routes";
 
 import { ModeToggle } from "@/components/layout/header/ModeToggle";
-import { StyledButton } from "@/components/shared/StyledButton";
+import { PrimaryButton } from "@/components/shared/PrimaryButton";
+import { BiLogInCircle } from "react-icons/bi";
 
 export const NavBarDesktop: React.FC = () => {
   const navigate = useNavigate();
@@ -44,11 +45,15 @@ export const NavBarDesktop: React.FC = () => {
       </NavigationMenu>
 
       <div className="hidden lg:flex items-center space-x-4">
-        <StyledButton variant="primary">
-          <Link to="/login" className="text-white no-underline">
+        <PrimaryButton variant="primary">
+          <Link
+            to="/login"
+            className="text-white no-underline flex items-center"
+          >
+            <BiLogInCircle className="mr-2 h-4 w-4" />
             Se Connecter
           </Link>
-        </StyledButton>
+        </PrimaryButton>
         <ModeToggle />
       </div>
     </>

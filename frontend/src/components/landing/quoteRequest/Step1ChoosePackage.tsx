@@ -15,12 +15,12 @@ import {
 import { useFormContext } from "react-hook-form";
 import { useState } from "react";
 
-interface Step1FormuleProps {
+interface Step1ChoosePackageProps {
   dataFormulas: Array<{ name: string }>;
   onSelectFormula: (formula: string) => void;
 }
 
-export const Step1Formule: React.FC<Step1FormuleProps> = ({
+export const Step1ChoosePackage: React.FC<Step1ChoosePackageProps> = ({
   dataFormulas,
   onSelectFormula,
 }) => {
@@ -52,7 +52,11 @@ export const Step1Formule: React.FC<Step1FormuleProps> = ({
               </SelectTrigger>
               <SelectContent>
                 {dataFormulas.map((pkg, index) => (
-                  <SelectItem key={index} value={pkg.name}>
+                  <SelectItem
+                    key={index}
+                    value={pkg.name}
+                    className="hover:bg-primary hover:text-card focus:bg-primary focus:text-card"
+                  >
                     {pkg.name}
                   </SelectItem>
                 ))}

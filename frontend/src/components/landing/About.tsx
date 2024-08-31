@@ -1,5 +1,5 @@
 import pilot from "@/assets/images/gerant.png";
-import { StyledButton } from "../shared/StyledButton";
+import { PrimaryButton } from "../shared/PrimaryButton";
 import { APP_NAME } from "@/config";
 
 export const About = () => {
@@ -36,7 +36,7 @@ export const About = () => {
               <p className="text-lg font-medium text-black dark:text-white">
                 En savoir plus :
               </p>
-              <StyledButton variant="primary">
+              <PrimaryButton variant="primary">
                 <a
                   href="https://portfolio.davidwebprojects.fr/"
                   target="_blank"
@@ -45,7 +45,7 @@ export const About = () => {
                 >
                   Découvrir mon portfolio
                 </a>
-              </StyledButton>
+              </PrimaryButton>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ import {
 } from "@/lib/utils/toastUtils";
 import { createTestimonial } from "@/services/testimonialsApi";
 import { MdClose } from "react-icons/md";
-import { StyledButton } from "@/components/shared/StyledButton";
+import { PrimaryButton } from "@/components/shared/PrimaryButton";
 
 const MAX_CHAR_COUNT = 300;
 const MIN_CHAR_COUNT = 50;
@@ -248,9 +248,9 @@ export const TestimonialForm: React.FC<TestimonialFormProps> = ({
         )}
       </div>
       <div className="flex justify-center mb-4">
-        <StyledButton type="submit" variant="primary" isLoading={loading}>
+        <PrimaryButton type="submit" variant="primary" isLoading={loading}>
           {loading ? "Envoi..." : "Envoyer"}
-        </StyledButton>
+        </PrimaryButton>
       </div>
     </form>
   );

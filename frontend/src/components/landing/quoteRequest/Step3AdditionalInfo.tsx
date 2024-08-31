@@ -25,7 +25,7 @@ const ACCEPTED_FILE_TYPES = [
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 ];
 
-export const Step3SupplementalInfo = () => {
+export const Step3AdditionalInfo = () => {
   const {
     control,
     watch,

@@ -14,11 +14,12 @@ import {
   SelectTrigger,
   SelectContent,
   SelectItem,
+  SelectValue,
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Hotel, Mail, MapPin, Phone, User } from "lucide-react";
 
-export const Step4PersonalInfo = () => {
+export const Step4PersonalDetails = () => {
   const {
     control,
     formState: { errors },
@@ -129,17 +130,21 @@ export const Step4PersonalInfo = () => {
                       (civility) => civility.shortLabel === value
                     );
                     if (selectedCivility) {
-                      field.onChange(selectedCivility.longLabel);
+                      field.onChange(selectedCivility.shortLabel); // Utilisez la même valeur pour SelectItem et Select
                       clearErrors("civility");
                     }
                   }}
                 >
                   <SelectTrigger>
-                    {field.value || "Sélectionnez une civilité"}
+                    <SelectValue placeholder="Sélectionnez une civilité" />
                   </SelectTrigger>
                   <SelectContent>
                     {civilities.map((civility) => (
-                      <SelectItem key={civility.id} value={civility.shortLabel}>
+                      <SelectItem
+                        key={civility.id}
+                        value={civility.shortLabel}
+                        className="hover:bg-primary hover:text-card focus:bg-primary focus:text-card"
+                      >
                         {civility.longLabel}
                       </SelectItem>
                     ))}
@@ -321,7 +326,6 @@ export const Step4PersonalInfo = () => {
           )}
         />
       </div>
-
       <div className="flex flex-col md:flex-row md:space-x-4">
         <FormField
           control={control}

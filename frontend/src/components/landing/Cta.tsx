@@ -1,4 +1,4 @@
-import { StyledButton, GoogleCalendarModal } from "@/components/shared";
+import { PrimaryButton, GoogleCalendarModal } from "@/components/shared";
 
 export const Cta = () => {
   const handleContactClick = () => {
@@ -38,13 +38,13 @@ export const Cta = () => {
           </div>
 
           <div className="flex flex-col lg:flex-row items-center lg:col-start-2 gap-4">
-            <StyledButton
+            <PrimaryButton
               className=" md:w-auto"
               onClick={handleContactClick}
               aria-label="Contactez-nous"
             >
               Contactez-nous
-            </StyledButton>
+            </PrimaryButton>
             <GoogleCalendarModal />
           </div>
         </div>

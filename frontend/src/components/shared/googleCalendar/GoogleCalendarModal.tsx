@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import { CalendarIframe, StyledButton } from "@/components/shared"; // Importation de votre composant
+import { CalendarIframe, PrimaryButton } from "@/components/shared"; // Importation de votre composant
 
 export const GoogleCalendarModal: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,7 +20,7 @@ export const GoogleCalendarModal: React.FC = () => {
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <StyledButton>Prendre un rendez-vous</StyledButton>
+        <PrimaryButton>Prendre un rendez-vous</PrimaryButton>
       </DialogTrigger>
       <DialogContent
         className="max-w-full mx-auto p-4 md:p-6 bg-white rounded-md shadow-md w-full

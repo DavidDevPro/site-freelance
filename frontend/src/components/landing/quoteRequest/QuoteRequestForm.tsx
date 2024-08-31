@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { FormProvider, useWatch, UseFormReturn } from "react-hook-form";
-import { StyledButton, CalendarIframe } from "@/components/shared";
+import { PrimaryButton, CalendarIframe } from "@/components/shared";
 import {
-  Step1Formule,
-  Step2Options,
-  Step3SupplementalInfo,
-  Step4PersonalInfo,
-  Step5Recap,
-} from "@/components/landing/questionnaire";
+  Step1ChoosePackage,
+  Step2SelectOptions,
+  Step3AdditionalInfo,
+  Step4PersonalDetails,
+  Step5ReviewSubmit,
+} from "@/components/landing/quoteRequest";
 import { validateFileName } from "@/lib/utils";
-import { showProposalSuccess, showProposalError } from "@/lib/utils/toastUtils";
 import { createProposalRequest } from "@/services/proposalRequestApi"; // Import API functions
+import { showProposalError, showProposalSuccess } from "@/lib/utils/toastUtils";
+import { LuArrowRightCircle, LuArrowLeftCircle } from "react-icons/lu";
+import { FaPaperPlane } from "react-icons/fa";
 
-interface QuestionnairePageProps {
+interface QuoteRequestFormProps {
   dataFormulas: Array<{
     name: string;
     options: Array<{ name: string; description?: string }>;
@@ -22,7 +24,7 @@ interface QuestionnairePageProps {
   methods: UseFormReturn; // Typage correct pour les methods
 }
 
-export const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
+export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
   dataFormulas,
   closeModal,
   methods,
@@ -170,7 +172,7 @@ export const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
       title: "Étape 1 : Choisissez votre formule",
       subtitle: "",
       content: (
-        <Step1Formule
+        <Step1ChoosePackage
           dataFormulas={dataFormulas}
           onSelectFormula={handleSelectFormula}
         />
@@ -180,7 +182,7 @@ export const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
       title: "Étape 2 : Sélectionnez les options",
       subtitle: "(facultatif)",
       content: (
-        <Step2Options
+        <Step2SelectOptions
           addPages={addPages}
           setAddPages={setAddPages}
           pageCount={pageCount}
@@ -193,18 +195,18 @@ export const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
     {
       title: "Étape 3 : Informations supplémentaires",
       subtitle: "(facultatif)",
-      content: <Step3SupplementalInfo />,
+      content: <Step3AdditionalInfo />,
     },
     {
       title: "Étape 4 : Informations personnelles",
       subtitle: "",
-      content: <Step4PersonalInfo />,
+      content: <Step4PersonalDetails />,
     },
     {
       title: "Étape 5 : Récapitulatif de votre demande",
       subtitle: "",
       content: (
-        <Step5Recap
+        <Step5ReviewSubmit
           selectedFormula={selectedFormula}
           dataFormulas={dataFormulas}
         />
@@ -283,23 +285,26 @@ export const QuestionnairePage: React.FC<QuestionnairePageProps> = ({
             {steps[currentStep].content}
           </div>
           <div className="flex flex-col sm:flex-row justify-between">
-            <StyledButton
+            <PrimaryButton
               variant="secondary"
               onClick={prevStep}
               disabled={currentStep === 0}
               className="mb-4 sm:mb-0"
             >
+              <LuArrowLeftCircle className="mr-2 h-6 w-6" />
               Précédent
-            </StyledButton>
+            </PrimaryButton>
             {currentStep < steps.length - 2 && (
-              <StyledButton variant="primary" onClick={nextStep}>
+              <PrimaryButton variant="primary" onClick={nextStep}>
                 Suivant
-              </StyledButton>
+                <LuArrowRightCircle className="ml-2 h-6 w-6" />
+              </PrimaryButton>
             )}
             {currentStep === steps.length - 2 && (
-              <StyledButton variant="primary" onClick={handleSubmit}>
+              <PrimaryButton variant="primary" onClick={handleSubmit}>
                 Soumettre
-              </StyledButton>
+                <FaPaperPlane className="ml-2 h-6 w-6" />
+              </PrimaryButton>
             )}
           </div>
           {errorMessage && (

@@ -19,18 +19,18 @@ interface Option {
   description?: string;
 }
 
-interface Step2OptionsProps {
+interface Step2SelectOptionsProps {
   selectedFormula: string | null;
   dataFormulas: Array<{ name: string; options: Option[] }>;
 }
 
-export const Step2Options: React.FC<{
+export const Step2SelectOptions: React.FC<{
   addPages: boolean;
   setAddPages: React.Dispatch<React.SetStateAction<boolean>>;
   pageCount: number;
   setPageCount: React.Dispatch<React.SetStateAction<number>>;
   selectedFormula: string | null;
-  dataFormulas: Step2OptionsProps["dataFormulas"];
+  dataFormulas: Step2SelectOptionsProps["dataFormulas"];
 }> = ({
   addPages,
   setAddPages,

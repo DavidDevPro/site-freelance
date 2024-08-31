@@ -15,10 +15,11 @@ import { Menu } from "lucide-react";
 import { ModeToggle } from "@/components/layout/header/ModeToggle";
 import Logo from "@/assets/images/icon.webp";
 import { Link, useNavigate } from "react-router-dom";
-import { CopyrightText, SocialIcons, StyledButton } from "@/components/shared";
+import { CopyrightText, SocialIcons, PrimaryButton } from "@/components/shared";
 import { APP_NAME } from "@/config";
 
 import { routeList } from "@/components/data/routes";
+import { BiLogInCircle } from "react-icons/bi";
 
 export const NavBarMobile: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,11 +99,15 @@ export const NavBarMobile: React.FC = () => {
           <SheetFooter className="sm:flex-col sm:justify-end sm:space-x-2 flex flex-col gap-2">
             <Separator className="w-full mb-4" />
             <div className="flex items-center gap-2 w-full justify-center">
-              <StyledButton variant="primary">
-                <Link to="/login" className="text-white no-underline">
+              <PrimaryButton variant="primary">
+                <Link
+                  to="/login"
+                  className="text-white no-underline flex items-center"
+                >
+                  <BiLogInCircle className="mr-2 h-4 w-4" />
                   Se Connecter
                 </Link>
-              </StyledButton>
+              </PrimaryButton>
               <ModeToggle />
             </div>
             <Separator className="w-full mt-4 mb-2" />

@@ -6,11 +6,14 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { StyledButton } from "../shared/StyledButton";
+import { PrimaryButton } from "../shared/PrimaryButton";
+import { LuInfo } from "react-icons/lu";
+import { useNavigate } from "react-router-dom";
 
 interface FeatureProps {
   title: string;
   description: string;
+  link: string;
 }
 
 const features: FeatureProps[] = [
@@ -18,16 +21,19 @@ const features: FeatureProps[] = [
     title: "Sites web sur mesure",
     description:
       "Nous créons des sites web uniques, conçus spécifiquement pour répondre aux besoins de votre entreprise. Chaque projet est réalisé avec un souci du détail, garantissant une interface utilisateur intuitive et un design qui reflète parfaitement votre identité de marque.",
+    link: "/services/developpement-sites-vitrine",
   },
   {
     title: "Hébergement et SEO",
     description:
       "Nos solutions d'hébergement sécurisées et performantes s'associent à des stratégies SEO avancées pour garantir que votre site est non seulement en ligne, mais aussi facilement trouvé par vos clients. Maximisez votre visibilité en ligne avec nos services d'optimisation pour les moteurs de recherche.",
+    link: "/services/refonte-sites",
   },
   {
     title: "Performance et optimisation",
     description:
       "Nous optimisons la vitesse et les performances de votre site pour offrir une expérience utilisateur fluide et rapide. Avec des temps de chargement réduits et une architecture technique de qualité, votre site sera prêt à exceller dans un environnement numérique concurrentiel.",
+    link: "/services/analyse-performance",
   },
 ];
 
@@ -43,6 +49,10 @@ const featureList: string[] = [
 ];
 
 export const Features = () => {
+  const navigate = useNavigate();
+  const handleLearnMoreClick = (link: string) => {
+    navigate(link); // Utilisation de `navigate` pour la navigation
+  };
   return (
     <section id="features" className="container py-14">
       <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  font-bold text-center mb-4">
@@ -56,7 +66,7 @@ export const Features = () => {
       </p>
 
       <div className="mx-auto grid w-full justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {features.map(({ title, description }: FeatureProps) => (
+        {features.map(({ title, description, link }: FeatureProps) => (
           <Card
             key={title}
             className="relative flex flex-col w-full max-w-[400px] overflow-hidden rounded-2xl border border-primary p-6 text-primary dark:text-white min-h-[400px] shadow-lg"
@@ -74,11 +84,13 @@ export const Features = () => {
               </CardContent>
             </div>
             <CardFooter className="flex justify-center mt-6">
-              <StyledButton variant="primary">
-                <a href="/contact" className="text-white">
-                  En savoir plus
-                </a>
-              </StyledButton>
+              <PrimaryButton
+                variant="primary"
+                onClick={() => handleLearnMoreClick(link)}
+              >
+                <LuInfo className="mr-2 h-6 w-6" />
+                En Savoir Plus
+              </PrimaryButton>
             </CardFooter>
           </Card>
         ))}

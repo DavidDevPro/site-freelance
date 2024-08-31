@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 const primaryButtonClasses = cn(
   "group relative w-auto flex items-center justify-center gap-2 overflow-hidden text-sm font-semibold tracking-tighter",
-  "transform-gpu ring-offset-current transition-all duration-300 ease-out text-card",
+  "transform-gpu ring-offset-current transition-all duration-300 ease-out text-white",
   "bg-primary hover:ring-2 hover:ring-primary hover:ring-offset-2",
   "px-8 py-5"
 );
@@ -18,7 +18,7 @@ const secondaryButtonClasses = cn(
   "px-8 py-5"
 );
 
-interface StyledButtonProps {
+interface PrimaryButtonProps {
   isLoading?: boolean;
   children: React.ReactNode;
   onClick?: () => void;
@@ -28,9 +28,9 @@ interface StyledButtonProps {
   className?: string;
 }
 
-export const StyledButton = React.forwardRef<
+export const PrimaryButton = React.forwardRef<
   HTMLButtonElement,
-  StyledButtonProps
+  PrimaryButtonProps
 >(
   (
     {
@@ -65,4 +65,4 @@ export const StyledButton = React.forwardRef<
   }
 );
 
-StyledButton.displayName = "StyledButton";
+PrimaryButton.displayName = "PrimaryButton";

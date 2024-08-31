@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { StyledButton } from "../shared/StyledButton";
+import { PrimaryButton } from "../shared/PrimaryButton";
 import heroSmallWebp from "@/assets/images/hero-small.webp";
 import heroMediumWebp from "@/assets/images/hero-medium.webp";
 import heroLargeWebp from "@/assets/images/hero-large.webp";
@@ -49,7 +49,7 @@ export const Hero = () => {
         <div className="text-center space-y-6 px-1 md:space-y-8 max-w-full">
           <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg shadow-black animate-fade-in">
             Concevez un Site Web Sur Mesure qui Reflète Votre Vision
-            <span className="block text-primary mt-4 text-2xl md:text-3xl font-bold drop-shadow-lg shadow-black">
+            <span className="block text-primary mt-4 text-2xl md:text-3xl font-semibold drop-shadow-sm shadow-black ">
               Des Solutions Personnalisées en Développement, Refonte, SEO et
               Hébergement.
             </span>
@@ -62,17 +62,17 @@ export const Hero = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in">
               <Link to="/contact" aria-label="Nous Contacter">
-                <StyledButton className="text-lg sm:text-xl md:text-2xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-200">
+                <PrimaryButton className=" text-xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-black">
                   Nous Contacter
-                </StyledButton>
+                </PrimaryButton>
               </Link>
               <Link to="/#pricing" aria-label="Nos Tarifs">
-                <StyledButton
+                <PrimaryButton
                   variant="secondary"
-                  className="text-lg sm:text-xl md:text-2xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-200"
+                  className="text-xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-black"
                 >
                   Nos Tarifs
-                </StyledButton>
+                </PrimaryButton>
               </Link>
             </div>
           </div>

@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { StyledButton } from "@/components/shared/StyledButton";
+import { PrimaryButton } from "@/components/shared/PrimaryButton";
 import { APP_NAME2 } from "@/config";
 import { SiteFooter, SiteHeader } from "@/components/layout";
 
@@ -111,20 +111,20 @@ const LoginPage = () => {
               />
 
               <div className="flex justify-center">
-                <StyledButton className="w-full">
+                <PrimaryButton className="w-full">
                   <a
                     href="/forgot-password"
                     className=" font-semibold transition duration-300 ease  "
                   >
                     Mot de passe oublié ?
                   </a>
-                </StyledButton>
+                </PrimaryButton>
               </div>
 
               <div className="text-center">
-                <StyledButton type="submit" className="w-full">
+                <PrimaryButton type="submit" className="w-full">
                   S'identifier
-                </StyledButton>
+                </PrimaryButton>
               </div>
             </form>
           </Form>

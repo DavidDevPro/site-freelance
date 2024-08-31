@@ -7,8 +7,11 @@ import {
   LoginPage,
   LegalPage,
   PrivacyPage,
-  NewAccountPage,
   ForgotPasswordPage,
+  EssentielPlanPage,
+  PackageDetailPage,
+  NotFoundPage,
+  ServiceDetailPage,
 } from "@/pages";
 import "./App.css";
 import { Toaster } from "./components/ui/sonner";
@@ -24,8 +27,14 @@ function App() {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/mentions-legales" element={<LegalPage />} />
         <Route path="/politique-de-confidentialite" element={<PrivacyPage />} />
-        <Route path="/new-account" element={<NewAccountPage />} />
+        {/* Route dynamique pour les services */}
+        <Route path="/services/:serviceName" element={<ServiceDetailPage />} />
+        {/* Route dynamique pour les packages */}
+        <Route path="/package/:packageName" element={<PackageDetailPage />} />
+        {/* Ajout de la route 404 */}
+        <Route path="*" element={<NotFoundPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="essentiel-plan" element={<EssentielPlanPage />} />
       </Routes>
       <Toaster />
     </Router>
