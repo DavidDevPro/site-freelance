@@ -81,9 +81,8 @@ export function Pricing() {
     <section id="pricing">
       <div className="mx-auto flex max-w-screen-xl flex-col gap-8 px-4 py-14 md:px-8">
         <div className="mx-auto max-w-5xl text-center">
-          <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-            Choisissez{" "}
-            <span className="bg-gradient-primary">votre formule</span> idéale.
+          <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-4">
+            Choisissez la formule adaptée à vos besoins
           </h2>
           <p className="mt-6 text-xl leading-8 text-black/80 dark:text-white">
             Sélectionnez une formule qui correspond à vos besoins. Chaque

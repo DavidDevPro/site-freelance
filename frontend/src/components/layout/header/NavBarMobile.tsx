@@ -19,7 +19,7 @@ import { CopyrightText, SocialIcons, PrimaryButton } from "@/components/shared";
 import { APP_NAME } from "@/config";
 
 import { routeList } from "@/components/data/routes";
-import { BiLogInCircle } from "react-icons/bi";
+import { BsPersonFillCheck } from "react-icons/bs";
 
 export const NavBarMobile: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -104,7 +104,7 @@ export const NavBarMobile: React.FC = () => {
                   to="/login"
                   className="text-white no-underline flex items-center"
                 >
-                  <BiLogInCircle className="mr-2 h-4 w-4" />
+                  <BsPersonFillCheck className="mr-2 h-4 w-4 " />
                   Se Connecter
                 </Link>
               </PrimaryButton>

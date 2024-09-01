@@ -16,6 +16,8 @@ import { Input } from "@/components/ui/input";
 import { PrimaryButton } from "@/components/shared/PrimaryButton";
 import { APP_NAME2 } from "@/config";
 import { SiteFooter, SiteHeader } from "@/components/layout";
+import { BsPersonCheck } from "react-icons/bs";
+import { LiaUserLockSolid } from "react-icons/lia";
 
 // Schéma de validation pour le formulaire de connexion
 const loginSchema = z.object({
@@ -114,8 +116,9 @@ const LoginPage = () => {
                 <PrimaryButton className="w-full">
                   <a
                     href="/forgot-password"
-                    className=" font-semibold transition duration-300 ease  "
+                    className=" flex font-semibold transition duration-300 ease  "
                   >
+                    <LiaUserLockSolid className="mr-2 h-4 w-4 " />
                     Mot de passe oublié ?
                   </a>
                 </PrimaryButton>
@@ -123,6 +126,7 @@ const LoginPage = () => {
 
               <div className="text-center">
                 <PrimaryButton type="submit" className="w-full">
+                  <BsPersonCheck className="mr-2 h-4 w-4 " />
                   S'identifier
                 </PrimaryButton>
               </div>

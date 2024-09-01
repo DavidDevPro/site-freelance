@@ -1,4 +1,5 @@
 import { PrimaryButton, GoogleCalendarModal } from "@/components/shared";
+import { RiMailSendLine } from "react-icons/ri";
 
 export const Cta = () => {
   const handleContactClick = () => {
@@ -43,6 +44,7 @@ export const Cta = () => {
               onClick={handleContactClick}
               aria-label="Contactez-nous"
             >
+              <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 " />
               Contactez-nous
             </PrimaryButton>
             <GoogleCalendarModal />

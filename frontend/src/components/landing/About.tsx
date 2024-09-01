@@ -1,6 +1,7 @@
 import pilot from "@/assets/images/gerant.png";
 import { PrimaryButton } from "../shared/PrimaryButton";
 import { APP_NAME } from "@/config";
+import { FaDev } from "react-icons/fa";
 
 export const About = () => {
   return (
@@ -41,8 +42,9 @@ export const About = () => {
                   href="https://portfolio.davidwebprojects.fr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white"
+                  className="text-white flex"
                 >
+                  <FaDev className="mr-2 mt-0.5 h-4 w-4 " />
                   Découvrir mon portfolio
                 </a>
               </PrimaryButton>

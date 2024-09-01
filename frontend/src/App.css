@@ -19,7 +19,7 @@
     --primary-foreground: 0 0% 100%; /* blanc */
 
     --secondary: 202 87% 4.9%; /* noir riche */
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 0 0% 0%; /* black */
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;

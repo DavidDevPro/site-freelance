@@ -7,7 +7,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
+import { SiGooglecalendar } from "react-icons/si";
 import { CalendarIframe, PrimaryButton } from "@/components/shared"; // Importation de votre composant
 
 export const GoogleCalendarModal: React.FC = () => {
@@ -20,7 +20,10 @@ export const GoogleCalendarModal: React.FC = () => {
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <PrimaryButton>Prendre un rendez-vous</PrimaryButton>
+        <PrimaryButton>
+          <SiGooglecalendar className="mr-2  h-4 w-4 " />
+          Prendre un rendez-vous
+        </PrimaryButton>
       </DialogTrigger>
       <DialogContent
         className="max-w-full mx-auto p-4 md:p-6 bg-white rounded-md shadow-md w-full

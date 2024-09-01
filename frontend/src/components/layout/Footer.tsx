@@ -61,13 +61,25 @@ export const SiteFooter = () => {
                 <ul className="space-y-2">
                   {nav.items.map((item) => (
                     <li key={item.name}>
-                      <a
-                        href={item.href}
-                        className="group inline-flex items-center text-sm font-medium text-gray-600 hover:text-primary transition-colors"
-                      >
-                        {item.name}
-                        <ChevronRightIcon className="ml-1 h-4 w-4 transition-transform transform group-hover:translate-x-1" />
-                      </a>
+                      {item.external ? (
+                        <a
+                          href={item.href}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          className="group inline-flex items-center text-sm font-medium text-gray-600 hover:text-primary transition-colors"
+                        >
+                          {item.name}
+                          <ChevronRightIcon className="ml-1 h-4 w-4 transition-transform transform group-hover:translate-x-1" />
+                        </a>
+                      ) : (
+                        <Link
+                          to={item.href}
+                          className="group inline-flex items-center text-sm font-medium text-gray-600 hover:text-primary transition-colors"
+                        >
+                          {item.name}
+                          <ChevronRightIcon className="ml-1 h-4 w-4 transition-transform transform group-hover:translate-x-1" />
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>

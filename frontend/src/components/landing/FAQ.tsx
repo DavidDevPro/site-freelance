@@ -5,6 +5,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { PrimaryButton } from "../shared/PrimaryButton";
+import { RiMailSendLine } from "react-icons/ri";
 
 interface FAQProps {
   question: string;
@@ -74,8 +75,9 @@ export const FAQ = () => {
       <div className="flex items-center justify-center space-x-6 mt-10">
         <p className="font-medium">Vous avez encore des questions ?</p>
         <PrimaryButton>
-          <a rel="noreferrer noopener" href="#" className="">
-            Contactez-moi
+          <a rel="noreferrer noopener" href="/contact" className="flex">
+            <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 " />
+            Contactez-nous
           </a>
         </PrimaryButton>
       </div>

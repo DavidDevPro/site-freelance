@@ -7,6 +7,7 @@ import {
   DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { FaPenToSquare } from "react-icons/fa6";
 import { QuoteRequestForm } from "@/components/landing/quoteRequest";
 
 import { useForm } from "react-hook-form";
@@ -45,6 +46,7 @@ export const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <PrimaryButton onClick={handleOpen}>
+          <FaPenToSquare className="mr-2 h-4 w-4 " />
           Demander un devis personnalisé
         </PrimaryButton>
       </DialogTrigger>

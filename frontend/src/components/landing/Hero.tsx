@@ -8,6 +8,8 @@ import heroSmallJpg from "@/assets/images/hero-small.jpg";
 import heroMediumJpg from "@/assets/images/hero-medium.jpg";
 import heroLargeJpg from "@/assets/images/hero-large.jpg";
 import hero2xJpg from "@/assets/images/hero-2x.jpg";
+import { RiMailSendLine } from "react-icons/ri";
+import { HiMiniCurrencyEuro } from "react-icons/hi2";
 export const Hero = () => {
   return (
     <section
@@ -62,7 +64,8 @@ export const Hero = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in">
               <Link to="/contact" aria-label="Nous Contacter">
-                <PrimaryButton className=" text-xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-black">
+                <PrimaryButton className="  text-xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-black">
+                  <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 " />
                   Nous Contacter
                 </PrimaryButton>
               </Link>
@@ -71,6 +74,7 @@ export const Hero = () => {
                   variant="secondary"
                   className="text-xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-black"
                 >
+                  <HiMiniCurrencyEuro className="mr-2 mt-0.5 h-6 w-6 " />
                   Nos Tarifs
                 </PrimaryButton>
               </Link>

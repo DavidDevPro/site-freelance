@@ -18,6 +18,7 @@ import sendContactForm from "@/services/contactApi";
 import { showMessageSuccess, showMessageError } from "@/lib/utils/toastUtils";
 import { PrimaryButton } from "@/components/shared/PrimaryButton";
 import { useState } from "react";
+import { RiMailSendFill } from "react-icons/ri";
 
 // Définir le schéma de validation du formulaire avec Zod
 const formSchema = z.object({
@@ -252,6 +253,7 @@ export function ContactForm() {
         {/* Bouton Envoyer */}
         <div className="flex justify-center mb-4">
           <PrimaryButton type="submit" variant="primary">
+            <RiMailSendFill className="mr-2 mt-0.5 h-4 w-4 " />
             Envoyer
           </PrimaryButton>
         </div>

@@ -13,7 +13,7 @@ import { routeList } from "@/components/data/routes";
 
 import { ModeToggle } from "@/components/layout/header/ModeToggle";
 import { PrimaryButton } from "@/components/shared/PrimaryButton";
-import { BiLogInCircle } from "react-icons/bi";
+import { BsPersonFillCheck } from "react-icons/bs";
 
 export const NavBarDesktop: React.FC = () => {
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ export const NavBarDesktop: React.FC = () => {
             to="/login"
             className="text-white no-underline flex items-center"
           >
-            <BiLogInCircle className="mr-2 h-4 w-4" />
+            <BsPersonFillCheck className="mr-2 h-4 w-4 " />
             Se Connecter
           </Link>
         </PrimaryButton>
