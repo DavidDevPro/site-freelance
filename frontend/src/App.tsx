@@ -15,9 +15,9 @@ import {
 } from "@/pages";
 import "./App.css";
 import { Toaster } from "./components/ui/sonner";
+import { basename } from "@/config";
 
 function App() {
-  const basename = import.meta.env.MODE === "production" ? "/" : "";
   return (
     <Router basename={basename}>
       <ScrollToTop />

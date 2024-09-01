@@ -14,7 +14,8 @@ export const APP_TMAXEPTIO_CLIENT_ID = import.meta.env.VITE_APP_TMAXEPTIO_CLIENT
 // Définition de la variable `basename` en fonction du mode de l'environnement
 // `name_files` correspond au nom du dossier où se trouvera le site en production (hors racine domaine)
 // Si racine, il faut mettre "/"
-const basename: string = import.meta.env.MODE === "production" ? "/" : "";
+// const basename: string = import.meta.env.MODE === "production" ? "/" : "";
+const basename: string = import.meta.env.MODE === "production" ? "/freelanceV1/" : "/";
 
 // Exportation de la variable `basename` pour l'utiliser dans d'autres fichiers
 export { basename };
