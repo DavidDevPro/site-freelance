@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
-import { apiUrl } from '@/apiConfig';
+import { apiUrl } from '@/config/apiConfig';
 
+// Définir l'interface pour les données d'une formule
 export interface Formula {
   id: string;
   name: string;

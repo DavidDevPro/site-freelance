@@ -177,7 +177,7 @@
 
     <!-- Import du fichier de configuration et configuration Axeptio -->
     <script type="module">
-      import { APP_AXEPTIO_CLIENT_ID } from "@/config";
+      import { APP_AXEPTIO_CLIENT_ID } from "@/config/config";
 
       // Configuration Axeptio
       window.axeptioSettings = {
@@ -204,7 +204,7 @@
 
     <!-- Google Tag Manager -->
     <script type="module">
-      import { APP_GOOGLE_TAG_MANAGER_ID } from "@/config";
+      import { APP_GOOGLE_TAG_MANAGER_ID } from "@/config/config";
 
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
@@ -230,7 +230,7 @@
       import {
         APP_GOOGLE_ANALYTICS_ID,
         APP_TMAXEPTIO_CLIENT_ID,
-      } from "@/config";
+      } from "@/config/config";
 
       const gaScript = document.createElement("script");
       gaScript.src =

@@ -1,23 +1,28 @@
-import {
-  FaUserShield,
-  FaRegFileAlt,
-  FaUserSecret,
-  FaLock,
-} from "react-icons/fa";
+// config/data/privacyData.tsx
+
+import { FaUserShield, FaRegFileAlt, FaUserSecret, FaLock } from "react-icons/fa";
 import { IoMdAnalytics } from "react-icons/io";
 import { AiFillSecurityScan } from "react-icons/ai";
-import { APP_NAME } from "@/config";
+import { APP_NAME, APP_MAIL } from "@/config/config";
 
-export const PrivacySections = [
+// Définir le type pour chaque section de politique de confidentialité
+export type PrivacyContent = {
+  title: string;
+  content: JSX.Element; // Utilisation de JSX.Element pour les contenus
+  icon: JSX.Element;
+};
+
+// Contenu textuel de la politique de confidentialité
+export const privacyContent: PrivacyContent[] = [
   {
     title: "Introduction",
     content: (
       <p className="text-base text-neutral-700">
-        Chez <strong>{APP_NAME}</strong>, nous accordons une grande importance à
-        la protection de votre vie privée. Cette politique de confidentialité
-        explique comment nous collectons, utilisons, stockons et protégeons vos
-        informations personnelles lorsque vous utilisez notre site web et nos
-        services.
+        Chez <strong>{APP_NAME}</strong>, nous accordons une grande importance à la
+        protection de votre vie privée. Cette politique de confidentialité
+        explique comment nous collectons, utilisons, stockons et
+        protégeons vos informations personnelles lorsque vous utilisez
+        notre site web et nos services.
       </p>
     ),
     icon: <FaUserShield className="text-primary h-8 w-8" />,
@@ -31,16 +36,16 @@ export const PrivacySections = [
         </p>
         <ul className="list-disc list-inside text-base text-neutral-700 space-y-2">
           <li>
-            Informations d'identification (nom, adresse, numéro de téléphone,
-            email, etc.).
+            {`Informations d'identification (nom, adresse, numéro de
+            téléphone, email, etc.).`}
           </li>
           <li>
-            Informations sur votre utilisation de notre site (pages visitées,
-            actions effectuées, etc.).
+            {`Informations sur votre utilisation de notre site (pages
+            visitées, actions effectuées, etc.).`}
           </li>
           <li>
-            Données techniques telles que l'adresse IP, le type de navigateur et
-            l'appareil utilisé.
+            {`Données techniques telles que l'adresse IP, le type de
+            navigateur et l'appareil utilisé.`}
           </li>
         </ul>
       </>
@@ -89,10 +94,10 @@ export const PrivacySections = [
     title: "Sécurité des Données",
     content: (
       <p className="text-base text-neutral-700">
-        La sécurité de vos données est notre priorité. Nous mettons en place des
-        mesures techniques et organisationnelles adaptées pour protéger vos
-        informations contre tout accès, divulgation, modification ou destruction
-        non autorisé.
+        La sécurité de vos données est notre priorité. Nous mettons en
+        place des mesures techniques et organisationnelles adaptées pour
+        protéger vos informations contre tout accès, divulgation,
+        modification ou destruction non autorisé.
       </p>
     ),
     icon: <FaLock className="text-primary h-8 w-8" />,
@@ -102,32 +107,31 @@ export const PrivacySections = [
     content: (
       <>
         <p className="text-base text-neutral-700">
-          Conformément à la loi n°78-17 du 6 janvier 1978 relative à
+          {`Conformément à la loi n°78-17 du 6 janvier 1978 relative à
           l'informatique, aux fichiers et aux libertés, vous disposez de
-          plusieurs droits concernant vos données personnelles :
+          plusieurs droits concernant vos données personnelles :`}
         </p>
         <ul className="list-disc list-inside text-base text-neutral-700 space-y-2">
           <li>
-            Droit d'accès, de rectification et de suppression de vos données.
+            {`Droit d'accès, de rectification et de suppression de vos
+            données.`}
           </li>
           <li>Droit à la portabilité de vos données.</li>
           <li>Droit de vous opposer au traitement de vos données.</li>
           <li>
-            Droit de définir des directives concernant l'utilisation de vos
-            données après votre décès.
+            {`Droit de définir des directives concernant l'utilisation de vos
+            données après votre décès.`}
           </li>
         </ul>
         <p className="text-base text-neutral-700">
-          Pour exercer ces droits, vous pouvez nous contacter par email à
-          l'adresse suivante :
+          {`Pour exercer ces droits, vous pouvez nous contacter par email à
+          l'adresse suivante : `}{" "}
           <a
-            href="mailto:contact@fabwebprojects.fr"
+            href={`mailto:${APP_MAIL}`}
             className="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           >
-            {" "}
-            contact@fabwebprojects.fr
+            {APP_MAIL}
           </a>
-          .
         </p>
       </>
     ),
@@ -138,10 +142,10 @@ export const PrivacySections = [
     content: (
       <p className="text-base text-neutral-700">
         Nous nous réservons le droit de modifier cette politique de
-        confidentialité à tout moment. Toute modification sera publiée sur cette
-        page et prendra effet immédiatement. Nous vous encourageons à consulter
-        régulièrement cette page pour rester informé de la manière dont nous
-        protégeons vos données.
+        confidentialité à tout moment. Toute modification sera publiée sur
+        cette page et prendra effet immédiatement. Nous vous encourageons
+        à consulter régulièrement cette page pour rester informé de la
+        manière dont nous protégeons vos données.
       </p>
     ),
     icon: <FaRegFileAlt className="text-primary h-8 w-8" />,

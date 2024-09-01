@@ -1,6 +1,6 @@
 // CopyrightText.tsx
 import React from "react";
-import { APP_NAME, Config } from "@/config";
+import { APP_NAME, Config } from "@/config/config";
 import { getYearText } from "@/lib/utils";
 
 interface CopyrightTextProps {

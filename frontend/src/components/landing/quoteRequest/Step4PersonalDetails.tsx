@@ -1,6 +1,7 @@
+
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { fetchCivilities, Civility } from "@/services/civilityApi";
+import { fetchCivilities, Civility } from '@/lib/api/civilityApi';
 import {
   FormControl,
   FormField,
@@ -9,24 +10,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Hotel, Mail, MapPin, Phone, User } from "lucide-react";
 
 export const Step4PersonalDetails = () => {
-  const {
-    control,
-    formState: { errors },
-    setValue,
-    getValues,
-    clearErrors,
-  } = useFormContext();
+  const { control, formState: { errors }, setValue, getValues, clearErrors } = useFormContext(); 
   const [civilities, setCivilities] = useState<Civility[]>([]);
 
   const customerType = getValues("customerType");
@@ -101,11 +90,7 @@ export const Step4PersonalDetails = () => {
                     />
                   </div>
                 </FormControl>
-                {errors.company && (
-                  <FormMessage className="text-red-500">
-                    {errors.company.message?.toString()}
-                  </FormMessage>
-                )}
+                {errors.company && <FormMessage className="text-red-500">{errors.company.message?.toString()}</FormMessage>}
               </FormItem>
             )}
           />
@@ -124,11 +109,9 @@ export const Step4PersonalDetails = () => {
               </FormLabel>
               <FormControl>
                 <Select
-                  value={field.value || ""}
+                  value={field.value || ''}
                   onValueChange={(value) => {
-                    const selectedCivility = civilities.find(
-                      (civility) => civility.shortLabel === value
-                    );
+                    const selectedCivility = civilities.find(civility => civility.shortLabel === value);
                     if (selectedCivility) {
                       field.onChange(selectedCivility.shortLabel); // Utilisez la même valeur pour SelectItem et Select
                       clearErrors("civility");
@@ -139,23 +122,16 @@ export const Step4PersonalDetails = () => {
                     <SelectValue placeholder="Sélectionnez une civilité" />
                   </SelectTrigger>
                   <SelectContent>
-                    {civilities.map((civility) => (
-                      <SelectItem
-                        key={civility.id}
-                        value={civility.shortLabel}
-                        className="hover:bg-primary hover:text-card focus:bg-primary focus:text-card"
-                      >
+                    {civilities.map(civility => (
+                      <SelectItem key={civility.id} value={civility.shortLabel}
+                      className="hover:bg-primary hover:text-card focus:bg-primary focus:text-card">
                         {civility.longLabel}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </FormControl>
-              {errors.civility && (
-                <FormMessage className="text-red-500">
-                  {errors.civility.message?.toString()}
-                </FormMessage>
-              )}
+              {errors.civility && <FormMessage className="text-red-500">{errors.civility.message?.toString()}</FormMessage>}
             </FormItem>
           )}
         />
@@ -183,11 +159,7 @@ export const Step4PersonalDetails = () => {
                   />
                 </div>
               </FormControl>
-              {errors.firstName && (
-                <FormMessage className="text-red-500">
-                  {errors.firstName.message?.toString()}
-                </FormMessage>
-              )}
+              {errors.firstName && <FormMessage className="text-red-500">{errors.firstName.message?.toString()}</FormMessage>}
             </FormItem>
           )}
         />
@@ -215,11 +187,7 @@ export const Step4PersonalDetails = () => {
                   />
                 </div>
               </FormControl>
-              {errors.lastName && (
-                <FormMessage className="text-red-500">
-                  {errors.lastName.message?.toString()}
-                </FormMessage>
-              )}
+              {errors.lastName && <FormMessage className="text-red-500">{errors.lastName.message?.toString()}</FormMessage>}
             </FormItem>
           )}
         />
@@ -250,11 +218,7 @@ export const Step4PersonalDetails = () => {
                   />
                 </div>
               </FormControl>
-              {errors.address && (
-                <FormMessage className="text-red-500">
-                  {errors.address.message?.toString()}
-                </FormMessage>
-              )}
+              {errors.address && <FormMessage className="text-red-500">{errors.address.message?.toString()}</FormMessage>}
             </FormItem>
           )}
         />
@@ -285,11 +249,7 @@ export const Step4PersonalDetails = () => {
                   />
                 </div>
               </FormControl>
-              {errors.postalCode && (
-                <FormMessage className="text-red-500">
-                  {errors.postalCode.message?.toString()}
-                </FormMessage>
-              )}
+              {errors.postalCode && <FormMessage className="text-red-500">{errors.postalCode.message?.toString()}</FormMessage>}
             </FormItem>
           )}
         />
@@ -317,25 +277,19 @@ export const Step4PersonalDetails = () => {
                   />
                 </div>
               </FormControl>
-              {errors.city && (
-                <FormMessage className="text-red-500">
-                  {errors.city.message?.toString()}
-                </FormMessage>
-              )}
+              {errors.city && <FormMessage className="text-red-500">{errors.city.message?.toString()}</FormMessage>}
             </FormItem>
           )}
         />
       </div>
+
       <div className="flex flex-col md:flex-row md:space-x-4">
         <FormField
           control={control}
           name="phone"
           rules={{
             required: "Téléphone est requis",
-            pattern: {
-              value: /^[0-9]{10}$/,
-              message: "Le numéro de téléphone doit comporter 10 chiffres",
-            },
+            pattern: { value: /^[0-9]{10}$/, message: "Le numéro de téléphone doit comporter 10 chiffres" },
           }}
           render={({ field }) => (
             <FormItem className="space-y-2 mt-1 w-full md:w-1/2">
@@ -357,11 +311,7 @@ export const Step4PersonalDetails = () => {
                   />
                 </div>
               </FormControl>
-              {errors.phone && (
-                <FormMessage className="text-red-500">
-                  {errors.phone.message?.toString()}
-                </FormMessage>
-              )}
+              {errors.phone && <FormMessage className="text-red-500">{errors.phone.message?.toString()}</FormMessage>}
             </FormItem>
           )}
         />
@@ -370,10 +320,7 @@ export const Step4PersonalDetails = () => {
           name="email"
           rules={{
             required: "Email est requis",
-            pattern: {
-              value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-              message: "Adresse email invalide",
-            },
+            pattern: { value: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/, message: "Adresse email invalide" },
           }}
           render={({ field }) => (
             <FormItem className="space-y-2 mt-1 w-full md:w-1/2">
@@ -395,20 +342,14 @@ export const Step4PersonalDetails = () => {
                   />
                 </div>
               </FormControl>
-              {errors.email && (
-                <FormMessage className="text-red-500">
-                  {errors.email.message?.toString()}
-                </FormMessage>
-              )}
+              {errors.email && <FormMessage className="text-red-500">{errors.email.message?.toString()}</FormMessage>}
             </FormItem>
           )}
         />
       </div>
 
       <p className="mt-4 text-xs text-muted-foreground">
-        Vos données personnelles sont protégées et ne seront jamais vendues à
-        des tiers. Elles seront utilisées uniquement dans le cadre de votre
-        demande de devis conformément à la réglementation en vigueur (RGPD).
+        Vos données personnelles sont protégées et ne seront jamais vendues à des tiers. Elles seront utilisées uniquement dans le cadre de votre demande de devis conformément à la réglementation en vigueur (RGPD).
       </p>
     </>
   );

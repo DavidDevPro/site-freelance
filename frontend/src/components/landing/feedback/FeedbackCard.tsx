@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { StarRating } from "@/components/shared";
-import { pictureUrl } from "@/pictureConfig";
+import { pictureUrl } from "@/config/pictureConfig";
 import { formatDate } from "@/lib/utils";
 
 interface FeedbackCardProps {

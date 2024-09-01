@@ -1,6 +1,6 @@
 // SocialIcons.tsx
 import React from "react";
-import { socialIcons } from "@/lib/utils/socialLinks";
+import { socialMediaIcons } from "@/config/data/socialLinks";
 
 interface SocialIconsProps {
   iconSize?: string; // Taille des icônes, ex: 'w-6 h-6'
@@ -29,7 +29,7 @@ export const SocialIcons: React.FC<SocialIconsProps> = ({
     <div
       className={`flex ${justifyClass} ${spaceBetween} ${containerClassName}`}
     >
-      {socialIcons.map((social, index) => {
+      {socialMediaIcons.map((social, index) => {
         const IconComponent = social.icon;
         return (
           <a

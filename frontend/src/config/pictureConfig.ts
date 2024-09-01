@@ -1,4 +1,4 @@
-// src/api/pictureConfig.ts
+// src/config/pictureConfig.ts
 
 // Importation de la variable pictureUrl à partir des variables d'environnement de Vite
 const pictureUrl: string = import.meta.env.VITE_IMAGE_BASE_URL as string;

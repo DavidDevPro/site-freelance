@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { apiUrl } from '@/apiConfig';
+import { apiUrl } from '@/config/apiConfig';
 
 // Définir l'interface pour les données du formulaire de contact
 export interface ContactFormData {

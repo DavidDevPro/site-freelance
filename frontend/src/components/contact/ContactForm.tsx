@@ -14,8 +14,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import sendContactForm from "@/services/contactApi";
-import { showMessageSuccess, showMessageError } from "@/lib/utils/toastUtils";
+import sendContactForm from "@/lib/api/contactApi";
+import {
+  showMessageSuccess,
+  showMessageError,
+} from "@/notifications/toastMessages";
 import { PrimaryButton } from "@/components/shared/PrimaryButton";
 import { useState } from "react";
 import { RiMailSendFill } from "react-icons/ri";

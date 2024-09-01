@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchTestimonials, Testimonial } from "@/services/testimonialsApi";
+import { fetchTestimonials, Testimonial } from "@/lib/api/testimonialsApi";
 import { Feedback } from "@/components/landing/feedback";
 
 export const UserFeedback: React.FC = () => {

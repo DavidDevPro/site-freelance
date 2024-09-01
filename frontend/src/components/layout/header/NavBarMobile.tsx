@@ -16,12 +16,21 @@ import { ModeToggle } from "@/components/layout/header/ModeToggle";
 import Logo from "@/assets/images/icon.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { CopyrightText, SocialIcons, PrimaryButton } from "@/components/shared";
-import { APP_NAME } from "@/config";
-
-import { routeList } from "@/components/data/routes";
+import { APP_NAME } from "@/config/config";
 import { BsPersonFillCheck } from "react-icons/bs";
 
-export const NavBarMobile: React.FC = () => {
+// Définir les types pour les props
+interface RouteProps {
+  href: string;
+  label: string;
+}
+
+// Définir les props pour NavBarMobile
+interface NavBarMobileProps {
+  routes: RouteProps[];
+}
+
+export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
@@ -81,7 +90,7 @@ export const NavBarMobile: React.FC = () => {
                 </Link>
               </Button>
 
-              {routeList.map(({ href, label }) => (
+              {routes.map(({ href, label }) => (
                 <Button
                   key={label}
                   asChild

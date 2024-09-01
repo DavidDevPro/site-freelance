@@ -1,7 +1,7 @@
 import { ContactForm } from "@/components/contact/ContactForm";
 import { SocialIcons, GoogleCalendarModal } from "@/components/shared";
 
-import { contactDetails } from "@/lib/utils/contactData";
+import { contactInfo } from "@/config/data/contactAndLegalData";
 import { SiteFooter, SiteHeader } from "@/components/layout";
 
 const ContactPage = () => {
@@ -28,7 +28,7 @@ const ContactPage = () => {
               </p>
 
               {/* Utilisation de la boucle pour générer les détails de contact */}
-              {contactDetails.map((detail, index) => {
+              {contactInfo.map((detail, index) => {
                 const IconComponent = detail.icon;
                 return (
                   <div key={index} className="flex items-center">

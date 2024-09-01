@@ -1,6 +1,6 @@
 import pilot from "@/assets/images/gerant.png";
 import { PrimaryButton } from "../shared/PrimaryButton";
-import { APP_NAME } from "@/config";
+import { APP_NAME } from "@/config/config";
 import { FaDev } from "react-icons/fa";
 
 export const About = () => {

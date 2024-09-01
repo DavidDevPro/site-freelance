@@ -9,13 +9,21 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Link, useNavigate } from "react-router-dom";
 
-import { routeList } from "@/components/data/routes";
-
 import { ModeToggle } from "@/components/layout/header/ModeToggle";
 import { PrimaryButton } from "@/components/shared/PrimaryButton";
 import { BsPersonFillCheck } from "react-icons/bs";
 
-export const NavBarDesktop: React.FC = () => {
+// Définir les types pour les props
+interface RouteProps {
+  href: string;
+  label: string;
+}
+// Définir les props pour NavBarDesktop
+interface NavBarDesktopProps {
+  routes: RouteProps[];
+}
+
+export const NavBarDesktop: React.FC<NavBarDesktopProps> = ({ routes }) => {
   const navigate = useNavigate();
 
   const handleLinkClick = (href: string) => {
@@ -26,7 +34,7 @@ export const NavBarDesktop: React.FC = () => {
     <>
       <NavigationMenu className="hidden lg:block">
         <NavigationMenuList>
-          {routeList.map(({ href, label }) => (
+          {routes.map(({ href, label }) => (
             <NavigationMenuItem key={label}>
               <NavigationMenuLink asChild>
                 <Button

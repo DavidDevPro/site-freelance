@@ -14,7 +14,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 import { PrimaryButton } from "@/components/shared/PrimaryButton";
-import { APP_NAME2 } from "@/config";
+import { APP_NAME2 } from "@/config/config";
 import { SiteFooter, SiteHeader } from "@/components/layout";
 import { BsPersonCheck } from "react-icons/bs";
 import { LiaUserLockSolid } from "react-icons/lia";

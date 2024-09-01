@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { apiUrl } from '@/apiConfig';
+import { apiUrl } from '@/config/apiConfig';
 
 // Interface pour les fichiers uploadés temporairement
 export interface FileUploadResponse {

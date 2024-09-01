@@ -1,4 +1,4 @@
-import { APP_NAME2 } from "@/config";
+import { APP_NAME2 } from "@/config/config";
 import logo from "@/assets/images/icon.webp";
 import { Link } from "react-router-dom";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
@@ -7,7 +7,7 @@ import {
   GoogleCalendarModal,
   SocialIcons,
 } from "@/components/shared";
-import { footerNavigation } from "@/lib/utils/footerNavigation"; // Importation des éléments de navigation
+import { footerRoutes } from "@/config/routes/footerRoutes";
 
 // Define types for footer navigation
 type FooterNavItem = {
@@ -53,7 +53,7 @@ export const SiteFooter = () => {
             </div>
           </div>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 justify-items-center mx-auto lg:grid-cols-3">
-            {footerNavigation.map((nav: FooterNavSection) => (
+            {footerRoutes.map((nav: FooterNavSection) => (
               <div key={nav.label} className="text-center sm:text-left">
                 <h2 className="mb-6 text-sm font-semibold uppercase text-primary dark:text-white">
                   {nav.label}

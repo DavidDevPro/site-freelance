@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { CheckIcon } from "@radix-ui/react-icons";
 import { PrimaryButton, Banner } from "@/components/shared";
 import { QuoteRequestModal } from "@/components/landing/quoteRequest";
-import { fetchFormulas, Formula } from "@/services/formulaApi";
+import { fetchFormulas, Formula } from "@/lib/api/formulaApi";
 import { LuInfo } from "react-icons/lu";
 
 type Interval = "essentiel" | "premium" | "expert";

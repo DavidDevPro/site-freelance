@@ -3,7 +3,7 @@
 import { useParams } from "react-router-dom";
 
 import PackageDetailContent from "@/components/landing/package/PackageDetailContent"; // Import du composant
-import { packagesData } from "@/lib/utils/packageData";
+import { packagesData } from "@/config/data/packageData";
 import { SiteFooter, SiteHeader } from "@/components/layout";
 
 const PackageDetail = () => {

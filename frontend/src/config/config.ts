@@ -21,7 +21,7 @@ const basename: string = import.meta.env.MODE === "production" ? "/freelanceV1/"
 export { basename };
 
 // Importation de `package.json`
-import packageJson from '../package.json';
+import packageJson from '../../package.json';
 
 // Définition du type pour `Config`
 interface ConfigType {

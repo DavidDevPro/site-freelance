@@ -1,4 +1,4 @@
-// src/api/apiConfig.ts
+// src/config/apiConfig.ts
 
 // Importation de la variable apiUrl à partir des variables d'environnement de Vite
 const apiUrl: string = import.meta.env.VITE_API_URL as string;

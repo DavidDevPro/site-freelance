@@ -15,7 +15,7 @@ import {
 } from "@/pages";
 import "./App.css";
 import { Toaster } from "./components/ui/sonner";
-import { basename } from "@/config";
+import { basename } from "@/config/config";
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/mentions-legales" element={<LegalPage />} />
-        <Route path="/politique-de-confidentialite" element={<PrivacyPage />} />
+        <Route path="/politique-confidentialite" element={<PrivacyPage />} />
         {/* Route dynamique pour les services */}
         <Route path="/services/:serviceName" element={<ServiceDetailPage />} />
         {/* Route dynamique pour les packages */}
