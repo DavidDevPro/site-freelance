@@ -6,6 +6,5 @@ export { default as PrivacyPage } from './Privacy';
 export { default as PackageDetailPage } from './PackageDetail';
 export { default as ServiceDetailPage } from './ServiceDetail';
 export { default as NotFoundPage } from './NotFound';
-
 export { default as ForgotPasswordPage } from './ForgotPassword';
 export { default as EssentielPlanPage} from './EssentielPlan'

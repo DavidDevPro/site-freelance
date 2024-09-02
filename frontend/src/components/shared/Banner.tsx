@@ -1,14 +1,25 @@
 import React from "react";
 import { ShieldCheck, Globe, Headset } from "lucide-react"; // Assurez-vous d'utiliser des icônes pertinentes
+import { cn } from "@/lib/utils";
 
 interface BannerProps {
   title: string;
   description: string;
+  className?: string;
 }
 
-export const Banner: React.FC<BannerProps> = ({ title, description }) => {
+export const Banner: React.FC<BannerProps> = ({
+  title,
+  description,
+  className,
+}) => {
   return (
-    <div className="mt-8 p-6 bg-primary text-white rounded-lg shadow-lg flex items-center">
+    <div
+      className={cn(
+        "mt-8 p-6 bg-primary text-white rounded-lg shadow-lg flex items-center",
+        className
+      )}
+    >
       <div className="mr-4 flex-shrink-0">
         <Globe className="w-8 h-8 text-white" />
       </div>

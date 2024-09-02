@@ -1,0 +1,193 @@
+Structure du dossier
+Le num�ro de s�rie du volume est 1221-5656
+C:.
+|   App.css
+|   App.tsx
+|   arborescence.txt
+|   index.css
+|   main.tsx
+|   vite-env.d.ts
+|   
++---assets
+|   \---images
+|           background-hero2.jpg
+|           cube-leg.png
+|           gerant.png
+|           growth.png
+|           hero-2x.jpg
+|           hero-2x.webp
+|           hero-large.jpg
+|           hero-large.webp
+|           hero-medium.jpg
+|           hero-medium.webp
+|           hero-small.jpg
+|           hero-small.webp
+|           icon.webp
+|           looking-ahead.png
+|           pilot.png
+|           reflecting.png
+|           
++---components
+|   +---contact
+|   |       ContactForm.tsx
+|   |       
+|   +---landing
+|   |   |   About.tsx
+|   |   |   Cta.tsx
+|   |   |   FAQ.tsx
+|   |   |   services.tsx
+|   |   |   Hero.tsx
+|   |   |   HowItWorks.tsx
+|   |   |   index.ts
+|   |   |   Newsletter.tsx
+|   |   |   Pricing.tsx
+|   |   |   Services.tsx
+|   |   |   Skills.tsx
+|   |   |   Sponsors.tsx
+|   |   |   Statistics.tsx
+|   |   |   Team.tsx
+|   |   |   UserFeedback.tsx
+|   |   |   
+|   |   +---feedback
+|   |   |       Feedback.tsx
+|   |   |       FeedbackAddModal.tsx
+|   |   |       FeedbackAvatar.tsx
+|   |   |       FeedbackCard.tsx
+|   |   |       FeedbackForm.tsx
+|   |   |       index.ts
+|   |   |       
+|   |   +---package
+|   |   |       PackageDetailContent.tsx
+|   |   |       
+|   |   +---quoteRequest
+|   |   |       FormContent.tsx
+|   |   |       FormFooter.tsx
+|   |   |       FormHeader.tsx
+|   |   |       index.ts
+|   |   |       QuoteRequestForm.tsx
+|   |   |       QuoteRequestModal.tsx
+|   |   |       QuoteRequestSteps.tsx
+|   |   |       Step1ChoosePackage.tsx
+|   |   |       Step2SelectOptions.tsx
+|   |   |       Step3AdditionalInfo.tsx
+|   |   |       Step4PersonalDetails.tsx
+|   |   |       Step5ReviewSubmit.tsx
+|   |   |       
+|   |   \---service
+|   |           ServiceDetailContent.tsx
+|   |           
+|   +---layout
+|   |   |   Footer.tsx
+|   |   |   Header.tsx
+|   |   |   index.ts
+|   |   |   
+|   |   \---header
+|   |           ModeToggle.tsx
+|   |           Navbar.tsx
+|   |           NavBarDesktop.tsx
+|   |           NavBarMobile.tsx
+|   |           
+|   +---legal
+|   |       LegalMentions.tsx
+|   |       MentionsSection.tsx
+|   |       PrivacyPolicy.tsx
+|   |       PrivacySections.tsx
+|   |       
+|   +---magicui
+|   |       avatar-circles.tsx
+|   |       marquee.tsx
+|   |       
+|   +---providers
+|   |       theme-provider.tsx
+|   |       
+|   +---shared
+|   |   |   Banner.tsx
+|   |   |   CopyrightText.tsx
+|   |   |   Icons.tsx
+|   |   |   index.ts
+|   |   |   PrimaryButton.tsx
+|   |   |   ScrollToTop.tsx
+|   |   |   SocialIcons.tsx
+|   |   |   StarRating.tsx
+|   |   |   
+|   |   \---googleCalendar
+|   |           CalendarIframe.tsx
+|   |           GoogleCalendarModal.tsx
+|   |           
+|   \---ui
+|           accordion.tsx
+|           avatar.tsx
+|           badge.tsx
+|           button.tsx
+|           card.tsx
+|           checkbox.tsx
+|           dialog.tsx
+|           dropdown-menu.tsx
+|           form.tsx
+|           input.tsx
+|           label.tsx
+|           navigation-menu.tsx
+|           radio-group.tsx
+|           select.tsx
+|           separator.tsx
+|           sheet.tsx
+|           sonner.tsx
+|           switch.tsx
+|           textarea.tsx
+|           toast.tsx
+|           toaster.tsx
+|           use-toast.ts
+|           
++---config
+|   |   apiConfig.ts
+|   |   config.ts
+|   |   pictureConfig.ts
+|   |   scripts.ts
+|   |   
+|   +---data
+|   |       contactAndLegalData.ts
+|   |       mentionsData.tsx
+|   |       packageData.ts
+|   |       privacyData.tsx
+|   |       socialLinks.ts
+|   |       stepsData.ts
+|   |       
+|   \---routes
+|           dashboardRoutes.ts
+|           footerRoutes.ts
+|           headerRoutes.ts
+|           
++---data
+|       dataPricingServices.json
+|       dataServices.json
+|       reviews.csv
+|       
++---lib
+|   |   utils.ts
+|   |   
+|   +---api
+|   |       civilityApi.ts
+|   |       contactApi.ts
+|   |       formulaApi.ts
+|   |       proposalRequestApi.ts
+|   |       testimonialsApi.ts
+|   |       
+|   \---notifications
+|           toastUtils.tsx
+|           
++---notifications
+|       toastMessages.ts
+|       
+\---pages
+        Contact.tsx
+        EssentielPlan.tsx
+        ForgotPassword.tsx
+        Home.tsx
+        index.ts
+        Legal.tsx
+        Login.tsx
+        NotFound.tsx
+        PackageDetail.tsx
+        Privacy.tsx
+        ServiceDetail.tsx
+        

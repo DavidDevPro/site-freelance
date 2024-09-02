@@ -4,3 +4,4 @@ export { NavBar } from './header/Navbar';
 export { ModeToggle } from './header/ModeToggle';
 export { NavBarDesktop } from './header/NavBarDesktop';
 export { NavBarMobile } from './header/NavBarMobile';
+export {PageLayout} from './PageLayout'

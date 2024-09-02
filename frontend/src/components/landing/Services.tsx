@@ -1,93 +1,95 @@
+// src/components/Services.tsx
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Card,
-  CardDescription,
+  CardContent,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  MagnifierIcon,
-  WalletIcon,
-  ChartIcon,
-} from "@/components/shared/Icons";
-import cubeLeg from "@/assets/images/cube-leg.png";
+import { Badge } from "@/components/ui/badge";
+import { PrimaryButton } from "../shared/PrimaryButton";
+import { serviceList, ProService, tagList } from "@/config/data/servicesData";
+import { LuInfo } from "react-icons/lu";
 
-interface ServiceProps {
-  title: string;
-  description: string;
-  icon: JSX.Element;
-}
+export const Services: React.FC = () => {
+  const navigate = useNavigate();
 
-const serviceList: ServiceProps[] = [
-  {
-    title: "Code Collaboration",
-    description:
-      "Collaboration en temps réel sur le code, facilitant le travail d'équipe et la révision du code.",
-    icon: <ChartIcon aria-label="Code Collaboration Icon" />,
-  },
-  {
-    title: "Project Management",
-    description:
-      "Gestion de projet efficace avec des outils de suivi des tâches et des jalons.",
-    icon: <WalletIcon aria-label="Project Management Icon" />,
-  },
-  {
-    title: "Task Automation",
-    description:
-      "Automatisation des tâches répétitives pour améliorer l'efficacité et la productivité.",
-    icon: <MagnifierIcon aria-label="Task Automation Icon" />,
-  },
-];
+  const handleLearnMoreClick = (link: string) => {
+    navigate(`/services/${link}`);
+  };
 
-export const Services = () => {
   return (
-    <section className="container py-24 sm:py-32">
-      <div className="grid lg:grid-cols-[1fr,1fr] gap-8 place-items-center">
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            <span className="bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
-              Client-Centric{" "}
-            </span>
-            Services
-          </h2>
+    <section id="services" className="container py-14">
+      <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  font-bold text-center mb-4">
+        Nos services
+      </h2>
 
-          <p className="text-muted-foreground text-xl mt-4 mb-8 ">
-            Découvrez nos services centrés sur le client pour répondre à vos
-            besoins spécifiques avec une expertise inégalée.
-          </p>
+      <p className="text-xl leading-8 text-black/80 dark:text-white text-center mb-8 mx-auto max-w-4xl">
+        Découvrez nos services conçus pour répondre aux besoins spécifiques de
+        votre entreprise. Chaque service est conçu avec une attention
+        particulière aux détails et à l'efficacité.
+      </p>
 
-          <div className="flex flex-col gap-8">
-            {serviceList.map(({ icon, title, description }: ServiceProps) => (
-              <Card
-                key={title}
-                className="border-primary transition-shadow hover:shadow-lg"
-              >
-                <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
-                  <div
-                    className="mt-1 bg-primary/20 p-2 rounded-2xl"
-                    aria-hidden="true"
-                  >
-                    {icon}
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg font-semibold">
-                      {title}
-                    </CardTitle>
-                    <CardDescription className="text-md mt-2">
-                      {description}
-                    </CardDescription>
-                  </div>
+      <div className="mx-auto grid w-full justify-center gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {serviceList.map(({ title, description, link, pro }) => {
+          return (
+            <Card
+              key={title}
+              className="relative flex flex-col w-full max-w-[400px] overflow-hidden rounded-2xl border border-primary p-6 text-primary dark:text-white min-h-[400px] shadow-lg"
+            >
+              <div className="flex-grow">
+                <CardHeader className="text-center">
+                  <CardTitle className="text-2xl font-semibold mb-4">
+                    {title}
+                  </CardTitle>
                 </CardHeader>
-              </Card>
-            ))}
+                <CardContent>
+                  {description.map((desc, index) => (
+                    <p
+                      key={index}
+                      className="text-base text-center leading-relaxed text-black/70 dark:text-white"
+                    >
+                      {desc}
+                    </p>
+                  ))}
+                </CardContent>
+              </div>
+              <div className="flex justify-center mb-4">
+                <CardFooter className="flex justify-center mt-6">
+                  <PrimaryButton
+                    variant="primary"
+                    onClick={() => handleLearnMoreClick(link)}
+                  >
+                    <LuInfo className="mr-2 h-6 w-6" />
+                    En Savoir Plus
+                  </PrimaryButton>
+                </CardFooter>
+              </div>
+              {pro === ProService.YES && (
+                <Badge
+                  variant="secondary"
+                  className="absolute top-2 right-2 bg-primary text-card"
+                >
+                  PRO
+                </Badge>
+              )}
+            </Card>
+          );
+        })}
+      </div>
+      <div className="flex flex-wrap justify-center gap-4 mt-12">
+        {tagList.map((tag: string) => (
+          <div key={tag}>
+            <Badge
+              variant="secondary"
+              className="text-sm px-4 py-2 bg-primary text-white rounded-lg shadow-md"
+            >
+              {tag}
+            </Badge>
           </div>
-        </div>
-
-        <img
-          src={cubeLeg}
-          className="w-[300px] md:w-[500px] lg:w-[600px] object-contain"
-          alt="Illustration of services offered"
-          loading="lazy"
-        />
+        ))}
       </div>
     </section>
   );

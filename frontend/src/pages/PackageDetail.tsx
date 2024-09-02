@@ -2,22 +2,22 @@
 
 import { useParams } from "react-router-dom";
 
-import PackageDetailContent from "@/components/landing/package/PackageDetailContent"; // Import du composant
+import { PackageDetailContent } from "@/components/landing/package/PackageDetailContent"; // Import du composant
 import { packagesData } from "@/config/data/packageData";
-import { SiteFooter, SiteHeader } from "@/components/layout";
+import { PageLayout } from "@/components/layout";
 
 const PackageDetail = () => {
   const { packageName } = useParams<{ packageName: string }>();
 
+  // Trouver le package correspondant en normalisant le nom du package pour correspondre à l'URL
   const packageDetail = packagesData.find(
     (pkg) => pkg.name.toLowerCase().replace(/\s+/g, "-") === packageName
   );
 
   return (
-    <div className="bg-background flex flex-col min-h-screen">
-      <SiteHeader />
-      <div className="flex-grow flex items-center justify-center ">
-        <div className="max-w-7xl mx-auto w-full">
+    <PageLayout>
+      <div className="flex-grow flex items-center justify-center py-10 px-4">
+        <div className="max-w-7xl mx-auto w-full flex ">
           {packageDetail ? (
             <PackageDetailContent packageDetail={packageDetail} />
           ) : (
@@ -28,9 +28,7 @@ const PackageDetail = () => {
           )}
         </div>
       </div>
-
-      <SiteFooter />
-    </div>
+    </PageLayout>
   );
 };
 

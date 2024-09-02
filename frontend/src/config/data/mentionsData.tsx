@@ -6,7 +6,7 @@ import { FaServer, FaShieldAlt, FaHammer } from "react-icons/fa";
 import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
 import { PiBuildingsFill } from "react-icons/pi";
 import { BsImages } from "react-icons/bs";
-import { APP_ADRESS, APP_ADRESS2, APP_MAIL, APP_NAME } from "@/config/config";
+import { APP_ADRESS, APP_ADRESS2, APP_MAIL, APP_NAME2 } from "@/config/config";
 import { legalInfo, contactInfo } from "@/config/data/contactAndLegalData"; // Import correct de legalInfo
 import { Link } from "react-router-dom";
 import { MdContactMail } from "react-icons/md";
@@ -139,8 +139,8 @@ export const mentionsContent: MentionContent[] = [
     description: (
       <div>
         <p>
-          Le site <strong>{APP_NAME}</strong> a pour vocation de présenter les
-          services et produits offerts par <strong>{APP_NAME}</strong>, ainsi
+          Le site <strong>{APP_NAME2}</strong> a pour vocation de présenter les
+          services et produits offerts par <strong>{APP_NAME2}</strong>, ainsi
           que de fournir des informations et des actualités concernant son
           domaine d'activité.
         </p>
@@ -157,9 +157,9 @@ export const mentionsContent: MentionContent[] = [
         <p>
           Le contenu du site, incluant les textes, images, graphismes et logo,
           est protégé par le droit de la propriété intellectuelle et appartient
-          à <strong>{APP_NAME}</strong>. Toute utilisation, reproduction,
+          à <strong>{APP_NAME2}</strong>. Toute utilisation, reproduction,
           diffusion, commercialisation, modification de toute ou partie du site,
-          sans l'autorisation de <strong>{APP_NAME}</strong>, est prohibée et
+          sans l'autorisation de <strong>{APP_NAME2}</strong>, est prohibée et
           peut entraîner des actions et poursuites judiciaires.
         </p>
       </div>
@@ -171,7 +171,7 @@ export const mentionsContent: MentionContent[] = [
     description: (
       <div>
         <p>
-          <strong>{APP_NAME}</strong> met tout en œuvre pour assurer la
+          <strong>{APP_NAME2}</strong> met tout en œuvre pour assurer la
           précision des informations présentes sur ce site. Toutefois, aucune
           garantie n'est donnée quant à leur exactitude ou à l'exhaustivité. La
           société ne pourra être tenue responsable des erreurs ou omissions dans
@@ -220,7 +220,7 @@ export const mentionsContent: MentionContent[] = [
     description: (
       <div>
         <p>
-          <strong>{APP_NAME}</strong> respecte votre vie privée et s'engage à
+          <strong>{APP_NAME2}</strong> respecte votre vie privée et s'engage à
           protéger vos données personnelles conformément à la législation en
           vigueur. Pour plus d'informations, veuillez consulter notre{" "}
           <Link

@@ -9,7 +9,7 @@
 - [x] About
 - [x] Stats
 - [x] How It Works
-- [x] Features
+- [x] services
 - [x] Services
 - [x] Call-to-Action (CTA)
 - [x] Testimonials
@@ -19,7 +19,7 @@
 - [x] Frequently Asked Questions(FAQ)
 - [x] Footer
 
-## Features
+## services
 
 - [x] Fully Responsive Design
 - [x] User Friendly Navigation

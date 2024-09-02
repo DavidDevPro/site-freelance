@@ -3,7 +3,7 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { GrUserManager } from "react-icons/gr";
 
-import { APP_NAME, APP_DEV, APP_MAIL, APP_ADRESS, APP_ADRESS2, APP_TEL, APP_SIRET } from "@/config/config";
+import { APP_DEV, APP_MAIL, APP_ADRESS, APP_ADRESS2, APP_TEL, APP_SIRET, APP_NAME2 } from "@/config/config";
 import { PiBuildingApartment, PiSuitcase } from "react-icons/pi";
 
 // Définir le type pour chaque élément de contact
@@ -45,7 +45,7 @@ export const contactInfo: ContactInfoItem[] = [
 export const legalInfo: LegalInfoItem[] = [
   {
     label: "Raison Sociale",
-    text: APP_NAME,
+    text: APP_NAME2,
     icon: PiBuildingApartment,
   },
   

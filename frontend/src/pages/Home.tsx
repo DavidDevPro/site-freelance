@@ -2,9 +2,9 @@ import {
   About,
   Cta,
   FAQ,
-  Features,
   Hero,
   Pricing,
+  Services,
   UserFeedback,
 } from "@/components/landing/";
 
@@ -26,7 +26,7 @@ const HomePage = () => {
       <SiteHeader />
       <Hero />
       {/* <Sponsors /> */}
-      <Features />
+      <Services />
       <Pricing />
       {/* <Skills /> */}
       <UserFeedback />

@@ -1,9 +1,14 @@
 // config/data/privacyData.tsx
 
-import { FaUserShield, FaRegFileAlt, FaUserSecret, FaLock } from "react-icons/fa";
+import {
+  FaUserShield,
+  FaRegFileAlt,
+  FaUserSecret,
+  FaLock,
+} from "react-icons/fa";
 import { IoMdAnalytics } from "react-icons/io";
 import { AiFillSecurityScan } from "react-icons/ai";
-import { APP_NAME, APP_MAIL } from "@/config/config";
+import { APP_NAME2, APP_MAIL } from "@/config/config";
 
 // Définir le type pour chaque section de politique de confidentialité
 export type PrivacyContent = {
@@ -18,11 +23,11 @@ export const privacyContent: PrivacyContent[] = [
     title: "Introduction",
     content: (
       <p className="text-base text-neutral-700">
-        Chez <strong>{APP_NAME}</strong>, nous accordons une grande importance à la
-        protection de votre vie privée. Cette politique de confidentialité
-        explique comment nous collectons, utilisons, stockons et
-        protégeons vos informations personnelles lorsque vous utilisez
-        notre site web et nos services.
+        Chez <strong>{APP_NAME2}</strong>, nous accordons une grande importance
+        à la protection de votre vie privée. Cette politique de confidentialité
+        explique comment nous collectons, utilisons, stockons et protégeons vos
+        informations personnelles lorsque vous utilisez notre site web et nos
+        services.
       </p>
     ),
     icon: <FaUserShield className="text-primary h-8 w-8" />,
@@ -94,10 +99,10 @@ export const privacyContent: PrivacyContent[] = [
     title: "Sécurité des Données",
     content: (
       <p className="text-base text-neutral-700">
-        La sécurité de vos données est notre priorité. Nous mettons en
-        place des mesures techniques et organisationnelles adaptées pour
-        protéger vos informations contre tout accès, divulgation,
-        modification ou destruction non autorisé.
+        La sécurité de vos données est notre priorité. Nous mettons en place des
+        mesures techniques et organisationnelles adaptées pour protéger vos
+        informations contre tout accès, divulgation, modification ou destruction
+        non autorisé.
       </p>
     ),
     icon: <FaLock className="text-primary h-8 w-8" />,
@@ -142,10 +147,10 @@ export const privacyContent: PrivacyContent[] = [
     content: (
       <p className="text-base text-neutral-700">
         Nous nous réservons le droit de modifier cette politique de
-        confidentialité à tout moment. Toute modification sera publiée sur
-        cette page et prendra effet immédiatement. Nous vous encourageons
-        à consulter régulièrement cette page pour rester informé de la
-        manière dont nous protégeons vos données.
+        confidentialité à tout moment. Toute modification sera publiée sur cette
+        page et prendra effet immédiatement. Nous vous encourageons à consulter
+        régulièrement cette page pour rester informé de la manière dont nous
+        protégeons vos données.
       </p>
     ),
     icon: <FaRegFileAlt className="text-primary h-8 w-8" />,

@@ -1,12 +1,13 @@
-import { useParams } from "react-router-dom"; // Import de useParams et useNavigate
+// src/pages/ServiceDetail.tsx
+import React from "react";
+import { useParams } from "react-router-dom";
+import { ServiceDetailContent } from "@/components/landing/service/ServiceDetailContent";
+import { serviceList } from "@/config/data/servicesData";
 import { SiteFooter, SiteHeader } from "@/components/layout";
-import ServiceDetailContent from "@/components/landing/service/ServiceDetailContent"; // Import du composant enfant
-import servicesData from "../data/dataServices.json"; // Importer les données des services
 
 const ServiceDetail: React.FC = () => {
-  const { serviceName } = useParams<{ serviceName: string }>(); // Récupérer le nom du service à partir de l'URL
+  const { serviceName } = useParams<{ serviceName: string }>();
 
-  // Vérifiez que serviceName est défini avant de l'utiliser
   if (!serviceName) {
     return (
       <div className="bg-background flex flex-col min-h-screen">
@@ -22,10 +23,7 @@ const ServiceDetail: React.FC = () => {
     );
   }
 
-  // Récupérer les détails du service à partir des données
-  const service = servicesData.find((service) =>
-    service.link.includes(serviceName)
-  );
+  const service = serviceList.find((service) => service.link === serviceName);
 
   return (
     <div className="bg-background flex flex-col min-h-screen">
@@ -35,7 +33,7 @@ const ServiceDetail: React.FC = () => {
           <ServiceDetailContent service={service} />
         ) : (
           <p className="text-center text-muted-foreground">
-            Désolé, nous n’avons pas pu trouver les détails du service demandé.
+            Désolé, nous n'avons pas pu trouver les détails du service demandé.
           </p>
         )}
       </div>

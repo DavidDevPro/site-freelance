@@ -1,7 +1,6 @@
 export { About } from './About';
 export { Cta } from './Cta';
 export { FAQ } from './FAQ';
-export { Features } from './Features';
 export { Hero } from './Hero';
 export { HowItWorks } from './HowItWorks';
 export { Pricing } from './Pricing';
