@@ -2,8 +2,8 @@ import React from "react";
 import { Banner, PrimaryButton } from "@/components/shared";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, PlusCircle } from "lucide-react";
-import { BiMailSend } from "react-icons/bi";
 import { FiCheckCircle } from "react-icons/fi";
+import { RiMailSendFill } from "react-icons/ri";
 
 interface PackageDetailContentProps {
   packageDetail: {
@@ -71,7 +71,7 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
                   variant="primary"
                   className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12 flex items-center"
                 >
-                  <BiMailSend className="mr-2 h-6 w-6" />
+                  <RiMailSendFill className="mr-4 h-6 w-6" />
                   Nous Contacter
                 </PrimaryButton>
               </Link>
@@ -105,9 +105,9 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
           <PrimaryButton
             variant="primary"
             onClick={() => navigate(-1)}
-            className="flex items-center space-x-2 text-white bg-primary hover:bg-primary-dark transition-colors"
+            className="flex items-center tracking-wide font-bold mb-6 sm:mb-0 space-x-2 text-white bg-primary hover:bg-primary-dark transition-colors"
           >
-            <ArrowLeft className="h-5 w-5" />
+            <ArrowLeft className="h-5 w-5 mr-2" />
             <span>Retour</span>
           </PrimaryButton>
         </div>
