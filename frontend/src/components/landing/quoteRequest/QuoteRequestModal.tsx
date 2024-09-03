@@ -45,19 +45,20 @@ export const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <PrimaryButton onClick={handleOpen}>
-          <FiFileText />
+          <FiFileText className="h-5 w-5 mr-2" />
           Demander un devis personnalisé
         </PrimaryButton>
       </DialogTrigger>
+
       <DialogContent
-        className="max-w-full mx-auto p-4 md:p-6 bg-white rounded-md shadow-md w-full sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl 2xl:max-w-6xl 
-      sm:max-h-[70vh] md:max-h-[80vh] lg:max-h-[85vh] xl:max-h-[80vh] 2xl:max-h-[90vh] flex flex-col"
+        className="max-w-full mx-auto w-11/12 p-2 md:p-6 bg-white rounded-md shadow-md lg:max-w-5xl 2xl:max-w-6xl max-h-full
+      sm:max-h-[70vh] md:max-h-[80vh] lg:max-h-[85vh] xl:max-h-[80vh]  2xl:max-h-[90vh] flex flex-col"
       >
         <DialogHeader>
-          <DialogTitle className="text-lg md:text-xl font-bold text-center text-primary">
+          <DialogTitle className="text-lg md:text-xl lg:text-2xl font-bold text-center text-primary">
             Demande de devis personnalisé
           </DialogTitle>
-          <DialogDescription className="text-sm md:text-base text-center">
+          <DialogDescription className="text-sm md:text-base lg:text-lg text-center">
             Veuillez suivre les étapes ci-dessous pour nous fournir les
             informations nécessaires.
           </DialogDescription>

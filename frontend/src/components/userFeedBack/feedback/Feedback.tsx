@@ -1,6 +1,6 @@
 import Marquee from "@/components/magicui/marquee";
 import { Testimonial } from "@/lib/api/testimonialsApi";
-import { FeedbackAvatar, FeedbackCard, FeedbackAddModal } from ".";
+import { FeedbackAvatar, FeedbackCard, FeedbackAddModal } from "..";
 
 interface FeedbackProps {
   testimonials: Testimonial[];

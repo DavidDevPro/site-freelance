@@ -26,9 +26,9 @@ const ServiceDetail: React.FC = () => {
   const service = serviceList.find((service) => service.link === serviceName);
 
   return (
-    <div className="bg-background flex flex-col min-h-screen">
+    <div className="bg-background flex flex-col min-h-screen ">
       <SiteHeader />
-      <div className="flex-grow flex items-center justify-center ">
+      <div className="flex-grow flex items-center justify-center py-10 px-4 ">
         {service ? (
           <ServiceDetailContent service={service} />
         ) : (

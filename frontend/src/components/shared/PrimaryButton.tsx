@@ -15,7 +15,7 @@ const secondaryButtonClasses = cn(
   "transform-gpu ring-offset-current transition-all duration-300 ease-out",
   "bg-white text-primary border-2 border-primary",
   "hover:bg-primary hover:text-white hover:ring-2 hover:ring-primary hover:ring-offset-2",
-  "px-8 py-5"
+  "px-6 py-4"
 );
 
 interface PrimaryButtonProps {

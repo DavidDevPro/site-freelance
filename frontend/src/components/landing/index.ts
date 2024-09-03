@@ -3,6 +3,6 @@ export { Cta } from './Cta';
 export { FAQ } from './FAQ';
 export { Hero } from './Hero';
 export { HowItWorks } from './HowItWorks';
-export { Pricing } from './Pricing';
+export { Package } from './package/Package';
 export { Services } from './Services';
-export { UserFeedback } from './UserFeedback';
+export { UserFeedback } from '../userFeedBack/UserFeedback';

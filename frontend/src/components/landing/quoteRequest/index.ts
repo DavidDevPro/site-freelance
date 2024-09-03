@@ -10,6 +10,6 @@ export { Step5ReviewSubmit } from './Step5ReviewSubmit';
 // Export des composants de formulaire et des types supplémentaires
 export type { Step } from './QuoteRequestSteps';
 export { getQuoteRequestSteps } from './QuoteRequestSteps';
-export { FormHeader } from './FormHeader';
-export { FormContent } from './FormContent';
-export { FormFooter } from './FormFooter';
+export { QuoteRequestHeader } from './QuoteRequestHeader';
+export { QuoteRequestContent } from './QuoteRequestContent';
+export { QuoteRequestFooter } from './QuoteRequestFooter';

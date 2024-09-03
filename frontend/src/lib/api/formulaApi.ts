@@ -1,20 +1,28 @@
 import axios, { AxiosResponse } from 'axios';
 import { apiUrl } from '@/config/apiConfig';
 
-// Définir l'interface pour les données d'une formule
-export interface Formula {
+// Définition des types utilisés pour les formules
+export type PackageFeature = {
+  name: string;
+  value: string;
+  description: string;
+};
+
+export type PackageOption = {
+  name: string;
+  description: string;
+};
+
+export type Formula = {
   id: string;
   name: string;
   description: string;
-  features: string[];
-  options: Array<{
-    name: string;
-    description: string;
-  }>;
+  features: PackageFeature[];
+  options: PackageOption[];
   isMostPopular: boolean;
-}
+};
 
-// Définir l'interface pour la réponse de l'API
+// Interface pour la réponse de l'API
 interface ApiResponse {
   status: string;
   message: string;
@@ -77,7 +85,7 @@ export const createFormula = async (formData: FormData): Promise<ApiResponse> =>
  */
 export const updateFormula = async (id: string, formData: FormData): Promise<ApiResponse> => {
   try {
-    const response: AxiosResponse<ApiResponse> = await axios.post(`${formulasUrl}/${id}`, formData, {
+    const response: AxiosResponse<ApiResponse> = await axios.put(`${formulasUrl}/${id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }

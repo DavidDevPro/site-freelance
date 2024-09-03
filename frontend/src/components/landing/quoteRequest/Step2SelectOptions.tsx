@@ -6,7 +6,7 @@ import { CheckedState } from "@radix-ui/react-checkbox";
 
 interface Option {
   name: string;
-  description?: string;
+  value?: string;
 }
 
 interface Step2SelectOptionsProps {
@@ -75,7 +75,7 @@ export const Step2SelectOptions: React.FC<{
                   />
                 </FormControl>
                 <FormLabel className="leading-none">
-                  {option.name} {option.description ? `: ${option.description}` : ""}
+                  {option.name} {option.value ? `: ${option.value}` : ""}
                 </FormLabel>
               </FormItem>
             )}

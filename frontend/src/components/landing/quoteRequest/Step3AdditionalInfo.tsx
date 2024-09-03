@@ -1,27 +1,41 @@
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { uploadTemporaryFile } from '@/lib/api/proposalRequestApi'; // Importer la fonction API
-import { FormField, FormItem, FormLabel, FormControl } from "@/components/ui/form";
+import { uploadTemporaryFile } from "@/lib/api/proposalRequestApi"; // Importer la fonction API
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+} from "@/components/ui/form";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { MdClose } from 'react-icons/md';
-import { FaPlus } from 'react-icons/fa';
+import { MdClose } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
 import { validateFileName } from "@/lib/utils";
 
 const MAX_CHAR_COUNT = 2000;
 const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3 MB
 const ACCEPTED_FILE_TYPES = [
-  'image/jpeg',
-  'image/png',
-  'application/pdf',
-  'application/msword',
-  'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-  'application/vnd.ms-excel',
-  'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+  "image/jpeg",
+  "image/png",
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  "application/vnd.ms-excel",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 ];
 
 export const Step3AdditionalInfo = () => {
-  const { control, watch, setValue, getValues, formState: { errors }, clearErrors, setError, trigger } = useFormContext();
+  const {
+    control,
+    watch,
+    setValue,
+    getValues,
+    formState: { errors },
+    clearErrors,
+    setError,
+    trigger,
+  } = useFormContext();
   const [charCount, setCharCount] = useState(0);
   const [fileErrors, setFileErrors] = useState<string[]>([]);
   const [visibleInputs, setVisibleInputs] = useState<number>(1);
@@ -33,7 +47,7 @@ export const Step3AdditionalInfo = () => {
 
   useEffect(() => {
     setCharCount(supplementalInfo.length);
-    const filledFileInputsCount = fileInputs.filter(file => file).length;
+    const filledFileInputsCount = fileInputs.filter((file) => file).length;
     setVisibleInputs(filledFileInputsCount > 0 ? filledFileInputsCount + 1 : 1);
   }, [supplementalInfo, fileInputs]);
 
@@ -46,10 +60,10 @@ export const Step3AdditionalInfo = () => {
       } else if (file.size > MAX_FILE_SIZE) {
         newFileErrors[index] = `Le fichier dépasse la taille maximale de 3 Mo.`;
       } else {
-        newFileErrors[index] = '';
+        newFileErrors[index] = "";
 
         const formData = new FormData();
-        formData.append('file', file);
+        formData.append("file", file);
         try {
           const { filename } = await uploadTemporaryFile(formData);
           setValue(`fileInput${index}`, filename);
@@ -58,14 +72,14 @@ export const Step3AdditionalInfo = () => {
             setVisibleInputs(visibleInputs + 1);
           }
         } catch {
-          newFileErrors[index] = 'Erreur lors du téléchargement.';
+          newFileErrors[index] = "Erreur lors du téléchargement.";
         }
       }
     } else {
-      newFileErrors[index] = '';
-      setValue(`fileInput${index}`, '');
-      setValue(`fileName${index}`, '');
-      setValue(`fileComment${index}`, '');
+      newFileErrors[index] = "";
+      setValue(`fileInput${index}`, "");
+      setValue(`fileName${index}`, "");
+      setValue(`fileComment${index}`, "");
       clearErrors(`fileComment${index}`);
       if (index + 1 === visibleInputs) {
         setVisibleInputs(visibleInputs - 1);
@@ -73,26 +87,26 @@ export const Step3AdditionalInfo = () => {
     }
 
     setFileErrors(newFileErrors);
-    await trigger();  // Revalidate the form
+    await trigger(); // Revalidate the form
   };
 
   const handleRemoveFile = (index: number) => {
     // Effacez le fichier et le nom du fichier associé
-    setValue(`fileInput${index}`, '');
-    setValue(`fileName${index}`, '');
-    setValue(`fileComment${index}`, '');
-    
+    setValue(`fileInput${index}`, "");
+    setValue(`fileName${index}`, "");
+    setValue(`fileComment${index}`, "");
+
     // Effacez les erreurs associées
     clearErrors(`fileComment${index}`);
-    
+
     // Mettez à jour l'état des erreurs de fichier
     const newFileErrors = [...fileErrors];
-    newFileErrors[index] = '';
+    newFileErrors[index] = "";
     setFileErrors(newFileErrors);
-    
+
     // Si on enlève le dernier fichier visible, réduisez le nombre d'inputs visibles
     if (index + 1 === visibleInputs) {
-        setVisibleInputs(visibleInputs - 1);
+      setVisibleInputs(visibleInputs - 1);
     }
   };
 
@@ -112,7 +126,7 @@ export const Step3AdditionalInfo = () => {
       setError(`fileComment${index}`, { type: "manual", message: validation });
     }
     setValue(`fileComment${index}`, value);
-    await trigger();  // Revalidate the form
+    await trigger(); // Revalidate the form
   };
 
   return (
@@ -138,7 +152,11 @@ export const Step3AdditionalInfo = () => {
             <div className="text-left text-sm text-gray-500">
               {charCount}/{MAX_CHAR_COUNT} caractères
             </div>
-            {errors.supplementalInfo && <p className="text-red-500">{String(errors.supplementalInfo.message)}</p>}
+            {errors.supplementalInfo && (
+              <p className="text-red-500">
+                {String(errors.supplementalInfo.message)}
+              </p>
+            )}
           </FormItem>
         )}
       />
@@ -147,65 +165,80 @@ export const Step3AdditionalInfo = () => {
 
       <div className="mt-6">
         <FormLabel>Ajouter des documents ( maximum 3)</FormLabel>
-        <p className="text-sm font-medium">Formats Acceptés : .jpg | .jpeg | .png | .pdf | .doc | .docx | .xls | .xlsx</p>
-        <p className="text-xs text-primary">Par exemple : Cahier des charges, Charte Graphique, Logo, etc.</p>
-        {[0, 1, 2].map((index) => (
-          index < visibleInputs && (
-            <FormItem key={index} className="mt-4">
-              <div className="flex items-start space-x-4">
-                <div className="flex-1">
-                  <FormLabel>Document {index + 1}</FormLabel>
-                  {!fileInputs[index] ? (
+        <p className="text-sm font-medium">
+          Formats Acceptés : .jpg | .jpeg | .png | .pdf | .doc | .docx | .xls |
+          .xlsx
+        </p>
+        <p className="text-xs text-primary">
+          Par exemple : Cahier des charges, Charte Graphique, Logo, etc.
+        </p>
+        {[0, 1, 2].map(
+          (index) =>
+            index < visibleInputs && (
+              <FormItem key={index} className=" mt-4">
+                <div className="flex flex-col md:flex-row gap-4 md:gap-0 items-start md:space-x-4">
+                  <div className="flex-1">
+                    <FormLabel>Document {index + 1}</FormLabel>
+                    {!fileInputs[index] ? (
+                      <FormControl className="mt-2">
+                        <Input
+                          id={`fileInput${index}`}
+                          type="file"
+                          accept=".jpg,.jpeg,.png,.doc,.docx,.pdf,.xls,.xlsx"
+                          onChange={(e) => {
+                            handleFileChange(
+                              index,
+                              e.target.files ? e.target.files[0] : null
+                            );
+                          }}
+                          className="cursor-pointer"
+                        />
+                      </FormControl>
+                    ) : (
+                      <div className="mt-2 flex items-center justify-between border border-gray-300 rounded-lg p-2 bg-gray-50">
+                        <span className="text-sm text-gray-500">
+                          {fileNames[index]}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveFile(index)}
+                          className="ml-2 text-red-500 hover:text-red-700"
+                        >
+                          <MdClose className="w-4 h-4" />
+                        </button>
+                      </div>
+                    )}
+                    {fileErrors[index] && (
+                      <div className="text-red-500 text-sm mt-1">
+                        {fileErrors[index]}
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <FormLabel>Nom du fichier</FormLabel>
                     <FormControl className="mt-2">
                       <Input
-                        id={`fileInput${index}`}
-                        type="file"
-                        accept=".jpg,.jpeg,.png,.doc,.docx,.pdf,.xls,.xlsx"
-                        onChange={(e) => {
-                          handleFileChange(index, e.target.files ? e.target.files[0] : null);
-                        }}
-                        className="cursor-pointer"
+                        type="text"
+                        value={fileComments[index] || ""}
+                        onChange={(e) =>
+                          handleFileCommentChange(index, e.target.value)
+                        }
+                        placeholder="Définir le nom du fichier"
+                        className={
+                          errors[`fileComment${index}`] ? "border-red-500" : ""
+                        }
                       />
                     </FormControl>
-                  ) : (
-                    <div className="mt-2 flex items-center justify-between border border-gray-300 rounded-lg p-2 bg-gray-50">
-                      <span className="text-sm text-gray-500">{fileNames[index]}</span>
-                      <button
-                        type="button"
-                        onClick={() => handleRemoveFile(index)}
-                        className="ml-2 text-red-500 hover:text-red-700"
-                      >
-                        <MdClose className="w-4 h-4" />
-                      </button>
-                    </div>
-                  )}
-                  {fileErrors[index] && (
-                    <div className="text-red-500 text-sm mt-1">
-                      {fileErrors[index]}
-                    </div>
-                  )}
+                    {errors[`fileComment${index}`] && (
+                      <p className="text-xs font-medium text-red-500 mt-1">
+                        {String(errors[`fileComment${index}`]?.message)}
+                      </p>
+                    )}
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <FormLabel>Nom du fichier</FormLabel>
-                  <FormControl className="mt-2">
-                    <Input
-                      type="text"
-                      value={fileComments[index] || ''}
-                      onChange={(e) => handleFileCommentChange(index, e.target.value)}
-                      placeholder="Définir le nom du fichier"
-                      className={errors[`fileComment${index}`] ? 'border-red-500' : ''}
-                    />
-                  </FormControl>
-                  {errors[`fileComment${index}`] && (
-                    <p className="text-xs font-medium text-red-500 mt-1">
-                      {String(errors[`fileComment${index}`]?.message)}
-                    </p>
-                  )}
-                </div>
-              </div>
-            </FormItem>
-          )
-        ))}
+              </FormItem>
+            )
+        )}
 
         {visibleInputs < 3 && (
           <button

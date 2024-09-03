@@ -3,10 +3,10 @@ import {
   Cta,
   FAQ,
   Hero,
-  Pricing,
   Services,
   UserFeedback,
 } from "@/components/landing/";
+import { Package } from "@/components/landing/package/Package";
 
 // import { HowItWorks } from "@/components/landing/HowItWorks";
 // import { Newsletter } from "@/components/landing/Newsletter";
@@ -27,7 +27,7 @@ const HomePage = () => {
       <Hero />
       {/* <Sponsors /> */}
       <Services />
-      <Pricing />
+      <Package />
       {/* <Skills /> */}
       <UserFeedback />
       <About />
