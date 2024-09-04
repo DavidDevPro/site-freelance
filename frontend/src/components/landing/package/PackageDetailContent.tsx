@@ -1,22 +1,26 @@
-import React from 'react';
+import React from "react";
 import { Banner, PrimaryButton } from "@/components/shared";
-import { Link, useNavigate } from 'react-router-dom';
-import { ArrowLeft, PlusCircle } from 'lucide-react';
-import { BiMailSend } from 'react-icons/bi';
-import { FiCheckCircle } from 'react-icons/fi';
-import { PackageOption, PackageFeature } from '@/lib/api/formulaApi'; // Importez vos types
+import { Link, useNavigate } from "react-router-dom";
+import { ArrowLeft, PlusCircle } from "lucide-react";
+import { RiMailSendFill } from "react-icons/ri";
+import { FiCheckCircle } from "react-icons/fi";
+import { PackageOption, PackageFeature } from "@/lib/api/formulaApi"; // Importez vos types
 
 interface PackageDetailContentProps {
-  packageDetail?: { // Utilisation du type optionnel avec le "?"
+  packageDetail?: {
+    // Utilisation du type optionnel avec le "?"
     name: string;
     description: string;
-    features: PackageFeature[]; 
+    features: PackageFeature[];
     options: PackageOption[];
   };
   error?: string; // Ajout de la propriété error pour gérer les erreurs d'API
 }
 
-export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({ packageDetail, error }) => {
+export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
+  packageDetail,
+  error,
+}) => {
   const navigate = useNavigate();
 
   // Fonction pour gérer le bouton de retour
@@ -26,18 +30,14 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({ pack
       navigate(-1);
     } else {
       // Rediriger vers une page par défaut (ex: page d'accueil) si l'utilisateur est venu directement
-      navigate('/');
+      navigate("/");
     }
   };
 
   return (
-    <div className="max-w-7xl mx-auto w-full">
+    <section className="container mx-auto py-10 relative z-10">
       {/* Si une erreur est présente, afficher le message d'erreur */}
-      {error && (
-        <div className="text-center text-red-500 mt-10">
-          {error}
-        </div>
-      )}
+      {error && <div className="text-center text-red-500 mt-10">{error}</div>}
 
       {!packageDetail && (
         <>
@@ -81,12 +81,19 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({ pack
                 </h2>
                 <ul className="sm:pl-5 space-y-2">
                   {packageDetail.features.map((feature, index) => (
-                    <li key={index} className="flex items-start gap-3 text-black dark:text-white">
-                      <FiCheckCircle className="h-6 w-6 shrink-0 rounded-full text-primary p-[2px] bg-white dark:text-white" />
+                    <li
+                      key={index}
+                      className="flex items-start gap-3 text-black dark:text-white"
+                    >
+                      <FiCheckCircle className="h-6 w-6 shrink-0 rounded-full text-primary mt-1  bg-white dark:text-white" />
                       <div className="flex flex-col">
-                        <span className="font-bold text-lg">{feature.name} : {feature.value}</span>
+                        <span className="font-bold text-lg">
+                          {feature.name} : {feature.value}
+                        </span>
                         {feature.description && (
-                          <span className="text-muted-foreground text-base">{feature.description}</span>
+                          <span className="text-muted-foreground text-base">
+                            {feature.description}
+                          </span>
                         )}
                       </div>
                     </li>
@@ -96,14 +103,18 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({ pack
 
               {/* Afficher un composant banner ou autre contenu */}
               <div className="w-full md:mb-0 space-y-4">
-                <Banner className="mt-0 mb-10"
+                <Banner
+                  className="mt-0 mb-10"
                   title="En savoir plus sur nos services"
                   description="Contactez-nous pour plus de détails ou des options personnalisées."
                 />
                 <div className="flex justify-center">
                   <Link to="/contact">
-                    <PrimaryButton variant="primary" className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12 flex items-center">
-                      <BiMailSend className="mt-1 mr-2 h-6 w-6 shrink-0" />
+                    <PrimaryButton
+                      variant="primary"
+                      className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12 flex items-center"
+                    >
+                      <RiMailSendFill className=" mr-2 h-6 w-6 shrink-0" />
                       Nous Contacter
                     </PrimaryButton>
                   </Link>
@@ -121,16 +132,29 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({ pack
               </h3>
               <ul className="inline-block text-left sm:pl-5 space-y-2">
                 {packageDetail.options.map((option, index) => (
-                  <li key={index} className="flex items-start gap-2 text-muted-foreground">
+                  <li
+                    key={index}
+                    className="flex items-start gap-2 text-muted-foreground"
+                  >
                     <PlusCircle className="h-5 w-5 shrink-0 text-primary" />
                     <span>{option.description}</span>
                   </li>
                 ))}
               </ul>
+              <div className="mt-6 flex justify-center">
+                <PrimaryButton
+                  variant="primary"
+                  onClick={handleBackClick}
+                  className="flex items-center mb-6 sm:mb-0 space-x-2 font-bold tracking-wide text-white bg-primary hover:bg-primary-dark transition-colors"
+                >
+                  <ArrowLeft className="h-5 w-5 shrink-0 mr-2" />
+                  <span>Retour</span>
+                </PrimaryButton>
+              </div>
             </div>
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 };

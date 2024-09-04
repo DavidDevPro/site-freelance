@@ -8,7 +8,6 @@ import {
   LegalPage,
   PrivacyPage,
   ForgotPasswordPage,
-  EssentielPlanPage,
   PackageDetailPage,
   NotFoundPage,
   ServiceDetailPage,
@@ -34,7 +33,6 @@ function App() {
         {/* Ajout de la route 404 */}
         <Route path="*" element={<NotFoundPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        <Route path="/essentiel-plan" element={<EssentielPlanPage />} />
       </Routes>
       <Toaster />
     </Router>

@@ -34,7 +34,7 @@ export const FeedbackCard: React.FC<FeedbackCardProps> = ({
   source,
 }) => {
   return (
-    <Card className="max-w-md md:break-inside-avoid overflow-hidden flex flex-col border border-primary p-4  shadow-lg">
+    <Card className="max-w-md md:break-inside-avoid overflow-hidden flex flex-col border border-primary p-4 shadow-lg">
       <div>
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
           <Avatar>

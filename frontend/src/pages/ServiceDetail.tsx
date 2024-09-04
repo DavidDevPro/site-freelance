@@ -1,45 +1,58 @@
-// src/pages/ServiceDetail.tsx
-import React from "react";
-import { useParams } from "react-router-dom";
-import { ServiceDetailContent } from "@/components/landing/service/ServiceDetailContent";
+import { useParams } from "react-router-dom"; // Import de useParams et useNavigate
+import { PageLayoutOneScreen, PageLayoutFullScreen } from "@/components/layout";
+import { ServiceDetailContent } from "@/components/landing/service/ServiceDetailContent"; // Import du composant enfant
 import { serviceList } from "@/config/data/servicesData";
-import { SiteFooter, SiteHeader } from "@/components/layout";
 
 const ServiceDetail: React.FC = () => {
-  const { serviceName } = useParams<{ serviceName: string }>();
+  const { serviceName } = useParams<{ serviceName: string }>(); // Récupérer le nom du service à partir de l'URL
 
+  // Vérifiez que serviceName est défini avant de l'utiliser
   if (!serviceName) {
     return (
-      <div className="bg-background flex flex-col min-h-screen">
-        <SiteHeader />
-        <div className="flex-grow flex items-center justify-center ">
-          <p className="text-center text-muted-foreground">
-            Aucun service sélectionné.
-          </p>
-        </div>
-
-        <SiteFooter />
-      </div>
+      <PageLayoutOneScreen>
+        <section
+          id="contact"
+          className="container flex-grow flex items-center justify-center px-0"
+        >
+          <div className="max-w-7xl mx-auto w-full">
+            <p className="text-center text-muted-foreground">
+              Aucun service sélectionné.
+            </p>
+          </div>
+        </section>
+      </PageLayoutOneScreen>
     );
   }
 
-  const service = serviceList.find((service) => service.link === serviceName);
+  // Récupérer les détails du service à partir des données
+  const service = serviceList.find((service) =>
+    service.link.includes(serviceName)
+  );
 
   return (
-    <div className="bg-background flex flex-col min-h-screen ">
-      <SiteHeader />
-      <div className="flex-grow flex items-center justify-center py-10 px-4 ">
-        {service ? (
-          <ServiceDetailContent service={service} />
-        ) : (
-          <p className="text-center text-muted-foreground">
-            Désolé, nous n'avons pas pu trouver les détails du service demandé.
-          </p>
-        )}
-      </div>
-
-      <SiteFooter />
-    </div>
+    <>
+      {service ? (
+        <PageLayoutFullScreen>
+          <div className="flex-grow flex items-center justify-center px-0">
+            <ServiceDetailContent service={service} />
+          </div>
+        </PageLayoutFullScreen>
+      ) : (
+        <PageLayoutOneScreen>
+          <section
+            id="contact"
+            className="container flex-grow flex items-center justify-center px-0"
+          >
+            <div className="max-w-7xl mx-auto w-full">
+              <p className="text-center text-muted-foreground">
+                Désolé, nous n'avons pas pu trouver les détails du service
+                demandé.
+              </p>
+            </div>
+          </section>
+        </PageLayoutOneScreen>
+      )}
+    </>
   );
 };
 

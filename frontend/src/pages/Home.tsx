@@ -17,13 +17,11 @@ import { Package } from "@/components/landing/package/Package";
 // import { Sponsors } from "@/components/Sponsors";
 // import { Team } from "@/components/landing/Team";
 
-import { SiteFooter, SiteHeader } from "@/components/layout";
-import { ScrollToTop } from "@/components/shared";
+import { PageLayoutFullScreen } from "@/components/layout";
 
 const HomePage = () => {
   return (
-    <>
-      <SiteHeader />
+    <PageLayoutFullScreen>
       <Hero />
       {/* <Sponsors /> */}
       <Services />
@@ -37,9 +35,7 @@ const HomePage = () => {
       {/* <Team /> */}
       {/* <Newsletter /> */}
       <FAQ />
-      <SiteFooter />
-      <ScrollToTop />
-    </>
+    </PageLayoutFullScreen>
   );
 };
 

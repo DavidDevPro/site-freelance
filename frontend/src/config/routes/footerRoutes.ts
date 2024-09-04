@@ -20,7 +20,7 @@ export const footerRoutes: FooterRouteSection[] = [
     label: "Produits",
     items: [
       { href: "/#services", name: "Services" },
-      { href: "/#pricing", name: "Tarifs" },
+      { href: "/#package", name: "Tarifs" },
       { href: "/#testimonials", name: "Témoignages" },
     ],
   },

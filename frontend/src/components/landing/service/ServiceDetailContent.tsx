@@ -29,7 +29,7 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
   };
 
   return (
-    <div className="max-w-7xl mx-auto w-full">
+    <section className="container mx-auto py-10 relative z-10">
       {/* Titre et description */}
       <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center text-primary">
         {`Détails du Service : ${service.title}`}
@@ -84,6 +84,6 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -12,7 +12,7 @@ interface RouteProps {
   export const headerRoutes: RouteProps[] = [
     { href: "/#services", label: "Services" },
   { href: "/#testimonials", label: "Témoignages" },
-  { href: "/#pricing", label: "Tarifs" },
+  { href: "/#package", label: "Tarifs" },
   { href: "/#faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
   ];

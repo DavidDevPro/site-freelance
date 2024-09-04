@@ -45,7 +45,7 @@ export const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <PrimaryButton onClick={handleOpen}>
-          <FiFileText className="h-5 w-5 mr-2" />
+          <FiFileText className="h-5 w-5 mr-2 shrink-0" />
           Demander un devis personnalisé
         </PrimaryButton>
       </DialogTrigger>
@@ -55,10 +55,8 @@ export const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({
       sm:max-h-[70vh] md:max-h-[80vh] lg:max-h-[85vh] xl:max-h-[80vh]  2xl:max-h-[90vh] flex flex-col"
       >
         <DialogHeader>
-          <DialogTitle className="text-lg md:text-xl lg:text-2xl font-bold text-center text-primary">
-            Demande de devis personnalisé
-          </DialogTitle>
-          <DialogDescription className="text-sm md:text-base lg:text-lg text-center">
+          <DialogTitle>Demande de devis personnalisé</DialogTitle>
+          <DialogDescription>
             Veuillez suivre les étapes ci-dessous pour nous fournir les
             informations nécessaires.
           </DialogDescription>
