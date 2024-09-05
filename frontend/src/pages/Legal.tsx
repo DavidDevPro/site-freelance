@@ -1,10 +1,16 @@
 import { PageLayoutFullScreen } from "@/components/layout";
-import { LegalMentions } from "@/components/legal/LegalMentions";
+import { MentionsSections } from "@/components/legal";
 
 const LegalPage: React.FC = () => {
   return (
     <PageLayoutFullScreen>
-      <LegalMentions />
+      <section className="container mx-auto py-10 relative z-10">
+        <h1 className="text-4xl font-bold my-8 text-center text-primary">
+          Mentions Légales
+        </h1>
+        {/* Utilisation du composant MentionsSections */}
+        <MentionsSections />
+      </section>
     </PageLayoutFullScreen>
   );
 };

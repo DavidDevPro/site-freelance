@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export const PackageHeader: React.FC = () => (
   <div className="mx-auto max-w-5xl text-center">
@@ -6,7 +6,9 @@ export const PackageHeader: React.FC = () => (
       Choisissez votre formule idéale.
     </h2>
     <p className="mt-6 text-xl leading-8 text-black/80 dark:text-white">
-      Sélectionnez une formule qui correspond à vos besoins. Chaque formule peut être personnalisée avec des options supplémentaires pour répondre à vos attentes.
+      Sélectionnez une formule qui correspond à vos besoins. Chaque formule peut
+      être personnalisée avec des options supplémentaires pour répondre à vos
+      attentes.
     </p>
   </div>
 );

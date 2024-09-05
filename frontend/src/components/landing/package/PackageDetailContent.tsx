@@ -85,7 +85,7 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
                       key={index}
                       className="flex items-start gap-3 text-black dark:text-white"
                     >
-                      <FiCheckCircle className="h-6 w-6 shrink-0 rounded-full text-primary mt-1  bg-white dark:text-white" />
+                      <FiCheckCircle className="h-6 w-6 shrink-0 rounded-full text-primary mt-1  bg-card dark:text-white" />
                       <div className="flex flex-col">
                         <span className="font-bold text-lg">
                           {feature.name} : {feature.value}

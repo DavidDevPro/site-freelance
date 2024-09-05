@@ -204,7 +204,7 @@ export const Step3AdditionalInfo = () => {
                           onClick={() => handleRemoveFile(index)}
                           className="ml-2 text-red-500 hover:text-red-700"
                         >
-                          <MdClose className="w-4 h-4" />
+                          <MdClose className="w-4 h-4 shrink-0" />
                         </button>
                       </div>
                     )}
@@ -246,7 +246,7 @@ export const Step3AdditionalInfo = () => {
             onClick={handleAddInput}
             className="mt-4 flex items-center text-blue-500 hover:text-blue-700"
           >
-            <FaPlus className="mr-2" /> Ajouter un autre document
+            <FaPlus className="mr-2 shrink-0" /> Ajouter un autre document
           </button>
         )}
       </div>

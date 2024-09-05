@@ -51,7 +51,7 @@ export const QuoteRequestModal: React.FC<QuoteRequestModalProps> = ({
       </DialogTrigger>
 
       <DialogContent
-        className="max-w-full mx-auto w-11/12 p-2 md:p-6 bg-white rounded-md shadow-md lg:max-w-5xl 2xl:max-w-6xl max-h-full
+        className="max-w-full mx-auto w-11/12 p-2 md:p-6 bg-card rounded-md shadow-md lg:max-w-5xl 2xl:max-w-6xl max-h-full
       sm:max-h-[70vh] md:max-h-[80vh] lg:max-h-[85vh] xl:max-h-[80vh]  2xl:max-h-[90vh] flex flex-col"
       >
         <DialogHeader>

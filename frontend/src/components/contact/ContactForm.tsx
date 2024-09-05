@@ -19,7 +19,7 @@ import {
   showMessageSuccess,
   showMessageError,
 } from "@/notifications/toastMessages";
-import { PrimaryButton } from "@/components/shared/PrimaryButton";
+import { PrimaryButton } from "@/components/shared";
 import { useState } from "react";
 import { RiMailSendFill } from "react-icons/ri";
 
@@ -92,7 +92,10 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-6 p-2 md:p-4"
+      >
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Prénom */}
           <FormField
@@ -100,10 +103,10 @@ export function ContactForm() {
             name="firstName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Prénom</FormLabel>
+                <FormLabel className="text-base">Prénom</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
                     <Input
                       placeholder="Votre prénom"
                       {...field}
@@ -121,10 +124,10 @@ export function ContactForm() {
             name="lastName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nom</FormLabel>
+                <FormLabel className="text-base">Nom</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
                     <Input
                       placeholder="Votre nom"
                       {...field}
@@ -142,12 +145,12 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Email</FormLabel>
+                <FormLabel className="text-base">Email</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
                     <Input
-                      placeholder="Votre adresse email"
+                      placeholder="Votre email"
                       {...field}
                       className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
                     />
@@ -163,12 +166,12 @@ export function ContactForm() {
             name="phone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Téléphone</FormLabel>
+                <FormLabel className="text-base">Téléphone</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
                     <Input
-                      placeholder="Votre numéro de téléphone"
+                      placeholder="Votre téléphone"
                       {...field}
                       className="w-full pl-10 border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
                     />
@@ -185,10 +188,10 @@ export function ContactForm() {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Sujet</FormLabel>
+              <FormLabel className="text-base">Sujet</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
                   <Input
                     placeholder="Le sujet de votre demande"
                     {...field}
@@ -206,13 +209,13 @@ export function ContactForm() {
           name="message"
           render={({ field, fieldState }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel className="text-base">Message</FormLabel>
               <FormControl>
                 <div className="relative">
                   <Textarea
                     placeholder="Votre message"
                     {...field}
-                    className="w-full border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                    className="min-h-[200px] w-full border-input rounded-md shadow-sm focus:ring-primary focus:border-primary"
                     maxLength={500}
                     onChange={(e) => {
                       setMessageLength(e.target.value.length);
@@ -237,14 +240,14 @@ export function ContactForm() {
           name="consent"
           render={({ field }) => (
             <FormItem>
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-2 lg:mt-20 mt-10">
                 <FormControl>
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
                   />
                 </FormControl>
-                <FormLabel className="text-sm">
+                <FormLabel className="text-sm text-center">
                   {`J'accepte de soumettre mes informations personnelles via ce formulaire`}
                 </FormLabel>
               </div>
@@ -254,9 +257,9 @@ export function ContactForm() {
           )}
         />
         {/* Bouton Envoyer */}
-        <div className="flex justify-center mb-4">
+        <div className="flex justify-center  mb-4">
           <PrimaryButton type="submit" variant="primary">
-            <RiMailSendFill className="mr-2 mt-0.5 h-4 w-4 " />
+            <RiMailSendFill className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
             Envoyer
           </PrimaryButton>
         </div>

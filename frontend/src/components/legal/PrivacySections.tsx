@@ -5,7 +5,7 @@ export const PrivacySections: React.FC = () => {
   return (
     <div className="space-y-8">
       {privacyContent.map((section, index) => (
-        <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+        <div key={index} className="bg-card p-6 rounded-lg shadow-md">
           <div className="flex items-center mb-4">
             {section.icon}
             <h2 className="text-2xl font-semibold ml-2 text-primary">

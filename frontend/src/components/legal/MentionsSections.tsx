@@ -6,7 +6,7 @@ export const MentionsSections: React.FC = () => {
   return (
     <div className="space-y-8">
       {mentionsContent.map((section: MentionContent, index: number) => (
-        <div key={index} className="bg-white p-6 rounded-lg shadow-md">
+        <div key={index} className="bg-card p-6 rounded-lg shadow-md">
           <div className="flex items-center mb-4">
             {section.icon} {/* Affiche l'icône de chaque section */}
             <h2 className="text-2xl font-semibold ml-2 text-primary">

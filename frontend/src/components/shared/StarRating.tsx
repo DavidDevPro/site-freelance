@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Star, StarHalf, Star as StarFull } from "lucide-react";
 
 interface StarRatingProps {
@@ -14,7 +14,7 @@ export const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
         stars.push(
           <StarFull
             key={i}
-            className="text-yellow-500 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+            className="text-yellow-500 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0"
             fill="currentColor"
           />
         );
@@ -23,7 +23,7 @@ export const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
         stars.push(
           <StarHalf
             key={i}
-            className="text-yellow-500 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+            className="text-yellow-500 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0"
             fill="currentColor"
           />
         );
@@ -32,7 +32,7 @@ export const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
         stars.push(
           <Star
             key={i}
-            className="text-gray-300 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6"
+            className="text-gray-300 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 shrink-0"
             fill="none"
             stroke="currentColor"
           />

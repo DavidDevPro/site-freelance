@@ -1,6 +1,12 @@
 import React from "react";
-import { Step1ChoosePackage, Step2SelectOptions, Step3AdditionalInfo, Step4PersonalDetails, Step5ReviewSubmit } from '@/components/landing/quoteRequest';
-import { CalendarIframe } from '@/components/shared';
+import {
+  Step1ChoosePackage,
+  Step2SelectOptions,
+  Step3AdditionalInfo,
+  Step4PersonalDetails,
+  Step5ReviewSubmit,
+} from "@/components/landing/quoteRequest";
+import { CalendarIframe } from "@/components/shared";
 
 // Définir les types pour les props nécessaires aux étapes
 interface QuoteRequestStepsProps {

@@ -13,7 +13,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import logo from "@/assets/images/logo.png";
+import { logo } from "@/assets/images";
 import { PrimaryButton } from "@/components/shared";
 
 // Définir le schéma de validation du formulaire avec Zod
@@ -71,7 +71,7 @@ export const LoginForm: React.FC = () => {
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
                   <Input
                     id="email"
                     type="email"
@@ -93,7 +93,7 @@ export const LoginForm: React.FC = () => {
               <FormLabel>Mot de passe</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
@@ -121,7 +121,7 @@ export const LoginForm: React.FC = () => {
         </div>
         <div className="flex justify-center mb-4">
           <PrimaryButton type="submit" variant="primary">
-            <RiUserSharedLine className="mr-2 h-4 w-4" />
+            <RiUserSharedLine className="mr-2 h-4 w-4 shrink-0" />
             Se connecter
           </PrimaryButton>
         </div>

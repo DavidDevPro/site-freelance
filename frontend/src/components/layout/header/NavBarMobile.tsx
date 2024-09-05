@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "@/components/layout/header/ModeToggle";
-import Logo from "@/assets/images/icon.webp";
+import { logo } from "@/assets/images";
 import { Link, useNavigate } from "react-router-dom";
 import { CopyrightText, SocialIcons, PrimaryButton } from "@/components/shared";
 import { APP_NAME } from "@/config/config";
@@ -66,9 +66,9 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
                   className="flex items-center text-primary font-bold"
                 >
                   <img
-                    src={Logo}
+                    src={logo}
                     alt="Logo davidwebprojects"
-                    className="w-8 h-8 mr-2 "
+                    className="w-12 h-12 mr-2 "
                   />
                   {APP_NAME}
                 </Link>
@@ -113,7 +113,7 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
                   to="/login"
                   className="text-white no-underline flex items-center"
                 >
-                  <BsPersonFillCheck className="mr-2 h-4 w-4 " />
+                  <BsPersonFillCheck className="mr-2 h-4 w-4 shrink-0" />
                   Se Connecter
                 </Link>
               </PrimaryButton>
@@ -124,7 +124,7 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
               {" "}
               {/* Réduire la taille de la police */}
               <SocialIcons
-                iconSize="w-4 h-4"
+                iconSize="w-4 h-4 shrink-0"
                 spaceBetween="space-x-4"
                 containerClassName="mb-4"
               />

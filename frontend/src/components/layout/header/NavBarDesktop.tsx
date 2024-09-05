@@ -10,7 +10,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 import { ModeToggle } from "@/components/layout/header/ModeToggle";
-import { PrimaryButton } from "@/components/shared/PrimaryButton";
+import { PrimaryButton } from "@/components/shared";
 import { BsPersonFillCheck } from "react-icons/bs";
 
 // Définir les types pour les props
@@ -58,7 +58,7 @@ export const NavBarDesktop: React.FC<NavBarDesktopProps> = ({ routes }) => {
             to="/login"
             className="text-white no-underline flex items-center"
           >
-            <BsPersonFillCheck className="mr-2 h-4 w-4 " />
+            <BsPersonFillCheck className="mr-2 h-4 w-4 shrink-0" />
             Se Connecter
           </Link>
         </PrimaryButton>

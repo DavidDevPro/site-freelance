@@ -44,7 +44,7 @@ export const Cta = () => {
               onClick={handleContactClick}
               aria-label="Contactez-nous"
             >
-              <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 " />
+              <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
               Contactez-nous
             </PrimaryButton>
             <GoogleCalendarModal />

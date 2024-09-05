@@ -4,5 +4,5 @@ export { FAQ } from './FAQ';
 export { Hero } from './Hero';
 export { HowItWorks } from './HowItWorks';
 export { Package } from './package/Package';
-export { Services } from './Services';
-export { UserFeedback } from '../userFeedBack/UserFeedback';
+export { Services } from './service/Services';
+export { UserFeedback } from './userFeedBack/UserFeedback';

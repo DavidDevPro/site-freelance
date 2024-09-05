@@ -96,7 +96,7 @@ const Skills: React.FC = () => {
               <CardHeader className="flex flex-col items-center text-center">
                 <div className="bg-primary/20 p-4 rounded-full ring-8 ring-primary/10 mb-4">
                   <IconComponent
-                    className="w-6 h-6 text-primary"
+                    className="w-6 h-6 text-primary shrink-0"
                     aria-label={`${title} Icon`}
                   />
                 </div>

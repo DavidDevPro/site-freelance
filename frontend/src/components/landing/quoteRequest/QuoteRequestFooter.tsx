@@ -28,7 +28,7 @@ export const QuoteRequestFooter: React.FC<QuoteRequestFooterProps> = ({
         disabled={currentStep === 0}
         className="mb-4 sm:mb-0 w-1/2 sm:w-auto mx-auto sm:mx-0 tracking-wide font-bold"
       >
-        <LuArrowLeftCircle className="mr-2 h-6 w-6" />
+        <LuArrowLeftCircle className="mr-2 h-6 w-6 shrink-0" />
         Précédent
       </PrimaryButton>
       {currentStep < stepsLength - 2 && (
@@ -38,7 +38,7 @@ export const QuoteRequestFooter: React.FC<QuoteRequestFooterProps> = ({
           onClick={nextStep}
         >
           Suivant
-          <LuArrowRightCircle className="ml-2 h-6 w-6" />
+          <LuArrowRightCircle className="ml-2 h-6 w-6 shrink-0" />
         </PrimaryButton>
       )}
       {currentStep === stepsLength - 2 && (
@@ -48,7 +48,7 @@ export const QuoteRequestFooter: React.FC<QuoteRequestFooterProps> = ({
           onClick={handleSubmit}
         >
           Soumettre
-          <FaPaperPlane className="ml-2 h-6 w-6" />
+          <FaPaperPlane className="ml-2 h-6 w-6 shrink-0" />
         </PrimaryButton>
       )}
     </div>

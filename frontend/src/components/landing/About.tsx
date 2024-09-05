@@ -1,5 +1,5 @@
-import pilot from "@/assets/images/gerant.png";
-import { PrimaryButton } from "@/components/shared/PrimaryButton";
+import { boss } from "@/assets/images";
+import { PrimaryButton } from "@/components/shared";
 import { APP_NAME } from "@/config/config";
 import { FaDev } from "react-icons/fa";
 
@@ -12,10 +12,10 @@ export const About = () => {
       <p className="text-xl leading-8 text-black/80 dark:text-white text-center mb-8 mx-auto max-w-4xl">
         Présentation du gérant.
       </p>
-      <div className="bg-white dark:bg-neutral-900 border border-primary rounded-2xl shadow-lg p-8">
+      <div className="bg-card dark:bg-neutral-900 border border-primary rounded-2xl shadow-lg p-8">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center">
           <img
-            src={pilot}
+            src={boss}
             alt="Portrait de David Changea, fondateur de {APP_NAME}"
             className="w-[275px] h-[275px] object-cover rounded-full shadow-md"
             loading="lazy" // Améliore le temps de chargement de la page
@@ -44,7 +44,7 @@ export const About = () => {
                   rel="noopener noreferrer"
                   className="text-white flex"
                 >
-                  <FaDev className="mr-2 mt-0.5 h-4 w-4 " />
+                  <FaDev className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
                   Découvrir mon portfolio
                 </a>
               </PrimaryButton>

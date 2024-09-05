@@ -3,7 +3,7 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { GrUserManager } from "react-icons/gr";
 
-import { APP_DEV, APP_MAIL, APP_ADRESS, APP_ADRESS2, APP_TEL, APP_SIRET, APP_NAME2 } from "@/config/config";
+import { APP_DEV, APP_MAIL, APP_ADRESS, APP_ADRESS2, APP_TEL, APP_SIRET, APP_NAME2, APP_ADRESS3 } from "@/config/config";
 import { PiBuildingApartment, PiSuitcase } from "react-icons/pi";
 
 // Définir le type pour chaque élément de contact
@@ -11,6 +11,7 @@ type ContactInfoItem = {
   label: string;
   icon: React.ElementType; // Utilisation de React.ElementType pour les icônes React
   text: string;
+  text2:string;
 };
 
 // Définir le type pour chaque élément légal
@@ -28,16 +29,19 @@ export const contactInfo: ContactInfoItem[] = [
     label:"Email",
     icon: Mail,
     text: APP_MAIL,
+    text2:"",
   },
   {
     label:"Téléphone",
     icon: Phone,
     text: APP_TEL,
+    text2:"",
   },
   {
     label:"",
     icon: MapPin,
     text: APP_ADRESS2,
+    text2: APP_ADRESS3,
   },
 ];
 

@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { PrimaryButton } from "../shared/PrimaryButton";
+import { PrimaryButton } from "@/components/shared";
 import { RiMailSendLine } from "react-icons/ri";
 
 // Importer les données de FAQ
@@ -41,7 +41,7 @@ export const FAQ = () => {
         <p className="font-medium">Vous avez encore des questions ?</p>
         <PrimaryButton>
           <a rel="noreferrer noopener" href="/contact" className="flex">
-            <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 " />
+            <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
             Contactez-nous
           </a>
         </PrimaryButton>

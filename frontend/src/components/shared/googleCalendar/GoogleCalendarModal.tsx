@@ -21,12 +21,12 @@ export const GoogleCalendarModal: React.FC = () => {
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <PrimaryButton>
-          <SiGooglecalendar className="mr-2  h-4 w-4 " />
+          <SiGooglecalendar className="mr-2  h-4 w-4 shrink-0" />
           Prendre un rendez-vous
         </PrimaryButton>
       </DialogTrigger>
       <DialogContent
-        className="max-w-full mx-auto p-4 md:p-6 bg-white rounded-md shadow-md w-full
+        className="max-w-full mx-auto p-4 md:p-6 bg-card rounded-md shadow-md w-full
         sm:max-w-md md:max-w-lg lg:max-w-3xl xl:max-w-5xl 2xl:max-w-6xl
         sm:max-h-[70vh] md:max-h-[80vh] lg:max-h-[85vh] xl:max-h-[80vh] 2xl:max-h-[90vh]
         flex flex-col"

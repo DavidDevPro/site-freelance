@@ -49,9 +49,7 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
       ) {
         return `${option.name} (+${formValues.pageCount} pages)`;
       }
-      return option.value
-        ? `${option.name} : ${option.value}`
-        : option.name;
+      return option.value ? `${option.name} : ${option.value}` : option.name;
     });
 
   const formatPhoneNumber = (phone: string | undefined): string => {
@@ -69,9 +67,10 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
   return (
     <div className="space-y-6">
       {/* Section 1: Formule et Options */}
-      <div className="p-2 sm:p-4 border rounded-lg shadow-md bg-white">
+      <div className="p-2 sm:p-4 border rounded-lg shadow-md bg-card">
         <h2 className="text-lg sm:text-xl font-semibold flex items-center mb-4">
-          <ClipboardList className="mr-1 text-primary" /> Détails de la Formule
+          <ClipboardList className="mr-1 text-primary shrink-0" /> Détails de la
+          Formule
         </h2>
         <div className="mb-2">
           <strong>Formule :</strong> {formValues.formule || "N/A"}
@@ -100,9 +99,10 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
       </div>
 
       {/* Section 2: Fichiers Uploadés */}
-      <div className="p-4 border rounded-lg shadow-md bg-white">
+      <div className="p-4 border rounded-lg shadow-md bg-card">
         <h2 className="text-xl font-semibold flex items-center mb-4">
-          <FileText className="mr-2 text-primary" /> Fichier(s) Téléchargé(s)
+          <FileText className="mr-2 text-primary shrink-0" /> Fichier(s)
+          Téléchargé(s)
         </h2>
         <ul className="list-disc list-inside ml-4">
           {uploadedFiles.length > 0 ? (
@@ -120,7 +120,7 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
       </div>
 
       {/* Section 3: Informations Client */}
-      <div className="p-4 border rounded-lg shadow-md bg-white">
+      <div className="p-4 border rounded-lg shadow-md bg-card">
         <h2 className="text-xl font-semibold flex items-center mb-4">
           <User className="mr-2 text-primary shrink-0" /> Coordonnées Client
         </h2>

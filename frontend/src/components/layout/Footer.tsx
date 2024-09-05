@@ -1,5 +1,5 @@
 import { APP_NAME2 } from "@/config/config";
-import logo from "@/assets/images/icon.webp";
+import { logo } from "@/assets/images";
 import { Link } from "react-router-dom";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 import {
@@ -25,17 +25,17 @@ export const SiteFooter = () => {
   return (
     <footer
       id="footer"
-      className="bg-white dark:bg-background border-t py-4 relative z-1"
+      className="bg-card dark:bg-background border-t py-4 relative z-1"
     >
       <div className="mx-auto w-full max-w-screen-xl px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 p-4">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 p-2">
           <div className="flex flex-col items-center md:items-start gap-4">
             <Link
               rel="noreferrer noopener"
               to="/"
-              className="flex items-center gap-2 font-poppins text-primary"
+              className="flex items-center gap-1 font-poppins text-primary"
             >
-              <img src={logo} alt="Logo" className="w-10 h-10 mr-2" />
+              <img src={logo} alt="Logo" className="w-12 h-12 mr-1" />
               <span className="text-primary text-2xl font-bold">
                 {APP_NAME2}
               </span>
@@ -69,7 +69,7 @@ export const SiteFooter = () => {
                           className="group inline-flex items-center text-sm font-medium text-gray-600 hover:text-primary transition-colors"
                         >
                           {item.name}
-                          <ChevronRightIcon className="ml-1 h-4 w-4 transition-transform transform group-hover:translate-x-1" />
+                          <ChevronRightIcon className="ml-1 h-4 w-4 transition-transform transform group-hover:translate-x-1 shrink-0" />
                         </a>
                       ) : (
                         <Link
@@ -77,7 +77,7 @@ export const SiteFooter = () => {
                           className="group inline-flex items-center text-sm font-medium text-gray-600 hover:text-primary transition-colors"
                         >
                           {item.name}
-                          <ChevronRightIcon className="ml-1 h-4 w-4 transition-transform transform group-hover:translate-x-1" />
+                          <ChevronRightIcon className="ml-1 h-4 w-4 transition-transform transform group-hover:translate-x-1 shrink-0" />
                         </Link>
                       )}
                     </li>
@@ -89,7 +89,7 @@ export const SiteFooter = () => {
         </div>
         <div className="border-t pt-2 text-center text-sm text-gray-600 md:flex md:items-center md:justify-between">
           <SocialIcons
-            iconSize="w-5 h-5"
+            iconSize="w-5 h-5 shrink-0"
             spaceBetween="space-x-6 md:mb-0"
             containerClassName="mb-4"
           />

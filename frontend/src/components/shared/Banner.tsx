@@ -21,15 +21,15 @@ export const Banner: React.FC<BannerProps> = ({
       )}
     >
       <div className="mr-4 flex-shrink-0">
-        <Globe className="w-8 h-8 text-white" />
+        <Globe className="w-8 h-8 text-white shrink-0" />
       </div>
       <div className="flex-1">
         <h3 className="text-lg font-bold text-center">{title}</h3>
         <p className="text-sm mt-2 text-center">{description}</p>
       </div>
       <div className="ml-4 flex-shrink-0">
-        <ShieldCheck className="w-8 h-8 text-white" />
-        <Headset className="w-8 h-8 text-white mt-2" />
+        <ShieldCheck className="w-8 h-8 text-white shrink-0" />
+        <Headset className="w-8 h-8 text-white mt-2 shrink-0" />
       </div>
     </div>
   );

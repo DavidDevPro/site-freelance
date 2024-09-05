@@ -6,7 +6,13 @@ import {
   showProposalError,
   showProposalSuccess,
 } from "@/notifications/toastMessages";
-import { QuoteRequestHeader,QuoteRequestContent,QuoteRequestFooter,getQuoteRequestSteps, Step } from '@/components/landing/quoteRequest';
+import {
+  QuoteRequestHeader,
+  QuoteRequestContent,
+  QuoteRequestFooter,
+  getQuoteRequestSteps,
+  Step,
+} from "@/components/landing/quoteRequest";
 interface QuoteRequestFormProps {
   dataFormulas: Array<{
     name: string;

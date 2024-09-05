@@ -46,7 +46,7 @@ export const ScrollToTop = () => {
           className="fixed bottom-4 right-4 z-50 opacity-90 shadow-md" // z-index augmenté ici
           size="icon"
         >
-          <ArrowUpToLine className="h-4 w-4" />
+          <ArrowUpToLine className="h-4 w-4 shrink-0" />
         </Button>
       )}
     </div>

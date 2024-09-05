@@ -1,4 +1,10 @@
-import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
 import {
   Select,
   SelectContent,
@@ -14,7 +20,10 @@ interface Step1ChoosePackageProps {
   onSelectFormula: (formula: string) => void;
 }
 
-export const Step1ChoosePackage: React.FC<Step1ChoosePackageProps> = ({ dataFormulas, onSelectFormula }) => {
+export const Step1ChoosePackage: React.FC<Step1ChoosePackageProps> = ({
+  dataFormulas,
+  onSelectFormula,
+}) => {
   const { control } = useFormContext(); // Obtenir le contrôle du formulaire
   const [errorMessage, setErrorMessage] = useState<string | null>(null); // État pour gérer l'affichage des erreurs
 
@@ -43,15 +52,20 @@ export const Step1ChoosePackage: React.FC<Step1ChoosePackageProps> = ({ dataForm
               </SelectTrigger>
               <SelectContent>
                 {dataFormulas.map((pkg, index) => (
-                  <SelectItem key={index} value={pkg.name}
-                    className="hover:bg-primary hover:text-card focus:bg-primary focus:text-card">
+                  <SelectItem
+                    key={index}
+                    value={pkg.name}
+                    className="hover:bg-primary hover:text-card focus:bg-primary focus:text-card"
+                  >
                     {pkg.name}
                   </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </FormControl>
-          {errorMessage && <FormMessage className="text-red-500">{errorMessage}</FormMessage>}
+          {errorMessage && (
+            <FormMessage className="text-red-500">{errorMessage}</FormMessage>
+          )}
         </FormItem>
       )}
     />

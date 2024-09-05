@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
-import { PrimaryButton } from "../shared/PrimaryButton";
-import heroSmallWebp from "@/assets/images/hero-small.webp";
-import heroMediumWebp from "@/assets/images/hero-medium.webp";
-import heroLargeWebp from "@/assets/images/hero-large.webp";
-import hero2xWebp from "@/assets/images/hero-2x.webp";
-import heroSmallJpg from "@/assets/images/hero-small.jpg";
-import heroMediumJpg from "@/assets/images/hero-medium.jpg";
-import heroLargeJpg from "@/assets/images/hero-large.jpg";
-import hero2xJpg from "@/assets/images/hero-2x.jpg";
+import { PrimaryButton } from "@/components/shared";
+import {
+  heroSmallWebp,
+  heroMediumWebp,
+  heroLargeWebp,
+  hero2xWebp,
+  heroSmallJpg,
+  heroMediumJpg,
+  heroLargeJpg,
+  hero2xJpg,
+} from "@/assets/images";
 import { RiMailSendLine } from "react-icons/ri";
 import { HiMiniCurrencyEuro } from "react-icons/hi2";
 export const Hero = () => {
@@ -65,7 +67,7 @@ export const Hero = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in">
               <Link to="/contact" aria-label="Nous Contacter">
                 <PrimaryButton className="  text-xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-black">
-                  <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 " />
+                  <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
                   Nous Contacter
                 </PrimaryButton>
               </Link>
@@ -74,7 +76,7 @@ export const Hero = () => {
                   variant="secondary"
                   className="text-xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-black"
                 >
-                  <HiMiniCurrencyEuro className="mr-2 mt-0.5 h-6 w-6 " />
+                  <HiMiniCurrencyEuro className="mr-2 mt-0.5 h-6 w-6 shrink-0" />
                   Nos Tarifs
                 </PrimaryButton>
               </Link>

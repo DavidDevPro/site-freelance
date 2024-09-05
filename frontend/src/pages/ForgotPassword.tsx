@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { PrimaryButton } from "@/components/shared/PrimaryButton";
+import { PrimaryButton } from "@/components/shared";
 import { SiteFooter, SiteHeader } from "@/components/layout";
 
 // Schéma de validation pour le formulaire de réinitialisation de mot de passe
@@ -54,7 +54,7 @@ const ForgotPasswordPage = () => {
           </h1>
         </div>
 
-        <div className="bg-white w-96 bg-card p-8 rounded-lg shadow-lg">
+        <div className="bg-card w-96 p-8 rounded-lg shadow-lg">
           <p className="text-center text-muted-foreground mb-4">
             Entrez votre adresse e-mail pour recevoir un lien de
             réinitialisation de mot de passe.
@@ -73,7 +73,7 @@ const ForgotPasswordPage = () => {
                     <FormLabel>Email</FormLabel>
                     <FormControl>
                       <div className="relative">
-                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary" />
+                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
                         <Input
                           placeholder="E-mail"
                           {...field}
@@ -105,7 +105,7 @@ const ForgotPasswordPage = () => {
       </div>
 
       {/* Footer */}
-      <div className="bg-white w-full flex justify-center">
+      <div className="bg-card w-full flex justify-center">
         <div className="w-[1400px]"></div>
       </div>
       <SiteFooter />

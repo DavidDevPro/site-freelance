@@ -224,7 +224,7 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
               onClick={() => setSelectedFile(null)}
               className="absolute top-0 right-0 mt-2 mr-2 text-red-500 hover:text-red-700"
             >
-              <MdClose className="w-6 h-6" />
+              <MdClose className="w-6 h-6 shrink-0" />
             </button>
           </div>
         )}
@@ -249,7 +249,7 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
       <div className="flex justify-center mb-4">
         <PrimaryButton type="submit" variant="primary" isLoading={loading}>
           Soumettre un Avis
-          <FaPaperPlane className="ml-2 h-5 w-5" />
+          <FaPaperPlane className="ml-2 h-5 w-5 shrink-0" />
         </PrimaryButton>
       </div>
     </form>

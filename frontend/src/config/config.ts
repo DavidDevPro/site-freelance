@@ -4,6 +4,7 @@ export const APP_DEV = import.meta.env.VITE_APP_DEV;
 export const APP_MAIL = import.meta.env.VITE_APP_MAIL;
 export const APP_ADRESS = import.meta.env.VITE_APP_ADRESS;
 export const APP_ADRESS2 = import.meta.env.VITE_APP_ADRESS2;
+export const APP_ADRESS3 = import.meta.env.VITE_APP_ADRESS3;
 export const APP_TEL = import.meta.env.VITE_APP_TEL;
 export const APP_SIRET = import.meta.env.VITE_APP_SIRET;
 export const APP_AXEPTIO_CLIENT_ID = import.meta.env.VITE_APP_AXEPTIO_CLIENT_ID;

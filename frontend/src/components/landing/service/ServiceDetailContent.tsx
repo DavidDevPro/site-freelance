@@ -3,18 +3,16 @@ import { Banner, PrimaryButton } from "@/components/shared";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { RiMailSendFill } from "react-icons/ri";
+import { RiCheckboxBlankCircleFill } from "react-icons/ri";
+import { ServiceProps, ProService } from "@/config/data/servicesData";
+import { Badge } from "@/components/ui/badge";
 
 interface ServiceDetailContentProps {
-  service: {
-    title: string;
-    subtitleDetails: string;
-    descriptionDetails: string[];
-    pro?: number;
-  };
+  serviceDetail: ServiceProps;
 }
 
 export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
-  service,
+  serviceDetail,
 }) => {
   const navigate = useNavigate(); // Utilisation de useNavigate pour revenir en arrière
 
@@ -32,10 +30,10 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
     <section className="container mx-auto py-10 relative z-10">
       {/* Titre et description */}
       <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center text-primary">
-        {`Détails du Service : ${service.title}`}
+        {`Détails du Service : ${serviceDetail.title}`}
       </h1>
       <p className="text-center text-muted-foreground mb-8">
-        {`${service.subtitleDetails}`}
+        {serviceDetail.description.join(" ")}
       </p>
 
       {/* Conteneur de détails du service */}
@@ -43,13 +41,20 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
         {/* Afficher les détails du service */}
         <div className="w-full xl:w-1/2 lg:w-10/12 space-y-4">
           <h2 className="text-primary text-2xl font-bold">Caractéristiques</h2>
-          <ul className="list-disc pl-5 text-muted-foreground">
-            {service.descriptionDetails.map((desc, index) => (
-              <li key={index} className="mb-1">
-                {desc}
+          <ul className="list-none pl-5 text-muted-foreground">
+            {serviceDetail.descriptionDetails.map((desc, index) => (
+              <li key={index} className="flex items-start mb-1">
+                <RiCheckboxBlankCircleFill className="h-4 w-4 mt-1 shrink-0 text-primary mr-2" />
+                <span>{desc}</span>
               </li>
             ))}
           </ul>
+
+          {serviceDetail.pro === ProService.YES && (
+            <div className="mt-4">
+              <Badge variant="secondary">Service PRO</Badge>
+            </div>
+          )}
 
           {/* Bouton de retour positionné en bas à gauche du contenant */}
           <div className="mt-6 flex justify-center xl:justify-start">
@@ -58,7 +63,7 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
               onClick={handleBackClick}
               className="mt-4 flex items-center tracking-wide font-bold mb-6 sm:mb-0 space-x-2 text-white bg-primary hover:bg-primary-dark transition-colors"
             >
-              <ArrowLeft className="h-5 w-5 mr-2 shrink-0" />
+              <ArrowLeft className="mr-2 h-5 w-5 shrink-0" />
               <span>Retour</span>
             </PrimaryButton>
           </div>
@@ -75,9 +80,9 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
             <Link to="/contact">
               <PrimaryButton
                 variant="primary"
-                className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12 flex items-center mb-8 sm:mb-0"
+                className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12 flex items-center"
               >
-                <RiMailSendFill className="mr-2 h-6 w-6 shrink-0" />
+                <RiMailSendFill className="mt-1 mr-2 h-6 w-6 shrink-0" />
                 Nous Contacter
               </PrimaryButton>
             </Link>

@@ -40,7 +40,7 @@ export const Feedback: React.FC<FeedbackProps> = ({
       ) : (
         // Si l'API est accessible et qu'il y a des données
         <>
-          <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 pointer-events-none z-10">
             <div className="shadow"></div>
           </div>
 
