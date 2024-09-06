@@ -7,8 +7,8 @@ import {
   FormLabel,
   FormControl,
 } from "@/components/ui/form";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui";
+import { Input } from "@/components/ui";
 import { MdClose } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { validateFileName } from "@/lib/utils";

@@ -12,7 +12,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui";
 import { logo } from "@/assets/images";
 import { PrimaryButton } from "@/components/shared";
 
@@ -60,7 +60,7 @@ export const LoginForm: React.FC = () => {
             />
           </div>
         </div>
-        <p className="text-center text-base font-medium">
+        <p className="mx-auto text-center text-secondary font-medium text-base lg:text-lg  transition-text ease duration-300">
           Veuillez vous connecter pour accéder à votre espace client.
         </p>
         <FormField
@@ -68,7 +68,7 @@ export const LoginForm: React.FC = () => {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="text-base">Email</FormLabel>
               <FormControl>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
@@ -90,7 +90,7 @@ export const LoginForm: React.FC = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Mot de passe</FormLabel>
+              <FormLabel className="text-base">Mot de passe</FormLabel>
               <FormControl>
                 <div className="relative">
                   <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
@@ -115,7 +115,10 @@ export const LoginForm: React.FC = () => {
           )}
         />
         <div className="text-center text-sm mb-4">
-          <a href="#" className="text-gray-400 hover:text-gray-300">
+          <a
+            href="#"
+            className="mx-auto text-center text-secondary font-medium text-sm lg:text-base mb-8 transition-text ease duration-300 hover:text-primary"
+          >
             Mot de Passe Oublié ?
           </a>
         </div>

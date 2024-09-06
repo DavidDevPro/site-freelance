@@ -1,6 +1,7 @@
 import Marquee from "@/components/magicui/marquee";
 import { Testimonial } from "@/lib/api/testimonialsApi";
 import { FeedbackAvatar, FeedbackCard, FeedbackAddModal } from "..";
+import { Separator } from "@/components/ui";
 
 interface FeedbackProps {
   testimonials: Testimonial[];
@@ -14,14 +15,17 @@ export const Feedback: React.FC<FeedbackProps> = ({
   error,
 }) => {
   return (
-    <section id="testimonials" className="relative container py-24 sm:py-32">
-      <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-4">
-        Recommandations Professionnelles & Avis Clients
+    <section
+      id="testimonials"
+      className="relative xl:container pt-4 pb-14 px-2 sm:px-6 transition-p ease duration-200"
+    >
+      <h2 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
+        Recommandations & Avis Clients
       </h2>
-      <p className="text-xl text-muted-foreground pt-4 pb-8 text-center">
+      <h3 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-4 transition-text ease duration-300">
         Découvrez les recommandations de professionnels avec qui nous avons
         travaillés et les avis de nos clients.
-      </p>
+      </h3>
 
       {/* Affichage conditionnel selon l'état de l'erreur et des données */}
       {error ? (
@@ -40,7 +44,7 @@ export const Feedback: React.FC<FeedbackProps> = ({
       ) : (
         // Si l'API est accessible et qu'il y a des données
         <>
-          <div className="absolute inset-0 pointer-events-none z-10">
+          <div className="absolute inset-0 pointer-events-none">
             <div className="shadow"></div>
           </div>
 
@@ -61,7 +65,7 @@ export const Feedback: React.FC<FeedbackProps> = ({
             </div>
 
             {/* Affichage en grille pour les écrans plus petits */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:hidden">
+            <div className="grid justify-items-center grid-cols-1 md:grid-cols-3 gap-8 lg:hidden mb-2">
               {testimonials.map((testimonial) => (
                 <FeedbackCard key={testimonial.id} {...testimonial} />
               ))}
@@ -75,6 +79,7 @@ export const Feedback: React.FC<FeedbackProps> = ({
           </div>
         </>
       )}
+      <Separator className="mt-10 h-0.5 w-1/2 mx-auto bg-primary " />
     </section>
   );
 };

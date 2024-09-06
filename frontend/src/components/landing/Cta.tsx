@@ -9,20 +9,20 @@ export const Cta = () => {
   return (
     <>
       {/* Texte en dehors de la section */}
-      <div className="text-center mt-12">
-        <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text font-bold p-2">
-          Besoin d'accompagnement sur votre projet ?
+      <div className="text-center xl:container pt-14 px-2 sm:px-6 ">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
+          On vous accompagne sur votre projet
         </h2>
-        <p className="text-lg md:text-xl text-black/70 dark:text-white py-6 mb-2">
+        <h3 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300 dark:text-card">
           Nous sommes là pour vous aider à concrétiser vos idées en solutions
           performantes et adaptées à vos besoins.
-        </p>
+        </h3>
       </div>
 
       {/* Section CTA avec bordures et ombre */}
       <section
         id="cta"
-        className="bg-card py-16 border-t border-b border-gray-200 dark:border-neutral-700 shadow-md"
+        className="bg-card py-16 mb-14 border-t border-b border-primary dark:border-neutral-700 shadow-md"
         aria-labelledby="cta-title"
       >
         <div className="container text-center lg:text-left lg:grid lg:grid-cols-2 place-items-center">

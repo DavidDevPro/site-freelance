@@ -10,10 +10,10 @@ const ContactPage = () => {
         className=" container flex-grow flex items-center justify-center px-0"
       >
         <div className="max-w-7xl mx-auto w-full">
-          <h1 className="text-4xl font-bold my-8 text-center text-primary">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pt-8 pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
             Contactez-nous
           </h1>
-          <p className="text-center text-muted-foreground mb-4">
+          <p className="mx-auto text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
             Nous serions ravis de discuter de votre projet. Veuillez remplir le
             formulaire ci-dessous et nous vous répondrons dans les plus brefs
             délais.

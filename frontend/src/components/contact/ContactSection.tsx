@@ -1,10 +1,10 @@
 // components/contact/ContactSection.tsx
 import React from "react";
-import { ContactForm } from "@/components/contact/ContactForm";
+import { ContactForm } from "@/components/contact";
 import { logo } from "@/assets/images";
 import { GoogleCalendarModal, SocialIcons } from "@/components/shared";
 import { contactInfo } from "@/config/data/contactAndLegalData";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/components/ui";
 
 export const ContactSection: React.FC = () => {
   return (

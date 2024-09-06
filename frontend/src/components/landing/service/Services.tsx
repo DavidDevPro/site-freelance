@@ -7,12 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui";
 import { PrimaryButton } from "@/components/shared";
 import { serviceList, ProService, tagList } from "@/config/data/servicesData";
 import { LuInfo } from "react-icons/lu";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RiCheckboxBlankCircleFill } from "react-icons/ri";
+import { Separator } from "@/components/ui";
 
 export const Services: React.FC = () => {
   const navigate = useNavigate(); // Utilisez 'useNavigate' pour gérer la redirection
@@ -34,11 +35,14 @@ export const Services: React.FC = () => {
   const itemsToShow = visibleRows * itemsPerRow;
 
   return (
-    <section id="services" className="container lg:px-0 py-24 sm:py-32">
-      <h2 className="text-3xl md:text-4xl text-center font-bold mb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text">
+    <section
+      id="services"
+      className="xl:container pt-24 pb-4 px-2 sm:px-6 transition-p ease duration-200"
+    >
+      <h2 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
         Nos Services
       </h2>
-      <h3 className="md:w-10/12 mx-auto text-xl text-center text-muted-foreground mb-8">
+      <h3 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
         {`Découvrez nos services conçus pour répondre aux besoins spécifiques de votre entreprise. Chaque service est conçu avec une attention particulière aux détails et à l'efficacité.`}
       </h3>
 
@@ -52,7 +56,7 @@ export const Services: React.FC = () => {
             return (
               <Card
                 key={title}
-                className="bg-card dark:bg-card border border-primary group flex flex-col justify-between min-h-[300px]  shadow-lg rounded-xl"
+                className="bg-card dark:bg-card border border-primary group flex flex-col justify-between min-h-[300px]  shadow-lg rounded-xl relative overflow-hidden"
               >
                 <div>
                   <CardHeader className="flex flex-col items-center mb-4">
@@ -80,14 +84,7 @@ export const Services: React.FC = () => {
                     En savoir plus
                   </PrimaryButton>
                 </CardFooter>
-                {pro === ProService.YES && (
-                  <Badge
-                    variant="secondary"
-                    className="absolute top-2 right-2 bg-primary text-card"
-                  >
-                    PRO
-                  </Badge>
-                )}
+                {pro === ProService.YES && <Badge variant="default">PRO</Badge>}
               </Card>
             );
           })}
@@ -109,15 +106,11 @@ export const Services: React.FC = () => {
       <div className="flex flex-wrap justify-center gap-4 mt-12">
         {tagList.map((tag: string) => (
           <div key={tag}>
-            <Badge
-              variant="secondary"
-              className="text-sm px-4 py-2 bg-primary text-white rounded-lg shadow-md"
-            >
-              {tag}
-            </Badge>
+            <Badge variant="secondary">{tag}</Badge>
           </div>
         ))}
       </div>
+      <Separator className="mt-10 h-0.5 w-1/2 mx-auto bg-primary " />
     </section>
   );
 };

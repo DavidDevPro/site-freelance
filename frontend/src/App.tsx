@@ -13,7 +13,7 @@ import {
   ServiceDetailPage,
 } from "@/pages";
 import "./App.css";
-import { Toaster } from "./components/ui/sonner";
+import { Toaster } from "./components/ui";
 import { basename } from "@/config/config";
 
 function App() {

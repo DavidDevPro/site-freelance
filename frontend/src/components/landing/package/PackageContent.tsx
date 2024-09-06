@@ -98,7 +98,7 @@ export const PackageContent: React.FC<PackageContentProps> = ({
           <div
             key={pkg.id}
             className={cn(
-              "bg-card relative flex flex-col w-11/12 sm:w-10/12 md:w-9/12 lg:w-full lg:max-w-[400px] overflow-hidden rounded-2xl border border-primary p-4 text-black dark:text-white min-h-[500px]",
+              "bg-card relative flex flex-col w-11/12 sm:w-10/12 md:w-9/12 lg:w-full lg:max-w-[400px] overflow-hidden rounded-2xl border border-primary p-4 shadow-lg text-black dark:text-white min-h-[500px]",
               {
                 "border-2 border-neutral-700 shadow-lg shadow-neutral-500 dark:border-neutral-400 dark:shadow-neutral-600":
                   pkg.isMostPopular,

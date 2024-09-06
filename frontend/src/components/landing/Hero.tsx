@@ -53,7 +53,7 @@ export const Hero = () => {
         <div className="text-center space-y-6 px-1 md:space-y-8 max-w-full">
           <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg shadow-black animate-fade-in">
             Concevez un Site Web Sur Mesure qui Reflète Votre Vision
-            <span className="block text-primary mt-4 text-2xl md:text-3xl font-semibold drop-shadow-sm shadow-black ">
+            <span className="block bg-gradient-to-b from-[#C6E2E9]/70 to-[#6CD4FF] text-transparent bg-clip-text mt-6 drop-shadow-lg shadow-black animate-fade-in mx-auto text-center font-medium text-2xl lg:text-3xl transition-text ease duration-300">
               Des Solutions Personnalisées en Développement, Refonte, SEO et
               Hébergement.
             </span>

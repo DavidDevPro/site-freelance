@@ -9,14 +9,14 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui";
+import { Separator } from "@/components/ui";
 import { Menu } from "lucide-react";
 import { ModeToggle } from "@/components/layout/header/ModeToggle";
 import { logo } from "@/assets/images";
 import { Link, useNavigate } from "react-router-dom";
 import { CopyrightText, SocialIcons, PrimaryButton } from "@/components/shared";
-import { APP_NAME } from "@/config/config";
+import { APP_NAME2 } from "@/config/config";
 import { BsPersonFillCheck } from "react-icons/bs";
 
 // Définir les types pour les props
@@ -63,17 +63,17 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
               <SheetTitle className="flex items-center">
                 <Link
                   to="/"
-                  className="flex items-center text-primary font-bold"
+                  className="flex items-center text-primary text-xl font-bold"
                 >
                   <img
                     src={logo}
                     alt="Logo davidwebprojects"
                     className="w-12 h-12 mr-2 "
                   />
-                  {APP_NAME}
+                  {APP_NAME2}
                 </Link>
               </SheetTitle>
-              <SheetDescription className="mt-2 text-sm text-center text-muted-foreground">
+              <SheetDescription className="mt-2 text-sm text-center text-secondary">
                 Menu principal du site, utilisez ce menu pour naviguer entre les
                 différentes sections.
               </SheetDescription>
@@ -83,7 +83,7 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
               <Button
                 asChild
                 variant="ghost"
-                className="justify-center text-base w-full hover:bg-primary hover:text-card"
+                className="justify-center text-base w-full text-secondary hover:bg-primary hover:text-card"
               >
                 <Link to="/" onClick={() => handleLinkClick("/")}>
                   Accueil
@@ -95,7 +95,7 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
                   key={label}
                   asChild
                   variant="ghost"
-                  className="justify-center text-base w-full hover:bg-primary hover:text-card"
+                  className="justify-center text-secondary text-base w-full hover:bg-primary hover:text-card"
                 >
                   <Link to={href} onClick={() => handleLinkClick(href)}>
                     {label}
@@ -124,11 +124,11 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
               {" "}
               {/* Réduire la taille de la police */}
               <SocialIcons
-                iconSize="w-4 h-4 shrink-0"
+                iconSize="w-5 h-5 shrink-0"
                 spaceBetween="space-x-4"
                 containerClassName="mb-4"
               />
-              <CopyrightText className="text-xs" />
+              <CopyrightText className="text-xs " />
             </div>
           </SheetFooter>
         </SheetContent>

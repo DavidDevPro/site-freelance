@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui";
 import { ArrowUpToLine } from "lucide-react";
 
 export const ScrollToTop = () => {

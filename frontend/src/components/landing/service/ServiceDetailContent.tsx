@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import { RiMailSendFill } from "react-icons/ri";
 import { RiCheckboxBlankCircleFill } from "react-icons/ri";
 import { ServiceProps, ProService } from "@/config/data/servicesData";
-import { Badge } from "@/components/ui/badge";
+import { Badge } from "@/components/ui";
 
 interface ServiceDetailContentProps {
   serviceDetail: ServiceProps;
@@ -25,14 +25,15 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
       navigate("/");
     }
   };
+  console.log("serviceDetail.pro", serviceDetail.pro);
 
   return (
-    <section className="container mx-auto py-10 relative z-10">
+    <section className="xl:container py-10 relative z-10 px-2 sm:px-6 transition-p ease duration-200">
       {/* Titre et description */}
-      <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center text-primary">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
         {`Détails du Service : ${serviceDetail.title}`}
       </h1>
-      <p className="text-center text-muted-foreground mb-8">
+      <p className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
         {serviceDetail.description.join(" ")}
       </p>
 
@@ -55,7 +56,6 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
               <Badge variant="secondary">Service PRO</Badge>
             </div>
           )}
-
           {/* Bouton de retour positionné en bas à gauche du contenant */}
           <div className="mt-6 flex justify-center xl:justify-start">
             <PrimaryButton

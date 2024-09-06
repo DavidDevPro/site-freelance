@@ -1,17 +1,20 @@
 import { boss } from "@/assets/images";
 import { PrimaryButton } from "@/components/shared";
-import { APP_NAME } from "@/config/config";
+import { APP_NAME2 } from "@/config/config";
 import { FaDev } from "react-icons/fa";
 
 export const About = () => {
   return (
-    <section id="about" className="container py-14 sm:py-24">
-      <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-4">
+    <section
+      id="about"
+      className="xl:container pt-4 pb-14 px-2 sm:px-6 transition-p ease duration-200"
+    >
+      <h2 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
         Qui sommes-nous
       </h2>
-      <p className="text-xl leading-8 text-black/80 dark:text-white text-center mb-8 mx-auto max-w-4xl">
+      <h3 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
         Présentation du gérant.
-      </p>
+      </h3>
       <div className="bg-card dark:bg-neutral-900 border border-primary rounded-2xl shadow-lg p-8">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center">
           <img
@@ -23,7 +26,7 @@ export const About = () => {
           <div className="flex flex-col justify-between md:w-2/3">
             <div className="pb-6">
               <h2 className="text-center text-3xl text-primary md:text-3xl font-bold leading-tight md:text-left">
-                {APP_NAME}
+                {APP_NAME2}
               </h2>
               <p className="text-lg md:text-xl text-black/70 dark:text-white mt-6 leading-relaxed">
                 Je suis David Changea, créateur et fondateur de David Web

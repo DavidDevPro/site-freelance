@@ -10,8 +10,8 @@ import {
   FormControl,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Input, Checkbox } from "@/components/ui";
+
 import { CheckedState } from "@radix-ui/react-checkbox";
 
 interface Option {

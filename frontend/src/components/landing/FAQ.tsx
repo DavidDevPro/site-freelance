@@ -13,20 +13,34 @@ import { FAQList, FAQProps } from "@/config/data/faqData";
 
 export const FAQ = () => {
   return (
-    <section id="faq" className="container py-24 sm:py-32">
-      <h2 className="text-4xl bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text  text-center font-bold mb-4">
+    <section
+      id="faq"
+      className="relative xl:container py-14 px-2 sm:px-6 transition-p ease duration-200 "
+    >
+      <h2 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
         Questions Fréquentes
       </h2>
-
-      <Accordion type="single" collapsible className="w-full">
+      <h3 className="mx-auto lg:w-10/12 pb-8 text-center text-secondary font-medium text-base md:text-lg lg:text-xl transition-text ease duration-300  dark:text-white">
+        Besoin d'éclaircissements ? Parcourez nos réponses aux questions les
+        plus posées pour mieux comprendre nos offres et profiter pleinement de
+        nos services.
+      </h3>
+      <div className="absolute inset-0 pointer-events-none -z-10">
+        <div className="shadow"></div>
+      </div>
+      <Accordion
+        type="single"
+        collapsible
+        className="w-full bg-card border border-primary py-10 px-32 rounded-xl shadow-lg"
+      >
         {FAQList.map(({ question, answer, value }: FAQProps) => (
           <AccordionItem
             key={value}
             value={value}
-            className="border-b border-muted-foreground"
+            className="border-b-primary "
           >
             <AccordionTrigger
-              className="text-left font-semibold text-lg py-4"
+              className="text-muted-foreground font-normal text-xl py-4"
               aria-expanded="false"
             >
               {question}
@@ -37,8 +51,11 @@ export const FAQ = () => {
           </AccordionItem>
         ))}
       </Accordion>
-      <div className="flex items-center justify-center space-x-6 mt-10">
-        <p className="font-medium">Vous avez encore des questions ?</p>
+
+      <div className="flex items-center justify-center py-4 space-x-6 mt-10">
+        <h3 className=" text-secondary font-medium text-base md:text-lg lg:text-xl transition-text ease duration-300">
+          Vous avez encore des questions ?
+        </h3>
         <PrimaryButton>
           <a rel="noreferrer noopener" href="/contact" className="flex">
             <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 shrink-0" />

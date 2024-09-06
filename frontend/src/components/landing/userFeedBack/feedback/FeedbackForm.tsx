@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui";
+import { Textarea } from "@/components/ui";
 import { useDropzone } from "react-dropzone";
 import {
   showTestimonialSuccess,
