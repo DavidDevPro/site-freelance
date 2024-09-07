@@ -35,7 +35,7 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
   };
 
   return (
-    <section className="xl:container py-10 relative z-10 px-2 sm:px-6 transition-p ease duration-200">
+    <section className="container mx-auto pt-16 pb-10 relative z-10">
       {/* Si une erreur est présente, afficher le message d'erreur */}
       {error && <div className="text-center text-red-500 mt-10">{error}</div>}
 
@@ -66,9 +66,9 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
           <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
             {`Détails du Package : ${packageDetail.name}`}
           </h1>
-          <p className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
+          <h2 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
             {packageDetail.description}
-          </p>
+          </h2>
 
           {/* Conteneur principal qui fusionne les détails du package et les options */}
           <div className="bg-card p-2 sm:p-6 lg:p-8 rounded-lg shadow-lg space-y-8 relative z-10">

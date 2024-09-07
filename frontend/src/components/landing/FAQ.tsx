@@ -31,16 +31,16 @@ export const FAQ = () => {
       <Accordion
         type="single"
         collapsible
-        className="w-full bg-card border border-primary py-10 px-32 rounded-xl shadow-lg"
+        className="w-full bg-card border border-primary py-3 px-2 sm:p-8 rounded-xl shadow-lg "
       >
         {FAQList.map(({ question, answer, value }: FAQProps) => (
           <AccordionItem
             key={value}
             value={value}
-            className="border-b-primary "
+            className="border-b-primary lg:w-10/12 mx-auto "
           >
             <AccordionTrigger
-              className="text-muted-foreground font-normal text-xl py-4"
+              className="text-secondary font-medium text-base py-4 "
               aria-expanded="false"
             >
               {question}
@@ -52,7 +52,7 @@ export const FAQ = () => {
         ))}
       </Accordion>
 
-      <div className="flex items-center justify-center py-4 space-x-6 mt-10">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 items-center justify-center py-4 mt-10">
         <h3 className=" text-secondary font-medium text-base md:text-lg lg:text-xl transition-text ease duration-300">
           Vous avez encore des questions ?
         </h3>

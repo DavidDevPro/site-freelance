@@ -50,33 +50,33 @@ export const Hero = () => {
       {/* Utilisation d'un dégradé plus doux pour améliorer la lisibilité du texte */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-0"></div>
       <div className="w-full grid place-items-center h-full py-16 md:py-28 gap-8 lg:gap-10 relative z-10">
-        <div className="text-center space-y-6 px-1 md:space-y-8 max-w-full">
-          <h1 className="text-white text-4xl md:text-6xl font-bold leading-tight drop-shadow-lg shadow-black animate-fade-in">
+        <div className="text-center max-w-full">
+          <h1 className="text-card text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold transition-text ease duration-300 drop-shadow-lg shadow-secondary animate-fade-in">
             Concevez un Site Web Sur Mesure qui Reflète Votre Vision
-            <span className="block bg-gradient-to-b from-[#C6E2E9]/70 to-[#6CD4FF] text-transparent bg-clip-text mt-6 drop-shadow-lg shadow-black animate-fade-in mx-auto text-center font-medium text-2xl lg:text-3xl transition-text ease duration-300">
+            <span className="block text-[#5CC8FF] mb-4 mt-10 drop-shadow-lg shadow-secondary animate-fade-in mx-auto text-center font-medium text-xl sm:text-2xl lg:text-3xl transition-text ease duration-300">
               Des Solutions Personnalisées en Développement, Refonte, SEO et
               Hébergement.
             </span>
           </h1>
           <div className="text-center  mx-auto space-y-6">
-            <p className="text-white text-lg mb-16 md:text-xl font-medium leading-relaxed drop-shadow-lg shadow-black animate-fade-in">
+            <p className="text-card pb-12 w-11/12 mx-auto text-lg sm:text-xl font-medium drop-shadow-lg shadow-secondary animate-fade-in transition-text ease duration-300">
               Augmentez votre impact en ligne grâce à un site web performant et
               sur-mesure. Alliez design unique et stratégie SEO pour maximiser
               votre présence.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 animate-fade-in">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 animate-fade-in">
               <Link to="/contact" aria-label="Nous Contacter">
-                <PrimaryButton className="  text-xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-black">
-                  <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
+                <PrimaryButton className="text-xl sm:text-2xl py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-secondary">
+                  <RiMailSendLine className="mr-2 mt-0.5 h:5 sm:h-6 w-5 sm:w-6 shrink-0 transition-w-h ease duration-300" />
                   Nous Contacter
                 </PrimaryButton>
               </Link>
               <Link to="/#pricing" aria-label="Nos Tarifs">
                 <PrimaryButton
                   variant="secondary"
-                  className="text-xl py-3 sm:py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-black"
+                  className=" text-xl sm:text-2xl py-5 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-secondary"
                 >
-                  <HiMiniCurrencyEuro className="mr-2 mt-0.5 h-6 w-6 shrink-0" />
+                  <HiMiniCurrencyEuro className="mr-1 mt-0.5 h:6 sm:h-7 w-6 sm:w-7 shrink-0 transition-w-h ease duration-300" />
                   Nos Tarifs
                 </PrimaryButton>
               </Link>

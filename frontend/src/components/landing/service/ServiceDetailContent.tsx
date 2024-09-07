@@ -3,9 +3,9 @@ import { Banner, PrimaryButton } from "@/components/shared";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { RiMailSendFill } from "react-icons/ri";
-import { RiCheckboxBlankCircleFill } from "react-icons/ri";
 import { ServiceProps, ProService } from "@/config/data/servicesData";
 import { Badge } from "@/components/ui";
+import { FaAngleDoubleRight } from "react-icons/fa";
 
 interface ServiceDetailContentProps {
   serviceDetail: ServiceProps;
@@ -25,27 +25,26 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
       navigate("/");
     }
   };
-  console.log("serviceDetail.pro", serviceDetail.pro);
 
   return (
-    <section className="xl:container py-10 relative z-10 px-2 sm:px-6 transition-p ease duration-200">
+    <div className="container py-10 relative z-10 px-2 sm:px-6 transition-p ease duration-200">
       {/* Titre et description */}
       <h1 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
         {`Détails du Service : ${serviceDetail.title}`}
       </h1>
-      <p className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
+      <h2 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
         {serviceDetail.description.join(" ")}
-      </p>
+      </h2>
 
       {/* Conteneur de détails du service */}
-      <div className="bg-card p-2 sm:p-6 lg:p-8 rounded-lg shadow-lg flex flex-col xl:flex-row space-y-8 xl:space-y-0 xl:space-x-16 relative z-10 items-center">
+      <div className="bg-card p-4 sm:p-6 lg:p-8 rounded-lg shadow-lg flex flex-col xl:flex-row space-y-8 xl:space-y-0 xl:space-x-16 relative z-10 items-center">
         {/* Afficher les détails du service */}
         <div className="w-full xl:w-1/2 lg:w-10/12 space-y-4">
           <h2 className="text-primary text-2xl font-bold">Caractéristiques</h2>
           <ul className="list-none pl-5 text-muted-foreground">
             {serviceDetail.descriptionDetails.map((desc, index) => (
               <li key={index} className="flex items-start mb-1">
-                <RiCheckboxBlankCircleFill className="h-4 w-4 mt-1 shrink-0 text-primary mr-2" />
+                <FaAngleDoubleRight className="h-4 w-4 mt-1 shrink-0 text-primary mr-2" />
                 <span>{desc}</span>
               </li>
             ))}
@@ -89,6 +88,6 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };

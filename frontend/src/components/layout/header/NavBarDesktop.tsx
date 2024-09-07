@@ -1,5 +1,4 @@
 // NavBarDesktop.tsx
-import React from "react";
 import { Button } from "@/components/ui";
 import {
   NavigationMenu,
@@ -9,7 +8,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Link, useNavigate } from "react-router-dom";
 
-import { ModeToggle } from "@/components/layout/header/ModeToggle";
+// import { ModeToggle } from "@/components/layout/header/ModeToggle";
 import { PrimaryButton } from "@/components/shared";
 import { BsPersonFillCheck } from "react-icons/bs";
 
@@ -40,7 +39,7 @@ export const NavBarDesktop: React.FC<NavBarDesktopProps> = ({ routes }) => {
                 <Button
                   asChild
                   variant="ghost"
-                  className="justify-start text-base text-primary hover:bg-primary hover:text-card "
+                  className="justify-start text-lg text-primary hover:bg-primary hover:text-card "
                 >
                   <Link to={href} onClick={() => handleLinkClick(href)}>
                     {label}
@@ -62,7 +61,7 @@ export const NavBarDesktop: React.FC<NavBarDesktopProps> = ({ routes }) => {
             Se Connecter
           </Link>
         </PrimaryButton>
-        <ModeToggle />
+        {/* <ModeToggle /> */}
       </div>
     </>
   );

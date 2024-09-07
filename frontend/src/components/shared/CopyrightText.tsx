@@ -11,11 +11,16 @@ export const CopyrightText: React.FC<CopyrightTextProps> = ({ className }) => {
   const yearText = getYearText();
 
   return (
-    <span
+    <div
       className={`block tracking-tight text-primary dark:text-neutral-400 ${className}`}
     >
-      Copyright &copy; {yearText} {APP_NAME} - Tous Droits Réservés - Version{" "}
-      {Config.version} du {Config.releaseDate}
-    </span>
+      <span className="block md:inline">
+        Copyright &copy; {yearText} {APP_NAME}
+      </span>
+      <span className="block md:inline"> - Tous Droits Réservés - </span>
+      <span className="block md:inline">
+        Version {Config.version} du {Config.releaseDate}
+      </span>
+    </div>
   );
 };

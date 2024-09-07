@@ -12,8 +12,8 @@ import { PrimaryButton } from "@/components/shared";
 import { serviceList, ProService, tagList } from "@/config/data/servicesData";
 import { LuInfo } from "react-icons/lu";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { RiCheckboxBlankCircleFill } from "react-icons/ri";
 import { Separator } from "@/components/ui";
+import { FaAngleDoubleRight } from "react-icons/fa";
 
 export const Services: React.FC = () => {
   const navigate = useNavigate(); // Utilisez 'useNavigate' pour gérer la redirection
@@ -68,7 +68,7 @@ export const Services: React.FC = () => {
                     {description.map((desc, index) => (
                       <div key={index} className="flex items-start space-x-2">
                         <span className="text-primary">
-                          <RiCheckboxBlankCircleFill className="h-4 w-4 mt-1 shrink-0" />
+                          <FaAngleDoubleRight className="h-4 w-4 mt-1 shrink-0" />
                         </span>
                         <p className="break-words">{desc}</p>
                       </div>

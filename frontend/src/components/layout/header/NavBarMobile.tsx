@@ -12,7 +12,7 @@ import {
 import { Button } from "@/components/ui";
 import { Separator } from "@/components/ui";
 import { Menu } from "lucide-react";
-import { ModeToggle } from "@/components/layout/header/ModeToggle";
+// import { ModeToggle } from "@/components/layout/header/ModeToggle";
 import { logo } from "@/assets/images";
 import { Link, useNavigate } from "react-router-dom";
 import { CopyrightText, SocialIcons, PrimaryButton } from "@/components/shared";
@@ -45,7 +45,7 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
   };
 
   return (
-    <div className="flex items-center lg:hidden">
+    <div className="flex items-center lg:hidden ">
       <Sheet open={isOpen} onOpenChange={handleMenuToggle}>
         <SheetTrigger asChild>
           <Menu
@@ -56,11 +56,11 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
 
         <SheetContent
           side="left"
-          className="flex flex-col justify-between items-center rounded-tr-2xl rounded-br-2xl bg-card w-[75vw] max-w-md"
+          className="flex flex-col justify-between items-center rounded-tr-2xl rounded-br-2xl bg-card w-[75vw] max-w-md px-1"
         >
           <div className="w-full flex flex-col items-center">
             <SheetHeader className="mb-8 flex items-center w-full">
-              <SheetTitle className="flex items-center">
+              <SheetTitle className="flex items-center mb-4">
                 <Link
                   to="/"
                   className="flex items-center text-primary text-xl font-bold"
@@ -83,7 +83,7 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
               <Button
                 asChild
                 variant="ghost"
-                className="justify-center text-base w-full text-secondary hover:bg-primary hover:text-card"
+                className="justify-center text-lg w-full text-secondary hover:bg-primary hover:text-card"
               >
                 <Link to="/" onClick={() => handleLinkClick("/")}>
                   Accueil
@@ -95,7 +95,7 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
                   key={label}
                   asChild
                   variant="ghost"
-                  className="justify-center text-secondary text-base w-full hover:bg-primary hover:text-card"
+                  className="justify-center text-secondary text-lg w-full hover:bg-primary hover:text-card"
                 >
                   <Link to={href} onClick={() => handleLinkClick(href)}>
                     {label}
@@ -117,7 +117,7 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
                   Se Connecter
                 </Link>
               </PrimaryButton>
-              <ModeToggle />
+              {/* <ModeToggle /> */}
             </div>
             <Separator className="w-full mt-4 mb-2" />
             <div className="text-center text-xs text-gray-500 w-full">

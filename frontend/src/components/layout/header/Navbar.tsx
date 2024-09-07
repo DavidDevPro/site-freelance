@@ -9,8 +9,15 @@ import { headerRoutes } from "@/config/routes/headerRoutes";
 export const NavBar: React.FC = () => {
   return (
     <>
-      <Link to="/" className="font-bold text-xl flex items-center text-primary">
-        <img src={logo} alt="Logo" className="w-12 h-12 mr-2 " />
+      <Link
+        to="/"
+        className="font-bold text-xl sm:text-2xl flex items-center text-primary transition-text ease duration-300"
+      >
+        <img
+          src={logo}
+          alt="Logo"
+          className="w-12 sm:w-14 h-12 sm:h-14 mr-2 sm:mr-4 transition-w-h ease duration-300"
+        />
         {APP_NAME2}
       </Link>
       {/* Mobile */}

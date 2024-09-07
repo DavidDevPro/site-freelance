@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-
+import { PageLayoutFullScreen } from "@/components/layout";
 import { PackageDetailContent } from "@/components/landing/package/PackageDetailContent";
 import { fetchFormulas, Formula } from "@/lib/api/formulaApi";
-import { PageLayoutFullScreen } from "@/components/layout";
 
 const PackageDetail = () => {
   const { packageName } = useParams<{ packageName: string }>();
@@ -43,21 +42,13 @@ const PackageDetail = () => {
   if (loading) {
     return <div>Chargement...</div>;
   }
+
   return (
     <PageLayoutFullScreen>
-      <section className=" container flex-grow flex items-center justify-center px-0"></section>
-      <div className="max-w-7xl mx-auto w-full flex ">
-        {packageDetail ? (
-          <PackageDetailContent
-            packageDetail={packageDetail}
-            error={error || undefined}
-          />
-        ) : (
-          <p className="text-center text-muted-foreground">
-            Désolé, nous n’avons pas pu trouver les détails du package demandé.
-          </p>
-        )}
-      </div>
+      <PackageDetailContent
+        packageDetail={packageDetail}
+        error={error || undefined}
+      />
     </PageLayoutFullScreen>
   );
 };

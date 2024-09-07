@@ -15,7 +15,7 @@ export const About = () => {
       <h3 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
         Présentation du gérant.
       </h3>
-      <div className="bg-card dark:bg-neutral-900 border border-primary rounded-2xl shadow-lg p-8">
+      <div className="bg-card dark:bg-card border border-primary rounded-2xl shadow-lg p-8">
         <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center">
           <img
             src={boss}

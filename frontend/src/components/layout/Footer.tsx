@@ -10,15 +10,15 @@ import {
 import { footerRoutes } from "@/config/routes/footerRoutes";
 
 // Define types for footer navigation
-type FooterNavItem = {
+type FooterRouteItem = {
   name: string;
   href: string;
   external?: boolean;
 };
 
-type FooterNavSection = {
+type FooterRouteSection = {
   label: string;
-  items: FooterNavItem[];
+  items: FooterRouteItem[];
 };
 
 export const SiteFooter = () => {
@@ -28,34 +28,38 @@ export const SiteFooter = () => {
       className="bg-card dark:bg-background border-t py-4 relative z-1"
     >
       <div className="mx-auto w-full max-w-screen-xl px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-8 p-2">
-          <div className="flex flex-col items-center md:items-start gap-4">
+        <div className="flex flex-col lg:flex-row justify-between items-center gap-8 px-4 pt-2 pb-8">
+          <div className="flex flex-col items-center lg:min-w-96 lg:items-start gap-8 lg:gap-4">
             <Link
               rel="noreferrer noopener"
               to="/"
-              className="flex items-center gap-1 font-poppins text-primary"
+              className="flex items-center font-poppins text-primary"
             >
-              <img src={logo} alt="Logo" className="w-12 h-12 mr-1" />
-              <span className="text-primary text-2xl font-bold">
+              <img
+                src={logo}
+                alt="Logo"
+                className="w-10 h-10 sm:w-14 sm:h-14 mr-1 sm:mr-4 "
+              />
+              <span className="text-primary text-2xl sm:text-4xl lg:text-3xl font-bold">
                 {APP_NAME2}
               </span>
             </Link>
-            <div className="text-center md:text-left max-w-sm">
-              <h1 className="text-2xl font-bold lg:text-xl">
+            <div className="text-center lg:max-w-sm">
+              <h1 className="text-2xl font-bold lg:text-lg">
                 Besoin d'un échange téléphonique ?
               </h1>
               <p className="mt-2 mb-4 text-sm text-gray-600">
                 N'hésitez pas à me contacter pour un rendez-vous téléphonique.
               </p>
-              <div className="flex justify-center md:justify-start">
+              <div className="flex justify-center">
                 <GoogleCalendarModal />
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 justify-items-center mx-auto lg:grid-cols-3">
-            {footerRoutes.map((nav: FooterNavSection) => (
+          <div className="grid grid-cols-1 gap-14 lg:gap-8 sm:grid-cols-3 justify-items-center mx-auto">
+            {footerRoutes.map((nav: FooterRouteSection) => (
               <div key={nav.label} className="text-center sm:text-left">
-                <h2 className="mb-6 text-sm font-semibold uppercase text-primary dark:text-white">
+                <h2 className="my-4 text-lg font-semibold uppercase text-primary dark:text-white">
                   {nav.label}
                 </h2>
                 <ul className="space-y-2">
@@ -66,18 +70,18 @@ export const SiteFooter = () => {
                           href={item.href}
                           target="_blank"
                           rel="noreferrer noopener"
-                          className="group inline-flex items-center text-sm font-medium text-gray-600 hover:text-primary transition-colors"
+                          className="group inline-flex items-center text-md font-medium text-secondary hover:text-primary transition-colors"
                         >
                           {item.name}
-                          <ChevronRightIcon className="ml-1 h-4 w-4 transition-transform transform group-hover:translate-x-1 shrink-0" />
+                          <ChevronRightIcon className="ml-1 h-4 w-4 shrink-0 transition-transform transform group-hover:translate-x-1" />
                         </a>
                       ) : (
                         <Link
                           to={item.href}
-                          className="group inline-flex items-center text-sm font-medium text-gray-600 hover:text-primary transition-colors"
+                          className="group inline-flex items-center text-md font-medium text-secondary hover:text-primary transition-colors"
                         >
                           {item.name}
-                          <ChevronRightIcon className="ml-1 h-4 w-4 transition-transform transform group-hover:translate-x-1 shrink-0" />
+                          <ChevronRightIcon className="ml-1 h-4 w-4 shrink-0 transition-transform transform group-hover:translate-x-1" />
                         </Link>
                       )}
                     </li>
@@ -87,14 +91,12 @@ export const SiteFooter = () => {
             ))}
           </div>
         </div>
-        <div className="border-t pt-2 text-center text-sm text-gray-600 md:flex md:items-center md:justify-between">
+        <div className="border-t border-primary pt-4 flex flex-col lg:flex-row lg:w-10/12 2xl:w-full mx-auto gap-4 text-center text-sm text-secondary lg:flex lg:items-center lg:justify-between">
           <SocialIcons
-            iconSize="w-5 h-5 shrink-0"
-            spaceBetween="space-x-6 md:mb-0"
-            containerClassName="mb-4"
+            iconSize="w-6 h-6 shrink-0"
+            spaceBetween="space-x-6 lg:mb-0"
           />
-          {/* Utilisation du composant CopyrightText */}
-          <CopyrightText className="text-sm sm:text-center" />
+          <CopyrightText className="text-base sm:text-center" />
         </div>
       </div>
     </footer>
