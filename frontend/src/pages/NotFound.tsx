@@ -1,6 +1,5 @@
 // src/components/pages/NotFoundPage.tsx
 
-import React from "react";
 import { Link } from "react-router-dom"; // Utilisation de Link de react-router-dom pour la navigation
 import { Button } from "@/components/ui"; // Assurez-vous que ce chemin est correct
 import { Badge } from "@/components/ui"; // Assurez-vous que ce chemin est correct

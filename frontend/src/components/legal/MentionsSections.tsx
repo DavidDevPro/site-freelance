@@ -1,5 +1,4 @@
 // components/legal/MentionsSections.tsx
-import React from "react";
 import { mentionsContent, MentionContent } from "@/config/data/mentionsData"; // Import du contenu
 
 export const MentionsSections: React.FC = () => {

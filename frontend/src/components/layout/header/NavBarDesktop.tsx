@@ -10,7 +10,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 // import { ModeToggle } from "@/components/layout/header/ModeToggle";
 import { PrimaryButton } from "@/components/shared";
-import { BsPersonFillCheck } from "react-icons/bs";
+import { FaUserCheck } from "react-icons/fa";
 
 // Définir les types pour les props
 interface RouteProps {
@@ -26,7 +26,47 @@ export const NavBarDesktop: React.FC<NavBarDesktopProps> = ({ routes }) => {
   const navigate = useNavigate();
 
   const handleLinkClick = (href: string) => {
-    navigate(href);
+    // Vérifie s'il s'agit d'un lien avec un hash (#) sur la même page
+    if (href.includes("#")) {
+      const [path, hash] = href.split("#");
+
+      if (path !== window.location.pathname) {
+        // Si le chemin est différent, navigue d'abord vers le nouveau chemin
+        navigate(path, { replace: true });
+      }
+
+      // Fonction pour vérifier et ajuster le défilement
+      const scrollToElement = () => {
+        if (hash) {
+          const element = document.getElementById(hash);
+          if (element) {
+            // Ajuste cette valeur selon la hauteur de ton header ou tout autre élément fixe
+            const offset = 60;
+            const elementPosition =
+              element.getBoundingClientRect().top + window.pageYOffset;
+            const targetPosition = elementPosition - offset;
+
+            // Vérifie si l'élément est visible et ajuster jusqu'à ce que l'élément soit correctement aligné
+            if (Math.abs(window.scrollY - targetPosition) > 1) {
+              window.scrollTo({ top: targetPosition, behavior: "smooth" });
+              requestAnimationFrame(scrollToElement);
+            }
+          } else {
+            // Si l'élément n'est pas encore trouvé, réessayer
+            requestAnimationFrame(scrollToElement);
+          }
+        } else {
+          // Si aucun hash, défiler vers le haut
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      };
+
+      // Appeler la fonction de défilement après une courte pause
+      setTimeout(scrollToElement, 0);
+    } else {
+      // Si pas de hash, navigue simplement
+      navigate(href);
+    }
   };
 
   return (
@@ -55,9 +95,9 @@ export const NavBarDesktop: React.FC<NavBarDesktopProps> = ({ routes }) => {
         <PrimaryButton variant="primary">
           <Link
             to="/login"
-            className="text-white no-underline flex items-center"
+            className="text-white no-underline flex items-center py-4"
           >
-            <BsPersonFillCheck className="mr-2 h-4 w-4 shrink-0" />
+            <FaUserCheck className="mr-2 h-5 w-5 shrink-0" />
             Se Connecter
           </Link>
         </PrimaryButton>

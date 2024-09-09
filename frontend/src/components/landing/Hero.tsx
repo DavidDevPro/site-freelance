@@ -10,8 +10,8 @@ import {
   heroLargeJpg,
   hero2xJpg,
 } from "@/assets/images";
-import { RiMailSendLine } from "react-icons/ri";
 import { HiMiniCurrencyEuro } from "react-icons/hi2";
+import { FaEnvelopeCircleCheck } from "react-icons/fa6";
 export const Hero = () => {
   return (
     <section
@@ -51,7 +51,7 @@ export const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent z-0"></div>
       <div className="w-full grid place-items-center h-full py-16 md:py-28 gap-8 lg:gap-10 relative z-10">
         <div className="text-center max-w-full">
-          <h1 className="text-card text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold transition-text ease duration-300 drop-shadow-lg shadow-secondary animate-fade-in">
+          <h1 className="text-card px-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold transition-text ease duration-300 drop-shadow-lg shadow-secondary animate-fade-in">
             Concevez un Site Web Sur Mesure qui Reflète Votre Vision
             <span className="block text-[#5CC8FF] mb-4 mt-10 drop-shadow-lg shadow-secondary animate-fade-in mx-auto text-center font-medium text-xl sm:text-2xl lg:text-3xl transition-text ease duration-300">
               Des Solutions Personnalisées en Développement, Refonte, SEO et
@@ -66,15 +66,15 @@ export const Hero = () => {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 animate-fade-in">
               <Link to="/contact" aria-label="Nous Contacter">
-                <PrimaryButton className="text-xl sm:text-2xl py-4 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-secondary">
-                  <RiMailSendLine className="mr-2 mt-0.5 h:5 sm:h-6 w-5 sm:w-6 shrink-0 transition-w-h ease duration-300" />
+                <PrimaryButton className="text-xl sm:text-2xl py-6 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-secondary">
+                  <FaEnvelopeCircleCheck className="mr-2 mt-0.5 h:5 sm:h-6 w-5 sm:w-6 shrink-0 transition-w-h ease duration-200" />
                   Nous Contacter
                 </PrimaryButton>
               </Link>
-              <Link to="/#pricing" aria-label="Nos Tarifs">
+              <Link to="/#package" aria-label="Nos Tarifs">
                 <PrimaryButton
                   variant="secondary"
-                  className=" text-xl sm:text-2xl py-5 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-secondary"
+                  className=" text-xl sm:text-2xl py-6 px-6 sm:px-8 transition-all duration-200 drop-shadow-lg shadow-secondary"
                 >
                   <HiMiniCurrencyEuro className="mr-1 mt-0.5 h:6 sm:h-7 w-6 sm:w-7 shrink-0 transition-w-h ease duration-300" />
                   Nos Tarifs

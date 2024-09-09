@@ -11,13 +11,13 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui";
 import { Separator } from "@/components/ui";
-import { Menu } from "lucide-react";
+import { TiThMenu } from "react-icons/ti";
 // import { ModeToggle } from "@/components/layout/header/ModeToggle";
 import { logo } from "@/assets/images";
 import { Link, useNavigate } from "react-router-dom";
 import { CopyrightText, SocialIcons, PrimaryButton } from "@/components/shared";
 import { APP_NAME2 } from "@/config/config";
-import { BsPersonFillCheck } from "react-icons/bs";
+import { FaUserCheck } from "react-icons/fa";
 
 // Définir les types pour les props
 interface RouteProps {
@@ -48,10 +48,12 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
     <div className="flex items-center lg:hidden ">
       <Sheet open={isOpen} onOpenChange={handleMenuToggle}>
         <SheetTrigger asChild>
-          <Menu
-            onClick={() => setIsOpen(true)}
-            className="cursor-pointer text-primary"
-          />
+          <span>
+            <TiThMenu
+              onClick={() => setIsOpen(true)}
+              className="h-6 w-6 shrink-0 cursor-pointer text-primary"
+            />
+          </span>
         </SheetTrigger>
 
         <SheetContent
@@ -106,29 +108,29 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
           </div>
 
           <SheetFooter className="sm:flex-col sm:justify-end sm:space-x-2 flex flex-col gap-2">
-            <Separator className="w-full mb-4" />
+            <Separator className="bg-primary w-full mb-4" />
             <div className="flex items-center gap-2 w-full justify-center">
               <PrimaryButton variant="primary">
                 <Link
                   to="/login"
-                  className="text-white no-underline flex items-center"
+                  className="text-white no-underline flex items-center py-4"
                 >
-                  <BsPersonFillCheck className="mr-2 h-4 w-4 shrink-0" />
+                  <FaUserCheck className="mr-2 h-5 w-5 shrink-0" />
                   Se Connecter
                 </Link>
               </PrimaryButton>
               {/* <ModeToggle /> */}
             </div>
-            <Separator className="w-full mt-4 mb-2" />
+            <Separator className=" bg-primary w-full mt-4 mb-2" />
             <div className="text-center text-xs text-gray-500 w-full">
               {" "}
               {/* Réduire la taille de la police */}
               <SocialIcons
-                iconSize="w-5 h-5 shrink-0"
-                spaceBetween="space-x-4"
+                iconSize="w-6 h-6 shrink-0"
+                spaceBetween="space-x-6"
                 containerClassName="mb-4"
               />
-              <CopyrightText className="text-xs " />
+              <CopyrightText className="text-base sm:text-center " />
             </div>
           </SheetFooter>
         </SheetContent>

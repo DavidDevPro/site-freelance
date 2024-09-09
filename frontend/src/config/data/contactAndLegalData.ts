@@ -1,10 +1,10 @@
 // contactAndLegalData.ts
 
-import { Mail, Phone, MapPin } from "lucide-react";
 import { GrUserManager } from "react-icons/gr";
-
 import { APP_DEV, APP_MAIL, APP_ADRESS, APP_ADRESS2, APP_TEL, APP_SIRET, APP_NAME2, APP_ADRESS3 } from "@/config/config";
 import { PiBuildingApartment, PiSuitcase } from "react-icons/pi";
+import { FaRegEnvelope } from "react-icons/fa";
+import { FiMapPin, FiPhone } from "react-icons/fi";
 
 // Définir le type pour chaque élément de contact
 type ContactInfoItem = {
@@ -27,19 +27,19 @@ type LegalInfoItem = {
 export const contactInfo: ContactInfoItem[] = [
   {
     label:"Email",
-    icon: Mail,
+    icon: FaRegEnvelope,
     text: APP_MAIL,
     text2:"",
   },
   {
     label:"Téléphone",
-    icon: Phone,
+    icon: FiPhone,
     text: APP_TEL,
     text2:"",
   },
   {
     label:"",
-    icon: MapPin,
+    icon: FiMapPin,
     text: APP_ADRESS2,
     text2: APP_ADRESS3,
   },
@@ -66,7 +66,7 @@ export const legalInfo: LegalInfoItem[] = [
   {
     label: "Adresse du Siège Social",
     text: APP_ADRESS + " " + APP_ADRESS2,
-    icon: MapPin,
+    icon: FiMapPin,
   },
   
   

@@ -1,12 +1,8 @@
 import { useFormContext } from "react-hook-form";
-import {
-  ClipboardList,
-  FileText,
-  Mail,
-  MapPin,
-  Phone,
-  User,
-} from "lucide-react";
+import { HiOutlineClipboardDocumentList } from "react-icons/hi2";
+import { LuFileText } from "react-icons/lu";
+import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
+import { FiMapPin, FiPhone } from "react-icons/fi";
 
 interface Step5ReviewSubmitProps {
   selectedFormula: string | null;
@@ -69,8 +65,8 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
       {/* Section 1: Formule et Options */}
       <div className="p-2 sm:p-4 border rounded-lg shadow-md bg-card">
         <h2 className="text-lg sm:text-xl font-semibold flex items-center mb-4">
-          <ClipboardList className="mr-1 text-primary shrink-0" /> Détails de la
-          Formule
+          <HiOutlineClipboardDocumentList className="mr-2 text-primary h-6 w-6 shrink-0" />{" "}
+          Détails de la Formule
         </h2>
         <div className="mb-2">
           <strong>Formule :</strong> {formValues.formule || "N/A"}
@@ -101,8 +97,8 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
       {/* Section 2: Fichiers Uploadés */}
       <div className="p-4 border rounded-lg shadow-md bg-card">
         <h2 className="text-xl font-semibold flex items-center mb-4">
-          <FileText className="mr-2 text-primary shrink-0" /> Fichier(s)
-          Téléchargé(s)
+          <LuFileText className="mr-2 text-primary h-6 w-6 shrink-0" />{" "}
+          Fichier(s) Téléchargé(s)
         </h2>
         <ul className="list-disc list-inside ml-4">
           {uploadedFiles.length > 0 ? (
@@ -122,7 +118,8 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
       {/* Section 3: Informations Client */}
       <div className="p-4 border rounded-lg shadow-md bg-card">
         <h2 className="text-xl font-semibold flex items-center mb-4">
-          <User className="mr-2 text-primary shrink-0" /> Coordonnées Client
+          <FaRegUser className="mr-2 text-primary shrink-0" /> Coordonnées
+          Client
         </h2>
         <div className="mb-2 flex items-center">
           <strong className="w-32">Type de client :</strong>
@@ -139,7 +136,7 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
           )}
         </div>
         <div className="mb-2 flex items-center">
-          <User className="mr-2 text-primary shrink-0" />
+          <FaRegUser className="mr-2 text-primary h-5 w-5 shrink-0" />
           <span>
             {`${formValues.civility || ""} ${formValues.firstName || ""} ${
               formValues.lastName || ""
@@ -147,7 +144,7 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
           </span>
         </div>
         <div className="mb-2 flex items-center">
-          <MapPin className="mr-2 text-primary shrink-0" />
+          <FiMapPin className="mr-2 text-primary h-5 w-5 shrink-0" />
           <span>
             {formValues.address || "N/A"} {formValues.postalCode || "N/A"}{" "}
             {formValues.city || "N/A"}
@@ -156,11 +153,11 @@ export const Step5ReviewSubmit: React.FC<Step5ReviewSubmitProps> = ({
         {/* Phone and Email on the same line */}
         <div className="mb-2 flex flex-col gap-2 sm:gap-0 sm:flex-row items-start sm:items-center">
           <div className="flex ">
-            <Phone className="mr-2 text-primary shrink-0" />
+            <FiPhone className="mr-2 mt-0.5 text-primary h-5 w-5 shrink-0" />
             <span className="mr-6">{formatPhoneNumber(formValues.phone)}</span>
           </div>
           <div className="flex">
-            <Mail className="mr-2 text-primary shrink-0" />
+            <FaRegEnvelope className="mr-2 mt-0.5 text-primary h-5 w-5 shrink-0" />
             <span>{formValues.email || "N/A"}</span>
           </div>
         </div>

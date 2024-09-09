@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui";
-import { ArrowUpToLine } from "lucide-react";
+import { LuArrowUpToLine } from "react-icons/lu";
 
 export const ScrollToTop = () => {
   const [showTopBtn, setShowTopBtn] = useState(false);
-  const location = useLocation();
-  const { pathname, hash } = location;
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,11 +21,18 @@ export const ScrollToTop = () => {
   }, []);
 
   useEffect(() => {
+    // Si un hash est présent, fais défiler jusqu'à l'ancre
     if (hash) {
       const element = document.getElementById(hash.replace("#", ""));
       if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+        // Utilise `setTimeout` pour permettre à React Router de terminer la navigation
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 0);
       }
+    } else {
+      // Défile en haut si aucun hash n'est présent
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [pathname, hash]);
 
@@ -39,14 +45,14 @@ export const ScrollToTop = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative z-50">
       {showTopBtn && (
         <Button
           onClick={goToTop}
-          className="fixed bottom-4 right-4 z-50 opacity-90 shadow-md" // z-index augmenté ici
+          className="fixed bottom-4 right-4 opacity-90 shadow-md text-card"
           size="icon"
         >
-          <ArrowUpToLine className="h-4 w-4 shrink-0" />
+          <LuArrowUpToLine className="h-4 w-4 shrink-0" />
         </Button>
       )}
     </div>

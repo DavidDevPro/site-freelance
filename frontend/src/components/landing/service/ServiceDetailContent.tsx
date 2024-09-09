@@ -1,11 +1,10 @@
-import React from "react";
-import { Banner, PrimaryButton } from "@/components/shared";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
-import { RiMailSendFill } from "react-icons/ri";
+import { Banner, PrimaryButton } from "@/components/shared";
 import { ServiceProps, ProService } from "@/config/data/servicesData";
 import { Badge } from "@/components/ui";
 import { FaAngleDoubleRight } from "react-icons/fa";
+import { FaEnvelopeCircleCheck } from "react-icons/fa6";
+import { LuArrowBigLeftDash } from "react-icons/lu";
 
 interface ServiceDetailContentProps {
   serviceDetail: ServiceProps;
@@ -62,7 +61,7 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
               onClick={handleBackClick}
               className="mt-4 flex items-center tracking-wide font-bold mb-6 sm:mb-0 space-x-2 text-white bg-primary hover:bg-primary-dark transition-colors"
             >
-              <ArrowLeft className="mr-2 h-5 w-5 shrink-0" />
+              <LuArrowBigLeftDash className="mr-2 h-5 w-5 shrink-0" />
               <span>Retour</span>
             </PrimaryButton>
           </div>
@@ -81,7 +80,7 @@ export const ServiceDetailContent: React.FC<ServiceDetailContentProps> = ({
                 variant="primary"
                 className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12 flex items-center"
               >
-                <RiMailSendFill className="mt-1 mr-2 h-6 w-6 shrink-0" />
+                <FaEnvelopeCircleCheck className=" mr-2 h-6 w-6 shrink-0" />
                 Nous Contacter
               </PrimaryButton>
             </Link>

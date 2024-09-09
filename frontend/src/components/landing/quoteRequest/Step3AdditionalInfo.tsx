@@ -1,17 +1,10 @@
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-import { uploadTemporaryFile } from "@/lib/api/proposalRequestApi"; // Importer la fonction API
-import {
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-} from "@/components/ui/form";
-import { Textarea } from "@/components/ui";
-import { Input } from "@/components/ui";
-import { MdClose } from "react-icons/md";
-import { FaPlus } from "react-icons/fa";
+import { Input,Textarea } from "@/components/ui";
+import { FormField,FormItem,FormLabel, FormControl} from "@/components/ui/form";
+import { FaPlus, FaTimes } from "react-icons/fa";
 import { validateFileName } from "@/lib/utils";
+import { uploadTemporaryFile } from "@/lib/api/proposalRequestApi";
 
 const MAX_CHAR_COUNT = 2000;
 const MAX_FILE_SIZE = 3 * 1024 * 1024; // 3 MB
@@ -25,7 +18,11 @@ const ACCEPTED_FILE_TYPES = [
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
 ];
 
-export const Step3AdditionalInfo = () => {
+interface Step3AdditionalInfoProps {
+  onRemoveFile?: (index: number) => void;
+}
+
+export const Step3AdditionalInfo: React.FC<Step3AdditionalInfoProps> = ({ onRemoveFile }) => {
   const {
     control,
     watch,
@@ -107,6 +104,11 @@ export const Step3AdditionalInfo = () => {
     // Si on enlève le dernier fichier visible, réduisez le nombre d'inputs visibles
     if (index + 1 === visibleInputs) {
       setVisibleInputs(visibleInputs - 1);
+    }
+    
+    // Appelle une fonction de rappel pour informer le parent que le fichier a été supprimé
+    if (onRemoveFile) {
+      onRemoveFile(index);
     }
   };
 
@@ -204,7 +206,7 @@ export const Step3AdditionalInfo = () => {
                           onClick={() => handleRemoveFile(index)}
                           className="ml-2 text-red-500 hover:text-red-700"
                         >
-                          <MdClose className="w-4 h-4 shrink-0" />
+                          <FaTimes className="w-4 h-4 shrink-0" />
                         </button>
                       </div>
                     )}
@@ -244,7 +246,7 @@ export const Step3AdditionalInfo = () => {
           <button
             type="button"
             onClick={handleAddInput}
-            className="mt-4 flex items-center text-blue-500 hover:text-blue-700"
+            className="mt-4 flex items-center text-primary hover:text-blue-700"
           >
             <FaPlus className="mr-2 shrink-0" /> Ajouter un autre document
           </button>

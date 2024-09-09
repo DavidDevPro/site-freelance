@@ -6,10 +6,11 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { PrimaryButton } from "@/components/shared";
-import { RiMailSendLine } from "react-icons/ri";
 
 // Importer les données de FAQ
 import { FAQList, FAQProps } from "@/config/data/faqData";
+import { FaEnvelopeCircleCheck } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export const FAQ = () => {
   return (
@@ -57,10 +58,10 @@ export const FAQ = () => {
           Vous avez encore des questions ?
         </h3>
         <PrimaryButton>
-          <a rel="noreferrer noopener" href="/contact" className="flex">
-            <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
+          <Link to="/contact" className="flex py-4">
+            <FaEnvelopeCircleCheck className="mr-2 h-5 w-5 shrink-0" />
             Contactez-nous
-          </a>
+          </Link>
         </PrimaryButton>
       </div>
     </section>

@@ -1,12 +1,5 @@
-import React from "react";
-import {
-  Step1ChoosePackage,
-  Step2SelectOptions,
-  Step3AdditionalInfo,
-  Step4PersonalDetails,
-  Step5ReviewSubmit,
-} from "@/components/landing/quoteRequest";
-import { CalendarIframe } from "@/components/shared";
+import { Step1ChoosePackage, Step2SelectOptions, Step3AdditionalInfo, Step4PersonalDetails, Step5ReviewSubmit } from '@/components/landing/quoteRequest';
+import { CalendarIframe } from '@/components/shared';
 
 // Définir les types pour les props nécessaires aux étapes
 interface QuoteRequestStepsProps {
@@ -20,6 +13,7 @@ interface QuoteRequestStepsProps {
   pageCount: number;
   setPageCount: React.Dispatch<React.SetStateAction<number>>;
   selectedFormula: string | null;
+  handleFileRemove: (index: number) => void;
 }
 
 // Définir les types pour les étapes
@@ -37,6 +31,7 @@ export const getQuoteRequestSteps = ({
   pageCount,
   setPageCount,
   selectedFormula,
+  handleFileRemove,
 }: QuoteRequestStepsProps): Step[] => [
   {
     title: "Étape 1 : Choisissez votre formule",
@@ -65,7 +60,7 @@ export const getQuoteRequestSteps = ({
   {
     title: "Étape 3 : Informations supplémentaires",
     subtitle: "(facultatif)",
-    content: <Step3AdditionalInfo />,
+    content: <Step3AdditionalInfo onRemoveFile={handleFileRemove} />,
   },
   {
     title: "Étape 4 : Informations personnelles",

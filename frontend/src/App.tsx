@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import { ScrollToTop } from "./components/shared";
 import {
   HomePage,
   ContactPage,
@@ -13,13 +12,13 @@ import {
   ServiceDetailPage,
 } from "@/pages";
 import "./App.css";
-import { Toaster } from "./components/ui";
+import { Toaster } from "@/components/ui";
+import { ScrollToTop } from "./components/shared";
 import { basename } from "@/config/config";
 
 function App() {
   return (
     <Router basename={basename}>
-      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactPage />} />
@@ -35,6 +34,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       </Routes>
       <Toaster />
+      <ScrollToTop />
     </Router>
   );
 }

@@ -2,43 +2,26 @@ import { useState, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Input } from "@/components/ui";
-import { Textarea } from "@/components/ui";
-import { useDropzone } from "react-dropzone";
-import {
-  showTestimonialSuccess,
-  showTestimonialError,
-} from "@/notifications/toastMessages";
-import { createTestimonial } from "@/lib/api/testimonialsApi";
-import { MdClose } from "react-icons/md";
-import { PrimaryButton } from "@/components/shared";
-import { FaPaperPlane } from "react-icons/fa";
+import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input, Textarea } from "@/components/ui";
+import { useDropzone } from 'react-dropzone';
+import { FaPaperPlane, FaRegUser, FaRegEnvelope, FaTimes } from "react-icons/fa";
+import { PrimaryButton, StarRating } from "@/components/shared";
+import { showTestimonialSuccess, showTestimonialError } from "@/notifications/toastMessages";
+import { createTestimonial } from "@/lib/api/testimonialsApi"; 
 
 const MAX_CHAR_COUNT = 300;
 const MIN_CHAR_COUNT = 50;
 
-// Définir le schéma de validation du formulaire avec Zod
+// Schéma de validation du formulaire avec Zod
 const formSchema = z.object({
-  firstName: z.string().min(2, {
-    message: "Le prénom doit contenir au moins 2 caractères.",
-  }),
-  lastName: z.string().min(2, {
-    message: "Le nom doit contenir au moins 2 caractères.",
-  }),
-  email: z.string().email({
-    message: "Veuillez entrer une adresse email valide.",
-  }),
-  userName: z.string().min(2, {
-    message: "Le rôle doit contenir au moins 2 caractères.",
-  }),
-  comment: z
-    .string()
-    .min(MIN_CHAR_COUNT, {
-      message: `Le témoignage doit contenir au moins ${MIN_CHAR_COUNT} caractères.`,
-    })
-    .max(MAX_CHAR_COUNT, {
-      message: `Le témoignage ne doit pas dépasser ${MAX_CHAR_COUNT} caractères.`,
-    }),
+  firstName: z.string().min(2, { message: "Le prénom doit contenir au moins 2 caractères." }),
+  lastName: z.string().min(2, { message: "Le nom doit contenir au moins 2 caractères." }),
+  email: z.string().email({ message: "Veuillez entrer une adresse email valide." }),
+  userName: z.string().min(2, { message: "Le rôle doit contenir au moins 2 caractères." }),
+  comment: z.string().min(MIN_CHAR_COUNT, { message: `Le témoignage doit contenir au moins ${MIN_CHAR_COUNT} caractères.` })
+    .max(MAX_CHAR_COUNT, { message: `Le témoignage ne doit pas dépasser ${MAX_CHAR_COUNT} caractères.` }),
+  rating: z.number().min(0.5).max(5), // Validation pour la note
 });
 
 interface FeedbackFormInputs {
@@ -47,6 +30,7 @@ interface FeedbackFormInputs {
   email: string;
   userName: string;
   comment: string;
+  rating: number;
 }
 
 interface FeedbackFormProps {
@@ -54,16 +38,8 @@ interface FeedbackFormProps {
   closeModal: () => void;
 }
 
-export const FeedbackForm: React.FC<FeedbackFormProps> = ({
-  onSubmit,
-  closeModal,
-}) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<FeedbackFormInputs>({
+export const FeedbackForm: React.FC<FeedbackFormProps> = ({ onSubmit, closeModal }) => {
+  const { register, handleSubmit, formState: { errors }, reset, control } = useForm<FeedbackFormInputs>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstName: "",
@@ -71,6 +47,7 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
       email: "",
       userName: "",
       comment: "",
+      rating: 0, // Valeur par défaut pour la note
     },
   });
 
@@ -86,7 +63,7 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
   const { getRootProps, getInputProps } = useDropzone({
     onDrop,
     accept: {
-      "image/*": [".jpeg", ".jpg", ".png"],
+      'image/*': ['.jpeg', '.jpg', '.png']
     },
     maxFiles: 1,
     maxSize: 5242880, // 5MB
@@ -108,18 +85,19 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
     setLoading(true);
     try {
       const formData = new FormData();
-      formData.append("firstName", data.firstName);
-      formData.append("lastName", data.lastName);
-      formData.append("email", data.email);
-      formData.append("role", data.userName);
-      formData.append("comment", data.comment);
-
+      formData.append('firstName', data.firstName);
+      formData.append('lastName', data.lastName);
+      formData.append('email', data.email);
+      formData.append('role', data.userName);
+      formData.append('comment', data.comment);
+      formData.append('rating', data.rating.toString());
+      
       if (selectedFile) {
-        formData.append("avatar", selectedFile);
+        formData.append('avatar', selectedFile);
       }
 
       await createTestimonial(formData);
-
+      
       setLoading(false);
       reset();
       setSelectedFile(null);
@@ -138,114 +116,152 @@ export const FeedbackForm: React.FC<FeedbackFormProps> = ({
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
-      <div className="flex space-x-4">
+      {/* Champs Prénom et Nom sur une seule ligne en grand écran, colonne en petit écran */}
+      <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
         <div className="flex-1">
-          <label className="block text-sm font-medium text-gray-700">
-            * Prénom
-          </label>
-          <Input
-            type="text"
-            {...register("firstName")}
-            placeholder="John"
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
-          />
-          {errors.firstName && (
-            <p className="text-red-500">{errors.firstName.message}</p>
-          )}
+          <FormLabel>Prénom <span className="text-red-500">*</span></FormLabel>
+          <FormControl>
+            <div className="relative">
+              <FaRegUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
+              <Input
+                placeholder="John"
+                {...register('firstName')}
+                className="w-full pl-10 border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+              />
+            </div>
+          </FormControl>
+          {errors.firstName && <FormMessage className="text-red-500">{errors.firstName.message}</FormMessage>}
         </div>
         <div className="flex-1">
-          <label className="block text-sm font-medium text-gray-700">
-            * Nom
-          </label>
-          <Input
-            type="text"
-            {...register("lastName")}
-            placeholder="Doe"
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
-          />
-          {errors.lastName && (
-            <p className="text-red-500">{errors.lastName.message}</p>
-          )}
+          <FormLabel>Nom <span className="text-red-500">*</span></FormLabel>
+          <FormControl>
+            <div className="relative">
+              <FaRegUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
+              <Input
+                placeholder="Doe"
+                {...register('lastName')}
+                className="w-full pl-10 border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+              />
+            </div>
+          </FormControl>
+          {errors.lastName && <FormMessage className="text-red-500">{errors.lastName.message}</FormMessage>}
         </div>
       </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700">
-          * Email
-        </label>
-        <Input
-          type="email"
-          {...register("email")}
-          placeholder="john.doe@example.com"
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
-        />
-        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+
+      {/* Champs Email et Rôle sur une seule ligne en grand écran, colonne en petit écran */}
+      <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+        <div className="flex-1">
+          <FormLabel>Email <span className="text-red-500">*</span></FormLabel>
+          <FormControl>
+            <div className="relative">
+              <FaRegEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
+              <Input
+                placeholder="john.doe@example.com"
+                {...register('email')}
+                className="w-full pl-10 border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+              />
+            </div>
+          </FormControl>
+          {errors.email && <FormMessage className="text-red-500">{errors.email.message}</FormMessage>}
+        </div>
+        <div className="flex-1">
+          <FormLabel>Rôle <span className="text-red-500">*</span></FormLabel>
+          <FormControl>
+            <Input
+              placeholder="CEO"
+              {...register('userName')}
+              className="w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+            />
+          </FormControl>
+          {errors.userName && <FormMessage className="text-red-500">{errors.userName.message}</FormMessage>}
+        </div>
       </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700">
-          * Rôle
-        </label>
-        <Input
-          type="text"
-          {...register("userName")}
-          placeholder="CEO"
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
-        />
-        {errors.userName && (
-          <p className="text-red-500">{errors.userName.message}</p>
-        )}
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700">
-          Avatar
-        </label>
+
+      {/* Champ pour télécharger un avatar */}
+      <div className="space-y-2">
+        <label className="block text-sm font-medium text-gray-700">Avatar</label>
         {!imagePreview && (
           <div
             {...getRootProps({
               className:
-                "dropzone border-dashed border-2 border-gray-300 rounded-lg p-4 text-center cursor-pointer",
+                'dropzone border-dashed border-2 border-gray-300 rounded-lg p-4 text-center cursor-pointer transition-colors duration-200 hover:bg-gray-100 sm:p-6',
             })}
           >
             <input {...getInputProps()} />
-            <p className="text-gray-500">
+            <p className="text-gray-500 text-sm sm:text-base">
               Glissez-déposez ou sélectionnez une image
             </p>
-            <p className="text-gray-500">.jpeg / .jpg / .png (MAX: 5MB)</p>
+            <p className="text-gray-500 text-xs sm:text-sm">
+              .jpeg / .jpg / .png (MAX: 5MB)
+            </p>
           </div>
         )}
         {imagePreview && (
-          <div className="relative mt-4 border-dashed border-2 border-gray-300 rounded-lg p-4 text-center">
+          <div className="relative mt-4 border-dashed border-2 border-gray-300 rounded-lg p-4 text-center sm:p-6">
             <img
               src={imagePreview}
               alt="Avatar Preview"
-              className="w-32 h-32 object-cover rounded-full mx-auto"
+              className="w-32 h-32 object-cover rounded-full mx-auto sm:w-40 sm:h-40"
             />
             <button
               type="button"
               onClick={() => setSelectedFile(null)}
               className="absolute top-0 right-0 mt-2 mr-2 text-red-500 hover:text-red-700"
             >
-              <MdClose className="w-6 h-6 shrink-0" />
+              <FaTimes className="w-6 h-6 sm:w-8 sm:h-8 shrink-0" />
             </button>
           </div>
         )}
       </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700">
-          * Avis
-        </label>
-        <Textarea
-          {...register("comment")}
-          onChange={handleCommentChange}
-          className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
-          placeholder="Dites-nous pourquoi vous nous recommanderiez"
-        />
-        <div className="text-right text-sm text-gray-500">
-          {charCount}/{MAX_CHAR_COUNT} caractères
-        </div>
-        {errors.comment && (
-          <p className="text-red-500">{errors.comment.message}</p>
+
+      {/* Champ de notation avant le champ de commentaire */}
+      <FormField
+        control={control}
+        name="rating"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Note <span className="text-red-500">*</span></FormLabel>
+            <FormControl>
+              <StarRating
+                rating={field.value}
+                onRatingChange={(rate) => {
+                  field.onChange(rate);
+                }}
+                sizeClass="w-6 h-6"
+              />
+            </FormControl>
+            {errors.rating && <FormMessage className="text-red-500">{errors.rating.message}</FormMessage>}
+          </FormItem>
         )}
-      </div>
+      />
+
+      {/* Champ de saisie du commentaire */}
+      <FormField
+        control={control}
+        name="comment"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Avis <span className="text-red-500">*</span></FormLabel>
+            <FormControl>
+              <Textarea
+                {...register('comment')}
+                onChange={(e) => {
+                  handleCommentChange(e);
+                  field.onChange(e);
+                }}
+                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-primary focus:border-primary"
+                placeholder="Dites-nous pourquoi vous nous recommanderiez"
+              />
+            </FormControl>
+            <div className="text-right text-sm text-gray-500">
+              {charCount}/{MAX_CHAR_COUNT} caractères
+            </div>
+            {errors.comment && <FormMessage className="text-red-500">{errors.comment.message}</FormMessage>}
+          </FormItem>
+        )}
+      />
+
+      {/* Bouton de soumission */}
       <div className="flex justify-center mb-4">
         <PrimaryButton type="submit" variant="primary" isLoading={loading}>
           Soumettre un Avis

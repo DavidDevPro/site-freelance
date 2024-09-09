@@ -1,7 +1,10 @@
 import Marquee from "@/components/magicui/marquee";
 import { Testimonial } from "@/lib/api/testimonialsApi";
-import { FeedbackAvatar, FeedbackCard, FeedbackAddModal } from "..";
-import { Separator } from "@/components/ui";
+import {
+  FeedbackAvatar,
+  FeedbackCard,
+  FeedbackAddModal,
+} from "@/components/landing/userFeedBack";
 
 interface FeedbackProps {
   testimonials: Testimonial[];
@@ -17,7 +20,7 @@ export const Feedback: React.FC<FeedbackProps> = ({
   return (
     <section
       id="testimonials"
-      className="relative xl:container pt-4 pb-14 px-2 sm:px-6 transition-p ease duration-200"
+      className="relative xl:container pt-4 pb-20 px-2 sm:px-6 transition-p ease duration-200"
     >
       <h2 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
         Recommandations & Avis Clients
@@ -65,7 +68,7 @@ export const Feedback: React.FC<FeedbackProps> = ({
             </div>
 
             {/* Affichage en grille pour les écrans plus petits */}
-            <div className="grid justify-items-center grid-cols-1 md:grid-cols-3 gap-8 lg:hidden mb-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:hidden justify-items-center px-4">
               {testimonials.map((testimonial) => (
                 <FeedbackCard key={testimonial.id} {...testimonial} />
               ))}
@@ -79,7 +82,6 @@ export const Feedback: React.FC<FeedbackProps> = ({
           </div>
         </>
       )}
-      <Separator className="mt-10 h-0.5 w-1/2 mx-auto bg-primary " />
     </section>
   );
 };

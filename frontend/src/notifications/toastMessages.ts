@@ -4,6 +4,8 @@ import { showToast } from "@/lib/notifications/toastUtils";
 
 // Fonctions spécifiques pour les toasts
 export const showMessageSuccess = () => {
+  
+  
   showToast("success", "Votre message a été envoyé avec succès !");
 };
 

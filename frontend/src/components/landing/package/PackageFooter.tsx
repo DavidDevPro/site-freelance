@@ -1,4 +1,3 @@
-import React from "react";
 import { Banner } from "@/components/shared";
 import { QuoteRequestModal } from "@/components/landing/quoteRequest";
 

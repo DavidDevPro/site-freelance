@@ -1,14 +1,9 @@
 // config/data/privacyData.tsx
-
-import {
-  FaUserShield,
-  FaRegFileAlt,
-  FaUserSecret,
-  FaLock,
-} from "react-icons/fa";
+import { APP_NAME2, APP_MAIL } from "@/config/config";
+import { FaUserShield, FaUserSecret, FaLock } from "react-icons/fa";
 import { IoMdAnalytics } from "react-icons/io";
 import { AiFillSecurityScan } from "react-icons/ai";
-import { APP_NAME2, APP_MAIL } from "@/config/config";
+import { BsFillFileEarmarkTextFill, BsFillFileTextFill } from "react-icons/bs";
 
 // Définir le type pour chaque section de politique de confidentialité
 export type PrivacyContent = {
@@ -75,7 +70,7 @@ export const privacyContent: PrivacyContent[] = [
         </ul>
       </>
     ),
-    icon: <FaRegFileAlt className="text-primary h-8 w-8" />,
+    icon: <BsFillFileEarmarkTextFill className="text-primary h-8 w-8" />,
   },
   {
     title: "Partage des Données",
@@ -153,6 +148,6 @@ export const privacyContent: PrivacyContent[] = [
         protégeons vos données.
       </p>
     ),
-    icon: <FaRegFileAlt className="text-primary h-8 w-8" />,
+    icon: <BsFillFileTextFill className="text-primary h-8 w-8" />,
   },
 ];

@@ -8,11 +8,14 @@ type ToastType = "success" | "error";
 // Fonction utilitaire générique pour afficher les toasts
 export const showToast = (type: ToastType, message: string) => {
   const IconComponent = type === "success" ? MdCheckCircle : MdError;
-  const colorClass = type === "success" ? "text-green-500" : "text-red-500";
+  const colorClass =
+    type === "success"
+      ? "text-green-500 h-5 w-5 shrink-0"
+      : "text-red-500 h-5 w-5 shrink-0";
 
   toast("", {
     description: (
-      <div className="flex items-center">
+      <div className="flex items-center text-lg lg:text-base">
         <IconComponent className={`mr-2 ${colorClass}`} />
         <span>{message}</span>
       </div>

@@ -1,10 +1,10 @@
 // components/landing/package/PackageContent.tsx
 import React from "react";
 import { cn } from "@/lib/utils";
-import { CheckIcon, Cross2Icon } from "@radix-ui/react-icons";
 import { LuInfo } from "react-icons/lu";
-import { RiCheckboxBlankCircleFill } from "react-icons/ri";
 import { PrimaryButton } from "@/components/shared";
+import { FaAngleDoubleRight, FaCheckCircle } from "react-icons/fa";
+import { FaCircleXmark } from "react-icons/fa6";
 
 type Interval = "essentiel" | "premium" | "expert";
 
@@ -131,14 +131,14 @@ export const PackageContent: React.FC<PackageContentProps> = ({
                         className={cn(
                           "flex items-start text-md lg:text-sm font-medium",
                           packageFeature
-                            ? "text-black dark:text-white"
+                            ? "text-secondary dark:text-card"
                             : "text-gray-400"
                         )}
                       >
                         {packageFeature ? (
-                          <CheckIcon className="h-6 w-6 shrink-0 mr-3 rounded-full bg-primary p-[2px] text-white dark:text-white" />
+                          <FaCheckCircle className="h-6 w-6 shrink-0 mr-3 text-primary " />
                         ) : (
-                          <Cross2Icon className="h-6 w-6 shrink-0 mr-3 rounded-full bg-gray-300 p-[2px] text-white dark:text-gray-600" />
+                          <FaCircleXmark className="h-6 w-6 shrink-0 mr-3 rounded-full bg-gray-300 p-[2px] text-card dark:text-gray-600" />
                         )}
                         <p className="mr-1">
                           {feature.name}
@@ -172,14 +172,14 @@ export const PackageContent: React.FC<PackageContentProps> = ({
                         className={cn(
                           "text-md lg:text-sm font-medium",
                           packageOption
-                            ? "text-black dark:text-white"
+                            ? "text-secondary dark:text-white"
                             : "text-transparent"
                         )}
                       >
                         {packageOption ? (
                           <p className="break-words inline-flex items-center">
                             <span className="text-primary mr-2">
-                              <RiCheckboxBlankCircleFill className="h-4 w-4 lg:h-2 lg:w-2 shrink-0" />
+                              <FaAngleDoubleRight className="h-4 w-4 lg:h-3 lg:w-3 shrink-0" />
                             </span>
                             {option.name}
                           </p>

@@ -1,5 +1,4 @@
 // components/contact/ContactSection.tsx
-import React from "react";
 import { ContactForm } from "@/components/contact";
 import { logo } from "@/assets/images";
 import { GoogleCalendarModal, SocialIcons } from "@/components/shared";

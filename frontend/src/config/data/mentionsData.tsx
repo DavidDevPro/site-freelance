@@ -1,15 +1,15 @@
 // config/data/mentionsData.tsx
 
-import { Mail, Globe, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
+import { APP_ADRESS, APP_ADRESS2, APP_MAIL, APP_NAME } from "@/config/config";
+import { legalInfo, contactInfo } from "@/config/data/contactAndLegalData"; // Import correct de legalInfo
 import { TbDeviceAnalytics } from "react-icons/tb";
-import { FaServer, FaShieldAlt, FaHammer } from "react-icons/fa";
+import { FaServer, FaShieldAlt, FaHammer, FaRegEnvelope } from "react-icons/fa";
 import { IoSettingsOutline, IoSettingsSharp } from "react-icons/io5";
 import { PiBuildingsFill } from "react-icons/pi";
 import { BsImages } from "react-icons/bs";
-import { APP_ADRESS, APP_ADRESS2, APP_MAIL, APP_NAME } from "@/config/config";
-import { legalInfo, contactInfo } from "@/config/data/contactAndLegalData"; // Import correct de legalInfo
-import { Link } from "react-router-dom";
-import { MdContactMail } from "react-icons/md";
+import { FiGlobe, FiMapPin } from "react-icons/fi";
+import { FaEnvelopeCircleCheck } from "react-icons/fa6";
 
 // Définir le type pour chaque section de mention légale sans JSX
 export type MentionContent = {
@@ -77,7 +77,7 @@ export const mentionsContent: MentionContent[] = [
       </div>
     ),
     icon: (
-      <MdContactMail className="inline w-8 h-8 min-w-8 min-h-8 text-primary" />
+      <FaEnvelopeCircleCheck className="inline w-8 h-8 min-w-8 min-h-8 text-primary" />
     ),
   },
   {
@@ -91,7 +91,7 @@ export const mentionsContent: MentionContent[] = [
         </div>
         <div className="mb-1">
           <div className="flex items-center">
-            <MapPin className="w-6 h-6 text-primary mr-2 shrink-0" />
+            <FiMapPin className="w-6 h-6 text-primary mr-2 shrink-0" />
             <strong>Adresse :</strong>
           </div>
           <div className="ml-8">
@@ -100,7 +100,7 @@ export const mentionsContent: MentionContent[] = [
         </div>
         <div className="mb-1">
           <div className="flex items-center">
-            <Mail className="w-6 h-6 text-primary mr-2 shrink-0" />
+            <FaRegEnvelope className="w-6 h-6 text-primary mr-2 shrink-0" />
             <strong>Contact :</strong>
           </div>
           <div className="ml-8">
@@ -114,7 +114,7 @@ export const mentionsContent: MentionContent[] = [
         </div>
         <div className="mb-1">
           <div className="flex items-center">
-            <Globe className="w-6 h-6 text-primary mr-2 shrink-0" />
+            <FiGlobe className="w-6 h-6 text-primary mr-2 shrink-0" />
             <strong>URL du site web :</strong>
           </div>
           <div className="ml-8">

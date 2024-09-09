@@ -17,7 +17,9 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Hotel, Mail, MapPin, Phone, User } from "lucide-react";
+import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
+import { BsBuildings } from "react-icons/bs";
+import { FiMapPin, FiPhone } from "react-icons/fi";
 
 export const Step4PersonalDetails = () => {
   const {
@@ -88,7 +90,7 @@ export const Step4PersonalDetails = () => {
                 </FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Hotel className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                    <BsBuildings className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                     <Input
                       placeholder="Votre Raison Sociale"
                       {...field}
@@ -127,10 +129,10 @@ export const Step4PersonalDetails = () => {
                   value={field.value || ""}
                   onValueChange={(value) => {
                     const selectedCivility = civilities.find(
-                      (civility) => civility.shortLabel === value
+                      (civility) => civility.longLabel === value
                     );
                     if (selectedCivility) {
-                      field.onChange(selectedCivility.shortLabel); // Utilisez la même valeur pour SelectItem et Select
+                      field.onChange(selectedCivility.longLabel); // Utilisez la même valeur pour SelectItem et Select
                       clearErrors("civility");
                     }
                   }}
@@ -142,7 +144,7 @@ export const Step4PersonalDetails = () => {
                     {civilities.map((civility) => (
                       <SelectItem
                         key={civility.id}
-                        value={civility.shortLabel}
+                        value={civility.longLabel}
                         className="hover:bg-primary hover:text-card focus:bg-primary focus:text-card"
                       >
                         {civility.longLabel}
@@ -170,7 +172,7 @@ export const Step4PersonalDetails = () => {
               </FormLabel>
               <FormControl>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FaRegUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                   <Input
                     placeholder="Votre prénom"
                     {...field}
@@ -202,7 +204,7 @@ export const Step4PersonalDetails = () => {
               </FormLabel>
               <FormControl>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FaRegUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                   <Input
                     placeholder="Votre nom"
                     {...field}
@@ -237,7 +239,7 @@ export const Step4PersonalDetails = () => {
               </FormLabel>
               <FormControl>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FiMapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                   <Input
                     placeholder="Votre adresse"
                     {...field}
@@ -272,7 +274,7 @@ export const Step4PersonalDetails = () => {
               </FormLabel>
               <FormControl>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FiMapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                   <Input
                     placeholder="Votre code postal"
                     {...field}
@@ -304,7 +306,7 @@ export const Step4PersonalDetails = () => {
               </FormLabel>
               <FormControl>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FiMapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                   <Input
                     placeholder="Votre ville"
                     {...field}
@@ -345,7 +347,7 @@ export const Step4PersonalDetails = () => {
               </FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FiPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                   <Input
                     placeholder="Votre téléphone"
                     {...field}
@@ -383,7 +385,7 @@ export const Step4PersonalDetails = () => {
               </FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FaRegEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                   <Input
                     placeholder="Votre email"
                     {...field}

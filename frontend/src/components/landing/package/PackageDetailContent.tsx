@@ -1,10 +1,13 @@
-import React from "react";
 import { Banner, PrimaryButton } from "@/components/shared";
 import { Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, PlusCircle } from "lucide-react";
-import { RiMailSendFill } from "react-icons/ri";
-import { FiCheckCircle } from "react-icons/fi";
 import { PackageOption, PackageFeature } from "@/lib/api/formulaApi"; // Importez vos types
+import { FaCheckCircle } from "react-icons/fa";
+import {
+  FaArrowLeftLong,
+  FaCirclePlus,
+  FaEnvelopeCircleCheck,
+} from "react-icons/fa6";
+import { LuArrowBigLeftDash } from "react-icons/lu";
 
 interface PackageDetailContentProps {
   packageDetail?: {
@@ -53,7 +56,7 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
               onClick={handleBackClick}
               className="flex items-center mb-6 sm:mb-0 space-x-2 font-bold tracking-wide text-white bg-primary hover:bg-primary-dark transition-colors"
             >
-              <ArrowLeft className="h-5 w-5 shrink-0 mr-2" />
+              <FaArrowLeftLong className="h-5 w-5 shrink-0 mr-2" />
               <span>Retour</span>
             </PrimaryButton>
           </div>
@@ -85,7 +88,7 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
                       key={index}
                       className="flex items-start gap-3 text-black dark:text-white"
                     >
-                      <FiCheckCircle className="h-6 w-6 shrink-0 rounded-full text-primary mt-1  bg-card dark:text-white" />
+                      <FaCheckCircle className="h-6 w-6 shrink-0 rounded-full text-primary mt-1  bg-card dark:text-white" />
                       <div className="flex flex-col">
                         <span className="font-bold text-lg">
                           {feature.name} : {feature.value}
@@ -114,7 +117,7 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
                       variant="primary"
                       className="text-base md:text-xl py-4 md:py-6 px-8 md:px-12 flex items-center"
                     >
-                      <RiMailSendFill className=" mr-2 h-6 w-6 shrink-0" />
+                      <FaEnvelopeCircleCheck className=" mr-2 h-6 w-6 shrink-0" />
                       Nous Contacter
                     </PrimaryButton>
                   </Link>
@@ -136,7 +139,7 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
                     key={index}
                     className="flex items-start gap-2 text-muted-foreground"
                   >
-                    <PlusCircle className="h-5 w-5 shrink-0 text-primary" />
+                    <FaCirclePlus className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
                     <span>{option.description}</span>
                   </li>
                 ))}
@@ -147,7 +150,7 @@ export const PackageDetailContent: React.FC<PackageDetailContentProps> = ({
                   onClick={handleBackClick}
                   className="flex items-center mb-6 sm:mb-0 space-x-2 font-bold tracking-wide text-white bg-primary hover:bg-primary-dark transition-colors"
                 >
-                  <ArrowLeft className="h-5 w-5 shrink-0 mr-2" />
+                  <LuArrowBigLeftDash className="h-5 w-5 shrink-0 mr-2" />
                   <span>Retour</span>
                 </PrimaryButton>
               </div>

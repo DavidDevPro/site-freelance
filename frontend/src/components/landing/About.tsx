@@ -45,9 +45,9 @@ export const About = () => {
                   href="https://portfolio.davidwebprojects.fr/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-white flex"
+                  className="text-white flex py-3"
                 >
-                  <FaDev className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
+                  <FaDev className="mr-2 h-5 w-5 shrink-0" />
                   Découvrir mon portfolio
                 </a>
               </PrimaryButton>

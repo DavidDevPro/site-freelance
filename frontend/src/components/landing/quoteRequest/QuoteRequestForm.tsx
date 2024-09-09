@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { FormProvider, useWatch, UseFormReturn } from "react-hook-form";
 import { validateFileName } from "@/lib/utils";
-import { createProposalRequest } from "@/lib/api/proposalRequestApi"; // Import API functions
-import {
-  showProposalError,
-  showProposalSuccess,
-} from "@/notifications/toastMessages";
-import {
-  QuoteRequestHeader,
-  QuoteRequestContent,
-  QuoteRequestFooter,
-  getQuoteRequestSteps,
-  Step,
-} from "@/components/landing/quoteRequest";
+import { QuoteRequestHeader,QuoteRequestContent,QuoteRequestFooter,getQuoteRequestSteps, Step } from '@/components/landing/quoteRequest';
+import { createProposalRequest } from "@/lib/api/proposalRequestApi";
+import { showProposalError, showProposalSuccess} from "@/notifications/toastMessages";
+
 interface QuoteRequestFormProps {
   dataFormulas: Array<{
     name: string;
@@ -49,6 +41,7 @@ export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
       window.removeEventListener("fileCommentValid", handleFileCommentValid);
     };
   }, []);
+  
   const handleSelectFormula = (formula: string) => {
     setSelectedFormula(formula);
     setErrorMessage(null);
@@ -56,6 +49,15 @@ export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
       setCurrentStep(steps.length - 1); // Directement vers la dernière étape
     }
   };
+
+  const handleFileRemove = (index: number) => {
+    // Vérifie si l'erreur est associée au fichier supprimé
+    const currentErrorMessage = `Vous devez définir un nom pour le fichier ${index + 1}.`;
+    if (errorMessage === currentErrorMessage) {
+      setErrorMessage(null); // Efface l'erreur
+    }
+  };
+
   const steps: Step[] = getQuoteRequestSteps({
     dataFormulas,
     handleSelectFormula,
@@ -64,6 +66,7 @@ export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
     pageCount,
     setPageCount,
     selectedFormula,
+    handleFileRemove,
   });
   const nextStep = async () => {
     if (currentStep === 0 && !selectedFormula) {
@@ -127,6 +130,9 @@ export const QuoteRequestForm: React.FC<QuoteRequestFormProps> = ({
       setCurrentStep((prev) => Math.max(prev - 1, 0));
     }
   };
+
+
+
   const handleSubmit = async () => {
     try {
       const values = methods.getValues();

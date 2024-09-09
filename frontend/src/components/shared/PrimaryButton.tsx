@@ -5,9 +5,9 @@ import { cn } from "@/lib/utils";
 
 const primaryButtonClasses = cn(
   "group relative w-auto flex items-center justify-center gap-2 overflow-hidden text-sm font-semibold ",
-  "transform-gpu ring-offset-current transition-all duration-300 ease-out text-white",
+  "transform-gpu ring-offset-current transition-all duration-300 ease-out text-white border-2 border-primary",
   "bg-primary hover:ring-2 hover:ring-primary hover:ring-offset-2 tracking-wide",
-  "px-8 py-5"
+  "px-6 py-4"
 );
 
 const secondaryButtonClasses = cn(

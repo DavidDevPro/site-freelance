@@ -11,10 +11,9 @@ interface RouteProps {
   // Définir les routes principales
   export const headerRoutes: RouteProps[] = [
     { href: "/#services", label: "Services" },
-  { href: "/#testimonials", label: "Témoignages" },
-  { href: "/#package", label: "Tarifs" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
+    { href: "/#package", label: "Tarifs" },
+    { href: "/#testimonials", label: "Témoignages" },
+    { href: "/contact", label: "Contact" },
   ];
   
  

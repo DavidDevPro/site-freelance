@@ -1,7 +1,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Mail, User, MessageSquare, Phone } from "lucide-react";
 import {
   Form,
   FormControl,
@@ -21,7 +20,9 @@ import {
 } from "@/notifications/toastMessages";
 import { PrimaryButton } from "@/components/shared";
 import { useState } from "react";
-import { RiMailSendFill } from "react-icons/ri";
+import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
+import { FaEnvelopeCircleCheck, FaRegMessage } from "react-icons/fa6";
+import { FiPhone } from "react-icons/fi";
 
 // Définir le schéma de validation du formulaire avec Zod
 const formSchema = z.object({
@@ -106,7 +107,7 @@ export function ContactForm() {
                 <FormLabel className="text-base">Prénom</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                    <FaRegUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                     <Input
                       placeholder="Votre prénom"
                       {...field}
@@ -127,7 +128,7 @@ export function ContactForm() {
                 <FormLabel className="text-base">Nom</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                    <FaRegUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                     <Input
                       placeholder="Votre nom"
                       {...field}
@@ -148,7 +149,7 @@ export function ContactForm() {
                 <FormLabel className="text-base">Email</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                    <FaRegEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                     <Input
                       placeholder="Votre email"
                       {...field}
@@ -169,7 +170,7 @@ export function ContactForm() {
                 <FormLabel className="text-base">Téléphone</FormLabel>
                 <FormControl>
                   <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                    <FiPhone className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                     <Input
                       placeholder="Votre téléphone"
                       {...field}
@@ -191,7 +192,7 @@ export function ContactForm() {
               <FormLabel className="text-base">Sujet</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <MessageSquare className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FaRegMessage className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-5 w-5 shrink-0" />
                   <Input
                     placeholder="Le sujet de votre demande"
                     {...field}
@@ -259,7 +260,7 @@ export function ContactForm() {
         {/* Bouton Envoyer */}
         <div className="flex justify-center  mb-4">
           <PrimaryButton type="submit" variant="primary">
-            <RiMailSendFill className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
+            <FaEnvelopeCircleCheck className="mr-2  h-5 w-5 shrink-0" />
             Envoyer
           </PrimaryButton>
         </div>

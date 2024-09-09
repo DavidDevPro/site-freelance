@@ -1,5 +1,4 @@
 // SocialIcons.tsx
-import React from "react";
 import { socialMediaIcons } from "@/config/data/socialLinks";
 
 interface SocialIconsProps {

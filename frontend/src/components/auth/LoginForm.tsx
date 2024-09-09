@@ -1,9 +1,7 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Mail, Lock, Eye, EyeOff } from "lucide-react";
-import { RiUserSharedLine } from "react-icons/ri";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import {
   Form,
   FormControl,
@@ -15,6 +13,8 @@ import {
 import { Input } from "@/components/ui";
 import { logo } from "@/assets/images";
 import { PrimaryButton } from "@/components/shared";
+import { FaEye, FaEyeSlash, FaRegEnvelope, FaUserCheck } from "react-icons/fa";
+import { FiLock } from "react-icons/fi";
 
 // Définir le schéma de validation du formulaire avec Zod
 const loginSchema = z.object({
@@ -71,7 +71,7 @@ export const LoginForm: React.FC = () => {
               <FormLabel className="text-base">Email</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FaRegEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-6 w-6 shrink-0" />
                   <Input
                     id="email"
                     type="email"
@@ -93,7 +93,7 @@ export const LoginForm: React.FC = () => {
               <FormLabel className="text-base">Mot de passe</FormLabel>
               <FormControl>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary shrink-0" />
+                  <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-primary h-6 w-6 shrink-0" />
                   <Input
                     id="password"
                     type={showPassword ? "text" : "password"}
@@ -106,7 +106,11 @@ export const LoginForm: React.FC = () => {
                     onClick={togglePasswordVisibility}
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary"
                   >
-                    {showPassword ? <EyeOff /> : <Eye />}
+                    {showPassword ? (
+                      <FaEyeSlash className="h-6 w-6 shrink-0" />
+                    ) : (
+                      <FaEye className="h-6 w-6 shrink-0" />
+                    )}
                   </button>
                 </div>
               </FormControl>
@@ -124,7 +128,7 @@ export const LoginForm: React.FC = () => {
         </div>
         <div className="flex justify-center mb-4">
           <PrimaryButton type="submit" variant="primary">
-            <RiUserSharedLine className="mr-2 h-4 w-4 shrink-0" />
+            <FaUserCheck className="mr-2 h-5 w-5 shrink-0" />
             Se connecter
           </PrimaryButton>
         </div>

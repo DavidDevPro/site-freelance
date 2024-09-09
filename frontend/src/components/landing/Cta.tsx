@@ -1,11 +1,8 @@
 import { PrimaryButton, GoogleCalendarModal } from "@/components/shared";
-import { RiMailSendLine } from "react-icons/ri";
+import { FaEnvelopeCircleCheck } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export const Cta = () => {
-  const handleContactClick = () => {
-    window.location.href = "/contact"; // Redirection native
-  };
-
   return (
     <>
       {/* Texte en dehors de la section */}
@@ -31,22 +28,23 @@ export const Cta = () => {
               Transformez vos idées et projets en réalité numérique.
             </h2>
             <p className="text-muted-foreground text-xl mt-4 mb-8 lg:mb-0">
-              Vous avez des questions ou des demandes spécifiques concernant
-              votre projet ? Notre équipe est à votre disposition pour répondre
-              à vos besoins et vous accompagner vers le succès de vos
-              initiatives.
+              Notre équipe de développeurs web se tient à votre disposition pour
+              répondre à vos besoins, du concept initial à la mise en ligne de
+              votre site. Nous vous offrons un accompagnement personnalisé et
+              des solutions sur mesure pour garantir la qualité, la performance
+              et l’efficacité de votre projet. Contactez-nous dès maintenant
+              pour échanger sur vos idées et donner vie à vos ambitions
+              digitales.
             </p>
           </div>
 
           <div className="flex flex-col lg:flex-row items-center lg:col-start-2 gap-4">
-            <PrimaryButton
-              className=" md:w-auto"
-              onClick={handleContactClick}
-              aria-label="Contactez-nous"
-            >
-              <RiMailSendLine className="mr-2 mt-0.5 h-4 w-4 shrink-0" />
-              Contactez-nous
-            </PrimaryButton>
+            <Link to="/contact">
+              <PrimaryButton className=" md:w-auto" aria-label="Contactez-nous">
+                <FaEnvelopeCircleCheck className="mr-2 h-5 w-5 shrink-0" />
+                Contactez-nous
+              </PrimaryButton>
+            </Link>
             <GoogleCalendarModal />
           </div>
         </div>
