@@ -62,13 +62,13 @@ export const Hero = () => {
             <p className="text-card pb-12 w-11/12 mx-auto text-lg sm:text-xl font-medium drop-shadow-lg shadow-secondary animate-fade-in transition-text ease duration-300">
               Augmentez votre impact en ligne grâce à un site web performant et
               sur-mesure. Alliez design unique et stratégie SEO pour maximiser
-              votre présence.
+              efficacement votre présence.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-8 animate-fade-in">
               <Link to="/contact" aria-label="Nous Contacter">
                 <PrimaryButton className="text-xl sm:text-2xl py-6 px-6 sm:px-8 transition-all duration-300 drop-shadow-lg shadow-secondary">
-                  <FaEnvelopeCircleCheck className="mr-2 mt-0.5 h:5 sm:h-6 w-5 sm:w-6 shrink-0 transition-w-h ease duration-200" />
-                  Nous Contacter
+                  <FaEnvelopeCircleCheck className="mr-2 mt-0.5 h:5 sm:h-7 w-5 sm:w-7 shrink-0 transition-w-h ease duration-200" />
+                  Me Contacter
                 </PrimaryButton>
               </Link>
               <Link to="/#package" aria-label="Nos Tarifs">

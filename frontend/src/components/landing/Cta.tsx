@@ -8,10 +8,10 @@ export const Cta = () => {
       {/* Texte en dehors de la section */}
       <div className="text-center xl:container pt-14 px-2 sm:px-6 ">
         <h2 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
-          On vous accompagne sur votre projet
+          Je vous accompagne sur votre projet
         </h2>
         <h3 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300 dark:text-card">
-          Nous sommes là pour vous aider à concrétiser vos idées en solutions
+          Je suis là pour vous aider à concrétiser vos idées en solutions
           performantes et adaptées à vos besoins.
         </h3>
       </div>
@@ -27,22 +27,24 @@ export const Cta = () => {
             <h2 className="text-3xl text-primary font-bold leading-tight">
               Transformez vos idées et projets en réalité numérique.
             </h2>
-            <p className="text-muted-foreground text-xl mt-4 mb-8 lg:mb-0">
-              Notre équipe de développeurs web se tient à votre disposition pour
-              répondre à vos besoins, du concept initial à la mise en ligne de
-              votre site. Nous vous offrons un accompagnement personnalisé et
-              des solutions sur mesure pour garantir la qualité, la performance
-              et l’efficacité de votre projet. Contactez-nous dès maintenant
-              pour échanger sur vos idées et donner vie à vos ambitions
-              digitales.
+            <p className="text-muted-foreground text-lg mt-4 mb-8 lg:mb-0">
+              Je me tiens à votre disposition pour répondre à vos besoins, du
+              concept initial à la mise en ligne de votre site. Je vous offre un
+              accompagnement personnalisé et des solutions sur mesure pour
+              garantir la qualité, la performance et l’efficacité de votre
+              projet. Contactez-moi dès maintenant pour échanger sur vos idées
+              et donner vie à vos ambitions digitales.
             </p>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center lg:col-start-2 gap-4">
+          <div className="flex flex-col items-center lg:col-start-2 gap-6">
             <Link to="/contact">
-              <PrimaryButton className=" md:w-auto" aria-label="Contactez-nous">
-                <FaEnvelopeCircleCheck className="mr-2 h-5 w-5 shrink-0" />
-                Contactez-nous
+              <PrimaryButton
+                className=" md:w-auto text-base"
+                aria-label="Contactez-nous"
+              >
+                <FaEnvelopeCircleCheck className="mr-2 h-6 w-6 shrink-0" />
+                Contactez-moi
               </PrimaryButton>
             </Link>
             <GoogleCalendarModal />

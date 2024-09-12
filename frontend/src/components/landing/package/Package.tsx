@@ -78,7 +78,7 @@ export function Package() {
   return (
     <section
       id="package"
-      className="xl:container py-14 px-2 sm:px-6 transition-p ease duration-200"
+      className="xl:container py-14 px-2 sm:px-6 transition-p ease duration-200 scroll-mt-10"
     >
       <div className=" mx-auto flex max-w-screen-xl flex-col gap-8 ">
         <PackageHeader />

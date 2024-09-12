@@ -20,8 +20,8 @@ export const serviceList: ServiceProps[] = [
   {
     title: "Sites web sur mesure",
     description: [
-      "Nous créons des sites web uniques, conçus spécifiquement pour répondre aux besoins de votre entreprise.",
-      "Chaque projet est réalisé avec un souci du détail, garantissant une interface utilisateur intuitive et un design qui reflète parfaitement votre identité de marque.",
+      "Je conçois des sites web uniques pensés avec soin et minutie pour répondre parfaitement à vos besoins spécifiques, qu'ils soient personnels ou professionnels.",
+      "Je veille à ce que chaque projet soit exécuté avec un grand souci du détail, garantissant une expérience utilisateur intuitive et un design en parfaite harmonie avec votre identité de marque.",
     ],
     link: 'developpement-sites-vitrine',
     pro: ProService.NO,
@@ -40,8 +40,8 @@ export const serviceList: ServiceProps[] = [
   {
     title: "Hébergement et SEO",
     description: [
-      "Nos solutions d'hébergement sécurisées et performantes s'associent à des stratégies SEO avancées.",
-      "Maximisez votre visibilité en ligne avec nos services d'optimisation pour les moteurs de recherche.",
+      "Je vous propose des solutions d'hébergement sécurisées et efficaces, soigneusement associées à des techniques SEO avancées pour garantir une performance optimale de votre site web.",
+      "Renforcez votre visibilité en ligne grâce à mes services d'optimisation pour les moteurs de recherche soigneusement élaborés pour maximiser votre présence et votre influence de manière stratégique.",
     ],
     link: 'seo-hebergement',
     pro: ProService.YES,
@@ -60,8 +60,8 @@ export const serviceList: ServiceProps[] = [
   {
     title: "Performance et optimisation",
     description: [
-      "Nous optimisons la vitesse et les performances de votre site pour offrir une expérience utilisateur fluide et rapide.",
-      "Avec des temps de chargement réduits et une architecture technique de qualité, votre site sera prêt à exceller dans un environnement numérique concurrentiel.",
+      "Je perfectionne la vitesse et les performances de votre site, assurant ainsi une expérience utilisateur fluide et réactive méticuleusement élaborée pour satisfaire les normes les plus rigoureuses.",
+      "Grâce à des temps de chargement optimisés et à une architecture technique de premier ordre, je prépare votre site à briller dans un environnement numérique hautement performant.",
     ],
     link: 'analyse-performance',
     pro: ProService.NO,

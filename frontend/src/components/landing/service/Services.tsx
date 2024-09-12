@@ -37,13 +37,13 @@ export const Services: React.FC = () => {
   return (
     <section
       id="services"
-      className="xl:container pt-24 pb-4 px-2 sm:px-6 transition-p ease duration-200"
+      className="xl:container pt-24 pb-4 px-3 sm:px-6 transition-p ease duration-200"
     >
       <h2 className="text-3xl md:text-4xl lg:text-5xl text-center font-bold pb-4 bg-gradient-to-b from-primary/60 to-primary text-transparent bg-clip-text transition-text ease duration-300">
-        Nos Services
+        Mes Services
       </h2>
       <h3 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-8 transition-text ease duration-300">
-        {`Découvrez nos services conçus pour répondre aux besoins spécifiques de votre entreprise. Chaque service est conçu avec une attention particulière aux détails et à l'efficacité.`}
+        {`Explorez ma gamme de services, spécialement conçue pour répondre aux exigences uniques de votre entreprise. Chaque prestation est minutieusement élaborée pour garantir un niveau de détail et d'efficacité optimal.`}
       </h3>
 
       <div className="grid lg:grid-cols-3 w-full sm:w-10/12 gap-6 lg:gap-6 lg:w-[95%] mx-auto relative">
@@ -60,11 +60,11 @@ export const Services: React.FC = () => {
               >
                 <div>
                   <CardHeader className="flex flex-col items-center mb-4">
-                    <CardTitle className="text-center text-primary mt-4 text-2xl font-semibold">
+                    <CardTitle className="text-center text-primary mt-4 text-2xl font-bold">
                       {title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="text-muted-foreground text-left space-y-2">
+                  <CardContent className="text-muted-foreground text-left space-y-2 text-lg dark:text-card">
                     {description.map((desc, index) => (
                       <div key={index} className="flex items-start space-x-2">
                         <span className="text-primary">

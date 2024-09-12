@@ -26,8 +26,8 @@ export const Feedback: React.FC<FeedbackProps> = ({
         Recommandations & Avis Clients
       </h2>
       <h3 className="mx-auto lg:w-10/12 text-center text-secondary font-medium text-base md:text-lg lg:text-xl mb-4 transition-text ease duration-300">
-        Découvrez les recommandations de professionnels avec qui nous avons
-        travaillés et les avis de nos clients.
+        Découvrez les recommandations de professionnels avec qui j'ai travaillé
+        et les avis de mes clients.
       </h3>
 
       {/* Affichage conditionnel selon l'état de l'erreur et des données */}

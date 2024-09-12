@@ -25,7 +25,7 @@ export const SiteFooter = () => {
   return (
     <footer
       id="footer"
-      className="bg-card dark:bg-background border-t py-4 relative z-1"
+      className="bg-card dark:bg-background border-t py-4 relative "
     >
       <div className="mx-auto w-full max-w-screen-xl px-4">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-8 px-4 pt-2 pb-8">

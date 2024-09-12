@@ -20,7 +20,7 @@ export const GoogleCalendarModal: React.FC = () => {
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <PrimaryButton>
+        <PrimaryButton className="text-base">
           <SiGooglecalendar className="mr-2 h-6 w-6 shrink-0" />
           Prendre un rendez-vous
         </PrimaryButton>

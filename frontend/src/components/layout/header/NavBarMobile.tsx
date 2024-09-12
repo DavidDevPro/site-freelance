@@ -58,7 +58,7 @@ export const NavBarMobile: React.FC<NavBarMobileProps> = ({ routes }) => {
 
         <SheetContent
           side="left"
-          className="flex flex-col justify-between items-center rounded-tr-2xl rounded-br-2xl bg-card w-[75vw] max-w-md px-1"
+          className="flex flex-col justify-between items-center rounded-tr-2xl rounded-br-2xl bg-card w-[75vw] max-w-md h-full max-h-screen overflow-y-auto px-1"
         >
           <div className="w-full flex flex-col items-center">
             <SheetHeader className="mb-8 flex items-center w-full">
